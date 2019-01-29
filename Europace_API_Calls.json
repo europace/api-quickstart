@@ -58,7 +58,7 @@
 			"response": []
 		},
 		{
-			"name": "Login -> Beschränkt (Andreas Tauber)",
+			"name": "Login -> Beschränkt",
 			"event": [
 				{
 					"listen": "test",
