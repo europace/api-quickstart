@@ -1,7 +1,7 @@
 {
 	"info": {
 		"_postman_id": "eb2ad512-bb06-80c0-1815-2fec6a326640",
-		"name": "Common API CAlls",
+		"name": "EUROPACE API Calls",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
@@ -58,7 +58,7 @@
 			"response": []
 		},
 		{
-			"name": "Login -> Beschränkt",
+			"name": "Login -> alternativ",
 			"event": [
 				{
 					"listen": "test",
@@ -111,7 +111,7 @@
 			"response": []
 		},
 		{
-			"name": "Vorgänge auslesen (alle zum eingeloggten Nutzer)",
+			"name": "Vorgänge auslesen (alle)",
 			"request": {
 				"method": "GET",
 				"header": [
@@ -310,7 +310,7 @@
 			]
 		},
 		{
-			"name": "Antraege",
+			"name": "Antraege auslesen (alle)",
 			"request": {
 				"method": "GET",
 				"header": [
@@ -328,7 +328,7 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "https://baufismart.api.europace.de/v2/antraege/QJ4572",
+					"raw": "https://baufismart.api.europace.de/v2/antraege/",
 					"protocol": "https",
 					"host": [
 						"baufismart",
@@ -339,14 +339,52 @@
 					"path": [
 						"v2",
 						"antraege",
-						"QJ4572"
+						""
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "Finanzierungsvorschlaege mit VorgangsId",
+			"name": "Antrag Auslesen",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{jwt}}"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://baufismart.api.europace.de/v2/antraege/HU1242/1/1",
+					"protocol": "https",
+					"host": [
+						"baufismart",
+						"api",
+						"europace",
+						"de"
+					],
+					"path": [
+						"v2",
+						"antraege",
+						"HU1242",
+						"1",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Finanzierungsvorschlaege v1 mit VorgangsId",
 			"request": {
 				"method": "GET",
 				"header": [
@@ -381,7 +419,7 @@
 			"response": []
 		},
 		{
-			"name": "Finanzierungsvorschlaege mit VorgangsId und Produktanbieter",
+			"name": "Finanzierungsvorschlaege v1 mit Vorgangsnummer und Produktanbieter",
 			"request": {
 				"method": "GET",
 				"header": [
@@ -422,7 +460,7 @@
 			"response": []
 		},
 		{
-			"name": "Finanzierungsvorschlaege mit kompletten Vorgang",
+			"name": "Finanzierungsvorschlaege v1 mit Body",
 			"request": {
 				"method": "POST",
 				"header": [
@@ -457,7 +495,7 @@
 			"response": []
 		},
 		{
-			"name": "Finanzierungsvorschlaege Minimal",
+			"name": "Finanzierungsvorschlaege v1 Minimal",
 			"request": {
 				"method": "POST",
 				"header": [
@@ -613,25 +651,17 @@
 			"response": []
 		},
 		{
-			"name": "Partner Management (Core) Kontaktdaten",
+			"name": "Ereignisse Auslesen",
 			"request": {
 				"method": "GET",
 				"header": [
 					{
-						"key": "X-Authentication",
-						"value": "{{jwt}}",
-						"disabled": false
+						"key": "Authorization",
+						"value": "Bearer {{jwt}}"
 					},
 					{
 						"key": "Content-Type",
-						"value": "application/json",
-						"disabled": false
-					},
-					{
-						"key": "X-TraceId",
-						"value": "caspar2",
-						"type": "text",
-						"disabled": true
+						"value": "application/json"
 					}
 				],
 				"body": {
@@ -639,18 +669,22 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "https://www.europace2.de/partnermanagement/partner/ACH16/kontaktdaten",
+					"raw": "https://api.europace.de/v1/ereignisse?vorgangsNummer=CH6407",
 					"protocol": "https",
 					"host": [
-						"www",
-						"europace2",
+						"api",
+						"europace",
 						"de"
 					],
 					"path": [
-						"partnermanagement",
-						"partner",
-						"ACH16",
-						"kontaktdaten"
+						"v1",
+						"ereignisse"
+					],
+					"query": [
+						{
+							"key": "vorgangsNummer",
+							"value": "CH6407"
+						}
 					]
 				}
 			},
@@ -697,6 +731,50 @@
 			"response": []
 		},
 		{
+			"name": "Partner Management (Core) Kontaktdaten",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-Authentication",
+						"value": "{{jwt}}",
+						"disabled": false
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"disabled": false
+					},
+					{
+						"key": "X-TraceId",
+						"value": "caspar2",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://www.europace2.de/partnermanagement/partner/ACH16/kontaktdaten",
+					"protocol": "https",
+					"host": [
+						"www",
+						"europace2",
+						"de"
+					],
+					"path": [
+						"partnermanagement",
+						"partner",
+						"ACH16",
+						"kontaktdaten"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "Antrag aus dem Core",
 			"request": {
 				"method": "GET",
@@ -729,46 +807,6 @@
 						"antrag",
 						"Q78865",
 						"1"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Ereignisse Auslesen",
-			"request": {
-				"method": "GET",
-				"header": [
-					{
-						"key": "Authorization",
-						"value": "Bearer {{jwt}}"
-					},
-					{
-						"key": "Content-Type",
-						"value": "application/json"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": ""
-				},
-				"url": {
-					"raw": "https://api.europace.de/v1/ereignisse?vorgangsNummer=CH6407",
-					"protocol": "https",
-					"host": [
-						"api",
-						"europace",
-						"de"
-					],
-					"path": [
-						"v1",
-						"ereignisse"
-					],
-					"query": [
-						{
-							"key": "vorgangsNummer",
-							"value": "CH6407"
-						}
 					]
 				}
 			},
