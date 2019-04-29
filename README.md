@@ -2,9 +2,9 @@
 
 Eine Übersicht aller APIs ist hier zu finden: https://developer.europace.de/
 
-Ein Probeaufruf der API ist sehr hilfreich, um schnell einzusteigen. Dafür empfehlen wir [Postman](https://www.getpostman.com/), was auf Windows, Mac OS und Linux funktioniert.
+Probeaufrufe der APIs sind sehr hilfreich, um schnell einzusteigen. Dafür empfehlen wir [Postman](https://www.getpostman.com/), was auf Windows, Mac OS und Linux funktioniert.
 
-Schritte:
+Schritte um Postman einzurichten:
 1. Postman installieren
 2. [Postman Collection](https://github.com/europace/api-sandbox/blob/master/EUROPACE%20API%20Calls.postman_collection.json) runterladen.
 3. Im JSON PartnerID und API-Key mit Wert `TODO` durch eigene Credentials ersetzen.
