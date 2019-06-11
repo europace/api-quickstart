@@ -5,9 +5,10 @@ Eine Übersicht aller APIs ist hier zu finden: https://developer.europace.de/
 Probeaufrufe der APIs sind sehr hilfreich, um schnell einzusteigen. Dafür empfehlen wir [Postman](https://www.getpostman.com/), was auf Windows, Mac OS und Linux funktioniert.
 
 Schritte um Postman einzurichten:
-1. Postman installieren
-2. [Postman Collection](https://github.com/europace/api-sandbox/blob/master/EUROPACE%20API%20Calls.postman_collection.json) als JSON-Datei runterladen.
-3. In dieser JSON-Datei PartnerID und API-Key mit Wert `TODO` durch eigene Credentials ersetzen. Das geht mit einem Text-Editor.
-4. Die JSON_Datei als Collection im Postman importieren.
-5. Der erste Call in der Collection (`Login -> JWT erzeugen  mit PartnerId und API-Key`) müsste ein "JWT-Token" zurückliefern. Damit hat der Login stattgefunden.
-6. Jetzt können alle weiteren Calls ausgeführt werden.
+1. Postman installieren. Es ist *keine* Anmeldung erforderlich.
+1. Oben links auf _Import_ Button klicken, dann auf _Import from Link_
+![](screen1.png)
+4. Folgenden Link in die Textbox pasten: `https://raw.githubusercontent.com/europace/api-sandbox/master/EUROPACE%20API%20Calls.postman_collection.json`
+5. Der ersten Call in der Collection (`Login -> JWT erzeugen  mit PartnerId und API-Key`) anklicken und auf den _body_ wechseln.
+1. Dort die 2 Felder TODO ersetzen, so das bei `username`die Partner ID steht und bei `password` der API-Key.
+![](screen2.png)
