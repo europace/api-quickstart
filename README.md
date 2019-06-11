@@ -1,8 +1,10 @@
 # Postman Calls für die EUROPACE APIs
 
+Probeaufrufe der APIs sind sehr hilfreich, um schnell einzusteigen. Dafür empfehlen wir [Postman](https://www.getpostman.com/), was auf Windows, Mac OS und Linux funktioniert.
+
 Eine Übersicht aller APIs ist hier zu finden: https://developer.europace.de/
 
-Probeaufrufe der APIs sind sehr hilfreich, um schnell einzusteigen. Dafür empfehlen wir [Postman](https://www.getpostman.com/), was auf Windows, Mac OS und Linux funktioniert.
+
 
 Schritte um Postman einzurichten:
 1. Postman installieren. Es ist *keine* Anmeldung erforderlich.
