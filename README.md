@@ -12,5 +12,6 @@ Schritte um Postman einzurichten:
 ![](screen1.png)
 4. Folgenden Link in die Textbox pasten: `https://raw.githubusercontent.com/europace/api-sandbox/master/EUROPACE%20API%20Calls.postman_collection.json`
 5. Der ersten Call in der Collection (`Login -> JWT erzeugen  mit PartnerId und API-Key`) anklicken und auf den _body_ wechseln.
-1. Dort die 2 Felder TODO ersetzen, so das bei `username`die Partner ID steht und bei `password` der API-Key.
+1. Dort die 2 Felder TODO ersetzen, so das bei `username`die Partner ID steht und bei `password` der API-Key steht.
 ![](screen2.png)
+1. Bei klick auf _send_ müsste jetzt ein `access_token` zurück kommen.
