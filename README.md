@@ -19,4 +19,4 @@ Eine Übersicht aller APIs ist hier zu finden: https://developer.europace.de/
 1. Dort die 2 Felder TODO ersetzen, so das bei `username`die Partner ID steht und bei `password` der API-Key steht.
 ![](screen2.png)
 1. Bei klick auf _send_ müsste jetzt ein `access_token` zurück kommen.
-1. Diese ist ein Testeintrag
+1. Diese ist kein Testeintrag - hier gibt es nichts zu sehen
