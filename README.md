@@ -7,7 +7,10 @@ Eine Übersicht aller APIs ist hier zu finden: https://developer.europace.de/
 📣Voraussetzung: sie benötigen von EUROPACE eine PartnerID und einen API Key. Diese können sie von ihrem EUROPACE Ansprechpartner bekommen.
 
 
-## Schritte um Postman einzurichten:
+## Schritte um Postman einzurichten
+
+⚠️ Achtung diese Anleitung ist veraltet.
+
 1. Postman installieren. Es ist *keine* Anmeldung erforderlich.
 1. Oben links auf _Import_ Button klicken, dann auf _Import from Link_
 ![](screen1.png)
