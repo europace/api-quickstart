@@ -9,14 +9,19 @@ Eine Übersicht aller APIs ist hier zu finden: https://developer.europace.de/
 
 ## Schritte um Postman einzurichten
 
-⚠️ Achtung diese Anleitung ist veraltet.
-
 1. Postman installieren. Es ist *keine* Anmeldung erforderlich.
 1. Oben links auf _Import_ Button klicken, dann auf _Import from Link_
-![](screen1.png)
+
 4. Folgenden Link in die Textbox pasten: `https://raw.githubusercontent.com/europace/api-sandbox/master/EUROPACE%20API%20Calls.postman_collection.json`
-5. Der ersten Call in der Collection (`Login -> JWT erzeugen  mit PartnerId und API-Key`) anklicken und auf den _body_ wechseln.
-1. Dort die 2 Felder TODO ersetzen, so das bei `username`die Partner ID steht und bei `password` der API-Key steht.
-![](screen2.png)
+![](screen1.png)
+
+5.
+1. Ein neues "Environment" anlegen, in dem Dein API Key und Parnter ID als Variable gespeichert wird. Dafür das Icon oben rechts klicken:
+![](screen3.png)
+1. Gebe deinem Environment einen Namen und legen darin die 2 Variablen folgendermassen an:
+![](screen4.png)
+1. Nach dem anlegen des Environments stelle sicher, dass es auch aktiv ist:
+![](screen5.png)
+1. . Der ersten Call in der Collection (`Login -> JWT erzeugen  mit PartnerId und API-Key`) anklicken
 1. Bei klick auf _send_ müsste jetzt ein `access_token` zurück kommen.
 1. Dieses ist (k)ein Testeintrag - hier gibt es nichts zu sehen.
