@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "b8ac4ae7-6df3-4a4e-9a00-077e4b2c23a6",
+		"_postman_id": "fab7e33d-5d88-4170-ae62-405e7140781e",
 		"name": "EUROPACE API Calls",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -389,7 +389,7 @@
 					"response": []
 				},
 				{
-					"name": "Finanzierungsvorschläge mit VorgangsId V2",
+					"name": "Finanzierungsvorschlaege v2 mit VorgangsID",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -425,6 +425,60 @@
 									"key": "vorgangsNummer",
 									"value": "L12153"
 								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Ermittlungsanfrage einer Ermittlung abrufen",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "1ff5310e-38da-43eb-9165-6722e0287405",
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);",
+									"postman.setGlobalVariable(\"ermittlungsId\", jsonData.ermittlungsId);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{jwt}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://baufismart.api.europace.de/v2/ergebnisliste/ermittlung/{{ermittlungsId}}/ermittlungsAnfrage",
+							"protocol": "https",
+							"host": [
+								"baufismart",
+								"api",
+								"europace",
+								"de"
+							],
+							"path": [
+								"v2",
+								"ergebnisliste",
+								"ermittlung",
+								"{{ermittlungsId}}",
+								"ermittlungsAnfrage"
 							]
 						}
 					},
@@ -594,7 +648,45 @@
 			"response": []
 		},
 		{
-			"name": "Neue Dokumenten API",
+			"name": "Neue Dokumenten API (Vorgang)",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{jwt}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://api.europace.de/v1/dokumente/seiten?vorgangsNummer=XW3386",
+					"protocol": "https",
+					"host": [
+						"api",
+						"europace",
+						"de"
+					],
+					"path": [
+						"v1",
+						"dokumente",
+						"seiten"
+					],
+					"query": [
+						{
+							"key": "vorgangsNummer",
+							"value": "XW3386"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Neue Dokumenten API (Antrag)",
 			"request": {
 				"method": "GET",
 				"header": [
