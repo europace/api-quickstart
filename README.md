@@ -22,6 +22,6 @@ Eine Übersicht aller APIs ist hier zu finden: https://developer.europace.de/
 ![](screen4.png)
 1. Nach dem anlegen des Environments stelle sicher, dass es auch aktiv ist:
 ![](screen5.png)
-1. . Der ersten Call in der Collection (`Login -> JWT erzeugen  mit PartnerId und API-Key`) anklicken
+1. . Den Aufruf in der neuen Collection in der Linken spalte (`Login -> JWT erzeugen`) anklicken
 1. Bei klick auf _send_ müsste jetzt ein `access_token` zurück kommen.
 1. Dieses ist (k)ein Testeintrag - hier gibt es nichts zu sehen.
