@@ -1,15 +1,18 @@
 # Postman Calls für die EUROPACE APIs
 
-Probeaufrufe der APIs sind sehr hilfreich, um schnell einzusteigen. Dafür empfehlen wir [Postman](https://www.getpostman.com/), was auf Windows, Mac OS und Linux funktioniert.
+Probeaufrufe (Calls) der APIs sind sehr hilfreich, um schnell einzusteigen. Dafür empfehlen wir [Postman](https://www.getpostman.com/), was auf Windows, Mac OS und Linux funktioniert.
 
 Eine Übersicht aller APIs ist hier zu finden: https://developer.europace.de/
 
-📣Voraussetzung: sie benötigen von EUROPACE eine PartnerID und einen API Key. Diese können sie von ihrem EUROPACE Ansprechpartner bekommen.
+## 📣 Voraussetzung um diese Calls auszuführen:
+
+1. Du benötigst von EUROPACE eine PartnerID und einen API Key. Diese kannst Du von deinem EUROPACE Ansprechpartner bekommen.
+2. Du benötigst mindestens einen Vorgang oder einen Antrag, um die Daten auszulesen.
 
 
-## Schritte um Postman einzurichten
+## ✅ Schritte um Postman einzurichten
 
-1. Postman installieren. Es ist *keine* Anmeldung erforderlich.
+1. Postman [runterladen]((https://www.getpostman.com/)) und installieren. Es ist *keine* Anmeldung erforderlich.
 1. Oben links auf _Import_ Button klicken, dann auf _Import from Link_
 
 4. Folgenden Link in die Textbox pasten: `https://raw.githubusercontent.com/europace/api-sandbox/master/EUROPACE%20API%20Calls.postman_collection.json`

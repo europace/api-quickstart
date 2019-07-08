@@ -196,6 +196,164 @@
 					]
 				},
 				{
+					"name": "Anträge an einem Vorgang auslesen",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{jwt}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "https://api.europace2.de/v2/vorgaenge/CH6407/antraege",
+							"protocol": "https",
+							"host": [
+								"api",
+								"europace2",
+								"de"
+							],
+							"path": [
+								"v2",
+								"vorgaenge",
+								"CH6407",
+								"antraege"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Vorgang auslesen",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{jwt}}"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "https://api.europace2.de/v2/vorgaenge/CH6407",
+									"protocol": "https",
+									"host": [
+										"api",
+										"europace2",
+										"de"
+									],
+									"path": [
+										"v2",
+										"vorgaenge",
+										"CH6407"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, no-store, max-age=0, must-revalidate",
+									"name": "Cache-Control",
+									"description": "Tells all caching mechanisms from server to client whether they may cache this object. It is measured in seconds"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json;charset=utf-8",
+									"name": "Content-Type",
+									"description": "The mime type of this content"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 18 Apr 2018 14:31:33 GMT",
+									"name": "Date",
+									"description": "The date and time that the message was sent"
+								},
+								{
+									"key": "Expires",
+									"value": "0",
+									"name": "Expires",
+									"description": "Gives the date/time after which the response is considered stale"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache",
+									"name": "Pragma",
+									"description": "Implementation-specific headers that may have various effects anywhere along the request-response chain."
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked",
+									"name": "Transfer-Encoding",
+									"description": "The form of encoding used to safely transfer the entity to the user. Currently defined methods are: chunked, compress, deflate, gzip, identity."
+								},
+								{
+									"key": "X-Application-Context",
+									"value": "zuul-api-gateway:ps:8080",
+									"name": "X-Application-Context",
+									"description": "Custom header"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff",
+									"name": "X-Content-Type-Options",
+									"description": "The only defined value, \"nosniff\", prevents Internet Explorer from MIME-sniffing a response away from the declared content-type"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY",
+									"name": "X-Frame-Options",
+									"description": "Clickjacking protection: \"deny\" - no rendering within a frame, \"sameorigin\" - no rendering if origin mismatch"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "1000",
+									"name": "X-RateLimit-Limit",
+									"description": "Custom header"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "999",
+									"name": "X-RateLimit-Remaining",
+									"description": "Custom header"
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "60",
+									"name": "X-RateLimit-Reset",
+									"description": "Custom header"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "1; mode=block",
+									"name": "X-XSS-Protection",
+									"description": "Cross-site scripting (XSS) filter"
+								}
+							],
+							"cookie": [
+								{
+									"expires": "Invalid Date",
+									"httpOnly": false,
+									"domain": "europace2.de",
+									"path": "/",
+									"secure": false,
+									"value": "1$649D71A275E951D90093F2C6B9479F6D|www.europace2.de|1",
+									"key": "dtCookie"
+								}
+							],
+							"body": "{\"vorgangsNummer\":\"CH6407\",\"erstelltAm\":\"2018-03-02\",\"letztesEreignis\":\"2018-04-18T13:27:37.079Z\",\"status\":\"AKTIV\",\"bankverbindung\":{\"kontoinhaberIds\":[\"5145264783411154\"],\"kreditinstitut\":\"Postbank K\\u00f6ln\",\"iban\":\"DE51370100500007985502\",\"bic\":\"PBNKDEFFXXX\",\"id\":\"38815618154658127\"},\"haushalte\":[{\"id\":\"7330234975131269\",\"antragsteller\":[{\"id\":\"5145264783411154\",\"anrede\":\"FRAU\",\"anschrift\":{\"hausnummer\":\"24\",\"ort\":\"Berlin\",\"postleitzahl\":\"10179\",\"strasse\":\"Waisenstra\\u00dfe\"},\"beschaeftigung\":{\"art\":\"ANGESTELLTER\",\"beruf\":\"Metzger\",\"branche\":\"SONSTIGE_DIENSTLEISTUNGEN\",\"anzahlGehaelterProJahr\":12.0,\"arbeitgeberInDeutschlandAnsaessig\":true,\"arbeitgeberLand\":{\"isoCountryCode\":\"DE\",\"name\":\"Deutschland\"},\"befristungsStatus\":\"UNBEFRISTET\",\"beschaeftigtSeit\":\"2000-01-01\",\"einkommenNettoMonatlich\":5000.00,\"inProbezeit\":false,\"arbeitgeber\":\"Hypoport\",\"situationNachRenteneintritt\":{\"rentenBeginn\":\"2037-01-01\",\"gesetzlicheRenteMonatlich\":3200.00,\"privateRenteMonatlich\":120.00,\"sonstigesEinkommenMonatlich\":120.00}},\"email\":\"lachs@web.de\",\"familienstand\":\"VERHEIRATET\",\"guetertrennungVereinbartWennVerheiratet\":false,\"geburtsdatum\":\"1970-01-01\",\"geburtsort\":\"Irgendwo\",\"nachname\":\"Lachs\",\"staatsangehoerigkeit\":{\"isoCountryCode\":\"DE\",\"name\":\"Deutschland\"},\"telefonnummer\":\"420860\",\"telefonnummerVorwahl\":\"030\",\"vorAnschrift\":{\"hausnummer\":\"218\",\"ort\":\"Berlin (Mitte)\",\"postleitzahl\":\"10115\",\"strasse\":\"Torstrasse\"},\"vorname\":\"Luise\",\"weitereKontaktMoeglichkeiten\":\"0163 / 5561311\",\"wohnhaftSeit\":\"2000-01-01\",\"legitimationsDaten\":{\"ausweisArt\":\"PERSONALAUSWEIS\",\"ausstellungsdatum\":\"2015-05-03\",\"ausstellendeBehoerde\":\"B\\u00fcrgeramt\",\"ausweisNummer\":\"26698316015637547\"},\"steuerId\":\"01234567896\"},{\"id\":\"40772573991021477\",\"anrede\":\"FRAU\",\"anschrift\":{\"hausnummer\":\"24\",\"ort\":\"Berlin\",\"postleitzahl\":\"10179\",\"strasse\":\"Waisenstra\\u00dfe\"},\"beschaeftigung\":{\"art\":\"ANGESTELLTER\",\"beruf\":\"Fischer\",\"branche\":\"SONSTIGE_DIENSTLEISTUNGEN\",\"anzahlGehaelterProJahr\":12.0,\"arbeitgeberInDeutschlandAnsaessig\":true,\"arbeitgeberLand\":{\"isoCountryCode\":\"DE\",\"name\":\"Deutschland\"},\"befristungsStatus\":\"UNBEFRISTET\",\"beschaeftigtSeit\":\"2000-01-01\",\"einkommenNettoMonatlich\":5000.00,\"inProbezeit\":false,\"arbeitgeber\":\"Hypoport\",\"situationNachRenteneintritt\":{\"rentenBeginn\":\"2037-01-01\",\"gesetzlicheRenteMonatlich\":3200.00,\"privateRenteMonatlich\":120.00,\"sonstigesEinkommenMonatlich\":120.00}},\"email\":\"backfisch@web.de\",\"familienstand\":\"VERHEIRATET\",\"guetertrennungVereinbartWennVerheiratet\":false,\"geburtsdatum\":\"1970-01-01\",\"geburtsort\":\"Irgendwo\",\"nachname\":\"Backfisch\",\"staatsangehoerigkeit\":{\"isoCountryCode\":\"DE\",\"name\":\"Deutschland\"},\"telefonnummer\":\"420860\",\"telefonnummerVorwahl\":\"030\",\"vorAnschrift\":{\"hausnummer\":\"33\",\"ort\":\"Berlin (Mitte)\",\"postleitzahl\":\"10115\",\"strasse\":\"Tiekstr\"},\"vorname\":\"Thorsten\",\"weitereKontaktMoeglichkeiten\":\"030/ 80201922\",\"wohnhaftSeit\":\"2000-01-01\",\"legitimationsDaten\":{\"ausweisArt\":\"PERSONALAUSWEIS\",\"ausstellungsdatum\":\"2015-05-03\",\"ausstellendeBehoerde\":\"B\\u00fcrgeramt\",\"ausweisNummer\":\"5559670318270531\"},\"steuerId\":\"01234567896\"}],\"bestehendeImmobilien\":[{\"id\":\"6587397095668994\",\"adresse\":{\"hausnummer\":\"212\",\"ort\":\"Berlin (Mitte)\",\"postleitzahl\":\"10115\",\"strasse\":\"Torstr\"},\"autostellplaetze\":[{\"typ\":\"GARAGE\"}],\"erbbaurecht\":{\"erbbaurecht\":false},\"grundbuchAngabe\":{\"bandUndBlatt\":\"2\",\"ort\":\"Test Grundbuch\",\"flurstuecke\":[{\"anteil\":{\"anteil\":2.0,\"gesamt\":22},\"flur\":\"22\",\"flurstuecksNummer\":\"32\",\"groesse\":222.00}],\"rechteInAbteilung2\":{\"vorhanden\":true,\"beschreibung\":\"Test\",\"betrag\":32222.00},\"anmerkungen\":\"Weitere Test Angaben\"},\"bewirtschaftungsKostenJaehrlich\":322.00,\"vergleichsmieteFuerWohnflaecheProQm\":23.00,\"vergleichsmieteFuerGewerbeflaecheProQm\":23.00,\"marktueblicherKaufpreisProQm\":5000.00,\"keinBaulandFlaecheInQm\":2000.00,\"bodenRichtwert\":2000.00,\"grundstueck\":{\"groesse\":2000.00},\"gebaeude\":{\"ausstattung\":\"MITTEL\",\"zustand\":\"MITTEL\",\"gewerbeflaeche\":{\"vermietungsInformationen\":{\"nutzungsArt\":\"EIGENGENUTZT\"}},\"wohnflaeche\":{\"vermietungsInformationen\":{\"nutzungsArt\":\"EIGENGENUTZT\"},\"gesamtGroesse\":2000.00}},\"verkehrswert\":5000000.00}],\"positionen\":{\"sonstigeAusgaben\":[{\"ausgabenMonatlich\":566.00,\"zahlungsTyp\":\"AUSGABE\"}],\"bankUndSparguthaben\":[{\"aktuellerWert\":112000.00,\"maximalAufzuloesenderWert\":0.00,\"vermoegensEinsatz\":\"AUFLOESEN\",\"ertrag\":112000.00,\"zinsertragJaehrlich\":2.00,\"zahlungsTyp\":\"EINNAHME\",\"vermoegensTyp\":\"VERMOEGEN\"}],\"bausparvertraege\":[{\"tarif\":\"Test\",\"id\":\"09122696947591868\",\"produktAnbieter\":{\"id\":\"567153fce4b0787190810dfa\",\"partnerId\":\"XJF88\",\"firmierung\":\"Bausparkasse Schw\\u00e4bisch Hall AG\",\"email\":\"service@schwaebisch-hall.de\",\"telefonnummer\":\"+49 791 46-4444\",\"anschrift\":{\"hausnummer\":\"52\",\"ort\":\"Schw\\u00e4bisch Hall\",\"postleitzahl\":\"74523\",\"strasse\":\"Crailsheimer Str.\"},\"fax\":\"+49 791 46-2628\",\"webseite\":\"www.schwaebisch-hall.de\",\"vertriebsOrganisation\":{\"name\":\"Bausparkasse Schw\\u00e4bisch Hall AG\",\"firma\":\"Bausparkasse Schw\\u00e4bisch Hall AG\",\"vertriebsOrganisationsId\":\"BSK_SCHWAEBISCH_HALL\"},\"kreditsachbearbeiter\":false,\"produktAnbieterId\":\"BSK_SCHWAEBISCH_HALL\"},\"vermoegensEinsatz\":\"ABTRETEN\",\"sparBeitragMonatlich\":33.00,\"aktuellerWert\":3332.00,\"zahlungsTyp\":\"AUSGABE\",\"vermoegensTyp\":\"VERMOEGEN\",\"typ\":\"BAUSPARVERTRAG\"}],\"ehegattenUnterhalt\":[{\"einnahmenMonatlich\":322.00,\"zahlungsTyp\":\"EINNAHME\"}],\"einkuenfteAusNebentaetigkeit\":[{\"einnahmenMonatlich\":4333.00,\"beginnDerNebentaetigkeit\":\"2015-12-12\",\"zahlungsTyp\":\"EINNAHME\"}],\"sonstigeEinnahmen\":[{\"einnahmenMonatlich\":2344.00,\"zahlungsTyp\":\"EINNAHME\"}],\"lebensUndRentenVersicherungen\":[{\"id\":\"7908737405521133\",\"rueckkaufsWertAktuell\":300000.00,\"praemieMonatlich\":200.00,\"vermoegensEinsatz\":\"AUFLOESEN\",\"maximalAufzuloesenderBetrag\":300000.00,\"zahlungsTyp\":\"AUSGABE\",\"vermoegensTyp\":\"VERMOEGEN\"}],\"mietAusgaben\":[{\"ausgabenMonatlich\":544.00,\"zahlungsTyp\":\"AUSGABE\"}],\"privateDarlehen\":[{\"glaeubiger\":\"AXA\",\"laufzeitEnde\":\"2022-12-12\",\"rateMonatlich\":300.00,\"restschuld\":2000.00,\"wirdAbgeloest\":true,\"zahlungsTyp\":\"AUSGABE\",\"vermoegensTyp\":\"VERBINDLICHKEIT\"}],\"privateKrankenversicherung\":[{\"ausgabenMonatlich\":6555.00,\"zahlungsTyp\":\"AUSGABE\"}],\"ratenkredite\":[{\"glaeubiger\":\"AXA\",\"laufzeitEnde\":\"2020-12-12\",\"rateMonatlich\":33.00,\"restschuld\":4000.00,\"wirdAbgeloest\":true,\"zahlungsTyp\":\"AUSGABE\",\"vermoegensTyp\":\"VERBINDLICHKEIT\"}],\"sparplaene\":[{\"aktuellerWert\":3233.00,\"maximalAufzuloesenderWert\":3233.00,\"vermoegensEinsatz\":\"AUFLOESEN\",\"ertrag\":3233.00,\"zukuenftigeEinnahmen\":0.00,\"zahlungsTyp\":\"AUSGABE\",\"vermoegensTyp\":\"VERMOEGEN\"}],\"unterhaltsVerpflichtungen\":[{\"ausgabenMonatlich\":655.00,\"zahlungsTyp\":\"AUSGABE\"}],\"variableEinkuenfte\":[{\"einnahmenMonatlich\":323.00,\"zahlungsTyp\":\"EINNAHME\"}],\"sonstigeVerbindlichkeiten\":[{\"glaeubiger\":\"AXA\",\"laufzeitEnde\":\"2022-12-12\",\"rateMonatlich\":33.00,\"restschuld\":3222.00,\"wirdAbgeloest\":false,\"zahlungsTyp\":\"AUSGABE\",\"vermoegensTyp\":\"VERBINDLICHKEIT\"}],\"sonstigeVermoegen\":[{\"aktuellerWert\":3233.00,\"vermoegensEinsatz\":\"KEIN_EINSATZ\",\"vermoegensTyp\":\"VERMOEGEN\"}],\"versicherungsAusgaben\":[{\"ausgabenMonatlich\":564.00,\"zahlungsTyp\":\"AUSGABE\"}],\"wertpapiere\":[{\"aktuellerWert\":4000.00,\"vermoegensEinsatz\":\"KEIN_EINSATZ\",\"dividendenJaehrlich\":222.00,\"zahlungsTyp\":\"EINNAHME\",\"vermoegensTyp\":\"VERMOEGEN\"}],\"kindergeld\":[{\"einnahmenMonatlich\":194.00,\"zahlungsTyp\":\"EINNAHME\"}]},\"kinder\":[{\"id\":\"7377112571212456\",\"geburtsdatum\":\"2015-01-01\",\"kindergeldWirdBezogen\":true,\"name\":\"Peter\",\"unterhaltsEinnahmenBetragMonatlich\":0.00},{\"id\":\"6287515336975855\",\"geburtsdatum\":\"1999-02-21\",\"kindergeldWirdBezogen\":false,\"name\":\"Bing Bong\"}],\"anzahlErwachseneImHaushalt\":2,\"lebenshaltungsKostenMonatlich\":500.00,\"kfzAnzahl\":3}],\"finanzierungsObjekt\":{\"id\":\"9049278894125974\",\"adresse\":{\"hausnummer\":\"71\",\"ort\":\"Berlin\",\"postleitzahl\":\"10179\",\"strasse\":\"Klosterstra\\u00dfe\"},\"autostellplaetze\":[{\"mieteinnahmenMonatlich\":3222.00,\"typ\":\"STELLPLATZ\"},{\"typ\":\"STELLPLATZ\"},{\"typ\":\"CARPORT\"}],\"erbbaurecht\":{\"erbbaurecht\":true,\"erbbauzinsJaehrlich\":43333.00,\"grundstuecksEigentuemer\":\"ANDERE\",\"laufzeitBisJahr\":2040},\"grundbuchAngabe\":{\"bandUndBlatt\":\"12345\",\"ort\":\"Berlin\",\"flurstuecke\":[{\"anteil\":{\"anteil\":100.0,\"gesamt\":100},\"flur\":\"51\",\"flurstuecksNummer\":\"172b\",\"groesse\":200.00}]},\"effektivZinsErhoehendeKosten\":{\"anpassen\":true,\"wohnGebaeudeVersicherungsKostenJaehrlich\":34.00,\"grundbuchEintragungsKostenEinmalig\":433.00,\"sonstigeKostenBezeichnung\":\"TEst\",\"sonstigeKostenEinmalig\":5444.00},\"bewirtschaftungsKostenJaehrlich\":400.00,\"wohnlage\":\"GEHOBEN\",\"marktueblicherKaufpreisProQm\":2000.00,\"bodenRichtwert\":200.00,\"grundstueck\":{\"groesse\":200.00},\"gebaeude\":{\"kellerausbau\":\"TEILWEISE_AUSGEBAUT\",\"anzahlVollgeschosse\":2,\"ausstattung\":\"GEHOBEN\",\"zustand\":\"GUT\",\"baujahr\":2000,\"bauweise\":\"MASSIV\",\"aufzugVorhanden\":true,\"kubatur\":400,\"modernisierungsAngaben\":{\"wurdeModernisiert\":true,\"modernisierungsGrad\":\"HOCH\",\"modernisierungsJahr\":2001,\"bodenWandTreppe\":true,\"heizungZentral\":true,\"fenster\":true,\"badWc\":true,\"stromAbwasserHeizkoerper\":true,\"waermedaemmung\":true,\"raumaufteilung\":true},\"wohnflaeche\":{\"vermietungsInformationen\":{\"nutzungsArt\":\"EIGENGENUTZT\"},\"gesamtGroesse\":100.00},\"dachgeschossAusbau\":\"VOLL_AUSGEBAUT\",\"einliegerwohnungVorhanden\":false,\"istFertighaus\":false,\"hausTyp\":\"EINFAMILIENHAUS\",\"unterkellerung\":\"UNTERKELLERT\"},\"objektArt\":\"HAUS\"},\"vorhaben\":{\"id\":\"7802725848837542\",\"verwendungszweck\":\"KAUF\",\"finanzbedarf\":{\"bereitsBeglichen\":32222.00,\"grunderwerbsteuer\":9000.00,\"kaufpreis\":200000.00,\"notargebuehr\":3000.00},\"finanzierungswunsch\":{\"id\":\"13780429983297904\",\"darlehensWuensche\":[{\"id\":\"9365632784071471\",\"annuitaetenDarlehen\":{\"darlehensBetrag\":100000.00,\"provision\":1.00,\"tilgungsWunsch\":{\"anfaenglicheTilgung\":2.00,\"volltilgerWennAnnuitaetenOderForward\":false},\"bereitstellungsZinsFreieZeitInMonaten\":2,\"sondertilgungOptionalJaehrlich\":0.00,\"zinsBindungInJahren\":10}}]}},\"datenKontext\":\"ECHT_GESCHAEFT\",\"_links\":{\"self\":{\"href\":\"https://baufismart.api.europace.de/v2/vorgaenge/CH6407\"}},\"antraege\":[{\"_links\":{\"self\":{\"href\":\"https://baufismart.api.europace.de/v2/vorgaenge/CH6407/antraege/1/1\"}}}],\"vorgangsBearbeiter\":{\"id\":\"58e358dce4b0764b554d7b10\",\"partnerId\":\"DIV95\",\"anrede\":\"HERR\",\"vorname\":\"Caspar\",\"nachname\":\"Wrede\",\"firmierung\":\"EUROPACE AG\",\"email\":\"caspar.wrede@europace.de\",\"telefonnummer\":\"01635561322\",\"anschrift\":{\"hausnummer\":\"71\",\"ort\":\"Berlin\",\"postleitzahl\":\"10179\",\"strasse\":\"Klosterstr.\"},\"vertriebsOrganisation\":{\"name\":\"Hypoport AG\",\"firma\":\"Hypoport AG\",\"vertriebsOrganisationsId\":\"HYPOPORT\"},\"kreditsachbearbeiter\":true,\"_links\":{\"self\":{\"href\":\"https://www.europace2.de/partnermanagement/partner/DIV95/kontaktdaten\"}}},\"kundenBetreuer\":{\"id\":\"58e358dce4b0764b554d7b10\",\"partnerId\":\"DIV95\",\"anrede\":\"HERR\",\"vorname\":\"Caspar\",\"nachname\":\"Wrede\",\"firmierung\":\"EUROPACE AG\",\"email\":\"caspar.wrede@europace.de\",\"telefonnummer\":\"01635561322\",\"anschrift\":{\"hausnummer\":\"71\",\"ort\":\"Berlin\",\"postleitzahl\":\"10179\",\"strasse\":\"Klosterstr.\"},\"vertriebsOrganisation\":{\"name\":\"Hypoport AG\",\"firma\":\"Hypoport AG\",\"vertriebsOrganisationsId\":\"HYPOPORT\"},\"kreditsachbearbeiter\":true,\"_links\":{\"self\":{\"href\":\"https://www.europace2.de/partnermanagement/partner/DIV95/kontaktdaten\"}}}}"
+						}
+					]
+				},
+				{
 					"name": "Vorgang PATCHEN",
 					"request": {
 						"method": "PATCH",
@@ -347,7 +505,20 @@
 			"name": "Finanzierungsvorschläge API",
 			"item": [
 				{
-					"name": "Finanzierungsvorschlaege v2",
+					"name": "Finanzierungsvorschlaege (Daten im Body)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "ace2441b-c599-44db-89a0-e28af7cc180d",
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);",
+									"postman.setGlobalVariable(\"ermittlungsId\", jsonData.ermittlungsId);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "POST",
 						"header": [
@@ -367,7 +538,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"vorgangsNummer\": \"CA4714\",\n    \"erstelltAm\": \"2017-07-03\",\n    \"letztesEreignis\": \"2017-07-03T13:00:54.734Z\",\n    \"status\": \"AKTIV\",\n    \"bankverbindung\": {\n        \"id\": \"4406344290030796\"\n    },\n    \"haushalte\": [\n        {\n            \"id\": \"29905314406551975\",\n            \"antragsteller\": [\n                {\n                    \"id\": \"8245137591160463\",\n                    \"anrede\": \"HERR\",\n                    \"anschrift\": {\n                        \"hausnummer\": \"117\",\n                        \"ort\": \"Berlin (Mitte)\",\n                        \"postleitzahl\": \"10115\",\n                        \"strasse\": \"Invalidenstraße\"\n                    },\n                    \"beschaeftigung\": {\n                        \"art\": \"ANGESTELLTER\",\n                        \"anzahlGehaelterProJahr\": 12,\n                        \"situationNachRenteneintritt\": {}\n                    },\n                    \"email\": \"frank.pokroppa@europace.de\",\n                    \"familienstand\": \"LEDIG\",\n                    \"geburtsdatum\": \"1964-12-25\",\n                    \"nachname\": \"Pokroppa\",\n                    \"staatsangehoerigkeit\": {\n                        \"isoCountryCode\": \"DE\",\n                        \"name\": \"Deutschland\"\n                    },\n                    \"telefonnummer\": \"88766567\",\n                    \"telefonnummerVorwahl\": \"030\",\n                    \"vorname\": \"Frank\",\n                    \"wohnhaftSeit\": \"1910-10-10\"\n                }\n            ]\n        }\n    ],\n    \"finanzierungsObjekt\": {\n        \"id\": \"47296276901593204\",\n        \"adresse\": {\n            \"postleitzahl\": \"10459\"\n        },\n        \"erbbaurecht\": {\n            \"erbbaurecht\": true,\n            \"erbbauzinsJaehrlich\": 150,\n            \"grundstuecksEigentuemer\": \"OEFFENTLICH_KIRCHLICH\",\n            \"laufzeitBisJahr\": 2070\n        },\n        \"gebaeude\": {\n            \"wohnflaeche\": {\n                \"vermietungsInformationen\": {\n                    \"nutzungsArt\": \"EIGENGENUTZT\"\n                }\n            },\n            \"hausTyp\": \"EINFAMILIENHAUS\"\n        },\n        \"objektArt\": \"HAUS\",\n        \"bestehendeDarlehen\": [\n            {\n                \"id\": \"43304448928678096\",\n                \"aktuelleRestschuldWennNichtAbzuloesen\": 25555,\n                \"abzuloesendeRestschuld\": 500,\n                \"darlehensArt\": \"IMMOBILIENDARLEHEN\",\n                \"darlehensGeber\": {\n                    \"id\": \"4e6885fe84fbad4bd0c68f62\",\n                    \"partnerId\": \"WXS37\",\n                    \"firmierung\": \"ALLIANZ Lebensversicherungs-AG\",\n                    \"email\": \"baufipartner@allianz.de\",\n                    \"anschrift\": {\n                        \"hausnummer\": \"19\",\n                        \"ort\": \"Stuttgart\",\n                        \"postleitzahl\": \"70178\",\n                        \"strasse\": \"Reinsburgstraße\"\n                    },\n                    \"vertriebsOrganisation\": {\n                        \"name\": \"ALLIANZ Lebensversicherungs-AG\",\n                        \"firma\": \"ALLIANZ Lebensversicherungs-AG\",\n                        \"vertriebsOrganisationsId\": \"ALLIANZ\"\n                    },\n                    \"kreditsachbearbeiter\": false,\n                    \"produktAnbieterId\": \"ALLIANZ\"\n                },\n                \"eingetrageneGrundschuld\": 50000,\n                \"grundschuldArt\": \"BRIEF_GRUNDSCHULD\",\n                \"rateMonatlich\": 500,\n                \"zinsBindungEndetAm\": \"2021-02-02\",\n                \"laufzeitEnde\": \"2027-02-02\",\n                \"darlehensBetrag\": 75000\n            }\n        ]\n    },\n    \"vorhaben\": {\n        \"id\": \"7357540068390608\",\n        \"nachrangigeExterneDarlehen\": [\n            {\n                \"id\": \"41515491007659655\",\n                \"darlehensBetrag\": 50000,\n                \"darlehensGeber\": \"Meine Bank 4 all\",\n                \"rateMonatlich\": 200,\n                \"zinsBindung\": {\n                    \"endetAm\": \"2019-01-01\"\n                }\n            }\n        ],\n        \"verwendungszweck\": \"ANSCHLUSSFINANZIERUNG\",\n        \"finanzierungswunsch\": {\n            \"id\": \"8529623681232834\",\n            \"darlehensWuensche\": [\n                {\n                    \"id\": \"8330583833982105\",\n                    \"annuitaetenDarlehen\": {\n                        \"darlehensBetrag\": 150000,\n                        \"provision\": 1,\n                        \"tilgungsWunsch\": {\n                            \"anfaenglicheTilgung\": 2,\n                            \"volltilgerWennAnnuitaetenOderForward\": false\n                        },\n                        \"bereitstellungsZinsFreieZeitInMonaten\": 2,\n                        \"sondertilgungOptionalJaehrlich\": 100,\n                        \"zinsBindungInJahren\": 10\n                    }\n                }\n            ]\n        }\n    },\n    \"datenKontext\": \"TEST_MODUS\",\n    \"_links\": {\n        \"self\": {\n            \"href\": \"https://baufismart.api.europace.de/v1/vorgaenge/CA4714\"\n        }\n    },\n    \"kundenBetreuer\": {\n        \"id\": \"592e818fe4b0c68dd0423f67\",\n        \"partnerId\": \"DZB39\",\n        \"anrede\": \"HERR\",\n        \"vorname\": \"Frank\",\n        \"nachname\": \"Pokroppa\",\n        \"firmierung\": \"EUROPACE AG\",\n        \"email\": \"frank.pokroppa@europace.de\",\n        \"telefonnummer\": \"030-42086-1529\",\n        \"anschrift\": {\n            \"hausnummer\": \"109\",\n            \"ort\": \"Berlin (Rudow)\",\n            \"postleitzahl\": \"12355\",\n            \"strasse\": \"Straße 231\"\n        },\n        \"vertriebsOrganisation\": {\n            \"firma\": \"EUROPACE AG\",\n            \"vertriebsOrganisationsId\": \"TV_VERTRIEBSLEITER\"\n        },\n        \"kreditsachbearbeiter\": true,\n        \"_links\": {\n            \"self\": {\n                \"href\": \"https://www.europace2.de/partnermanagement/partner/DZB39/kontaktdaten\"\n            }\n        }\n    },\n    \"vorgangsBearbeiter\": {\n        \"id\": \"592e818fe4b0c68dd0423f67\",\n        \"partnerId\": \"DZB39\",\n        \"anrede\": \"HERR\",\n        \"vorname\": \"Frank\",\n        \"nachname\": \"Pokroppa\",\n        \"firmierung\": \"EUROPACE AG\",\n        \"email\": \"frank.pokroppa@europace.de\",\n        \"telefonnummer\": \"030-42086-1529\",\n        \"anschrift\": {\n            \"hausnummer\": \"109\",\n            \"ort\": \"Berlin (Rudow)\",\n            \"postleitzahl\": \"12355\",\n            \"strasse\": \"Straße 231\"\n        },\n        \"vertriebsOrganisation\": {\n            \"firma\": \"EUROPACE AG\",\n            \"vertriebsOrganisationsId\": \"TV_VERTRIEBSLEITER\"\n        },\n        \"kreditsachbearbeiter\": true,\n        \"_links\": {\n            \"self\": {\n                \"href\": \"https://www.europace2.de/partnermanagement/partner/DZB39/kontaktdaten\"\n            }\n        }\n    }\n}"
+							"raw": "{\n\n    \"haushalte\": [\n        {\n            \"id\": \"29905314406551975\",\n            \"antragsteller\": [\n                {\n                    \"id\": \"8245137591160463\",\n                    \"anrede\": \"HERR\",\n                    \"anschrift\": {\n                        \"hausnummer\": \"117\",\n                        \"ort\": \"Berlin (Mitte)\",\n                        \"postleitzahl\": \"10115\",\n                        \"strasse\": \"Invalidenstraße\"\n                    },\n                    \"beschaeftigung\": {\n                        \"art\": \"ANGESTELLTER\",\n                        \"anzahlGehaelterProJahr\": 12,\n                        \"situationNachRenteneintritt\": {}\n                    },\n                    \"email\": \"frank.pokroppa@europace.de\",\n                    \"familienstand\": \"LEDIG\",\n                    \"geburtsdatum\": \"1964-12-25\",\n                    \"nachname\": \"Pokroppa\",\n                    \"staatsangehoerigkeit\": {\n                        \"isoCountryCode\": \"DE\",\n                        \"name\": \"Deutschland\"\n                    },\n                    \"telefonnummer\": \"88766567\",\n                    \"telefonnummerVorwahl\": \"030\",\n                    \"vorname\": \"Frank\",\n                    \"wohnhaftSeit\": \"1910-10-10\"\n                }\n            ]\n        }\n    ],\n    \"finanzierungsObjekt\": {\n        \"id\": \"47296276901593204\",\n        \"adresse\": {\n            \"postleitzahl\": \"10459\"\n        },\n        \"erbbaurecht\": {\n            \"erbbaurecht\": true,\n            \"erbbauzinsJaehrlich\": 150,\n            \"grundstuecksEigentuemer\": \"OEFFENTLICH_KIRCHLICH\",\n            \"laufzeitBisJahr\": 2070\n        },\n        \"gebaeude\": {\n            \"wohnflaeche\": {\n                \"vermietungsInformationen\": {\n                    \"nutzungsArt\": \"EIGENGENUTZT\"\n                }\n            },\n            \"hausTyp\": \"EINFAMILIENHAUS\"\n        },\n        \"objektArt\": \"HAUS\",\n        \"bestehendeDarlehen\": [\n            {\n                \"id\": \"43304448928678096\",\n                \"aktuelleRestschuldWennNichtAbzuloesen\": 25555,\n                \"abzuloesendeRestschuld\": 500,\n                \"darlehensArt\": \"IMMOBILIENDARLEHEN\",\n                \"darlehensGeber\": {\n                    \"id\": \"4e6885fe84fbad4bd0c68f62\",\n                    \"partnerId\": \"WXS37\",\n                    \"firmierung\": \"ALLIANZ Lebensversicherungs-AG\",\n                    \"email\": \"baufipartner@allianz.de\",\n                    \"anschrift\": {\n                        \"hausnummer\": \"19\",\n                        \"ort\": \"Stuttgart\",\n                        \"postleitzahl\": \"70178\",\n                        \"strasse\": \"Reinsburgstraße\"\n                    },\n                    \"vertriebsOrganisation\": {\n                        \"name\": \"ALLIANZ Lebensversicherungs-AG\",\n                        \"firma\": \"ALLIANZ Lebensversicherungs-AG\",\n                        \"vertriebsOrganisationsId\": \"ALLIANZ\"\n                    },\n                    \"kreditsachbearbeiter\": false,\n                    \"produktAnbieterId\": \"ALLIANZ\"\n                },\n                \"eingetrageneGrundschuld\": 50000,\n                \"grundschuldArt\": \"BRIEF_GRUNDSCHULD\",\n                \"rateMonatlich\": 500,\n                \"zinsBindungEndetAm\": \"2021-02-02\",\n                \"laufzeitEnde\": \"2027-02-02\",\n                \"darlehensBetrag\": 75000\n            }\n        ]\n    },\n    \"vorhaben\": {\n        \"id\": \"7357540068390608\",\n        \"nachrangigeExterneDarlehen\": [\n            {\n                \"id\": \"41515491007659655\",\n                \"darlehensBetrag\": 50000,\n                \"darlehensGeber\": \"Meine Bank 4 all\",\n                \"rateMonatlich\": 200,\n                \"zinsBindung\": {\n                    \"endetAm\": \"2019-01-01\"\n                }\n            }\n        ],\n        \"verwendungszweck\": \"ANSCHLUSSFINANZIERUNG\",\n        \"finanzierungswunsch\": {\n            \"id\": \"8529623681232834\",\n            \"darlehensWuensche\": [\n                {\n                    \"id\": \"8330583833982105\",\n                    \"annuitaetenDarlehen\": {\n                        \"darlehensBetrag\": 150000,\n                        \"provision\": 1,\n                        \"tilgungsWunsch\": {\n                            \"anfaenglicheTilgung\": 2,\n                            \"volltilgerWennAnnuitaetenOderForward\": false\n                        },\n                        \"bereitstellungsZinsFreieZeitInMonaten\": 2,\n                        \"sondertilgungOptionalJaehrlich\": 100,\n                        \"zinsBindungInJahren\": 10\n                    }\n                }\n            ]\n        }\n    },\n    \"datenKontext\": \"TEST_MODUS\",\n    \"_links\": {\n        \"self\": {\n            \"href\": \"https://baufismart.api.europace.de/v1/vorgaenge/CA4714\"\n        }\n    },\n    \"kundenBetreuer\": {\n        \"id\": \"592e818fe4b0c68dd0423f67\",\n        \"partnerId\": \"DZB39\",\n        \"anrede\": \"HERR\",\n        \"vorname\": \"Frank\",\n        \"nachname\": \"Pokroppa\",\n        \"firmierung\": \"EUROPACE AG\",\n        \"email\": \"frank.pokroppa@europace.de\",\n        \"telefonnummer\": \"030-42086-1529\",\n        \"anschrift\": {\n            \"hausnummer\": \"109\",\n            \"ort\": \"Berlin (Rudow)\",\n            \"postleitzahl\": \"12355\",\n            \"strasse\": \"Straße 231\"\n        },\n        \"vertriebsOrganisation\": {\n            \"firma\": \"EUROPACE AG\",\n            \"vertriebsOrganisationsId\": \"TV_VERTRIEBSLEITER\"\n        },\n        \"kreditsachbearbeiter\": true,\n        \"_links\": {\n            \"self\": {\n                \"href\": \"https://www.europace2.de/partnermanagement/partner/DZB39/kontaktdaten\"\n            }\n        }\n    },\n    \"vorgangsBearbeiter\": {\n        \"id\": \"592e818fe4b0c68dd0423f67\",\n        \"partnerId\": \"DZB39\",\n        \"anrede\": \"HERR\",\n        \"vorname\": \"Frank\",\n        \"nachname\": \"Pokroppa\",\n        \"firmierung\": \"EUROPACE AG\",\n        \"email\": \"frank.pokroppa@europace.de\",\n        \"telefonnummer\": \"030-42086-1529\",\n        \"anschrift\": {\n            \"hausnummer\": \"109\",\n            \"ort\": \"Berlin (Rudow)\",\n            \"postleitzahl\": \"12355\",\n            \"strasse\": \"Straße 231\"\n        },\n        \"vertriebsOrganisation\": {\n            \"firma\": \"EUROPACE AG\",\n            \"vertriebsOrganisationsId\": \"TV_VERTRIEBSLEITER\"\n        },\n        \"kreditsachbearbeiter\": true,\n        \"_links\": {\n            \"self\": {\n                \"href\": \"https://www.europace2.de/partnermanagement/partner/DZB39/kontaktdaten\"\n            }\n        }\n    }\n}"
 						},
 						"url": {
 							"raw": "https://baufismart.api.europace.de/v2/ergebnisliste/ermittlung/",
@@ -389,7 +560,20 @@
 					"response": []
 				},
 				{
-					"name": "Finanzierungsvorschlaege v2 mit VorgangsID",
+					"name": "Finanzierungsvorschlaege (mit VorgangsNr)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "32273e1f-9d52-497e-beae-6e9ea66e1b97",
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);",
+									"postman.setGlobalVariable(\"ermittlungsId\", jsonData.ermittlungsId);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "POST",
 						"header": [
@@ -438,8 +622,7 @@
 							"script": {
 								"id": "1ff5310e-38da-43eb-9165-6722e0287405",
 								"exec": [
-									"var jsonData = JSON.parse(responseBody);",
-									"postman.setGlobalVariable(\"ermittlungsId\", jsonData.ermittlungsId);"
+									""
 								],
 								"type": "text/javascript"
 							}
