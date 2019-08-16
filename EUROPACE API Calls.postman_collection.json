@@ -1203,7 +1203,7 @@
 								{
 									"key": "file",
 									"type": "file",
-									"src": []
+									"src": "/Users/wrede/Desktop/Kostenaufstellung.pdf"
 								}
 							]
 						},
@@ -1516,26 +1516,54 @@
 							}
 						],
 						"url": {
-							"raw": "https://api.europace.de/v1/dokumente/seiten?vorgangsNummer=XW3386",
+							"raw": "https://api.europace2.de/v1/dokumente/freigabe/5d25f8604a824baa683096ac",
 							"protocol": "https",
 							"host": [
 								"api",
-								"europace",
+								"europace2",
 								"de"
 							],
 							"path": [
 								"v1",
 								"dokumente",
-								"seiten"
-							],
-							"query": [
-								{
-									"key": "vorgangsNummer",
-									"value": "XW3386"
-								}
+								"freigabe",
+								"5d25f8604a824baa683096ac"
 							]
 						},
 						"description": "Funktioniert noch nicht!"
+					},
+					"response": []
+				},
+				{
+					"name": "Ein Antrags Dokumente aufrufen",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{jwt}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://api.europace2.de/v1/dokumente/freigabe/5d25f8604a824baa683096ac",
+							"protocol": "https",
+							"host": [
+								"api",
+								"europace2",
+								"de"
+							],
+							"path": [
+								"v1",
+								"dokumente",
+								"freigabe",
+								"5d25f8604a824baa683096ac"
+							]
+						}
 					},
 					"response": []
 				}
@@ -1599,6 +1627,44 @@
 								"partner",
 								"ACH16",
 								"kontaktdaten"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Partner Management (PEX) Partner Kennzeichnen",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-Authentication",
+								"value": "{{jwt}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "X-TraceId",
+								"value": "caspar2",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "https://www.europace2.de/partnermanagement/partner/DIV95/partnerkennzeichen",
+							"protocol": "https",
+							"host": [
+								"www",
+								"europace2",
+								"de"
+							],
+							"path": [
+								"partnermanagement",
+								"partner",
+								"DIV95",
+								"partnerkennzeichen"
 							]
 						}
 					},
@@ -1674,7 +1740,7 @@
 					}
 				],
 				"url": {
-					"raw": "https://api.europace.de/v1/ereignisse?vorgangsNummer=CH6407",
+					"raw": "https://api.europace.de/v1/ereignisse/CH6407",
 					"protocol": "https",
 					"host": [
 						"api",
@@ -1683,13 +1749,41 @@
 					],
 					"path": [
 						"v1",
-						"ereignisse"
+						"ereignisse",
+						"CH6407"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Ereignisse Auslesen (AntragsNr)",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{jwt}}"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "https://api.europace.de/v1/ereignisse/WB0M5Y/1/1",
+					"protocol": "https",
+					"host": [
+						"api",
+						"europace",
+						"de"
 					],
-					"query": [
-						{
-							"key": "vorgangsNummer",
-							"value": "CH6407"
-						}
+					"path": [
+						"v1",
+						"ereignisse",
+						"WB0M5Y",
+						"1",
+						"1"
 					]
 				}
 			},
