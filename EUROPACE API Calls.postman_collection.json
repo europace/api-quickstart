@@ -39,6 +39,42 @@
 					"response": []
 				},
 				{
+					"name": "Testvorgänge auslesen (alle)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{jwt}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "https://api.europace2.de/v2/vorgaenge?datenKontext=TEST_MODUS",
+							"protocol": "https",
+							"host": [
+								"api",
+								"europace2",
+								"de"
+							],
+							"path": [
+								"v2",
+								"vorgaenge"
+							],
+							"query": [
+								{
+									"key": "datenKontext",
+									"value": "TEST_MODUS"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "Vorgang auslesen",
 					"request": {
 						"method": "GET",
@@ -426,6 +462,44 @@
 					"response": []
 				},
 				{
+					"name": "Testantraege auslesen (alle) ",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{jwt}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "https://baufismart.api.europace.de/v2/antraege/?datenKontext=TEST_MODUS",
+							"protocol": "https",
+							"host": [
+								"baufismart",
+								"api",
+								"europace",
+								"de"
+							],
+							"path": [
+								"v2",
+								"antraege",
+								""
+							],
+							"query": [
+								{
+									"key": "datenKontext",
+									"value": "TEST_MODUS"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "Antrag auslesen",
 					"request": {
 						"method": "GET",
@@ -502,7 +576,7 @@
 			]
 		},
 		{
-			"name": "Finanzierungsvorschläge API",
+			"name": "Angebote API",
 			"item": [
 				{
 					"name": "Finanzierungsvorschlaege (Daten im Body)",
