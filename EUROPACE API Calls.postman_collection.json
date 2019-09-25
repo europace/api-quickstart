@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "fab7e33d-5d88-4170-ae62-405e7140781e",
+		"_postman_id": "bf52040a-37b5-476a-ad23-a49545af6244",
 		"name": "EUROPACE API Calls",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -612,7 +612,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\n    \"haushalte\": [\n        {\n            \"id\": \"29905314406551975\",\n            \"antragsteller\": [\n                {\n                    \"id\": \"8245137591160463\",\n                    \"anrede\": \"HERR\",\n                    \"anschrift\": {\n                        \"hausnummer\": \"117\",\n                        \"ort\": \"Berlin (Mitte)\",\n                        \"postleitzahl\": \"10115\",\n                        \"strasse\": \"Invalidenstraße\"\n                    },\n                    \"beschaeftigung\": {\n                        \"art\": \"ANGESTELLTER\",\n                        \"anzahlGehaelterProJahr\": 12,\n                        \"situationNachRenteneintritt\": {}\n                    },\n                    \"email\": \"frank.pokroppa@europace.de\",\n                    \"familienstand\": \"LEDIG\",\n                    \"geburtsdatum\": \"1964-12-25\",\n                    \"nachname\": \"Pokroppa\",\n                    \"staatsangehoerigkeit\": {\n                        \"isoCountryCode\": \"DE\",\n                        \"name\": \"Deutschland\"\n                    },\n                    \"telefonnummer\": \"88766567\",\n                    \"telefonnummerVorwahl\": \"030\",\n                    \"vorname\": \"Frank\",\n                    \"wohnhaftSeit\": \"1910-10-10\"\n                }\n            ]\n        }\n    ],\n    \"finanzierungsObjekt\": {\n        \"id\": \"47296276901593204\",\n        \"adresse\": {\n            \"postleitzahl\": \"10459\"\n        },\n        \"erbbaurecht\": {\n            \"erbbaurecht\": true,\n            \"erbbauzinsJaehrlich\": 150,\n            \"grundstuecksEigentuemer\": \"OEFFENTLICH_KIRCHLICH\",\n            \"laufzeitBisJahr\": 2070\n        },\n        \"gebaeude\": {\n            \"wohnflaeche\": {\n                \"vermietungsInformationen\": {\n                    \"nutzungsArt\": \"EIGENGENUTZT\"\n                }\n            },\n            \"hausTyp\": \"EINFAMILIENHAUS\"\n        },\n        \"objektArt\": \"HAUS\",\n        \"bestehendeDarlehen\": [\n            {\n                \"id\": \"43304448928678096\",\n                \"aktuelleRestschuldWennNichtAbzuloesen\": 25555,\n                \"abzuloesendeRestschuld\": 500,\n                \"darlehensArt\": \"IMMOBILIENDARLEHEN\",\n                \"darlehensGeber\": {\n                    \"id\": \"4e6885fe84fbad4bd0c68f62\",\n                    \"partnerId\": \"WXS37\",\n                    \"firmierung\": \"ALLIANZ Lebensversicherungs-AG\",\n                    \"email\": \"baufipartner@allianz.de\",\n                    \"anschrift\": {\n                        \"hausnummer\": \"19\",\n                        \"ort\": \"Stuttgart\",\n                        \"postleitzahl\": \"70178\",\n                        \"strasse\": \"Reinsburgstraße\"\n                    },\n                    \"vertriebsOrganisation\": {\n                        \"name\": \"ALLIANZ Lebensversicherungs-AG\",\n                        \"firma\": \"ALLIANZ Lebensversicherungs-AG\",\n                        \"vertriebsOrganisationsId\": \"ALLIANZ\"\n                    },\n                    \"kreditsachbearbeiter\": false,\n                    \"produktAnbieterId\": \"ALLIANZ\"\n                },\n                \"eingetrageneGrundschuld\": 50000,\n                \"grundschuldArt\": \"BRIEF_GRUNDSCHULD\",\n                \"rateMonatlich\": 500,\n                \"zinsBindungEndetAm\": \"2021-02-02\",\n                \"laufzeitEnde\": \"2027-02-02\",\n                \"darlehensBetrag\": 75000\n            }\n        ]\n    },\n    \"vorhaben\": {\n        \"id\": \"7357540068390608\",\n        \"nachrangigeExterneDarlehen\": [\n            {\n                \"id\": \"41515491007659655\",\n                \"darlehensBetrag\": 50000,\n                \"darlehensGeber\": \"Meine Bank 4 all\",\n                \"rateMonatlich\": 200,\n                \"zinsBindung\": {\n                    \"endetAm\": \"2019-01-01\"\n                }\n            }\n        ],\n        \"verwendungszweck\": \"ANSCHLUSSFINANZIERUNG\",\n        \"finanzierungswunsch\": {\n            \"id\": \"8529623681232834\",\n            \"darlehensWuensche\": [\n                {\n                    \"id\": \"8330583833982105\",\n                    \"annuitaetenDarlehen\": {\n                        \"darlehensBetrag\": 150000,\n                        \"provision\": 1,\n                        \"tilgungsWunsch\": {\n                            \"anfaenglicheTilgung\": 2,\n                            \"volltilgerWennAnnuitaetenOderForward\": false\n                        },\n                        \"bereitstellungsZinsFreieZeitInMonaten\": 2,\n                        \"sondertilgungOptionalJaehrlich\": 100,\n                        \"zinsBindungInJahren\": 10\n                    }\n                }\n            ]\n        }\n    },\n    \"datenKontext\": \"TEST_MODUS\",\n    \"_links\": {\n        \"self\": {\n            \"href\": \"https://baufismart.api.europace.de/v1/vorgaenge/CA4714\"\n        }\n    },\n    \"kundenBetreuer\": {\n        \"id\": \"592e818fe4b0c68dd0423f67\",\n        \"partnerId\": \"DZB39\",\n        \"anrede\": \"HERR\",\n        \"vorname\": \"Frank\",\n        \"nachname\": \"Pokroppa\",\n        \"firmierung\": \"EUROPACE AG\",\n        \"email\": \"frank.pokroppa@europace.de\",\n        \"telefonnummer\": \"030-42086-1529\",\n        \"anschrift\": {\n            \"hausnummer\": \"109\",\n            \"ort\": \"Berlin (Rudow)\",\n            \"postleitzahl\": \"12355\",\n            \"strasse\": \"Straße 231\"\n        },\n        \"vertriebsOrganisation\": {\n            \"firma\": \"EUROPACE AG\",\n            \"vertriebsOrganisationsId\": \"TV_VERTRIEBSLEITER\"\n        },\n        \"kreditsachbearbeiter\": true,\n        \"_links\": {\n            \"self\": {\n                \"href\": \"https://www.europace2.de/partnermanagement/partner/DZB39/kontaktdaten\"\n            }\n        }\n    },\n    \"vorgangsBearbeiter\": {\n        \"id\": \"592e818fe4b0c68dd0423f67\",\n        \"partnerId\": \"DZB39\",\n        \"anrede\": \"HERR\",\n        \"vorname\": \"Frank\",\n        \"nachname\": \"Pokroppa\",\n        \"firmierung\": \"EUROPACE AG\",\n        \"email\": \"frank.pokroppa@europace.de\",\n        \"telefonnummer\": \"030-42086-1529\",\n        \"anschrift\": {\n            \"hausnummer\": \"109\",\n            \"ort\": \"Berlin (Rudow)\",\n            \"postleitzahl\": \"12355\",\n            \"strasse\": \"Straße 231\"\n        },\n        \"vertriebsOrganisation\": {\n            \"firma\": \"EUROPACE AG\",\n            \"vertriebsOrganisationsId\": \"TV_VERTRIEBSLEITER\"\n        },\n        \"kreditsachbearbeiter\": true,\n        \"_links\": {\n            \"self\": {\n                \"href\": \"https://www.europace2.de/partnermanagement/partner/DZB39/kontaktdaten\"\n            }\n        }\n    }\n}"
+							"raw": "{\n\n    \"haushalte\": [\n        {\n            \"id\": \"29905314406551975\",\n            \"antragsteller\": [\n                {\n                    \"id\": \"8245137591160463\",\n                    \"anrede\": \"HERR\",\n                    \"anschrift\": {\n                        \"hausnummer\": \"117\",\n                        \"ort\": \"Berlin (Mitte)\",\n                        \"postleitzahl\": \"10115\",\n                        \"strasse\": \"Invalidenstraße\"\n                    },\n                    \"beschaeftigung\": {\n                        \"art\": \"ANGESTELLTER\",\n                        \"anzahlGehaelterProJahr\": 12,\n                        \"situationNachRenteneintritt\": {}\n                    },\n                    \"email\": \"frank.pokroppa@europace.de\",\n                    \"familienstand\": \"LEDIG\",\n                    \"geburtsdatum\": \"1964-12-25\",\n                    \"nachname\": \"Pokroppa\",\n                    \"staatsangehoerigkeit\": {\n                        \"isoCountryCode\": \"DE\",\n                        \"name\": \"Deutschland\"\n                    },\n                    \"telefonnummer\": \"88766567\",\n                    \"telefonnummerVorwahl\": \"030\",\n                    \"vorname\": \"Frank\",\n                    \"wohnhaftSeit\": \"1910-10-10\"\n                }\n            ]\n        }\n    ],\n    \"finanzierungsObjekt\": {\n        \"id\": \"47296276901593204\",\n        \"adresse\": {\n            \"postleitzahl\": \"10459\"\n        },\n        \"erbbaurecht\": {\n            \"erbbaurecht\": true,\n            \"erbbauzinsJaehrlich\": 150,\n            \"grundstuecksEigentuemer\": \"OEFFENTLICH_KIRCHLICH\",\n            \"laufzeitBisJahr\": 2070\n        },\n        \"gebaeude\": {\n            \"wohnflaeche\": {\n                \"vermietungsInformationen\": {\n                    \"nutzungsArt\": \"EIGENGENUTZT\"\n                }\n            },\n            \"hausTyp\": \"EINFAMILIENHAUS\"\n        },\n        \"objektArt\": \"HAUS\",\n        \"bestehendeDarlehen\": [\n            {\n                \"id\": \"43304448928678096\",\n                \"aktuelleRestschuldWennNichtAbzuloesen\": 25555,\n                \"abzuloesendeRestschuld\": 500,\n                \"darlehensArt\": \"IMMOBILIENDARLEHEN\",\n                \"darlehensGeber\": {\n                    \"id\": \"4e6885fe84fbad4bd0c68f62\",\n                    \"partnerId\": \"WXS37\",\n                    \"firmierung\": \"ALLIANZ Lebensversicherungs-AG\",\n                    \"email\": \"baufipartner@allianz.de\",\n                    \"anschrift\": {\n                        \"hausnummer\": \"19\",\n                        \"ort\": \"Stuttgart\",\n                        \"postleitzahl\": \"70178\",\n                        \"strasse\": \"Reinsburgstraße\"\n                    },\n                    \"vertriebsOrganisation\": {\n                        \"name\": \"ALLIANZ Lebensversicherungs-AG\",\n                        \"firma\": \"ALLIANZ Lebensversicherungs-AG\",\n                        \"vertriebsOrganisationsId\": \"ALLIANZ\"\n                    },\n                    \"kreditsachbearbeiter\": false,\n                    \"produktAnbieterId\": \"ALLIANZ\"\n                },\n                \"eingetrageneGrundschuld\": 50000,\n                \"grundschuldArt\": \"BRIEF_GRUNDSCHULD\",\n                \"rateMonatlich\": 500,\n                \"zinsBindungEndetAm\": \"2021-02-02\",\n                \"laufzeitEnde\": \"2027-02-02\",\n                \"darlehensBetrag\": 75000\n            }\n        ]\n    },\n    \"vorhaben\": {\n        \"id\": \"7357540068390608\",\n        \"nachrangigeExterneDarlehen\": [\n            {\n                \"id\": \"41515491007659655\",\n                \"darlehensBetrag\": 50000,\n                \"darlehensGeber\": \"Meine Bank 4 all\",\n                \"rateMonatlich\": 200,\n                \"zinsBindung\": {\n                    \"endetAm\": \"2019-01-01\"\n                }\n            }\n        ],\n        \"verwendungszweck\": \"ANSCHLUSSFINANZIERUNG\",\n        \"finanzierungswunsch\": {\n            \"id\": \"8529623681232834\",\n            \"darlehensWuensche\": [\n                {\n                    \"id\": \"8330583833982105\",\n                    \"annuitaetenDarlehen\": {\n                        \"darlehensBetrag\": 150000,\n                        \"provision\": 1,\n                        \"tilgungsWunsch\": {\n                            \"anfaenglicheTilgung\": 2,\n                            \"volltilgerWennAnnuitaetenOderForward\": false\n                        },\n                        \"bereitstellungsZinsFreieZeitInMonaten\": 2,\n                        \"sondertilgungOptionalJaehrlich\": 100,\n                        \"zinsBindungInJahren\": 10\n                    }\n                }\n            ]\n        }\n    },\n    \"datenKontext\": \"TEST_MODUS\"\n}"
 						},
 						"url": {
 							"raw": "https://baufismart.api.europace.de/v2/ergebnisliste/ermittlung/",
@@ -946,6 +946,221 @@
 					},
 					"response": [
 						{
+							"name": "Permanently moved",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"description": {
+											"content": "Das akzeptierte Dateiformat",
+											"type": "text/plain"
+										},
+										"key": "Accept",
+										"value": "<string>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/dokumentenverwaltung/download?id=<string>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"dokumentenverwaltung",
+										"download"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "<string>"
+										}
+									]
+								}
+							},
+							"status": "Moved Permanently",
+							"code": 301,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Not Found",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"description": {
+											"content": "Das akzeptierte Dateiformat",
+											"type": "text/plain"
+										},
+										"key": "Accept",
+										"value": "<string>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/dokumentenverwaltung/download?id=<string>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"dokumentenverwaltung",
+										"download"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "<string>"
+										}
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Temporarily moved",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"description": {
+											"content": "Das akzeptierte Dateiformat",
+											"type": "text/plain"
+										},
+										"key": "Accept",
+										"value": "<string>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/dokumentenverwaltung/download?id=<string>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"dokumentenverwaltung",
+										"download"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "<string>"
+										}
+									]
+								}
+							},
+							"status": "Found",
+							"code": 302,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Internal Server Error",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"description": {
+											"content": "Das akzeptierte Dateiformat",
+											"type": "text/plain"
+										},
+										"key": "Accept",
+										"value": "<string>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/dokumentenverwaltung/download?id=<string>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"dokumentenverwaltung",
+										"download"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "<string>"
+										}
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Client Error",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"description": {
+											"content": "Das akzeptierte Dateiformat",
+											"type": "text/plain"
+										},
+										"key": "Accept",
+										"value": "<string>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/dokumentenverwaltung/download?id=<string>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"dokumentenverwaltung",
+										"download"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "<string>"
+										}
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
 							"name": "Unauthorized",
 							"originalRequest": {
 								"method": "GET",
@@ -1030,221 +1245,6 @@
 							],
 							"cookie": [],
 							"body": ""
-						},
-						{
-							"name": "Not Found",
-							"originalRequest": {
-								"method": "GET",
-								"header": [
-									{
-										"description": {
-											"content": "Das akzeptierte Dateiformat",
-											"type": "text/plain"
-										},
-										"key": "Accept",
-										"value": "<string>"
-									}
-								],
-								"url": {
-									"raw": "{{baseUrl}}/dokumentenverwaltung/download?id=<string>",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"dokumentenverwaltung",
-										"download"
-									],
-									"query": [
-										{
-											"key": "id",
-											"value": "<string>"
-										}
-									]
-								}
-							},
-							"status": "Not Found",
-							"code": 404,
-							"_postman_previewlanguage": "text",
-							"header": [
-								{
-									"key": "Content-Type",
-									"value": "text/plain"
-								}
-							],
-							"cookie": [],
-							"body": ""
-						},
-						{
-							"name": "Internal Server Error",
-							"originalRequest": {
-								"method": "GET",
-								"header": [
-									{
-										"description": {
-											"content": "Das akzeptierte Dateiformat",
-											"type": "text/plain"
-										},
-										"key": "Accept",
-										"value": "<string>"
-									}
-								],
-								"url": {
-									"raw": "{{baseUrl}}/dokumentenverwaltung/download?id=<string>",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"dokumentenverwaltung",
-										"download"
-									],
-									"query": [
-										{
-											"key": "id",
-											"value": "<string>"
-										}
-									]
-								}
-							},
-							"status": "Internal Server Error",
-							"code": 500,
-							"_postman_previewlanguage": "text",
-							"header": [
-								{
-									"key": "Content-Type",
-									"value": "text/plain"
-								}
-							],
-							"cookie": [],
-							"body": ""
-						},
-						{
-							"name": "Permanently moved",
-							"originalRequest": {
-								"method": "GET",
-								"header": [
-									{
-										"description": {
-											"content": "Das akzeptierte Dateiformat",
-											"type": "text/plain"
-										},
-										"key": "Accept",
-										"value": "<string>"
-									}
-								],
-								"url": {
-									"raw": "{{baseUrl}}/dokumentenverwaltung/download?id=<string>",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"dokumentenverwaltung",
-										"download"
-									],
-									"query": [
-										{
-											"key": "id",
-											"value": "<string>"
-										}
-									]
-								}
-							},
-							"status": "Moved Permanently",
-							"code": 301,
-							"_postman_previewlanguage": "text",
-							"header": [
-								{
-									"key": "Content-Type",
-									"value": "text/plain"
-								}
-							],
-							"cookie": [],
-							"body": ""
-						},
-						{
-							"name": "Client Error",
-							"originalRequest": {
-								"method": "GET",
-								"header": [
-									{
-										"description": {
-											"content": "Das akzeptierte Dateiformat",
-											"type": "text/plain"
-										},
-										"key": "Accept",
-										"value": "<string>"
-									}
-								],
-								"url": {
-									"raw": "{{baseUrl}}/dokumentenverwaltung/download?id=<string>",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"dokumentenverwaltung",
-										"download"
-									],
-									"query": [
-										{
-											"key": "id",
-											"value": "<string>"
-										}
-									]
-								}
-							},
-							"status": "Bad Request",
-							"code": 400,
-							"_postman_previewlanguage": "text",
-							"header": [
-								{
-									"key": "Content-Type",
-									"value": "text/plain"
-								}
-							],
-							"cookie": [],
-							"body": ""
-						},
-						{
-							"name": "Temporarily moved",
-							"originalRequest": {
-								"method": "GET",
-								"header": [
-									{
-										"description": {
-											"content": "Das akzeptierte Dateiformat",
-											"type": "text/plain"
-										},
-										"key": "Accept",
-										"value": "<string>"
-									}
-								],
-								"url": {
-									"raw": "{{baseUrl}}/dokumentenverwaltung/download?id=<string>",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"dokumentenverwaltung",
-										"download"
-									],
-									"query": [
-										{
-											"key": "id",
-											"value": "<string>"
-										}
-									]
-								}
-							},
-							"status": "Found",
-							"code": 302,
-							"_postman_previewlanguage": "text",
-							"header": [
-								{
-									"key": "Content-Type",
-									"value": "text/plain"
-								}
-							],
-							"cookie": [],
-							"body": ""
 						}
 					]
 				},
@@ -1314,78 +1314,6 @@
 					},
 					"response": [
 						{
-							"name": "Internal Server Error",
-							"originalRequest": {
-								"method": "POST",
-								"header": [
-									{
-										"key": "X-Authentication",
-										"value": ""
-									},
-									{
-										"key": "Content-Type",
-										"value": "<string>"
-									},
-									{
-										"key": "Content-Type",
-										"value": "multipart/form-data"
-									}
-								],
-								"body": {
-									"mode": "formdata",
-									"formdata": [
-										{
-											"key": "file",
-											"value": "<binary>"
-										}
-									]
-								},
-								"url": {
-									"raw": "{{baseUrl}}/vorgang/dokumente?anzeigename=<string>&teilAntragNummer=<string>&vorgangsNummer=<YYY-MM-DDThh:mm:ss.SSSZ>&erstellungsdatum=<YYY-MM-DDThh:mm:ss.SSSZ>&sichtbarFuerVertrieb=<boolean>",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"vorgang",
-										"dokumente"
-									],
-									"query": [
-										{
-											"key": "anzeigename",
-											"value": "<string>"
-										},
-										{
-											"key": "teilAntragNummer",
-											"value": "<string>"
-										},
-										{
-											"key": "vorgangsNummer",
-											"value": "<YYY-MM-DDThh:mm:ss.SSSZ>"
-										},
-										{
-											"key": "erstellungsdatum",
-											"value": "<YYY-MM-DDThh:mm:ss.SSSZ>"
-										},
-										{
-											"key": "sichtbarFuerVertrieb",
-											"value": "<boolean>"
-										}
-									]
-								}
-							},
-							"status": "Internal Server Error",
-							"code": 500,
-							"_postman_previewlanguage": "text",
-							"header": [
-								{
-									"key": "Content-Type",
-									"value": "text/plain"
-								}
-							],
-							"cookie": [],
-							"body": ""
-						},
-						{
 							"name": "Unprocessable Entity. Wird bei fehlenden oder fehlerhaften Parametern zurueckgeliefert.",
 							"originalRequest": {
 								"method": "POST",
@@ -1447,6 +1375,78 @@
 							},
 							"status": "Unprocessable Entity (WebDAV) (RFC 4918)",
 							"code": 422,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Internal Server Error",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "X-Authentication",
+										"value": ""
+									},
+									{
+										"key": "Content-Type",
+										"value": "<string>"
+									},
+									{
+										"key": "Content-Type",
+										"value": "multipart/form-data"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "file",
+											"value": "<binary>"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseUrl}}/vorgang/dokumente?anzeigename=<string>&teilAntragNummer=<string>&vorgangsNummer=<YYY-MM-DDThh:mm:ss.SSSZ>&erstellungsdatum=<YYY-MM-DDThh:mm:ss.SSSZ>&sichtbarFuerVertrieb=<boolean>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"vorgang",
+										"dokumente"
+									],
+									"query": [
+										{
+											"key": "anzeigename",
+											"value": "<string>"
+										},
+										{
+											"key": "teilAntragNummer",
+											"value": "<string>"
+										},
+										{
+											"key": "vorgangsNummer",
+											"value": "<YYY-MM-DDThh:mm:ss.SSSZ>"
+										},
+										{
+											"key": "erstellungsdatum",
+											"value": "<YYY-MM-DDThh:mm:ss.SSSZ>"
+										},
+										{
+											"key": "sichtbarFuerVertrieb",
+											"value": "<boolean>"
+										}
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
 							"_postman_previewlanguage": "text",
 							"header": [
 								{
@@ -1669,7 +1669,7 @@
 			"name": "Partnermanagement PEX",
 			"item": [
 				{
-					"name": "Partner Management (PEX) Kontaktdaten",
+					"name": "Kontaktdaten auslesen",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -1707,7 +1707,7 @@
 					"response": []
 				},
 				{
-					"name": "Partner Management (PEX) Partner Kennzeichnen",
+					"name": "Partner Kennzeichnen auselesen",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -1739,6 +1739,157 @@
 								"partner",
 								"DIV95",
 								"partnerkennzeichen"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Übernahme Recht auslesen",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-Authentication",
+								"value": "{{jwt}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "X-TraceId",
+								"value": "caspar2",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "https://www.europace2.de/partnermanagement/partner/ACH16/uebernahmeRechtFuer",
+							"protocol": "https",
+							"host": [
+								"www",
+								"europace2",
+								"de"
+							],
+							"path": [
+								"partnermanagement",
+								"partner",
+								"ACH16",
+								"uebernahmeRechtFuer"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Handelsbeziehungen auslesen",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-Authentication",
+								"value": "{{jwt}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "X-TraceId",
+								"value": "caspar2",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "https://www.europace2.de/partnermanagement/partner/ACH16/handelsbeziehungen?datenkontext=ECHT_GESCHAEFT",
+							"protocol": "https",
+							"host": [
+								"www",
+								"europace2",
+								"de"
+							],
+							"path": [
+								"partnermanagement",
+								"partner",
+								"ACH16",
+								"handelsbeziehungen"
+							],
+							"query": [
+								{
+									"key": "datenkontext",
+									"value": "ECHT_GESCHAEFT"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Ereignisse API",
+			"item": [
+				{
+					"name": "Ereignisse Auslesen (VorgangsNr)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{jwt}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "https://api.europace.de/v1/ereignisse/CH6407",
+							"protocol": "https",
+							"host": [
+								"api",
+								"europace",
+								"de"
+							],
+							"path": [
+								"v1",
+								"ereignisse",
+								"CH6407"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Ereignisse Auslesen (AntragsNr)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{jwt}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "https://api.europace.de/v1/ereignisse/WB0M5Y/1/1",
+							"protocol": "https",
+							"host": [
+								"api",
+								"europace",
+								"de"
+							],
+							"path": [
+								"v1",
+								"ereignisse",
+								"WB0M5Y",
+								"1",
+								"1"
 							]
 						}
 					},
@@ -1794,70 +1945,6 @@
 					],
 					"path": [
 						"login"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Ereignisse Auslesen (VorgangsNr)",
-			"request": {
-				"method": "GET",
-				"header": [
-					{
-						"key": "Authorization",
-						"value": "Bearer {{jwt}}"
-					},
-					{
-						"key": "Content-Type",
-						"value": "application/json"
-					}
-				],
-				"url": {
-					"raw": "https://api.europace.de/v1/ereignisse/CH6407",
-					"protocol": "https",
-					"host": [
-						"api",
-						"europace",
-						"de"
-					],
-					"path": [
-						"v1",
-						"ereignisse",
-						"CH6407"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Ereignisse Auslesen (AntragsNr)",
-			"request": {
-				"method": "GET",
-				"header": [
-					{
-						"key": "Authorization",
-						"value": "Bearer {{jwt}}"
-					},
-					{
-						"key": "Content-Type",
-						"value": "application/json"
-					}
-				],
-				"url": {
-					"raw": "https://api.europace.de/v1/ereignisse/WB0M5Y/1/1",
-					"protocol": "https",
-					"host": [
-						"api",
-						"europace",
-						"de"
-					],
-					"path": [
-						"v1",
-						"ereignisse",
-						"WB0M5Y",
-						"1",
-						"1"
 					]
 				}
 			},
