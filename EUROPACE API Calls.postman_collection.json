@@ -1,12 +1,12 @@
 {
 	"info": {
-		"_postman_id": "bf52040a-37b5-476a-ad23-a49545af6244",
+		"_postman_id": "3dfdc357-0a23-4a33-8ed9-2dd868b6a4fa",
 		"name": "EUROPACE API Calls",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
-			"name": "Vorgaenge API",
+			"name": "BaufiSmart Vorgaenge API",
 			"item": [
 				{
 					"name": "Vorgänge auslesen (alle)",
@@ -424,10 +424,33 @@
 					},
 					"response": []
 				}
-			]
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "61d21655-5529-452d-a739-fa87d1876fc6",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "ade0143a-8929-42b4-a1a6-5181f1ba6f0e",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"protocolProfileBehavior": {}
 		},
 		{
-			"name": "Antraege API",
+			"name": "BaufiSmart Antraege API",
 			"item": [
 				{
 					"name": "Antraege auslesen (alle)",
@@ -573,10 +596,11 @@
 					},
 					"response": []
 				}
-			]
+			],
+			"protocolProfileBehavior": {}
 		},
 		{
-			"name": "Angebote API",
+			"name": "BaufiSmart Angebote API",
 			"item": [
 				{
 					"name": "Finanzierungsvorschlaege (Daten im Body)",
@@ -906,7 +930,8 @@
 					},
 					"response": []
 				}
-			]
+			],
+			"protocolProfileBehavior": {}
 		},
 		{
 			"name": "Dokumenten API",
@@ -946,135 +971,6 @@
 					},
 					"response": [
 						{
-							"name": "Permanently moved",
-							"originalRequest": {
-								"method": "GET",
-								"header": [
-									{
-										"description": {
-											"content": "Das akzeptierte Dateiformat",
-											"type": "text/plain"
-										},
-										"key": "Accept",
-										"value": "<string>"
-									}
-								],
-								"url": {
-									"raw": "{{baseUrl}}/dokumentenverwaltung/download?id=<string>",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"dokumentenverwaltung",
-										"download"
-									],
-									"query": [
-										{
-											"key": "id",
-											"value": "<string>"
-										}
-									]
-								}
-							},
-							"status": "Moved Permanently",
-							"code": 301,
-							"_postman_previewlanguage": "text",
-							"header": [
-								{
-									"key": "Content-Type",
-									"value": "text/plain"
-								}
-							],
-							"cookie": [],
-							"body": ""
-						},
-						{
-							"name": "Not Found",
-							"originalRequest": {
-								"method": "GET",
-								"header": [
-									{
-										"description": {
-											"content": "Das akzeptierte Dateiformat",
-											"type": "text/plain"
-										},
-										"key": "Accept",
-										"value": "<string>"
-									}
-								],
-								"url": {
-									"raw": "{{baseUrl}}/dokumentenverwaltung/download?id=<string>",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"dokumentenverwaltung",
-										"download"
-									],
-									"query": [
-										{
-											"key": "id",
-											"value": "<string>"
-										}
-									]
-								}
-							},
-							"status": "Not Found",
-							"code": 404,
-							"_postman_previewlanguage": "text",
-							"header": [
-								{
-									"key": "Content-Type",
-									"value": "text/plain"
-								}
-							],
-							"cookie": [],
-							"body": ""
-						},
-						{
-							"name": "Temporarily moved",
-							"originalRequest": {
-								"method": "GET",
-								"header": [
-									{
-										"description": {
-											"content": "Das akzeptierte Dateiformat",
-											"type": "text/plain"
-										},
-										"key": "Accept",
-										"value": "<string>"
-									}
-								],
-								"url": {
-									"raw": "{{baseUrl}}/dokumentenverwaltung/download?id=<string>",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"dokumentenverwaltung",
-										"download"
-									],
-									"query": [
-										{
-											"key": "id",
-											"value": "<string>"
-										}
-									]
-								}
-							},
-							"status": "Found",
-							"code": 302,
-							"_postman_previewlanguage": "text",
-							"header": [
-								{
-									"key": "Content-Type",
-									"value": "text/plain"
-								}
-							],
-							"cookie": [],
-							"body": ""
-						},
-						{
 							"name": "Internal Server Error",
 							"originalRequest": {
 								"method": "GET",
@@ -1107,6 +1003,49 @@
 							},
 							"status": "Internal Server Error",
 							"code": 500,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Forbidden",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"description": {
+											"content": "Das akzeptierte Dateiformat",
+											"type": "text/plain"
+										},
+										"key": "Accept",
+										"value": "<string>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/dokumentenverwaltung/download?id=<string>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"dokumentenverwaltung",
+										"download"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "<string>"
+										}
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
 							"_postman_previewlanguage": "text",
 							"header": [
 								{
@@ -1204,7 +1143,7 @@
 							"body": ""
 						},
 						{
-							"name": "Forbidden",
+							"name": "Temporarily moved",
 							"originalRequest": {
 								"method": "GET",
 								"header": [
@@ -1234,8 +1173,94 @@
 									]
 								}
 							},
-							"status": "Forbidden",
-							"code": 403,
+							"status": "Found",
+							"code": 302,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Not Found",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"description": {
+											"content": "Das akzeptierte Dateiformat",
+											"type": "text/plain"
+										},
+										"key": "Accept",
+										"value": "<string>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/dokumentenverwaltung/download?id=<string>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"dokumentenverwaltung",
+										"download"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "<string>"
+										}
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Permanently moved",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"description": {
+											"content": "Das akzeptierte Dateiformat",
+											"type": "text/plain"
+										},
+										"key": "Accept",
+										"value": "<string>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/dokumentenverwaltung/download?id=<string>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"dokumentenverwaltung",
+										"download"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "<string>"
+										}
+									]
+								}
+							},
+							"status": "Moved Permanently",
+							"code": 301,
 							"_postman_previewlanguage": "text",
 							"header": [
 								{
@@ -1314,7 +1339,7 @@
 					},
 					"response": [
 						{
-							"name": "Unprocessable Entity. Wird bei fehlenden oder fehlerhaften Parametern zurueckgeliefert.",
+							"name": "OK",
 							"originalRequest": {
 								"method": "POST",
 								"header": [
@@ -1373,10 +1398,15 @@
 									]
 								}
 							},
-							"status": "Unprocessable Entity (WebDAV) (RFC 4918)",
-							"code": 422,
+							"status": "OK",
+							"code": 200,
 							"_postman_previewlanguage": "text",
 							"header": [
+								{
+									"key": "Location",
+									"value": "<string>",
+									"description": "Url zum Dowload des Dokuments"
+								},
 								{
 									"key": "Content-Type",
 									"value": "text/plain"
@@ -1458,7 +1488,7 @@
 							"body": ""
 						},
 						{
-							"name": "OK",
+							"name": "Unprocessable Entity. Wird bei fehlenden oder fehlerhaften Parametern zurueckgeliefert.",
 							"originalRequest": {
 								"method": "POST",
 								"header": [
@@ -1517,15 +1547,10 @@
 									]
 								}
 							},
-							"status": "OK",
-							"code": 200,
+							"status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+							"code": 422,
 							"_postman_previewlanguage": "text",
 							"header": [
-								{
-									"key": "Location",
-									"value": "<string>",
-									"description": "Url zum Dowload des Dokuments"
-								},
 								{
 									"key": "Content-Type",
 									"value": "text/plain"
@@ -1663,7 +1688,8 @@
 						]
 					}
 				}
-			]
+			],
+			"protocolProfileBehavior": {}
 		},
 		{
 			"name": "Partnermanagement PEX",
@@ -1826,10 +1852,11 @@
 					},
 					"response": []
 				}
-			]
+			],
+			"protocolProfileBehavior": {}
 		},
 		{
-			"name": "Ereignisse API",
+			"name": "BaufiSmart Ereignisse API",
 			"item": [
 				{
 					"name": "Ereignisse Auslesen (VorgangsNr)",
@@ -1895,7 +1922,52 @@
 					},
 					"response": []
 				}
-			]
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "KreditSmart Vorgaenge API",
+			"item": [
+				{
+					"name": "Vorgang auslesen",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-Authentication",
+								"value": "{{jwt}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json;charset=utf-8"
+							}
+						],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query getVorgang($vorgangsnummer: String!) {\n    vorgang(vorgangsnummer: $vorgangsnummer) {\n        vorgangsnummer\n        datenkontext\n        letztesEreignisAm\n        kundenbetreuer {\n            partnerId\n        }\n        bearbeiter {\n            partnerId\n        }\n        vorgangsstatus {\n            status\n        }\n        leadquelle\n        eigeneVorgangsnummer\n        prioritaet\n        wiedervorlage {\n            kommentar\n            wiedervorlageAm\n        }\n        finanzbedarf {\n            finanzierungszweck\n        }\n        antragsteller1 {\n            personendaten {\n                vorname\n                nachname\n                email\n            }\n        }\n        antragsteller2 {\n            personendaten {\n                vorname\n                nachname\n                email\n            }\n        }\n        aufbewahrung {\n            grund\n            endetAm\n        }\n        antraege {\n            teilantragsnummer\n            produktanbieterantragsnummer\n            angenommenAm\n            letztesEreignisAm\n            ratenkredit {\n                produktanbieterId\n            }\n            antragstellerstatus {\n                status\n            }\n            produktanbieterstatus {\n                status\n            }\n        }\n    }\n}\n",
+								"variables": "{\n    \"vorgangsnummer\": \"123456\"\n}\n"
+							}
+						},
+						"url": {
+							"raw": "https://www.europace2.de/kreditsmart/kex/vorgaenge",
+							"protocol": "https",
+							"host": [
+								"www",
+								"europace2",
+								"de"
+							],
+							"path": [
+								"kreditsmart",
+								"kex",
+								"vorgaenge"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
 		},
 		{
 			"name": "Login -> JWT erzeugen",
@@ -1972,5 +2044,6 @@
 				]
 			}
 		}
-	]
+	],
+	"protocolProfileBehavior": {}
 }
