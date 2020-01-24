@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "3dfdc357-0a23-4a33-8ed9-2dd868b6a4fa",
+		"_postman_id": "77dfc1e5-de1d-4a1a-88d2-193d12301d27",
 		"name": "EUROPACE API Calls",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -670,7 +670,7 @@
 							},
 							{
 								"key": "x-TraceId",
-								"value": "caspii1234",
+								"value": "{{traceId}}",
 								"type": "text"
 							}
 						],
@@ -977,423 +977,96 @@
 			"name": "Dokumenten API",
 			"item": [
 				{
-					"name": "ein Dokument downloaden",
-					"request": {
-						"auth": {
-							"type": "bearer"
-						},
-						"method": "GET",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "<string>",
-								"description": "Das akzeptierte Dateiformat"
-							}
-						],
-						"url": {
-							"raw": "{{baseUrl}}/dokumentenverwaltung/download?id=<string>",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"dokumentenverwaltung",
-								"download"
-							],
-							"query": [
-								{
-									"key": "id",
-									"value": "<string>",
-									"description": "Id des Dokuments"
-								}
-							]
-						},
-						"description": "Mit diesem Endpunkt kann man eine Datei runterladen."
-					},
-					"response": [
+					"name": "Dokument Interaktionen",
+					"item": [
 						{
-							"name": "Internal Server Error",
-							"originalRequest": {
+							"name": "Metadaten aller Dokumente eines Vorgangs",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "f878d9c9-df81-417f-8f72-e54adc542e15",
+										"exec": [
+											"var body = JSON.parse(responseBody);",
+											"if (body !== undefined && body.length !== 0) {",
+											"    pm.environment.set(\"dokId\", body[0].id);",
+											"}",
+											"else {",
+											"    pm.environment.unset(\"dokId\");",
+											"}"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
 								"method": "GET",
 								"header": [
 									{
-										"description": {
-											"content": "Das akzeptierte Dateiformat",
-											"type": "text/plain"
-										},
+										"key": "Authorization",
+										"value": "Bearer {{jwt}}"
+									},
+									{
 										"key": "Accept",
-										"value": "<string>"
+										"value": "application/json"
+									},
+									{
+										"key": "X-traceId",
+										"value": "{{traceId}}"
 									}
 								],
 								"url": {
-									"raw": "{{baseUrl}}/dokumentenverwaltung/download?id=<string>",
+									"raw": "https://api.europace2.de/v1/dokumente?vorgangsNummer={{vorgangsNummer}}",
+									"protocol": "https",
 									"host": [
-										"{{baseUrl}}"
+										"api",
+										"europace2",
+										"de"
 									],
 									"path": [
-										"dokumentenverwaltung",
-										"download"
+										"v1",
+										"dokumente"
 									],
 									"query": [
 										{
-											"key": "id",
-											"value": "<string>"
+											"key": "vorgangsNummer",
+											"value": "{{vorgangsNummer}}"
 										}
 									]
 								}
 							},
-							"status": "Internal Server Error",
-							"code": 500,
-							"_postman_previewlanguage": "text",
-							"header": [
-								{
-									"key": "Content-Type",
-									"value": "text/plain"
-								}
-							],
-							"cookie": [],
-							"body": ""
+							"response": []
 						},
 						{
-							"name": "Forbidden",
-							"originalRequest": {
-								"method": "GET",
-								"header": [
-									{
-										"description": {
-											"content": "Das akzeptierte Dateiformat",
-											"type": "text/plain"
-										},
-										"key": "Accept",
-										"value": "<string>"
+							"name": "Upload",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "98bff1af-d731-4488-8d6a-477462a6be0e",
+										"exec": [
+											"var body = JSON.parse(responseBody);",
+											"pm.environment.set(\"dokId\", body.id);",
+											""
+										],
+										"type": "text/javascript"
 									}
-								],
-								"url": {
-									"raw": "{{baseUrl}}/dokumentenverwaltung/download?id=<string>",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"dokumentenverwaltung",
-										"download"
-									],
-									"query": [
-										{
-											"key": "id",
-											"value": "<string>"
-										}
-									]
-								}
-							},
-							"status": "Forbidden",
-							"code": 403,
-							"_postman_previewlanguage": "text",
-							"header": [
-								{
-									"key": "Content-Type",
-									"value": "text/plain"
 								}
 							],
-							"cookie": [],
-							"body": ""
-						},
-						{
-							"name": "Client Error",
-							"originalRequest": {
-								"method": "GET",
-								"header": [
-									{
-										"description": {
-											"content": "Das akzeptierte Dateiformat",
-											"type": "text/plain"
-										},
-										"key": "Accept",
-										"value": "<string>"
-									}
-								],
-								"url": {
-									"raw": "{{baseUrl}}/dokumentenverwaltung/download?id=<string>",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"dokumentenverwaltung",
-										"download"
-									],
-									"query": [
-										{
-											"key": "id",
-											"value": "<string>"
-										}
-									]
-								}
-							},
-							"status": "Bad Request",
-							"code": 400,
-							"_postman_previewlanguage": "text",
-							"header": [
-								{
-									"key": "Content-Type",
-									"value": "text/plain"
-								}
-							],
-							"cookie": [],
-							"body": ""
-						},
-						{
-							"name": "Unauthorized",
-							"originalRequest": {
-								"method": "GET",
-								"header": [
-									{
-										"description": {
-											"content": "Das akzeptierte Dateiformat",
-											"type": "text/plain"
-										},
-										"key": "Accept",
-										"value": "<string>"
-									}
-								],
-								"url": {
-									"raw": "{{baseUrl}}/dokumentenverwaltung/download?id=<string>",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"dokumentenverwaltung",
-										"download"
-									],
-									"query": [
-										{
-											"key": "id",
-											"value": "<string>"
-										}
-									]
-								}
-							},
-							"status": "Unauthorized",
-							"code": 401,
-							"_postman_previewlanguage": "text",
-							"header": [
-								{
-									"key": "Content-Type",
-									"value": "text/plain"
-								}
-							],
-							"cookie": [],
-							"body": ""
-						},
-						{
-							"name": "Temporarily moved",
-							"originalRequest": {
-								"method": "GET",
-								"header": [
-									{
-										"description": {
-											"content": "Das akzeptierte Dateiformat",
-											"type": "text/plain"
-										},
-										"key": "Accept",
-										"value": "<string>"
-									}
-								],
-								"url": {
-									"raw": "{{baseUrl}}/dokumentenverwaltung/download?id=<string>",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"dokumentenverwaltung",
-										"download"
-									],
-									"query": [
-										{
-											"key": "id",
-											"value": "<string>"
-										}
-									]
-								}
-							},
-							"status": "Found",
-							"code": 302,
-							"_postman_previewlanguage": "text",
-							"header": [
-								{
-									"key": "Content-Type",
-									"value": "text/plain"
-								}
-							],
-							"cookie": [],
-							"body": ""
-						},
-						{
-							"name": "Not Found",
-							"originalRequest": {
-								"method": "GET",
-								"header": [
-									{
-										"description": {
-											"content": "Das akzeptierte Dateiformat",
-											"type": "text/plain"
-										},
-										"key": "Accept",
-										"value": "<string>"
-									}
-								],
-								"url": {
-									"raw": "{{baseUrl}}/dokumentenverwaltung/download?id=<string>",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"dokumentenverwaltung",
-										"download"
-									],
-									"query": [
-										{
-											"key": "id",
-											"value": "<string>"
-										}
-									]
-								}
-							},
-							"status": "Not Found",
-							"code": 404,
-							"_postman_previewlanguage": "text",
-							"header": [
-								{
-									"key": "Content-Type",
-									"value": "text/plain"
-								}
-							],
-							"cookie": [],
-							"body": ""
-						},
-						{
-							"name": "Permanently moved",
-							"originalRequest": {
-								"method": "GET",
-								"header": [
-									{
-										"description": {
-											"content": "Das akzeptierte Dateiformat",
-											"type": "text/plain"
-										},
-										"key": "Accept",
-										"value": "<string>"
-									}
-								],
-								"url": {
-									"raw": "{{baseUrl}}/dokumentenverwaltung/download?id=<string>",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"dokumentenverwaltung",
-										"download"
-									],
-									"query": [
-										{
-											"key": "id",
-											"value": "<string>"
-										}
-									]
-								}
-							},
-							"status": "Moved Permanently",
-							"code": 301,
-							"_postman_previewlanguage": "text",
-							"header": [
-								{
-									"key": "Content-Type",
-									"value": "text/plain"
-								}
-							],
-							"cookie": [],
-							"body": ""
-						}
-					]
-				},
-				{
-					"name": "Dokumente Upload am Vorgang",
-					"request": {
-						"auth": {
-							"type": "noauth"
-						},
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "multipart/form-data"
-							},
-							{
-								"key": "X-PartnerId",
-								"value": "{{partner_id}}",
-								"type": "text"
-							},
-							{
-								"key": "X-ApiKey",
-								"value": "{{api_key}}",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "formdata",
-							"formdata": [
-								{
-									"key": "file",
-									"type": "file",
-									"src": "/Users/wrede/Desktop/Kostenaufstellung.pdf"
-								}
-							]
-						},
-						"url": {
-							"raw": "www.europace2.de/vorgang/dokumente?anzeigename=Test&vorgangsNummer=CH6407&sichtbarFuerVertrieb=true",
-							"host": [
-								"www",
-								"europace2",
-								"de"
-							],
-							"path": [
-								"vorgang",
-								"dokumente"
-							],
-							"query": [
-								{
-									"key": "anzeigename",
-									"value": "Test",
-									"description": "Unter welchem Namen soll das Dokument in BaufiSmart angezeigt werden."
-								},
-								{
-									"key": "vorgangsNummer",
-									"value": "CH6407",
-									"description": "Der Vorgang an dem das Dokument hinzugefügt werden soll. Beim Upload muss entweder eine VorgangsNummer oder eine TeilAntragNummer angegeben werden."
-								},
-								{
-									"key": "sichtbarFuerVertrieb",
-									"value": "true",
-									"description": "Ist das Dokument auch für den Vertrieb /V ermittler sichtbar. Wenn eine Vorgangsnummer angegeben wird muss dieser Parameter true sein"
-								}
-							]
-						},
-						"description": "Endpunkt zum uploaden eines Dokuments und gleichzeitigem hinzufügen zu einem Vorgang oder Antrag."
-					},
-					"response": [
-						{
-							"name": "OK",
-							"originalRequest": {
+							"request": {
 								"method": "POST",
 								"header": [
 									{
-										"key": "X-Authentication",
-										"value": ""
+										"key": "Authorization",
+										"value": "Bearer {{jwt}}"
 									},
 									{
-										"key": "Content-Type",
-										"value": "<string>"
+										"key": "Accept",
+										"value": "application/json"
 									},
 									{
-										"key": "Content-Type",
-										"value": "multipart/form-data"
+										"key": "X-traceId",
+										"value": "{{traceId}}"
 									}
 								],
 								"body": {
@@ -1401,310 +1074,795 @@
 									"formdata": [
 										{
 											"key": "file",
-											"value": "<binary>"
+											"type": "file",
+											"src": []
+										},
+										{
+											"key": "anzeigename",
+											"value": "PostmanUploaded",
+											"type": "text"
+										},
+										{
+											"key": "vorgangsNummer",
+											"value": "{{vorgangsNummer}}",
+											"type": "text"
+										},
+										{
+											"key": "",
+											"value": "",
+											"type": "text",
+											"disabled": true
 										}
 									]
 								},
 								"url": {
-									"raw": "{{baseUrl}}/vorgang/dokumente?anzeigename=<string>&teilAntragNummer=<string>&vorgangsNummer=<YYY-MM-DDThh:mm:ss.SSSZ>&erstellungsdatum=<YYY-MM-DDThh:mm:ss.SSSZ>&sichtbarFuerVertrieb=<boolean>",
+									"raw": "https://api.europace2.de/v1/dokumente",
+									"protocol": "https",
 									"host": [
-										"{{baseUrl}}"
+										"api",
+										"europace2",
+										"de"
 									],
 									"path": [
-										"vorgang",
+										"v1",
 										"dokumente"
-									],
-									"query": [
-										{
-											"key": "anzeigename",
-											"value": "<string>"
-										},
-										{
-											"key": "teilAntragNummer",
-											"value": "<string>"
-										},
-										{
-											"key": "vorgangsNummer",
-											"value": "<YYY-MM-DDThh:mm:ss.SSSZ>"
-										},
-										{
-											"key": "erstellungsdatum",
-											"value": "<YYY-MM-DDThh:mm:ss.SSSZ>"
-										},
-										{
-											"key": "sichtbarFuerVertrieb",
-											"value": "<boolean>"
-										}
 									]
 								}
 							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "text",
-							"header": [
-								{
-									"key": "Location",
-									"value": "<string>",
-									"description": "Url zum Dowload des Dokuments"
-								},
-								{
-									"key": "Content-Type",
-									"value": "text/plain"
-								}
-							],
-							"cookie": [],
-							"body": ""
+							"response": []
 						},
 						{
-							"name": "Internal Server Error",
-							"originalRequest": {
+							"name": "starte Kategorisierung",
+							"request": {
 								"method": "POST",
 								"header": [
 									{
-										"key": "X-Authentication",
-										"value": ""
+										"key": "Authorization",
+										"value": "Bearer {{jwt}}"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "X-traceId",
+										"value": "{{traceId}}"
 									},
 									{
 										"key": "Content-Type",
-										"value": "<string>"
-									},
-									{
-										"key": "Content-Type",
-										"value": "multipart/form-data"
+										"value": "application/json"
 									}
 								],
 								"body": {
-									"mode": "formdata",
-									"formdata": [
-										{
-											"key": "file",
-											"value": "<binary>"
-										}
-									]
+									"mode": "raw",
+									"raw": "{}"
 								},
 								"url": {
-									"raw": "{{baseUrl}}/vorgang/dokumente?anzeigename=<string>&teilAntragNummer=<string>&vorgangsNummer=<YYY-MM-DDThh:mm:ss.SSSZ>&erstellungsdatum=<YYY-MM-DDThh:mm:ss.SSSZ>&sichtbarFuerVertrieb=<boolean>",
+									"raw": "https://api.europace2.de/v1/dokumente/{{dokId}}/kategorisierung",
+									"protocol": "https",
 									"host": [
-										"{{baseUrl}}"
+										"api",
+										"europace2",
+										"de"
 									],
 									"path": [
-										"vorgang",
-										"dokumente"
+										"v1",
+										"dokumente",
+										"{{dokId}}",
+										"kategorisierung"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Kategorisierungstatus abrufen",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{jwt}}"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "X-traceId",
+										"value": "{{traceId}}"
+									}
+								],
+								"url": {
+									"raw": "https://api.europace2.de/v1/dokumente/{{dokId}}/kategorisierung",
+									"protocol": "https",
+									"host": [
+										"api",
+										"europace2",
+										"de"
+									],
+									"path": [
+										"v1",
+										"dokumente",
+										"{{dokId}}",
+										"kategorisierung"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Metadaten eines Dokuments",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{jwt}}"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "X-traceId",
+										"value": "{{traceId}}"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "https://api.europace2.de/v1/dokumente/{{dokId}}",
+									"protocol": "https",
+									"host": [
+										"api",
+										"europace2",
+										"de"
+									],
+									"path": [
+										"v1",
+										"dokumente",
+										"{{dokId}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Download eines Dokuments",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{jwt}}"
+									},
+									{
+										"key": "Accept",
+										"value": "*/*"
+									},
+									{
+										"key": "X-traceId",
+										"value": "{{traceId}}"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "https://api.europace2.de/v1/dokumente/{{dokId}}/content",
+									"protocol": "https",
+									"host": [
+										"api",
+										"europace2",
+										"de"
+									],
+									"path": [
+										"v1",
+										"dokumente",
+										"{{dokId}}",
+										"content"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Seiten Interaktionen",
+					"item": [
+						{
+							"name": "Seiten eines  Vorgangs",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "3894eb8f-ee49-4aa4-b552-470a9634b065",
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{jwt}}"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "X-traceId",
+										"value": "{{traceId}}"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "https://api.europace2.de/v1/dokumente/seiten?vorgangsNummer={{vorgangsNummer}}",
+									"protocol": "https",
+									"host": [
+										"api",
+										"europace2",
+										"de"
+									],
+									"path": [
+										"v1",
+										"dokumente",
+										"seiten"
 									],
 									"query": [
 										{
-											"key": "anzeigename",
-											"value": "<string>"
-										},
-										{
-											"key": "teilAntragNummer",
-											"value": "<string>"
-										},
-										{
 											"key": "vorgangsNummer",
-											"value": "<YYY-MM-DDThh:mm:ss.SSSZ>"
-										},
-										{
-											"key": "erstellungsdatum",
-											"value": "<YYY-MM-DDThh:mm:ss.SSSZ>"
-										},
-										{
-											"key": "sichtbarFuerVertrieb",
-											"value": "<boolean>"
+											"value": "{{vorgangsNummer}}"
 										}
 									]
 								}
 							},
-							"status": "Internal Server Error",
-							"code": 500,
-							"_postman_previewlanguage": "text",
-							"header": [
-								{
-									"key": "Content-Type",
-									"value": "text/plain"
-								}
-							],
-							"cookie": [],
-							"body": ""
+							"response": []
 						},
 						{
-							"name": "Unprocessable Entity. Wird bei fehlenden oder fehlerhaften Parametern zurueckgeliefert.",
-							"originalRequest": {
+							"name": "Seiten eines Dokuments",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{jwt}}"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "X-traceId",
+										"value": "{{traceId}}"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "https://api.europace2.de/v1/dokumente/{{dokId}}/seiten",
+									"protocol": "https",
+									"host": [
+										"api",
+										"europace2",
+										"de"
+									],
+									"path": [
+										"v1",
+										"dokumente",
+										"{{dokId}}",
+										"seiten"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "zuordnen Kat+Bezug",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{jwt}}"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "X-traceId",
+										"value": "{{traceId}}"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "[\n\t{\n\t\t\"dokumentId\": \t\"{{dokId}}\",\n\t\t\"seite\": 5\n\t}\n]"
+								},
+								"url": {
+									"raw": "https://api.europace2.de/v1/dokumente/zuordnung/Privatkreditvertrag?bezug=verbindlichkeit:bestehend&vorgangsNummer={{vorgangsNummer}}&antragsNummer={{vorgangsNummer}}/1/1",
+									"protocol": "https",
+									"host": [
+										"api",
+										"europace2",
+										"de"
+									],
+									"path": [
+										"v1",
+										"dokumente",
+										"zuordnung",
+										"Privatkreditvertrag"
+									],
+									"query": [
+										{
+											"key": "bezug",
+											"value": "verbindlichkeit:bestehend"
+										},
+										{
+											"key": "vorgangsNummer",
+											"value": "{{vorgangsNummer}}"
+										},
+										{
+											"key": "antragsNummer",
+											"value": "{{vorgangsNummer}}/1/1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Seiten archivieren",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{jwt}}"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "X-traceId",
+										"value": "{{traceId}}"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "[\n\t{\n\t\t\"dokumentId\": \t\"{{dokId}}\",\n\t\t\"seite\": 1\n\t}\n]"
+								},
+								"url": {
+									"raw": "https://api.europace2.de/v1/dokumente/archiv",
+									"protocol": "https",
+									"host": [
+										"api",
+										"europace2",
+										"de"
+									],
+									"path": [
+										"v1",
+										"dokumente",
+										"archiv"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Freigabe/Unterlage Interaktionen",
+					"item": [
+						{
+							"name": "Freigabe erstellen",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "8254c9e3-2b74-419c-9ef6-d266021652c8",
+										"exec": [
+											"var body = JSON.parse(responseBody);",
+											"pm.environment.set(\"freigabeId\", body[0].id);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
 								"method": "POST",
 								"header": [
 									{
-										"key": "X-Authentication",
-										"value": ""
+										"key": "Authorization",
+										"value": "Bearer {{jwt}}"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "X-traceId",
+										"value": "{{traceId}}"
 									},
 									{
 										"key": "Content-Type",
-										"value": "<string>"
-									},
-									{
-										"key": "Content-Type",
-										"value": "multipart/form-data"
+										"value": "application/json"
 									}
 								],
 								"body": {
-									"mode": "formdata",
-									"formdata": [
-										{
-											"key": "file",
-											"value": "<binary>"
-										}
-									]
+									"mode": "raw",
+									"raw": "{\n\t\"antragsNummer\": \"{{vorgangsNummer}}/1/1\",\n\t\"seiten\": [\n\t\t{\n\t\t\t\"dokumentId\": \"{{dokId}}\",\n\t\t\t\"seite\": 1\n\t\t}\n\t]\n}"
 								},
 								"url": {
-									"raw": "{{baseUrl}}/vorgang/dokumente?anzeigename=<string>&teilAntragNummer=<string>&vorgangsNummer=<YYY-MM-DDThh:mm:ss.SSSZ>&erstellungsdatum=<YYY-MM-DDThh:mm:ss.SSSZ>&sichtbarFuerVertrieb=<boolean>",
+									"raw": "https://api.europace2.de/v1/dokumente/freigabe",
+									"protocol": "https",
 									"host": [
-										"{{baseUrl}}"
+										"api",
+										"europace2",
+										"de"
 									],
 									"path": [
-										"vorgang",
-										"dokumente"
+										"v1",
+										"dokumente",
+										"freigabe"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Metadaten einer Freigabe abrufen",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{jwt}}"
+									},
+									{
+										"key": "X-traceId",
+										"value": "{{traceId}}"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "https://api.europace2.de/v1/dokumente/freigabe/{{freigabeId}}",
+									"protocol": "https",
+									"host": [
+										"api",
+										"europace2",
+										"de"
+									],
+									"path": [
+										"v1",
+										"dokumente",
+										"freigabe",
+										"{{freigabeId}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Freigabe Download",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{jwt}}"
+									},
+									{
+										"key": "X-traceId",
+										"value": "{{traceId}}"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "https://api.europace2.de/v1/dokumente/freigabe/{{freigabeId}}/content",
+									"protocol": "https",
+									"host": [
+										"api",
+										"europace2",
+										"de"
+									],
+									"path": [
+										"v1",
+										"dokumente",
+										"freigabe",
+										"{{freigabeId}}",
+										"content"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Freigabe ZIP",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{jwt}}"
+									},
+									{
+										"key": "X-traceId",
+										"value": "{{traceId}}"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "https://api.europace2.de/v1/dokumente/freigaben/content?antragsNummer={{vorgangsNummer}}/1/1",
+									"protocol": "https",
+									"host": [
+										"api",
+										"europace2",
+										"de"
+									],
+									"path": [
+										"v1",
+										"dokumente",
+										"freigaben",
+										"content"
 									],
 									"query": [
 										{
-											"key": "anzeigename",
-											"value": "<string>"
-										},
-										{
-											"key": "teilAntragNummer",
-											"value": "<string>"
-										},
-										{
-											"key": "vorgangsNummer",
-											"value": "<YYY-MM-DDThh:mm:ss.SSSZ>"
-										},
-										{
-											"key": "erstellungsdatum",
-											"value": "<YYY-MM-DDThh:mm:ss.SSSZ>"
-										},
-										{
-											"key": "sichtbarFuerVertrieb",
-											"value": "<boolean>"
+											"key": "antragsNummer",
+											"value": "{{vorgangsNummer}}/1/1"
 										}
 									]
 								}
 							},
-							"status": "Unprocessable Entity (WebDAV) (RFC 4918)",
-							"code": 422,
-							"_postman_previewlanguage": "text",
-							"header": [
-								{
-									"key": "Content-Type",
-									"value": "text/plain"
-								}
-							],
-							"cookie": [],
-							"body": ""
-						}
-					]
-				},
-				{
-					"name": "Neue Dokumenten API (Vorgang)",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json"
-							},
-							{
-								"key": "Authorization",
-								"value": "Bearer {{jwt}}",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "https://api.europace.de/v1/dokumente/seiten?vorgangsNummer=XW3386",
-							"protocol": "https",
-							"host": [
-								"api",
-								"europace",
-								"de"
-							],
-							"path": [
-								"v1",
-								"dokumente",
-								"seiten"
-							],
-							"query": [
-								{
-									"key": "vorgangsNummer",
-									"value": "XW3386"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Neue Dokumenten API (Antrag)",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json"
-							},
-							{
-								"key": "Authorization",
-								"value": "Bearer {{jwt}}",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "https://api.europace2.de/v1/dokumente/freigabe/5d25f8604a824baa683096ac",
-							"protocol": "https",
-							"host": [
-								"api",
-								"europace2",
-								"de"
-							],
-							"path": [
-								"v1",
-								"dokumente",
-								"freigabe",
-								"5d25f8604a824baa683096ac"
-							]
+							"response": []
 						},
-						"description": "Funktioniert noch nicht!"
-					},
-					"response": []
+						{
+							"name": "Antragsfreigaben",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{jwt}}"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "X-traceId",
+										"value": "{{traceId}}"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "https://api.europace2.de/v1/dokumente/freigabe?antragsNummer={{vorgangsNummer}}/1/1",
+									"protocol": "https",
+									"host": [
+										"api",
+										"europace2",
+										"de"
+									],
+									"path": [
+										"v1",
+										"dokumente",
+										"freigabe"
+									],
+									"query": [
+										{
+											"key": "antragsNummer",
+											"value": "{{vorgangsNummer}}/1/1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "AbrufStatus einer Freigabe durch den Produktanbieter",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "6861a784-5b97-45fa-bdbc-33789b1ea686",
+										"type": "text/javascript",
+										"exec": [
+											""
+										]
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{jwt}}"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "X-traceId",
+										"value": "{{traceId}}"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "https://api.europace2.de/v1/dokumente/freigabe/{{freigabeId}}/status",
+									"protocol": "https",
+									"host": [
+										"api",
+										"europace2",
+										"de"
+									],
+									"path": [
+										"v1",
+										"dokumente",
+										"freigabe",
+										"{{freigabeId}}",
+										"status"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
 				},
 				{
-					"name": "Ein Antrags Dokumente aufrufen",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json"
+					"name": "Weitere Interaktionen",
+					"item": [
+						{
+							"name": "Preview",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{jwt}}"
+									},
+									{
+										"key": "X-traceId",
+										"value": "{{traceId}}"
+									}
+								],
+								"url": {
+									"raw": "https://api.europace2.de/v1/dokumente/{{dokId}}/preview?page=1&size=large",
+									"protocol": "https",
+									"host": [
+										"api",
+										"europace2",
+										"de"
+									],
+									"path": [
+										"v1",
+										"dokumente",
+										"{{dokId}}",
+										"preview"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "size",
+											"value": "large"
+										}
+									]
+								}
 							},
-							{
-								"key": "Authorization",
-								"value": "Bearer {{jwt}}",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "https://api.europace2.de/v1/dokumente/freigabe/5d25f8604a824baa683096ac",
-							"protocol": "https",
-							"host": [
-								"api",
-								"europace2",
-								"de"
+							"response": []
+						},
+						{
+							"name": "moegliche Zuordnungen",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "97db19c2-2c96-4ae9-9d90-803677026b8a",
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
 							],
-							"path": [
-								"v1",
-								"dokumente",
-								"freigabe",
-								"5d25f8604a824baa683096ac"
-							]
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{jwt}}",
+										"type": "text"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "X-traceId",
+										"value": "{{traceId}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "https://api.europace2.de/v1/dokumente/zuordnungen?vorgangsNummer={{vorgangsNummer}}&antragsNummer={{vorgangsNummer}}/1/1",
+									"protocol": "https",
+									"host": [
+										"api",
+										"europace2",
+										"de"
+									],
+									"path": [
+										"v1",
+										"dokumente",
+										"zuordnungen"
+									],
+									"query": [
+										{
+											"key": "vorgangsNummer",
+											"value": "{{vorgangsNummer}}"
+										},
+										{
+											"key": "antragsNummer",
+											"value": "{{vorgangsNummer}}/1/1"
+										}
+									]
+								}
+							},
+							"response": []
 						}
-					},
-					"response": []
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
 				}
 			],
 			"event": [
@@ -1714,16 +1872,7 @@
 						"id": "b202b802-958c-4846-8baf-67dc7b6b4a39",
 						"type": "text/javascript",
 						"exec": [
-							""
-						]
-					}
-				},
-				{
-					"listen": "test",
-					"script": {
-						"id": "687229b4-c3ba-4d41-bb7b-54a0af7d3637",
-						"type": "text/javascript",
-						"exec": [
+							"pm.expect(pm.environment.get(\"vorgangsNummer\"),\"vorgangsNummer muss fuer das aktuelle Environment definiert sein\").to.be.a('string')",
 							""
 						]
 					}
@@ -1749,9 +1898,8 @@
 							},
 							{
 								"key": "X-TraceId",
-								"value": "caspar2",
-								"type": "text",
-								"disabled": true
+								"value": "{{traceId}}",
+								"type": "text"
 							}
 						],
 						"url": {
@@ -1787,9 +1935,8 @@
 							},
 							{
 								"key": "X-TraceId",
-								"value": "caspar2",
-								"type": "text",
-								"disabled": true
+								"value": "{{traceId}}",
+								"type": "text"
 							}
 						],
 						"url": {
@@ -1825,9 +1972,8 @@
 							},
 							{
 								"key": "X-TraceId",
-								"value": "caspar2",
-								"type": "text",
-								"disabled": true
+								"value": "{{traceId}}",
+								"type": "text"
 							}
 						],
 						"url": {
@@ -1863,9 +2009,7 @@
 							},
 							{
 								"key": "X-TraceId",
-								"value": "caspar2",
-								"type": "text",
-								"disabled": true
+								"value": "{{traceId}}"
 							}
 						],
 						"url": {
@@ -2070,7 +2214,7 @@
 				"id": "fb75e601-4f97-475d-9427-1d1bf60decc2",
 				"type": "text/javascript",
 				"exec": [
-					""
+					"pm.globals.set(\"traceId\", \"EP-API-POSTMAN-COLLECTION-\" + _.random(1000, 9999));"
 				]
 			}
 		},
@@ -2080,7 +2224,7 @@
 				"id": "80f40820-cb75-456b-9d47-3b031160c2a8",
 				"type": "text/javascript",
 				"exec": [
-					""
+					"console.info(\"traceId: \" + pm.globals.get(\"traceId\"))"
 				]
 			}
 		}
