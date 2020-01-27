@@ -980,64 +980,6 @@
 					"name": "Dokument Interaktionen",
 					"item": [
 						{
-							"name": "Metadaten aller Dokumente eines Vorgangs",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"id": "f878d9c9-df81-417f-8f72-e54adc542e15",
-										"exec": [
-											"var body = JSON.parse(responseBody);",
-											"if (body !== undefined && body.length !== 0) {",
-											"    pm.environment.set(\"dokId\", body[0].id);",
-											"}",
-											"else {",
-											"    pm.environment.unset(\"dokId\");",
-											"}"
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"method": "GET",
-								"header": [
-									{
-										"key": "Authorization",
-										"value": "Bearer {{jwt}}"
-									},
-									{
-										"key": "Accept",
-										"value": "application/json"
-									},
-									{
-										"key": "X-traceId",
-										"value": "{{traceId}}"
-									}
-								],
-								"url": {
-									"raw": "https://api.europace2.de/v1/dokumente?vorgangsNummer={{vorgangsNummer}}",
-									"protocol": "https",
-									"host": [
-										"api",
-										"europace2",
-										"de"
-									],
-									"path": [
-										"v1",
-										"dokumente"
-									],
-									"query": [
-										{
-											"key": "vorgangsNummer",
-											"value": "{{vorgangsNummer}}"
-										}
-									]
-								}
-							},
-							"response": []
-						},
-						{
 							"name": "Upload",
 							"event": [
 								{
@@ -1186,45 +1128,6 @@
 										"dokumente",
 										"{{dokId}}",
 										"kategorisierung"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Metadaten eines Dokuments",
-							"request": {
-								"method": "GET",
-								"header": [
-									{
-										"key": "Authorization",
-										"value": "Bearer {{jwt}}"
-									},
-									{
-										"key": "Accept",
-										"value": "application/json"
-									},
-									{
-										"key": "X-traceId",
-										"value": "{{traceId}}"
-									},
-									{
-										"key": "Content-Type",
-										"value": "application/json"
-									}
-								],
-								"url": {
-									"raw": "https://api.europace2.de/v1/dokumente/{{dokId}}",
-									"protocol": "https",
-									"host": [
-										"api",
-										"europace2",
-										"de"
-									],
-									"path": [
-										"v1",
-										"dokumente",
-										"{{dokId}}"
 									]
 								}
 							},
@@ -1431,49 +1334,6 @@
 								}
 							},
 							"response": []
-						},
-						{
-							"name": "Seiten archivieren",
-							"request": {
-								"method": "PUT",
-								"header": [
-									{
-										"key": "Authorization",
-										"value": "Bearer {{jwt}}"
-									},
-									{
-										"key": "Accept",
-										"value": "application/json"
-									},
-									{
-										"key": "X-traceId",
-										"value": "{{traceId}}"
-									},
-									{
-										"key": "Content-Type",
-										"value": "application/json"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "[\n\t{\n\t\t\"dokumentId\": \t\"{{dokId}}\",\n\t\t\"seite\": 1\n\t}\n]"
-								},
-								"url": {
-									"raw": "https://api.europace2.de/v1/dokumente/archiv",
-									"protocol": "https",
-									"host": [
-										"api",
-										"europace2",
-										"de"
-									],
-									"path": [
-										"v1",
-										"dokumente",
-										"archiv"
-									]
-								}
-							},
-							"response": []
 						}
 					],
 					"protocolProfileBehavior": {},
@@ -1539,42 +1399,6 @@
 							"response": []
 						},
 						{
-							"name": "Metadaten einer Freigabe abrufen",
-							"request": {
-								"method": "GET",
-								"header": [
-									{
-										"key": "Authorization",
-										"value": "Bearer {{jwt}}"
-									},
-									{
-										"key": "X-traceId",
-										"value": "{{traceId}}"
-									},
-									{
-										"key": "Content-Type",
-										"value": "application/json"
-									}
-								],
-								"url": {
-									"raw": "https://api.europace2.de/v1/dokumente/freigabe/{{freigabeId}}",
-									"protocol": "https",
-									"host": [
-										"api",
-										"europace2",
-										"de"
-									],
-									"path": [
-										"v1",
-										"dokumente",
-										"freigabe",
-										"{{freigabeId}}"
-									]
-								}
-							},
-							"response": []
-						},
-						{
 							"name": "Freigabe Download",
 							"request": {
 								"method": "GET",
@@ -1606,48 +1430,6 @@
 										"freigabe",
 										"{{freigabeId}}",
 										"content"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "Freigabe ZIP",
-							"request": {
-								"method": "GET",
-								"header": [
-									{
-										"key": "Authorization",
-										"value": "Bearer {{jwt}}"
-									},
-									{
-										"key": "X-traceId",
-										"value": "{{traceId}}"
-									},
-									{
-										"key": "Content-Type",
-										"value": "application/json"
-									}
-								],
-								"url": {
-									"raw": "https://api.europace2.de/v1/dokumente/freigaben/content?antragsNummer={{vorgangsNummer}}/1/1",
-									"protocol": "https",
-									"host": [
-										"api",
-										"europace2",
-										"de"
-									],
-									"path": [
-										"v1",
-										"dokumente",
-										"freigaben",
-										"content"
-									],
-									"query": [
-										{
-											"key": "antragsNummer",
-											"value": "{{vorgangsNummer}}/1/1"
-										}
 									]
 								}
 							},
@@ -1693,59 +1475,6 @@
 											"key": "antragsNummer",
 											"value": "{{vorgangsNummer}}/1/1"
 										}
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "AbrufStatus einer Freigabe durch den Produktanbieter",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"id": "6861a784-5b97-45fa-bdbc-33789b1ea686",
-										"type": "text/javascript",
-										"exec": [
-											""
-										]
-									}
-								}
-							],
-							"request": {
-								"method": "GET",
-								"header": [
-									{
-										"key": "Authorization",
-										"value": "Bearer {{jwt}}"
-									},
-									{
-										"key": "Accept",
-										"value": "application/json"
-									},
-									{
-										"key": "X-traceId",
-										"value": "{{traceId}}"
-									},
-									{
-										"key": "Content-Type",
-										"value": "application/json"
-									}
-								],
-								"url": {
-									"raw": "https://api.europace2.de/v1/dokumente/freigabe/{{freigabeId}}/status",
-									"protocol": "https",
-									"host": [
-										"api",
-										"europace2",
-										"de"
-									],
-									"path": [
-										"v1",
-										"dokumente",
-										"freigabe",
-										"{{freigabeId}}",
-										"status"
 									]
 								}
 							},
