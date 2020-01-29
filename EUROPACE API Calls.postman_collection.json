@@ -20,7 +20,12 @@
 							{
 								"key": "Content-Type",
 								"value": "application/json"
-							}
+							},
+                            {
+                                "key": "X-traceId",
+                                "value": "{{traceId}}",
+                                "type": "text"
+                            }
 						],
 						"url": {
 							"raw": "https://api.europace2.de/v2/vorgaenge",
@@ -50,7 +55,12 @@
 							{
 								"key": "Content-Type",
 								"value": "application/json"
-							}
+							},
+                            {
+                                "key": "X-traceId",
+                                "value": "{{traceId}}",
+                                "type": "text"
+                            }
 						],
 						"url": {
 							"raw": "https://api.europace2.de/v2/vorgaenge?datenKontext=TEST_MODUS",
@@ -86,7 +96,12 @@
 							{
 								"key": "Content-Type",
 								"value": "application/json"
-							}
+							},
+                            {
+                                "key": "X-traceId",
+                                "value": "{{traceId}}",
+                                "type": "text"
+                            }
 						],
 						"url": {
 							"raw": "https://api.europace2.de/v2/vorgaenge/CH6407",
@@ -116,6 +131,11 @@
 									{
 										"key": "Content-Type",
 										"value": "application/json"
+									},
+									{
+										"key": "X-traceId",
+										"value": "{{traceId}}",
+										"type": "text"
 									}
 								],
 								"url": {
@@ -243,7 +263,12 @@
 							{
 								"key": "Content-Type",
 								"value": "application/json"
-							}
+							},
+                            {
+                                "key": "X-traceId",
+                                "value": "{{traceId}}",
+                                "type": "text"
+                            }
 						],
 						"url": {
 							"raw": "https://api.europace2.de/v2/vorgaenge/CH6407/antraege",
@@ -401,7 +426,12 @@
 							{
 								"key": "Content-Type",
 								"value": "application/json-patch+json"
-							}
+							},
+                            {
+                                "key": "X-traceId",
+                                "value": "{{traceId}}",
+                                "type": "text"
+                            }
 						],
 						"body": {
 							"mode": "raw",
@@ -426,26 +456,6 @@
 				}
 			],
 			"event": [
-				{
-					"listen": "prerequest",
-					"script": {
-						"id": "61d21655-5529-452d-a739-fa87d1876fc6",
-						"type": "text/javascript",
-						"exec": [
-							""
-						]
-					}
-				},
-				{
-					"listen": "test",
-					"script": {
-						"id": "ade0143a-8929-42b4-a1a6-5181f1ba6f0e",
-						"type": "text/javascript",
-						"exec": [
-							""
-						]
-					}
-				}
 			],
 			"protocolProfileBehavior": {}
 		},
@@ -464,7 +474,12 @@
 							{
 								"key": "Content-Type",
 								"value": "application/json"
-							}
+							},
+                            {
+                                "key": "X-traceId",
+                                "value": "{{traceId}}",
+                                "type": "text"
+                            }
 						],
 						"url": {
 							"raw": "https://baufismart.api.europace.de/v2/antraege/",
@@ -496,7 +511,12 @@
 							{
 								"key": "Content-Type",
 								"value": "application/json"
-							}
+							},
+                            {
+                                "key": "X-traceId",
+                                "value": "{{traceId}}",
+                                "type": "text"
+                            }
 						],
 						"url": {
 							"raw": "https://baufismart.api.europace.de/v2/antraege/?datenKontext=TEST_MODUS",
@@ -534,7 +554,12 @@
 							{
 								"key": "Content-Type",
 								"value": "application/json"
-							}
+							},
+                            {
+                                "key": "X-traceId",
+                                "value": "{{traceId}}",
+                                "type": "text"
+                            }
 						],
 						"url": {
 							"raw": "https://baufismart.api.europace.de/v2/antraege/HU1242/1/1",
@@ -570,7 +595,12 @@
 								"name": "Content-Type",
 								"value": "application/json",
 								"type": "text"
-							}
+							},
+                            {
+                                "key": "X-traceId",
+                                "value": "{{traceId}}",
+                                "type": "text"
+                            }
 						],
 						"body": {
 							"mode": "raw",
@@ -610,7 +640,12 @@
 								"name": "Content-Type",
 								"value": "application/json",
 								"type": "text"
-							}
+							},
+                            {
+                                "key": "X-traceId",
+                                "value": "{{traceId}}",
+                                "type": "text"
+                            }
 						],
 						"body": {
 							"mode": "raw",
@@ -722,7 +757,12 @@
 							{
 								"key": "Content-Type",
 								"value": "application/json"
-							}
+							},
+                            {
+                                "key": "X-traceId",
+                                "value": "{{traceId}}",
+                                "type": "text"
+                            }
 						],
 						"body": {
 							"mode": "raw",
@@ -779,7 +819,12 @@
 							{
 								"key": "Content-Type",
 								"value": "application/json"
-							}
+							},
+                            {
+                                "key": "X-traceId",
+                                "value": "{{traceId}}",
+                                "type": "text"
+                            }
 						],
 						"body": {
 							"mode": "raw",
@@ -832,7 +877,12 @@
 							{
 								"key": "Content-Type",
 								"value": "application/json"
-							}
+							},
+                            {
+                                "key": "X-traceId",
+                                "value": "{{traceId}}",
+                                "type": "text"
+                            }
 						],
 						"body": {
 							"mode": "raw",
@@ -887,7 +937,12 @@
 							{
 								"key": "Content-Type",
 								"value": "application/json"
-							}
+							},
+                            {
+                                "key": "X-traceId",
+                                "value": "{{traceId}}",
+                                "type": "text"
+                            }
 						],
 						"body": {
 							"mode": "raw",
@@ -942,7 +997,12 @@
 							{
 								"key": "Content-Type",
 								"value": "application/json"
-							}
+							},
+                            {
+                                "key": "X-traceId",
+                                "value": "{{traceId}}",
+                                "type": "text"
+                            }
 						],
 						"body": {
 							"mode": "raw",
@@ -1650,7 +1710,7 @@
 					"response": []
 				},
 				{
-					"name": "Partner Kennzeichnen auselesen",
+					"name": "Partner Kennzeichnen auslesen",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -1783,7 +1843,12 @@
 							{
 								"key": "Content-Type",
 								"value": "application/json"
-							}
+							},
+                            {
+                                "key": "X-traceId",
+                                "value": "{{traceId}}",
+                                "type": "text"
+                            }
 						],
 						"url": {
 							"raw": "https://api.europace.de/v1/ereignisse/CH6407",
@@ -1814,7 +1879,12 @@
 							{
 								"key": "Content-Type",
 								"value": "application/json"
-							}
+							},
+                            {
+                                "key": "X-traceId",
+                                "value": "{{traceId}}",
+                                "type": "text"
+                            }
 						],
 						"url": {
 							"raw": "https://api.europace.de/v1/ereignisse/WB0M5Y/1/1",
@@ -1853,7 +1923,12 @@
 							{
 								"key": "Content-Type",
 								"value": "application/json;charset=utf-8"
-							}
+							},
+                            {
+                                "key": "X-traceId",
+                                "value": "{{traceId}}",
+                                "type": "text"
+                            }
 						],
 						"body": {
 							"mode": "graphql",
@@ -1903,7 +1978,12 @@
 					{
 						"key": "Content-Type",
 						"value": "application/x-www-form-urlencoded"
-					}
+					},
+                    {
+                        "key": "X-traceId",
+                        "value": "{{traceId}}",
+                        "type": "text"
+                    }
 				],
 				"body": {
 					"mode": "urlencoded",
