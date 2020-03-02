@@ -1009,33 +1009,15 @@
 									{
 										"key": "X-traceId",
 										"value": "{{traceId}}"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
 									}
 								],
 								"body": {
-									"mode": "formdata",
-									"formdata": [
-										{
-											"key": "file",
-											"type": "file",
-											"src": []
-										},
-										{
-											"key": "anzeigename",
-											"value": "PostmanUploaded",
-											"type": "text"
-										},
-										{
-											"key": "vorgangsNummer",
-											"value": "{{vorgangsNummer}}",
-											"type": "text"
-										},
-										{
-											"key": "",
-											"value": "",
-											"type": "text",
-											"disabled": true
-										}
-									]
+									"mode": "raw",
+									"raw": "{\n\t\"vorgangsNummer\": \"{{vorgangsNummer}}\",\n\t\"url\": \"Url-zum-Dokument\",\n\t\"anzeigename\": \"PostmanUploaded\"\n}"
 								},
 								"url": {
 									"raw": "https://api.europace2.de/v1/dokumente",
