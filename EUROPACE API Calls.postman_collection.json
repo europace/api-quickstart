@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "77dfc1e5-de1d-4a1a-88d2-193d12301d27",
+		"_postman_id": "064cfecd-3bf7-4177-ad31-795af70510d2",
 		"name": "EUROPACE API Calls",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -1614,7 +1614,7 @@
 							}
 						],
 						"url": {
-							"raw": "https://www.europace2.de/partnermanagement/partner/ACH16/kontaktdaten",
+							"raw": "https://www.europace2.de/partnermanagement/partner/{{partner_id}}/kontaktdaten",
 							"protocol": "https",
 							"host": [
 								"www",
@@ -1624,7 +1624,7 @@
 							"path": [
 								"partnermanagement",
 								"partner",
-								"ACH16",
+								"{{partner_id}}",
 								"kontaktdaten"
 							]
 						}
@@ -1651,7 +1651,7 @@
 							}
 						],
 						"url": {
-							"raw": "https://www.europace2.de/partnermanagement/partner/DIV95/partnerkennzeichen",
+							"raw": "https://www.europace2.de/partnermanagement/partner/{{partner_id}}/partnerkennzeichen",
 							"protocol": "https",
 							"host": [
 								"www",
@@ -1661,7 +1661,7 @@
 							"path": [
 								"partnermanagement",
 								"partner",
-								"DIV95",
+								"{{partner_id}}",
 								"partnerkennzeichen"
 							]
 						}
@@ -1688,7 +1688,7 @@
 							}
 						],
 						"url": {
-							"raw": "https://www.europace2.de/partnermanagement/partner/ACH16/uebernahmeRechtFuer",
+							"raw": "https://www.europace2.de/partnermanagement/partner/{{partner_id}}/uebernahmeRechtFuer",
 							"protocol": "https",
 							"host": [
 								"www",
@@ -1698,7 +1698,7 @@
 							"path": [
 								"partnermanagement",
 								"partner",
-								"ACH16",
+								"{{partner_id}}",
 								"uebernahmeRechtFuer"
 							]
 						}
@@ -1724,7 +1724,7 @@
 							}
 						],
 						"url": {
-							"raw": "https://www.europace2.de/partnermanagement/partner/ACH16/handelsbeziehungen?datenkontext=ECHT_GESCHAEFT",
+							"raw": "https://www.europace2.de/partnermanagement/partner/{{partner_id}}/handelsbeziehungen?datenkontext=ECHT_GESCHAEFT",
 							"protocol": "https",
 							"host": [
 								"www",
@@ -1734,7 +1734,7 @@
 							"path": [
 								"partnermanagement",
 								"partner",
-								"ACH16",
+								"{{partner_id}}",
 								"handelsbeziehungen"
 							],
 							"query": [
