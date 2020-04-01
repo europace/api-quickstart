@@ -1020,7 +1020,7 @@
 									"raw": "{\n\t\"vorgangsNummer\": \"{{vorgangsNummer}}\",\n\t\"url\": \"Url-zum-Dokument\",\n\t\"anzeigename\": \"PostmanUploaded\"\n}"
 								},
 								"url": {
-									"raw": "https://api.europace2.de/v1/dokumente",
+									"raw": "https://api.europace.de/v1/dokumente",
 									"protocol": "https",
 									"host": [
 										"api",
@@ -1062,7 +1062,7 @@
 									"raw": "{}"
 								},
 								"url": {
-									"raw": "https://api.europace2.de/v1/dokumente/{{dokId}}/kategorisierung",
+									"raw": "https://api.europace.de/v1/dokumente/{{dokId}}/kategorisierung",
 									"protocol": "https",
 									"host": [
 										"api",
@@ -1098,7 +1098,7 @@
 									}
 								],
 								"url": {
-									"raw": "https://api.europace2.de/v1/dokumente/{{dokId}}/kategorisierung",
+									"raw": "https://api.europace.de/v1/dokumente/{{dokId}}/kategorisierung",
 									"protocol": "https",
 									"host": [
 										"api",
@@ -1138,7 +1138,7 @@
 									}
 								],
 								"url": {
-									"raw": "https://api.europace2.de/v1/dokumente/{{dokId}}/content",
+									"raw": "https://api.europace.de/v1/dokumente/{{dokId}}/content",
 									"protocol": "https",
 									"host": [
 										"api",
@@ -1197,7 +1197,7 @@
 									}
 								],
 								"url": {
-									"raw": "https://api.europace2.de/v1/dokumente/seiten?vorgangsNummer={{vorgangsNummer}}",
+									"raw": "https://api.europace.de/v1/dokumente/seiten?vorgangsNummer={{vorgangsNummer}}",
 									"protocol": "https",
 									"host": [
 										"api",
@@ -1242,7 +1242,7 @@
 									}
 								],
 								"url": {
-									"raw": "https://api.europace2.de/v1/dokumente/{{dokId}}/seiten",
+									"raw": "https://api.europace.de/v1/dokumente/{{dokId}}/seiten",
 									"protocol": "https",
 									"host": [
 										"api",
@@ -1286,7 +1286,7 @@
 									"raw": "[\n\t{\n\t\t\"dokumentId\": \t\"{{dokId}}\",\n\t\t\"seite\": 5\n\t}\n]"
 								},
 								"url": {
-									"raw": "https://api.europace2.de/v1/dokumente/zuordnung/Privatkreditvertrag?bezug=verbindlichkeit:bestehend&vorgangsNummer={{vorgangsNummer}}&antragsNummer={{vorgangsNummer}}/1/1",
+									"raw": "https://api.europace.de/v1/dokumente/zuordnung/Privatkreditvertrag?bezug=verbindlichkeit:bestehend&vorgangsNummer={{vorgangsNummer}}&antragsNummer={{vorgangsNummer}}/1/1",
 									"protocol": "https",
 									"host": [
 										"api",
@@ -1364,7 +1364,7 @@
 									"raw": "{\n\t\"antragsNummer\": \"{{vorgangsNummer}}/1/1\",\n\t\"seiten\": [\n\t\t{\n\t\t\t\"dokumentId\": \"{{dokId}}\",\n\t\t\t\"seite\": 1\n\t\t}\n\t]\n}"
 								},
 								"url": {
-									"raw": "https://api.europace2.de/v1/dokumente/freigabe",
+									"raw": "https://api.europace.de/v1/dokumente/freigabe",
 									"protocol": "https",
 									"host": [
 										"api",
@@ -1399,7 +1399,7 @@
 									}
 								],
 								"url": {
-									"raw": "https://api.europace2.de/v1/dokumente/freigabe/{{freigabeId}}/content",
+									"raw": "https://api.europace.de/v1/dokumente/freigabe/{{freigabeId}}/content",
 									"protocol": "https",
 									"host": [
 										"api",
@@ -1440,7 +1440,7 @@
 									}
 								],
 								"url": {
-									"raw": "https://api.europace2.de/v1/dokumente/freigabe?antragsNummer={{vorgangsNummer}}/1/1",
+									"raw": "https://api.europace.de/v1/dokumente/freigabe?antragsNummer={{vorgangsNummer}}/1/1",
 									"protocol": "https",
 									"host": [
 										"api",
@@ -1484,7 +1484,7 @@
 									}
 								],
 								"url": {
-									"raw": "https://api.europace2.de/v1/dokumente/{{dokId}}/preview?page=1&size=large",
+									"raw": "https://api.europace.de/v1/dokumente/{{dokId}}/preview?page=1&size=large",
 									"protocol": "https",
 									"host": [
 										"api",
@@ -1545,7 +1545,7 @@
 									}
 								],
 								"url": {
-									"raw": "https://api.europace2.de/v1/dokumente/zuordnungen?vorgangsNummer={{vorgangsNummer}}&antragsNummer={{vorgangsNummer}}/1/1",
+									"raw": "https://api.europace.de/v1/dokumente/zuordnungen?vorgangsNummer={{vorgangsNummer}}&antragsNummer={{vorgangsNummer}}/1/1",
 									"protocol": "https",
 									"host": [
 										"api",
