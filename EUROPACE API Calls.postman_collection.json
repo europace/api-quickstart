@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "7e74f21f-f024-46bf-aafe-3f97e5a7b07d",
+		"_postman_id": "f2b66605-234b-4d7a-a556-0c14e227c2c6",
 		"name": "EUROPACE API Calls",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -429,7 +429,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "61d21655-5529-452d-a739-fa87d1876fc6",
+						"id": "3f2b421d-0dd5-4afb-9459-784e123ff305",
 						"type": "text/javascript",
 						"exec": [
 							""
@@ -439,7 +439,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "ade0143a-8929-42b4-a1a6-5181f1ba6f0e",
+						"id": "89fda93d-aa80-4ef3-b657-c684c192ed1e",
 						"type": "text/javascript",
 						"exec": [
 							""
@@ -648,7 +648,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "ace2441b-c599-44db-89a0-e28af7cc180d",
+								"id": "0bf5963f-baf8-49ff-8f00-686b1ae802c9",
 								"exec": [
 									"var jsonData = JSON.parse(responseBody);",
 									"postman.setGlobalVariable(\"ermittlungsId\", jsonData.ermittlungsId);"
@@ -703,7 +703,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "32273e1f-9d52-497e-beae-6e9ea66e1b97",
+								"id": "5c6de982-0ea9-4f83-8c06-f6ff7820eff0",
 								"exec": [
 									"var jsonData = JSON.parse(responseBody);",
 									"postman.setGlobalVariable(\"ermittlungsId\", jsonData.ermittlungsId);"
@@ -758,7 +758,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "1ff5310e-38da-43eb-9165-6722e0287405",
+								"id": "9d70dc3b-1836-4c55-ba25-eae39c619f3e",
 								"exec": [
 									""
 								],
@@ -811,7 +811,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "1ff5310e-38da-43eb-9165-6722e0287405",
+								"id": "2fb3de19-6e7a-4f3a-a22a-60915c3d56c0",
 								"exec": [
 									""
 								],
@@ -866,7 +866,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "1ff5310e-38da-43eb-9165-6722e0287405",
+								"id": "16b1824a-926f-49e9-85f0-16bc205b88ad",
 								"exec": [
 									""
 								],
@@ -921,7 +921,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "1ff5310e-38da-43eb-9165-6722e0287405",
+								"id": "6fd0c88c-974b-475e-a80a-a4849d4b1b4d",
 								"exec": [
 									""
 								],
@@ -985,7 +985,7 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "98bff1af-d731-4488-8d6a-477462a6be0e",
+										"id": "cf8f7370-2e70-4075-b1c8-a7ff016d2f04",
 										"exec": [
 											"var body = JSON.parse(responseBody);",
 											"pm.environment.set(\"dokId\", body.id);",
@@ -1168,7 +1168,7 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "3894eb8f-ee49-4aa4-b552-470a9634b065",
+										"id": "8cffa9e3-aba0-4c2b-b9a9-b08a12426188",
 										"exec": [
 											""
 										],
@@ -1330,7 +1330,7 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "8254c9e3-2b74-419c-9ef6-d266021652c8",
+										"id": "ff498bdc-b35e-4325-99d7-bcae9c13a92c",
 										"exec": [
 											"var body = JSON.parse(responseBody);",
 											"pm.environment.set(\"freigabeId\", body[0].id);"
@@ -1517,7 +1517,7 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "97db19c2-2c96-4ae9-9d90-803677026b8a",
+										"id": "0644f824-c3fb-4366-93de-c8c0068dbd5d",
 										"exec": [
 											""
 										],
@@ -1574,13 +1574,79 @@
 					],
 					"protocolProfileBehavior": {},
 					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Upload am Antrag",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"connection": true,
+							"accept-encoding": true,
+							"accept": true
+						}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-Authentication",
+								"value": "{{jwt}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "anzeigename",
+									"value": "Test2.pdf",
+									"type": "text"
+								},
+								{
+									"key": "teilAntragNummer",
+									"value": "EQ799Y/1/2",
+									"type": "text"
+								},
+								{
+									"key": "erstellungsdatum",
+									"value": "2020-05-05 09:46:55",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "sichtbarFuerVertrieb",
+									"value": "true",
+									"type": "text"
+								},
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/Users/wrede/Downloads/test.pdf"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://www.europace2.de/vorgang/dokumente",
+							"protocol": "https",
+							"host": [
+								"www",
+								"europace2",
+								"de"
+							],
+							"path": [
+								"vorgang",
+								"dokumente"
+							]
+						},
+						"description": "Upload eines Dokumentes am Antrag\n"
+					},
+					"response": []
 				}
 			],
 			"event": [
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "b202b802-958c-4846-8baf-67dc7b6b4a39",
+						"id": "7bb5eb2c-f855-4f56-bb2c-f22a56521b8d",
 						"type": "text/javascript",
 						"exec": [
 							"pm.expect(pm.environment.get(\"vorgangsNummer\"),\"vorgangsNummer muss fuer das aktuelle Environment definiert sein\").to.be.a('string')",
@@ -1903,7 +1969,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "57c24655-2bb4-441d-83c0-ef50f717cf44",
+						"id": "5f4fba85-aca5-42ef-825b-08dbe6a75d3d",
 						"exec": [
 							"var jsonData = JSON.parse(responseBody);",
 							"postman.setGlobalVariable(\"jwt\", jsonData.access_token);"
@@ -1955,7 +2021,7 @@
 		{
 			"listen": "prerequest",
 			"script": {
-				"id": "fb75e601-4f97-475d-9427-1d1bf60decc2",
+				"id": "4be956de-b471-4573-867f-513d84790ac5",
 				"type": "text/javascript",
 				"exec": [
 					"pm.globals.set(\"traceId\", \"EP-API-POSTMAN-COLLECTION-\" + _.random(1000, 9999));"
@@ -1965,7 +2031,7 @@
 		{
 			"listen": "test",
 			"script": {
-				"id": "80f40820-cb75-456b-9d47-3b031160c2a8",
+				"id": "cbb0fe2f-b145-4d51-b3a5-980b5ef91520",
 				"type": "text/javascript",
 				"exec": [
 					"console.info(\"traceId: \" + pm.globals.get(\"traceId\"))"
