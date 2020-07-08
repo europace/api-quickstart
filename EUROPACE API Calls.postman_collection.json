@@ -9,7 +9,7 @@
 			"name": "BaufiSmart Vorgaenge API",
 			"item": [
 				{
-					"name": "Vorgänge auslesen (alle)",
+					"name": "List Vorgänge",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -39,7 +39,7 @@
 					"response": []
 				},
 				{
-					"name": "Testvorgänge auslesen (alle)",
+					"name": "List Testvorgänge",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -232,7 +232,7 @@
 					]
 				},
 				{
-					"name": "Anträge an einem Vorgang auslesen",
+					"name": "List Anträge an einem Vorgang",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -423,6 +423,44 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "List Vorgänge (OAuth)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{ACCESS_TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-TraceId",
+								"value": "{{TRACE_ID}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://api.europace2.de/v2/vorgaenge",
+							"protocol": "https",
+							"host": [
+								"api",
+								"europace2",
+								"de"
+							],
+							"path": [
+								"v2",
+								"vorgaenge"
+							]
+						},
+						"description": "Gebe Liste mit Vorgängen zurück mittels eines OAuth Access Token"
+					},
+					"response": []
 				}
 			],
 			"event": [
@@ -453,7 +491,7 @@
 			"name": "BaufiSmart Antraege API",
 			"item": [
 				{
-					"name": "Antraege auslesen (alle)",
+					"name": "List Antraege",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -485,7 +523,7 @@
 					"response": []
 				},
 				{
-					"name": "Testantraege auslesen (alle) ",
+					"name": "List Testantraege",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -1658,10 +1696,10 @@
 			"protocolProfileBehavior": {}
 		},
 		{
-			"name": "Partnermanagement PEX",
+			"name": "Partner API (PEX)",
 			"item": [
 				{
-					"name": "Kontaktdaten auslesen",
+					"name": "Kontaktdaten lesen",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -1679,6 +1717,47 @@
 								"type": "text"
 							}
 						],
+						"url": {
+							"raw": "https://www.europace2.de/partnermanagement/partner/{{partner_id}}/kontaktdaten",
+							"protocol": "https",
+							"host": [
+								"www",
+								"europace2",
+								"de"
+							],
+							"path": [
+								"partnermanagement",
+								"partner",
+								"{{partner_id}}",
+								"kontaktdaten"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Kontaktdaten schreiben",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "X-Authentication",
+								"value": "{{jwt}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "X-TraceId",
+								"value": "{{traceId}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"firmenname\":\"Mustermann AG\"\n}"
+						},
 						"url": {
 							"raw": "https://www.europace2.de/partnermanagement/partner/{{partner_id}}/kontaktdaten",
 							"protocol": "https",
@@ -1964,7 +2043,7 @@
 			"protocolProfileBehavior": {}
 		},
 		{
-			"name": "Login -> JWT erzeugen",
+			"name": "Get Legacy Access-Token",
 			"event": [
 				{
 					"listen": "test",
@@ -1999,7 +2078,10 @@
 							"value": "{{api_key}}",
 							"type": "text"
 						}
-					]
+					],
+					"options": {
+						"urlencoded": {}
+					}
 				},
 				"url": {
 					"raw": "https://api.europace.de/login",
@@ -2011,6 +2093,96 @@
 					],
 					"path": [
 						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get OAuth Access-Token",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "0c89ebc2-685d-4da6-8fa2-73a1592c0c77",
+						"exec": [
+							"if ( pm.variables.get(\"UPDATE_ENVIRONMENT\") == \"true\"",
+							"    && pm.response.code == 200 ) {",
+							"    pm.environment.set(\"ACCESS_TOKEN\", pm.response.json().access_token);",
+							"}"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "{{CLIENT_SECRET}}",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "{{CLIENT_ID}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-TraceId",
+						"type": "text",
+						"value": "{{TRACE_ID}}"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "grant_type",
+							"value": "client_credentials",
+							"type": "text"
+						},
+						{
+							"key": "scope",
+							"value": "{{SCOPES}}",
+							"type": "text"
+						},
+						{
+							"key": "audience",
+							"value": "{{AUDIENCE}}",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "subject",
+							"value": "{{SUBJECT}}",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "actor",
+							"value": "{{ACTOR}}",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "https://api.europace.de/auth/token",
+					"protocol": "https",
+					"host": [
+						"api",
+						"europace",
+						"de"
+					],
+					"path": [
+						"auth",
+						"token"
 					]
 				}
 			},
