@@ -458,7 +458,7 @@
 								"vorgaenge"
 							]
 						},
-						"description": "Gib Liste mit Vorgängen zurück mittels eines OAuth Access Token"
+						"description": "Gebe Liste mit Vorgängen zurück mittels eines OAuth Access Token"
 					},
 					"response": []
 				}
@@ -2106,10 +2106,9 @@
 					"script": {
 						"id": "0c89ebc2-685d-4da6-8fa2-73a1592c0c77",
 						"exec": [
-							"if ( pm.variables.get(\"UPDATE_ENVIRONMENT\") == \"true\"",
-							"    && pm.response.code == 200 ) {",
-							"    pm.environment.set(\"ACCESS_TOKEN\", pm.response.json().access_token);",
-							"}"
+							"var jsonData = JSON.parse(responseBody);",
+							"postman.setGlobalVariable(\"ACCESS_TOKEN\", jsonData.access_token);",
+							""
 						],
 						"type": "text/javascript"
 					}
