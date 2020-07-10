@@ -8,7 +8,7 @@ Eine Übersicht aller APIs ist hier zu finden: https://developer.europace.de/
 
 1. Du benötigst eine API Zugriff. Das beinhaltet entweder:
    * OAuth Client Credentials. Wo diese herkommen ist [hier beschrieben](https://europace2.zendesk.com/hc/de/articles/360012514780).
-   * eine PartnerID und einen API Key (Für eine Legacy Autorisierung).
+   * eine PartnerID und einen API Key (für eine "Legacy Autorisierung").
 2. Du benötigst mindestens einen Vorgang oder einen Antrag, um die Daten auszulesen.
 
 
@@ -27,11 +27,11 @@ Eine Übersicht aller APIs ist hier zu finden: https://developer.europace.de/
 
 | Variablen Name | Woher bekomme ich das? |
 | -------------- | ---------------------- |
-| api_key        | Siehe oben unter "Voraussetzung" |
-| partner_id     | Siehe oben unter "Voraussetzung" |
+| API_KEY        | Siehe oben unter "Voraussetzung" |
+| PARTNER_ID     | Siehe oben unter "Voraussetzung" |
 | CLIENT_ID      | Siehe oben unter "Voraussetzung" |
 | CLIENT_SECRET  | Siehe oben unter "Voraussetzung" |
-| SCOPES         | Siehe [hier](https://github.com/europace/authorization-api/blob/master/docs/scopes.md) |
+| SCOPES         | Optional. Siehe [hier](https://github.com/europace/authorization-api/blob/master/docs/scopes.md) |
 
 
 ![](screen4.png)
