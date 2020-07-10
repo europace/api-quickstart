@@ -23,7 +23,7 @@ Eine Übersicht aller APIs ist hier zu finden: https://developer.europace.de/
 5.
 1. Ein neues "Environment" anlegen in dem mehrere notwendige Variablen eingetragen werden müssen. Dafür das Icon oben rechts klicken:
 ![](screen3.png)
-1. Gebe deinem Environment einen Namen und legen darin die folgende Variablen an:
+1. Gib deinem Environment einen Namen und lege darin die folgende Variablen an:
 
 | Variablen Name | Woher bekomme ich das? |
 | -------------- | ---------------------- |
