@@ -458,7 +458,7 @@
 								"vorgaenge"
 							]
 						},
-						"description": "Gebe Liste mit Vorgängen zurück mittels eines OAuth Access Token"
+						"description": "Gib Liste mit Vorgängen zurück mittels eines OAuth Access Token"
 					},
 					"response": []
 				}
