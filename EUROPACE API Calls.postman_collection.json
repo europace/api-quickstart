@@ -441,7 +441,7 @@
 						"header": [
 							{
 								"key": "X-TraceId",
-								"value": "{{TRACE_ID}}",
+								"value": "{{traceId}}",
 								"type": "text"
 							}
 						],
@@ -2070,12 +2070,12 @@
 					"urlencoded": [
 						{
 							"key": "username",
-							"value": "{{partner_id}}",
+							"value": "{{PARTNER_ID}}",
 							"type": "text"
 						},
 						{
 							"key": "password",
-							"value": "{{api_key}}",
+							"value": "{{API_KEY}}",
 							"type": "text"
 						}
 					],
@@ -2104,7 +2104,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "0c89ebc2-685d-4da6-8fa2-73a1592c0c77",
+						"id": "91b0ff11-9840-4050-a78b-ae3f1af25539",
 						"exec": [
 							"var jsonData = JSON.parse(responseBody);",
 							"postman.setGlobalVariable(\"ACCESS_TOKEN\", jsonData.access_token);",
@@ -2135,7 +2135,7 @@
 					{
 						"key": "X-TraceId",
 						"type": "text",
-						"value": "{{TRACE_ID}}"
+						"value": "{{traceId}}"
 					}
 				],
 				"body": {
@@ -2149,7 +2149,9 @@
 						{
 							"key": "scope",
 							"value": "{{SCOPES}}",
-							"type": "text"
+							"description": "Wenn das hier leer bleibt, dann bekommt der Client alle Scopes",
+							"type": "text",
+							"disabled": true
 						},
 						{
 							"key": "audience",
