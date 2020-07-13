@@ -6,7 +6,9 @@ Eine Übersicht aller APIs ist hier zu finden: https://developer.europace.de/
 
 ## 📣 Voraussetzung um diese Calls auszuführen:
 
-1. Du benötigst von EUROPACE eine PartnerID und einen API Key. Diese kannst Du von deinem EUROPACE Ansprechpartner bekommen.
+1. Du benötigst eine API Zugriff. Das beinhaltet entweder:
+   * OAuth Client Credentials. Wo diese herkommen ist [hier beschrieben](https://europace2.zendesk.com/hc/de/articles/360012514780).
+   * eine PartnerID und einen API Key (für eine "Legacy Autorisierung").
 2. Du benötigst mindestens einen Vorgang oder einen Antrag, um die Daten auszulesen.
 
 
@@ -19,12 +21,21 @@ Eine Übersicht aller APIs ist hier zu finden: https://developer.europace.de/
 ![](screen1.png)
 
 5.
-1. Ein neues "Environment" anlegen, in dem Dein API Key und Parnter ID als Variable gespeichert wird. Dafür das Icon oben rechts klicken:
+1. Ein neues "Environment" anlegen in dem mehrere notwendige Variablen eingetragen werden müssen. Dafür das Icon oben rechts klicken:
 ![](screen3.png)
-1. Gebe deinem Environment einen Namen und legen darin die 2 Variablen folgendermassen an:
+1. Gib deinem Environment einen Namen und lege darin die folgende Variablen an:
+
+| Variablen Name | Woher bekomme ich das? |
+| -------------- | ---------------------- |
+| API_KEY        | Siehe oben unter "Voraussetzung" |
+| PARTNER_ID     | Siehe oben unter "Voraussetzung" |
+| CLIENT_ID      | Siehe oben unter "Voraussetzung" |
+| CLIENT_SECRET  | Siehe oben unter "Voraussetzung" |
+| SCOPES         | Optional. Siehe [hier](https://github.com/europace/authorization-api/blob/master/docs/scopes.md) |
+
+
 ![](screen4.png)
 1. Nach dem anlegen des Environments stelle sicher, dass es auch aktiv ist:
 ![](screen5.png)
-1. . Den Aufruf in der neuen Collection in der Linken spalte (`Login -> JWT erzeugen`) anklicken
+1. . Den Aufruf in der neuen Collection in der Linken spalte (`Get Access-Token`) anklicken
 1. Bei klick auf _send_ müsste jetzt ein `access_token` zurück kommen.
-1. Dieses ist (k)ein Testeintrag - hier gibt es nichts zu sehen.
