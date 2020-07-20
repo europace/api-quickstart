@@ -1938,7 +1938,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Bearer {{jwt}}"
+								"value": "Bearer {{ACCESS_TOKEN}}"
 							},
 							{
 								"key": "Content-Type",
@@ -1946,15 +1946,16 @@
 							}
 						],
 						"url": {
-							"raw": "https://api.europace.de/v1/ereignisse/CH6407",
+							"raw": "https://baufismart.api.europace.de/v2/ereignisse/CH6407",
 							"protocol": "https",
 							"host": [
+								"baufismart",
 								"api",
 								"europace",
 								"de"
 							],
 							"path": [
-								"v1",
+								"v2",
 								"ereignisse",
 								"CH6407"
 							]
@@ -1969,7 +1970,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Bearer {{jwt}}"
+								"value": "Bearer {{ACCESS_TOKEN}}"
 							},
 							{
 								"key": "Content-Type",
@@ -1977,15 +1978,16 @@
 							}
 						],
 						"url": {
-							"raw": "https://api.europace.de/v1/ereignisse/WB0M5Y/1/1",
+							"raw": "https://baufismart.api.europace.de/v2/ereignisse/WB0M5Y/1/1",
 							"protocol": "https",
 							"host": [
+								"baufismart",
 								"api",
 								"europace",
 								"de"
 							],
 							"path": [
-								"v1",
+								"v2",
 								"ereignisse",
 								"WB0M5Y",
 								"1",
