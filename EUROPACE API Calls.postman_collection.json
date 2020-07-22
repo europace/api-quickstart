@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "f2b66605-234b-4d7a-a556-0c14e227c2c6",
+		"_postman_id": "10b03057-8212-4bf5-b6e0-dfcc333bdd20",
 		"name": "EUROPACE API Calls",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -11,12 +11,18 @@
 				{
 					"name": "List Vorgänge",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer {{jwt}}"
-							},
 							{
 								"key": "Content-Type",
 								"value": "application/json"
@@ -41,12 +47,18 @@
 				{
 					"name": "List Testvorgänge",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer {{jwt}}"
-							},
 							{
 								"key": "Content-Type",
 								"value": "application/json"
@@ -77,12 +89,18 @@
 				{
 					"name": "Vorgang auslesen",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer {{jwt}}"
-							},
 							{
 								"key": "Content-Type",
 								"value": "application/json"
@@ -234,12 +252,18 @@
 				{
 					"name": "List Anträge an einem Vorgang",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer {{jwt}}"
-							},
 							{
 								"key": "Content-Type",
 								"value": "application/json"
@@ -392,12 +416,18 @@
 				{
 					"name": "Vorgang PATCHEN",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "PATCH",
 						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer {{jwt}}"
-							},
 							{
 								"key": "Content-Type",
 								"value": "application/json-patch+json"
@@ -423,51 +453,13 @@
 						}
 					},
 					"response": []
-				},
-				{
-					"name": "List Vorgänge (OAuth)",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{ACCESS_TOKEN}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [
-							{
-								"key": "X-TraceId",
-								"value": "{{traceId}}",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "https://api.europace2.de/v2/vorgaenge",
-							"protocol": "https",
-							"host": [
-								"api",
-								"europace2",
-								"de"
-							],
-							"path": [
-								"v2",
-								"vorgaenge"
-							]
-						},
-						"description": "Gebe Liste mit Vorgängen zurück mittels eines OAuth Access Token"
-					},
-					"response": []
 				}
 			],
 			"event": [
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "3f2b421d-0dd5-4afb-9459-784e123ff305",
+						"id": "75c51c49-a338-4c28-90ad-5e6cc6bbaea6",
 						"type": "text/javascript",
 						"exec": [
 							""
@@ -477,7 +469,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "89fda93d-aa80-4ef3-b657-c684c192ed1e",
+						"id": "028ca582-4891-46dd-8527-2f4da5c434f2",
 						"type": "text/javascript",
 						"exec": [
 							""
@@ -493,12 +485,18 @@
 				{
 					"name": "List Antraege",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer {{jwt}}"
-							},
 							{
 								"key": "Content-Type",
 								"value": "application/json"
@@ -525,12 +523,18 @@
 				{
 					"name": "List Testantraege",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer {{jwt}}"
-							},
 							{
 								"key": "Content-Type",
 								"value": "application/json"
@@ -563,12 +567,18 @@
 				{
 					"name": "Antrag auslesen",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer {{jwt}}"
-							},
 							{
 								"key": "Content-Type",
 								"value": "application/json"
@@ -597,52 +607,18 @@
 				{
 					"name": "Antrag Patchen (eigene Referenz)",
 					"request": {
-						"method": "PATCH",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer {{jwt}}"
-							},
-							{
-								"key": "Content-Type",
-								"name": "Content-Type",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "[\n\t{ \"op\": \"add\", \"path\": \"/antragsReferenz\", \"value\": \"whoop\" }\n]"
-						},
-						"url": {
-							"raw": "https://baufismart.api.europace.de/v2/antraege/Z11029/2/1",
-							"protocol": "https",
-							"host": [
-								"baufismart",
-								"api",
-								"europace",
-								"de"
-							],
-							"path": [
-								"v2",
-								"antraege",
-								"Z11029",
-								"2",
-								"1"
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
 							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Antrag Patchen (Ansprechpartner ändern)",
-					"request": {
+						},
 						"method": "PATCH",
 						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer {{jwt}}"
-							},
 							{
 								"key": "Content-Type",
 								"name": "Content-Type",
@@ -686,7 +662,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "0bf5963f-baf8-49ff-8f00-686b1ae802c9",
+								"id": "25179f89-4af4-4e9a-91db-b513bd0cb2de",
 								"exec": [
 									"var jsonData = JSON.parse(responseBody);",
 									"postman.setGlobalVariable(\"ermittlungsId\", jsonData.ermittlungsId);"
@@ -696,12 +672,18 @@
 						}
 					],
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "POST",
 						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer {{jwt}}"
-							},
 							{
 								"key": "Content-Type",
 								"value": "application/json"
@@ -741,7 +723,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "5c6de982-0ea9-4f83-8c06-f6ff7820eff0",
+								"id": "e36b30ef-7afc-417e-bdd1-0e0a4208148a",
 								"exec": [
 									"var jsonData = JSON.parse(responseBody);",
 									"postman.setGlobalVariable(\"ermittlungsId\", jsonData.ermittlungsId);"
@@ -751,12 +733,18 @@
 						}
 					],
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "POST",
 						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer {{jwt}}"
-							},
 							{
 								"key": "Content-Type",
 								"value": "application/json"
@@ -796,7 +784,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "9d70dc3b-1836-4c55-ba25-eae39c619f3e",
+								"id": "1586a11a-c77b-4b86-b40c-6ea3024c1568",
 								"exec": [
 									""
 								],
@@ -808,12 +796,18 @@
 						"disableBodyPruning": true
 					},
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer {{jwt}}"
-							},
 							{
 								"key": "Content-Type",
 								"value": "application/json"
@@ -849,7 +843,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "2fb3de19-6e7a-4f3a-a22a-60915c3d56c0",
+								"id": "9382bf43-5686-4c73-81ec-468508ac6eef",
 								"exec": [
 									""
 								],
@@ -861,12 +855,18 @@
 						"disableBodyPruning": true
 					},
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer {{jwt}}"
-							},
 							{
 								"key": "Content-Type",
 								"value": "application/json"
@@ -904,7 +904,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "16b1824a-926f-49e9-85f0-16bc205b88ad",
+								"id": "c4d37750-bb2a-48da-af14-c80333e9a42e",
 								"exec": [
 									""
 								],
@@ -916,12 +916,18 @@
 						"disableBodyPruning": true
 					},
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer {{jwt}}"
-							},
 							{
 								"key": "Content-Type",
 								"value": "application/json"
@@ -959,7 +965,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "6fd0c88c-974b-475e-a80a-a4849d4b1b4d",
+								"id": "3ec546cb-cc5e-45fa-95dd-0b958e081293",
 								"exec": [
 									""
 								],
@@ -971,12 +977,18 @@
 						"disableBodyPruning": true
 					},
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer {{jwt}}"
-							},
 							{
 								"key": "Content-Type",
 								"value": "application/json"
@@ -1023,7 +1035,7 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "cf8f7370-2e70-4075-b1c8-a7ff016d2f04",
+										"id": "058fa05c-7c20-4020-b95d-70cacc4ba397",
 										"exec": [
 											"var body = JSON.parse(responseBody);",
 											"pm.environment.set(\"dokId\", body.id);",
@@ -1206,7 +1218,7 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "8cffa9e3-aba0-4c2b-b9a9-b08a12426188",
+										"id": "68ac81b2-8a09-4b80-8060-6bd6e8d7336b",
 										"exec": [
 											""
 										],
@@ -1368,7 +1380,7 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "ff498bdc-b35e-4325-99d7-bcae9c13a92c",
+										"id": "7609d907-1d7d-4fdb-84e9-a45bf6ce96e2",
 										"exec": [
 											"var body = JSON.parse(responseBody);",
 											"pm.environment.set(\"freigabeId\", body[0].id);"
@@ -1555,7 +1567,7 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "0644f824-c3fb-4366-93de-c8c0068dbd5d",
+										"id": "426d766d-a786-45e8-ab76-27f05d470680",
 										"exec": [
 											""
 										],
@@ -1684,7 +1696,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "7bb5eb2c-f855-4f56-bb2c-f22a56521b8d",
+						"id": "c63b2b5e-a985-4f3a-800a-f269876bb294",
 						"type": "text/javascript",
 						"exec": [
 							"pm.expect(pm.environment.get(\"vorgangsNummer\"),\"vorgangsNummer muss fuer das aktuelle Environment definiert sein\").to.be.a('string')",
@@ -1718,7 +1730,7 @@
 							}
 						],
 						"url": {
-							"raw": "https://www.europace2.de/partnermanagement/partner/{{partner_id}}/kontaktdaten",
+							"raw": "https://www.europace2.de/partnermanagement/partner/{{PARTNER_ID}}/kontaktdaten",
 							"protocol": "https",
 							"host": [
 								"www",
@@ -1728,7 +1740,7 @@
 							"path": [
 								"partnermanagement",
 								"partner",
-								"{{partner_id}}",
+								"{{PARTNER_ID}}",
 								"kontaktdaten"
 							]
 						}
@@ -1759,7 +1771,7 @@
 							"raw": "{\n  \"firmenname\":\"Mustermann AG\"\n}"
 						},
 						"url": {
-							"raw": "https://www.europace2.de/partnermanagement/partner/{{partner_id}}/kontaktdaten",
+							"raw": "https://www.europace2.de/partnermanagement/partner/{{PARTNER_ID}}/kontaktdaten",
 							"protocol": "https",
 							"host": [
 								"www",
@@ -1769,7 +1781,7 @@
 							"path": [
 								"partnermanagement",
 								"partner",
-								"{{partner_id}}",
+								"{{PARTNER_ID}}",
 								"kontaktdaten"
 							]
 						}
@@ -1796,7 +1808,7 @@
 							}
 						],
 						"url": {
-							"raw": "https://www.europace2.de/partnermanagement/partner/{{partner_id}}/partnerkennzeichen",
+							"raw": "https://www.europace2.de/partnermanagement/partner/{{PARTNER_ID}}/partnerkennzeichen",
 							"protocol": "https",
 							"host": [
 								"www",
@@ -1806,7 +1818,7 @@
 							"path": [
 								"partnermanagement",
 								"partner",
-								"{{partner_id}}",
+								"{{PARTNER_ID}}",
 								"partnerkennzeichen"
 							]
 						}
@@ -1833,7 +1845,7 @@
 							}
 						],
 						"url": {
-							"raw": "https://www.europace2.de/partnermanagement/partner/{{partner_id}}/uebernahmeRechtFuer",
+							"raw": "https://www.europace2.de/partnermanagement/partner/{{PARTNER_ID}}/uebernahmeRechtFuer",
 							"protocol": "https",
 							"host": [
 								"www",
@@ -1843,7 +1855,7 @@
 							"path": [
 								"partnermanagement",
 								"partner",
-								"{{partner_id}}",
+								"{{PARTNER_ID}}",
 								"uebernahmeRechtFuer"
 							]
 						}
@@ -1869,7 +1881,7 @@
 							}
 						],
 						"url": {
-							"raw": "https://www.europace2.de/partnermanagement/partner/{{partner_id}}/handelsbeziehungen?datenkontext=ECHT_GESCHAEFT",
+							"raw": "https://www.europace2.de/partnermanagement/partner/{{PARTNER_ID}}/handelsbeziehungen?datenkontext=ECHT_GESCHAEFT",
 							"protocol": "https",
 							"host": [
 								"www",
@@ -1879,7 +1891,7 @@
 							"path": [
 								"partnermanagement",
 								"partner",
-								"{{partner_id}}",
+								"{{PARTNER_ID}}",
 								"handelsbeziehungen"
 							],
 							"query": [
@@ -1889,39 +1901,6 @@
 								}
 							]
 						}
-					},
-					"response": []
-				},
-				{
-					"name": "Sonderfall: einloggen mit einer untergeordneten Partner ID",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "x-partnerid",
-								"value": "EJZ98",
-								"type": "text"
-							},
-							{
-								"key": "x-apikey",
-								"value": "{{api_key}}",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "https://www.europace2.de/partnermanagement/login.api",
-							"protocol": "https",
-							"host": [
-								"www",
-								"europace2",
-								"de"
-							],
-							"path": [
-								"partnermanagement",
-								"login.api"
-							]
-						},
-						"description": "Login JWT landen im authentication Cookie.\n\nSiehe https://github.com/europace/login-api"
 					},
 					"response": []
 				}
@@ -2004,12 +1983,18 @@
 				{
 					"name": "Vorgang auslesen",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "POST",
 						"header": [
-							{
-								"key": "X-Authentication",
-								"value": "{{jwt}}"
-							},
 							{
 								"key": "Content-Type",
 								"value": "application/json;charset=utf-8"
@@ -2019,7 +2004,7 @@
 							"mode": "graphql",
 							"graphql": {
 								"query": "query getVorgang($vorgangsnummer: String!) {\n    vorgang(vorgangsnummer: $vorgangsnummer) {\n        vorgangsnummer\n        kundenbetreuer {\n            partnerId\n        }\n        antragsteller1 {\n            personendaten {\n                vorname\n                nachname\n           }\n        }\n        antragsteller2 {\n            personendaten {\n                vorname\n                nachname\n            }\n        }\n        antraege {\n            produktanbieterstatus {\n                status\n            }\n        }\n    }\n}\n",
-								"variables": "{\n    \"vorgangsnummer\": \"123456\"\n}\n"
+								"variables": "{\n    \"vorgangsnummer\": \"AY0916\"\n}\n"
 							}
 						},
 						"url": {
@@ -2048,7 +2033,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "5f4fba85-aca5-42ef-825b-08dbe6a75d3d",
+						"id": "5c328512-5306-461f-9092-aaa9f2a1260f",
 						"exec": [
 							"var jsonData = JSON.parse(responseBody);",
 							"postman.setGlobalVariable(\"jwt\", jsonData.access_token);"
@@ -2104,10 +2089,10 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "91b0ff11-9840-4050-a78b-ae3f1af25539",
+						"id": "d6905ee8-49a5-48f8-bb08-b10c3eca7b23",
 						"exec": [
 							"var jsonData = JSON.parse(responseBody);",
-							"postman.setGlobalVariable(\"ACCESS_TOKEN\", jsonData.access_token);",
+							"postman.setGlobalVariable(\"access_token\", jsonData.access_token);",
 							""
 						],
 						"type": "text/javascript"
@@ -2194,7 +2179,7 @@
 		{
 			"listen": "prerequest",
 			"script": {
-				"id": "4be956de-b471-4573-867f-513d84790ac5",
+				"id": "c1b9eaab-99b6-432f-9ed3-eac812b37df2",
 				"type": "text/javascript",
 				"exec": [
 					"pm.globals.set(\"traceId\", \"EP-API-POSTMAN-COLLECTION-\" + _.random(1000, 9999));"
@@ -2204,7 +2189,7 @@
 		{
 			"listen": "test",
 			"script": {
-				"id": "cbb0fe2f-b145-4d51-b3a5-980b5ef91520",
+				"id": "1f64c738-0273-46e3-a672-205643e1936d",
 				"type": "text/javascript",
 				"exec": [
 					"console.info(\"traceId: \" + pm.globals.get(\"traceId\"))"
