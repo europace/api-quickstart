@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "10b03057-8212-4bf5-b6e0-dfcc333bdd20",
+		"_postman_id": "22a6b062-f2d1-43f6-8494-9f0a6f77c555",
 		"name": "EUROPACE API Calls",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -459,7 +459,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "75c51c49-a338-4c28-90ad-5e6cc6bbaea6",
+						"id": "06a26d97-4b99-4366-b1d9-67f45ac62ebf",
 						"type": "text/javascript",
 						"exec": [
 							""
@@ -469,7 +469,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "028ca582-4891-46dd-8527-2f4da5c434f2",
+						"id": "d89c0db3-9477-4480-ba98-7a861ae9934a",
 						"type": "text/javascript",
 						"exec": [
 							""
@@ -662,7 +662,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "25179f89-4af4-4e9a-91db-b513bd0cb2de",
+								"id": "92df1567-6dfa-4ad9-8404-82bdb4c3cdad",
 								"exec": [
 									"var jsonData = JSON.parse(responseBody);",
 									"postman.setGlobalVariable(\"ermittlungsId\", jsonData.ermittlungsId);"
@@ -723,7 +723,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "e36b30ef-7afc-417e-bdd1-0e0a4208148a",
+								"id": "87bc26fd-bd5b-47d8-9609-a7e90d49d341",
 								"exec": [
 									"var jsonData = JSON.parse(responseBody);",
 									"postman.setGlobalVariable(\"ermittlungsId\", jsonData.ermittlungsId);"
@@ -784,7 +784,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "1586a11a-c77b-4b86-b40c-6ea3024c1568",
+								"id": "fd5bfe51-6251-419b-b783-5aa54a9b4fb3",
 								"exec": [
 									""
 								],
@@ -843,7 +843,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "9382bf43-5686-4c73-81ec-468508ac6eef",
+								"id": "c503b433-68e4-4972-845a-4fb481aa3750",
 								"exec": [
 									""
 								],
@@ -904,7 +904,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "c4d37750-bb2a-48da-af14-c80333e9a42e",
+								"id": "db0d759e-1690-4dcb-8c6e-453b8ecb6be8",
 								"exec": [
 									""
 								],
@@ -965,7 +965,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "3ec546cb-cc5e-45fa-95dd-0b958e081293",
+								"id": "43a76543-3b47-421f-8406-8063667c35e9",
 								"exec": [
 									""
 								],
@@ -1035,7 +1035,7 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "058fa05c-7c20-4020-b95d-70cacc4ba397",
+										"id": "3abfd2f6-42fd-4003-a304-b9bc11842028",
 										"exec": [
 											"var body = JSON.parse(responseBody);",
 											"pm.environment.set(\"dokId\", body.id);",
@@ -1218,7 +1218,7 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "68ac81b2-8a09-4b80-8060-6bd6e8d7336b",
+										"id": "997f59a3-e690-4117-95d2-19dda6ba6d9e",
 										"exec": [
 											""
 										],
@@ -1380,7 +1380,7 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "7609d907-1d7d-4fdb-84e9-a45bf6ce96e2",
+										"id": "805317bf-b8b1-429e-b867-8ac181a04149",
 										"exec": [
 											"var body = JSON.parse(responseBody);",
 											"pm.environment.set(\"freigabeId\", body[0].id);"
@@ -1567,7 +1567,7 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "426d766d-a786-45e8-ab76-27f05d470680",
+										"id": "0c096182-9be5-441d-bbe4-28d75248af22",
 										"exec": [
 											""
 										],
@@ -1696,7 +1696,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "c63b2b5e-a985-4f3a-800a-f269876bb294",
+						"id": "fc38799b-daa2-402b-83c4-fa09c8667ac5",
 						"type": "text/javascript",
 						"exec": [
 							"pm.expect(pm.environment.get(\"vorgangsNummer\"),\"vorgangsNummer muss fuer das aktuelle Environment definiert sein\").to.be.a('string')",
@@ -1913,12 +1913,18 @@
 				{
 					"name": "Ereignisse Auslesen (VorgangsNr)",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer {{ACCESS_TOKEN}}"
-							},
 							{
 								"key": "Content-Type",
 								"value": "application/json"
@@ -1945,12 +1951,18 @@
 				{
 					"name": "Ereignisse Auslesen (AntragsNr)",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer {{ACCESS_TOKEN}}"
-							},
 							{
 								"key": "Content-Type",
 								"value": "application/json"
@@ -2035,7 +2047,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "5c328512-5306-461f-9092-aaa9f2a1260f",
+						"id": "a933b768-08b8-4180-a28b-753a4aee268f",
 						"exec": [
 							"var jsonData = JSON.parse(responseBody);",
 							"postman.setGlobalVariable(\"jwt\", jsonData.access_token);"
@@ -2091,7 +2103,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "d6905ee8-49a5-48f8-bb08-b10c3eca7b23",
+						"id": "ebb987ea-3d39-41d2-b4ec-69a84048dd85",
 						"exec": [
 							"var jsonData = JSON.parse(responseBody);",
 							"postman.setGlobalVariable(\"access_token\", jsonData.access_token);",
@@ -2181,7 +2193,7 @@
 		{
 			"listen": "prerequest",
 			"script": {
-				"id": "c1b9eaab-99b6-432f-9ed3-eac812b37df2",
+				"id": "b2946869-0919-4373-9165-8ef6bf5276f3",
 				"type": "text/javascript",
 				"exec": [
 					"pm.globals.set(\"traceId\", \"EP-API-POSTMAN-COLLECTION-\" + _.random(1000, 9999));"
@@ -2191,7 +2203,7 @@
 		{
 			"listen": "test",
 			"script": {
-				"id": "1f64c738-0273-46e3-a672-205643e1936d",
+				"id": "7e5da87b-512b-42d2-bd34-4e701fb1b786",
 				"type": "text/javascript",
 				"exec": [
 					"console.info(\"traceId: \" + pm.globals.get(\"traceId\"))"
