@@ -2,8 +2,6 @@
 
 Probeaufrufe (Calls) der APIs sind sehr hilfreich, um schnell einzusteigen. Dafür empfehlen wir [Postman](https://www.getpostman.com/), was auf Windows, Mac OS und Linux funktioniert.
 
-Eine Übersicht aller APIs ist hier zu finden: https://developer.europace.de/
-
 ## Voraussetzung um diese Calls auszuführen:
 
 1. Du benötigst eine API Zugriff. Das beinhaltet entweder:
