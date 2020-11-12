@@ -30,7 +30,10 @@ Probeaufrufe (Calls) der APIs sind sehr hilfreich, um schnell einzusteigen. Daf�
 | SCOPES         | Optional. Siehe [hier](https://github.com/europace/authorization-api/blob/master/docs/scopes.md) |
 
 ![](https://raw.githubusercontent.com/europace/api-schnellstart/master/screen4.png)
+
 5. Stelle nach dem Anlegen der _Environment_ sicher, dass diese auch aktiv ist:
 ![](https://raw.githubusercontent.com/europace/api-schnellstart/master/screen5.png)
-6. Den Aufruf in der neuen Collection in der Linken spalte (`Get Access-Token`) anklicken
+
+6. Den Aufruf in der neuen Collection in der Linken spalte (`Get OAuth Access-Token`) anklicken
+
 7. Beim Klick auf _send_ müsste jetzt ein `access_token` zurück kommen.
