@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "960a4e47-3165-40bc-a971-4e34b2df0fda",
+		"_postman_id": "e0d25fa8-01ba-44bc-b878-d56b6dbfa5fa",
 		"name": "EUROPACE API Calls",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -677,6 +677,57 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Gegenangebot stellen",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-traceId",
+								"value": "{{traceId}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"kennung\": \"Kommentar in der Ergebnissliste\",\n    \"darlehen\": [\n        {\n            \"sollZins\": 0.0155,\n            \"effektivZins\": 0.0158,\n            \"rateMonatlich\": 1227.7,\n            \"darlehensBetrag\": 300000.00,\n            \"darlehensTyp\": \"ANNUITAETEN_DARLEHEN\",\n            \"vertriebsProvisionGesamtAbsolut\": 8300,\n            \"auszahlungsBetrag\": 100000.00,\n            \"zinsBindungInJahren\": 10,\n            \"sonderTilgungJaehrlich\": 0.1,\n            \"tilgungsBeginnAm\": \"2020-11-30\",\n            \"anfaenglicheTilgung\": 0.02,\n            \"bereitstellungsZinsFreieZeitInMonaten\": 3,\n            \"bereitstellungsZins\": 0.03,\n            \"laufzeitKalkulatorischInJahren\": 39,\n            \"produktDetails\": \"Details zur Finanzprodukt\"\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://baufismart.api.europace.de/v2/antraege/UE0MX8/1/1/gegenangebot",
+							"protocol": "https",
+							"host": [
+								"baufismart",
+								"api",
+								"europace",
+								"de"
+							],
+							"path": [
+								"v2",
+								"antraege",
+								"UE0MX8",
+								"1",
+								"1",
+								"gegenangebot"
+							]
+						}
+					},
+					"response": []
 				}
 			],
 			"protocolProfileBehavior": {}
@@ -690,7 +741,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "5dd0e841-f2ef-46c9-916f-f8210e3e6e9d",
+								"id": "305cb451-b572-4780-86e0-1b9137efdd7a",
 								"exec": [
 									"var jsonData = JSON.parse(responseBody);",
 									"postman.setGlobalVariable(\"ermittlungsId\", jsonData.ermittlungsId);"
@@ -751,7 +802,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "90db0e40-b946-4209-882e-e740c62efb30",
+								"id": "cdf967ec-c2a9-4daa-a9bc-0300c2b463e9",
 								"exec": [
 									"var jsonData = JSON.parse(responseBody);",
 									"postman.setGlobalVariable(\"ermittlungsId\", jsonData.ermittlungsId);"
@@ -817,7 +868,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "1d5c3cd6-51bf-431d-99cf-77b0249732fd",
+								"id": "ff29a415-7427-4d8e-87c0-2d8d0de82e73",
 								"exec": [
 									""
 								],
@@ -881,7 +932,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "5f71064d-9974-41e1-ae47-dc47f0fbf16a",
+								"id": "103930ad-5196-4bd8-b1e2-1a3d4e6fa25a",
 								"exec": [
 									""
 								],
@@ -947,7 +998,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "50c7837e-eff6-4660-adfc-9e6ff30a60ba",
+								"id": "b6833ce6-dc95-4032-95f2-d2b550ca183f",
 								"exec": [
 									""
 								],
@@ -1013,7 +1064,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "1ceac19c-0e82-4c16-b934-f113f71e1ef8",
+								"id": "97529b1e-f0d3-4a52-8cb7-7076a798ebae",
 								"exec": [
 									""
 								],
@@ -1088,7 +1139,7 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "39f14551-684c-4fcf-8351-03aa84a048c1",
+										"id": "ea2d5fca-69c6-48a7-ac92-cd333528ed42",
 										"exec": [
 											"var body = JSON.parse(responseBody);",
 											"pm.environment.set(\"dokId\", body.id);",
@@ -1271,7 +1322,7 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "3b0fe63e-c2ed-4cf8-bf55-4eda210fdb97",
+										"id": "f6f82f0d-2c01-4701-ab58-8c20b80f822c",
 										"exec": [
 											""
 										],
@@ -1433,7 +1484,7 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "e3492eb9-ac23-4eaf-ad6e-6259a64ea743",
+										"id": "053655ce-200b-4a1d-a8c6-f0222f113536",
 										"exec": [
 											"var body = JSON.parse(responseBody);",
 											"pm.environment.set(\"freigabeId\", body[0].id);"
@@ -1620,7 +1671,7 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "5548600b-854b-4cfc-ae68-5a9c8262e83a",
+										"id": "1c387f95-69c7-4690-b9f0-4bb036f4a0ed",
 										"exec": [
 											""
 										],
@@ -1749,7 +1800,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "44e4544e-b208-4763-b92e-c6cf904b3b1f",
+						"id": "34d4225d-35a0-44fa-9736-7eab9a507fdb",
 						"type": "text/javascript",
 						"exec": [
 							"pm.expect(pm.environment.get(\"vorgangsNummer\"),\"vorgangsNummer muss fuer das aktuelle Environment definiert sein\").to.be.a('string')",
@@ -2101,7 +2152,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "f18591fd-b2fd-4307-b85c-5a3b13e9085b",
+						"id": "03d6376a-aaa5-4a76-b244-b26eb22bed07",
 						"exec": [
 							"var jsonData = JSON.parse(responseBody);",
 							"postman.setGlobalVariable(\"jwt\", jsonData.access_token);"
@@ -2162,7 +2213,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "52ac3d26-f590-46a4-8f9a-5f9ea08e5b1d",
+						"id": "6b46396a-080a-4a73-9044-74316ca9c592",
 						"exec": [
 							"var jsonData = JSON.parse(responseBody);",
 							"postman.setGlobalVariable(\"access_token\", jsonData.access_token);",
@@ -2252,7 +2303,7 @@
 		{
 			"listen": "prerequest",
 			"script": {
-				"id": "eeba5f5e-b8a9-4660-b2fc-032a658d67d3",
+				"id": "a8a4fcbb-67f7-40d8-9c9a-a07b7f1db4a5",
 				"type": "text/javascript",
 				"exec": [
 					"pm.globals.set(\"traceId\", \"EP-API-POSTMAN-COLLECTION-\" + _.random(1000, 9999));"
@@ -2262,7 +2313,7 @@
 		{
 			"listen": "test",
 			"script": {
-				"id": "3c299e91-d175-4372-a26e-00925b58d287",
+				"id": "15d27dd8-6951-4b18-9c5c-cff069557280",
 				"type": "text/javascript",
 				"exec": [
 					"console.info(\"traceId: \" + pm.globals.get(\"traceId\"))"
