@@ -23,6 +23,11 @@
 								"key": "X-TraceId",
 								"value": "{{traceId}}",
 								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
 							}
 						],
 						"body": {
@@ -53,6 +58,11 @@
 							{
 								"key": "X-TraceId",
 								"value": "{{traceId}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
 								"type": "text"
 							}
 						],
