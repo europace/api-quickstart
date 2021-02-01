@@ -39,7 +39,7 @@
 								}
 							}
 						},
-						"url": "https://baufinanzierung.api.europace.de/kundenangaben",
+						"url": "https://baufinanzierung.api.europace.de/kundenangaben/body-validation",
 						"description": "Kundenangaben werden empfangen und validiert. Es wird jedoch KEIN Vorgang in BaufiSmart erzeugt. Der Scope 'baufinanzierung:echtgeschaeft' wird benötigt, wenn der Datenkontext 'ECHT_GESCHAEFT' gewählt wird."
 					},
 					"response": []
