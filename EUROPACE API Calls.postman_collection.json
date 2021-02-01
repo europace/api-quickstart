@@ -24,7 +24,7 @@
 						"method": "POST",
 						"header": [
 							{
-								"key": "X-traceId",
+								"key": "X-TraceId",
 								"value": "{{traceId}}",
 								"type": "text"
 							}
