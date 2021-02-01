@@ -1,67 +1,10 @@
 {
 	"info": {
-		"_postman_id": "22a6b062-f2d1-43f6-8494-9f0a6f77c555",
+		"_postman_id": "e0d25fa8-01ba-44bc-b878-d56b6dbfa5fa",
 		"name": "EUROPACE API Calls",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
-		{
-			"name": "BaufiSmart Kundenangaben API",
-			"item": [
-				{
-					"name": "neuen Vorgang anlegen",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json; version=1.0"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"kundenangaben\": {\n        \"haushalte\": [\n            {\n            \"kunden\": [\n                {\n                \"externeKundenId\": \"extKunde1\",\n                \"referenzId\": \"jsonRef1\",\n                \"personendaten\": {\n                    \"person\": {\n                    \"titel\": {\n                        \"prof\": false,\n                        \"dr\": false\n                    },\n                    \"anrede\": \"HERR\",\n                    \"vorname\": \"Toni\",\n                    \"nachname\": \"Tester\"\n                    },\n                    \"geburtsdatum\": \"1973-09-15\",\n                    \"geburtsort\": \"Geborensdorf\",\n                    \"staatsangehoerigkeit\": \"DE\",\n                    \"familienstand\": {\n                    \"@type\": \"VERHEIRATET\",\n                    \"guetertrennungVereinbart\": true\n                    }\n                },\n                \"wohnsituation\": {\n                    \"wohnhaftSeit\": \"2010-08-23\",\n                    \"anschrift\": {\n                    \"strasse\": \"Waisenstraße\",\n                    \"hausnummer\": \"24\",\n                    \"plz\": \"10179\",\n                    \"ort\": \"Berlin\"\n                    },\n                    \"voranschrift\": {\n                    \"strasse\": \"Mustergasse\",\n                    \"hausnummer\": \"23\",\n                    \"plz\": \"12345\",\n                    \"ort\": \"Musterort\"\n                    }\n                },\n                \"finanzielles\": {\n                    \"steuerId\": \"steuer1234567\",\n                    \"beschaeftigung\": {\n                    \"@type\": \"ANGESTELLTER\",\n                    \"beruf\": \"Ingenieur\",\n                    \"situationNachRenteneintritt\": {\n                        \"rentenbeginn\": \"2035-05-01\",\n                        \"gesetzlicheRenteMonatlich\": 2200.1,\n                        \"privateRenteMonatlich\": 2.2,\n                        \"sonstigesEinkommenMonatlich\": 1.3\n                    },\n                    \"beschaeftigungsverhaeltnis\": {\n                        \"arbeitgeber\": {\n                        \"name\": \"ABC GmbH\",\n                        \"inDeutschland\": true,\n                        \"inDeutschlandKommentar\": \"Kommentar c87a3d3b-7a32-414a-a04b-f6399ff58b6f\"\n                        },\n                        \"probezeit\": false,\n                        \"anzahlGehaelterProJahr\": \"ZWOELF\",\n                        \"beschaeftigtSeit\": \"2015-04-13\"\n                    },\n                    \"beschaeftigungsstatus\": \"UNBEFRISTET\"\n                    },\n                    \"einkommenNetto\": 5000.4,\n                    \"riesterangaben\": {\n                    \"bruttojahreseinkommenErwartet\": 5.5,\n                    \"bruttovorjahreseinkommen\": 6.6,\n                    \"sozialversicherungsnummer\": \"soz2134567\"\n                    }\n                },\n                \"kontakt\": {\n                    \"telefonnummer\": {\n                    \"vorwahl\": \"030\",\n                    \"nummer\": \"420860\"\n                    },\n                    \"email\": \"toni.tester@europace.de\",\n                    \"weitereKontaktmoeglichkeiten\": \"weiterer Kontakt\"\n                }\n                },\n                {\n                \"externeKundenId\": \"extKunde2\",\n                \"referenzId\": \"jsonRef2\",\n                \"personendaten\": {\n                    \"person\": {\n                    \"titel\": {\n                        \"prof\": false,\n                        \"dr\": true\n                    },\n                    \"anrede\": \"FRAU\",\n                    \"vorname\": \"Hildegard\",\n                    \"nachname\": \"Testerine\"\n                    },\n                    \"geburtsdatum\": \"1977-10-19\",\n                    \"geburtsort\": \"Geborenstadt\",\n                    \"staatsangehoerigkeit\": \"CA\",\n                    \"nichtEuBuerger\": {\n                    \"inDeutschlandSeit\": \"2001-05-14\",\n                    \"aufenthaltstitel\": {\n                        \"@type\": \"VISUM\",\n                        \"befristetBis\": \"2029-11-17\",\n                        \"arbeitserlaubnis\": {\n                        \"@type\": \"ARBEITSERLAUBNIS_VORHANDEN\",\n                        \"befristetBis\": \"2026-07-23\"\n                        }\n                    }\n                    },\n                    \"familienstand\": {\n                    \"@type\": \"LEDIG\"\n                    }\n                },\n                \"wohnsituation\": {\n                    \"wohnhaftSeit\": \"2011-09-24\",\n                    \"anschrift\": {\n                    \"strasse\": \"Neuestraße\",\n                    \"hausnummer\": \"26\",\n                    \"plz\": \"10180\",\n                    \"ort\": \"Dahlem\"\n                    },\n                    \"voranschrift\": {\n                    \"strasse\": \"Altestr.\",\n                    \"hausnummer\": \"25\",\n                    \"plz\": \"54321\",\n                    \"ort\": \"Musterort alt\"\n                    }\n                },\n                \"finanzielles\": {\n                    \"steuerId\": \"steuer8901234\",\n                    \"beschaeftigung\": {\n                    \"@type\": \"ARBEITER\",\n                    \"beruf\": \"Lehrerin\",\n                    \"situationNachRenteneintritt\": {\n                        \"rentenbeginn\": \"2038-04-02\",\n                        \"gesetzlicheRenteMonatlich\": 2300.7,\n                        \"privateRenteMonatlich\": 4.8,\n                        \"sonstigesEinkommenMonatlich\": 5.9\n                    },\n                    \"beschaeftigungsverhaeltnis\": {\n                        \"arbeitgeber\": {\n                        \"name\": \"Privatschule Freudental\",\n                        \"inDeutschland\": true,\n                        \"inDeutschlandKommentar\": \"Kommentar ee9dadad-7905-4493-9cde-2c0fd21cff37\"\n                        },\n                        \"probezeit\": true,\n                        \"anzahlGehaelterProJahr\": \"DREIZEHN\",\n                        \"beschaeftigtSeit\": \"2020-06-12\"\n                    },\n                    \"beschaeftigungsstatus\": \"UNBEFRISTET\"\n                    },\n                    \"einkommenNetto\": 6000.1,\n                    \"riesterangaben\": {\n                    \"bruttojahreseinkommenErwartet\": 1.2,\n                    \"bruttovorjahreseinkommen\": 2.3,\n                    \"sozialversicherungsnummer\": \"soz3456789\"\n                    }\n                },\n                \"kontakt\": {\n                    \"telefonnummer\": {\n                    \"vorwahl\": \"030\",\n                    \"nummer\": \"5551234\"\n                    },\n                    \"email\": \"hildegard.testerine@europace.de\",\n                    \"weitereKontaktmoeglichkeiten\": \"weiterer Kontakt Hildegard\"\n                }\n                }\n            ],\n            \"kinder\": [\n                {\n                \"name\": \"Frida\",\n                \"geburtsdatum\": \"2007-08-05\",\n                \"kindergeldWirdBezogen\": true,\n                \"unterhalt\": 200.4,\n                \"kundenreferenzIdRiesterzuordnung\": \"jsonRef1\"\n                },\n                {\n                \"name\": \"Justus\",\n                \"geburtsdatum\": \"2004-06-06\",\n                \"kindergeldWirdBezogen\": false,\n                \"unterhalt\": 300.5,\n                \"kundenreferenzIdRiesterzuordnung\": \"jsonRef2\"\n                }\n            ],\n            \"finanzielleSituation\": {\n                \"bestehendeImmobilien\": [\n                {\n                    \"bezeichnung\": \"Die Immobilie\",\n                    \"marktwert\": 340000.6,\n                    \"immobilie\": {\n                    \"adresse\": {\n                        \"strasse\": \"Altestraße\",\n                        \"hausnummer\": \"21\",\n                        \"plz\": \"12346\",\n                        \"ort\": \"Steglitz\"\n                    },\n                    \"typ\": {\n                        \"@type\": \"EIGENTUMSWOHNUNG\",\n                        \"grundstuecksgroesse\": 620.5,\n                        \"gebaeude\": {\n                        \"baujahr\": 2012,\n                        \"bauweise\": \"FACHWERK_MIT_ZIEGELN\",\n                        \"anzahlGeschosse\": 2,\n                        \"zustand\": \"GUT\",\n                        \"ausstattung\": \"EINFACH\",\n                        \"nutzung\": {\n                            \"wohnen\": {\n                            \"gesamtflaeche\": 120.2,\n                            \"nutzungsart\": {\n                                \"@type\": \"VERMIETET\",\n                                \"mieteinnahmenNettoKaltMonatlich\": 600.4\n                            }\n                            },\n                            \"gewerbe\": {\n                            \"gesamtflaeche\": 100.8,\n                            \"nutzungsart\": {\n                                \"@type\": \"EIGENGENUTZT\"\n                            }\n                            }\n                        },\n                        \"modernisierung\": {\n                            \"jahr\": 2014,\n                            \"grad\": \"GERING\"\n                        }\n                        },\n                        \"miteigentumsanteil\": {\n                        \"anteil\": 55.6,\n                        \"gesamt\": 60\n                        },\n                        \"anzahlDerWohneinheitenImObjekt\": 43,\n                        \"anzahlDerGewerbeeinheitenImObjekt\": 2,\n                        \"bezeichnungWohneinheit\": \"Links\"\n                    },\n                    \"stellplaetze\": [\n                        {\n                        \"typ\": \"GARAGE\",\n                        \"mieteMonatlich\": 80.7\n                        }\n                    ],\n                    \"erbbaurecht\": {\n                        \"erbbauzinsJaehrlich\": 2000.4,\n                        \"grundstueckseigentuemer\": \"OEFFENTLICH_KIRCHLICH\",\n                        \"laufzeitBis\": 2038\n                    },\n                    \"grundbuchangabe\": {\n                        \"ort\": \"Grundbuch Ort\",\n                        \"blatt\": \"75\",\n                        \"amtsgericht\": \"Amtsgericht\",\n                        \"flurstuecke\": [\n                        {\n                            \"flur\": \"1. OG\",\n                            \"flurstueck\": \"72\",\n                            \"anteil\": {\n                            \"anteil\": 12.3,\n                            \"gesamt\": 13\n                            },\n                            \"groesse\": 80.4\n                        }\n                        ],\n                        \"rechteInAbteilung2\": {\n                        \"betrag\": 100000.5,\n                        \"beschreibung\": \"Rechte Abteilung 2 Beschreibung\"\n                        },\n                        \"anmerkungen\": \"Anmerkung Grundbuch\"\n                    }\n                    },\n                    \"darlehensliste\": [\n                    {\n                        \"@type\": \"BESTEHENDES_BAUSPARDARLEHEN\",\n                        \"grundschuldart\": \"BRIEF_GRUNDSCHULD\",\n                        \"darlehensgeber\": {\n                        \"@type\": \"PRODUKTANBIETER_DARLEHENSGEBER\",\n                        \"produktanbieter\": \"AACHENER_BANK\"\n                        },\n                        \"grundschuld\": 500000.7,\n                        \"darlehensbetrag\": 200000.6,\n                        \"rateMonatlich\": 850.8,\n                        \"sollzins\": 5.2,\n                        \"zinsbindungBis\": \"2030-12-13\",\n                        \"laufzeitende\": \"2034-01-23\",\n                        \"restschuld\": {\n                        \"aktuell\": 150000.9,\n                        \"zumAbloesetermin\": 10000.1\n                        },\n                        \"darlehenskontonummer\": \"DE123456789012345\"\n                    }\n                    ],\n                    \"kommentar\": \"Kommentar 976442a7-8f5b-4858-9c8c-976ee23cfdeb\",\n                    \"einsatz\": \"VERKAUFEN\",\n                    \"maximalEinzusetzenderBetragBeiVerkauf\": 123000.3\n                }\n                ],\n                \"vermoegen\": {\n                \"summeBankUndSparguthaben\": {\n                    \"guthaben\": 54000.2,\n                    \"zinsertragJaehrlich\": 12.3,\n                    \"verwendung\": {\n                    \"@type\": \"AUFLOESUNG_ALS_VERWENDUNG\",\n                    \"maximalEinzusetzenderBetrag\": 234.1,\n                    \"kommentar\": \"Kommentar 4af1102f-7f6e-4a55-bf9a-ec49b67d7688\"\n                    }\n                },\n                \"summeSparplaene\": {\n                    \"aktuellerWert\": 22.9,\n                    \"betragMonatlich\": 77.1,\n                    \"verwendung\": {\n                    \"@type\": \"AUFLOESUNG_ALS_VERWENDUNG\",\n                    \"maximalEinzusetzenderBetrag\": 543.8,\n                    \"kommentar\": \"Kommentar a82d04af-6121-402a-a9f9-c900f09f8c86\"\n                    }\n                },\n                \"summeDepotvermoegen\": {\n                    \"depotwert\": 130345.5,\n                    \"verwendung\": {\n                    \"@type\": \"AUFLOESUNG_ALS_VERWENDUNG\",\n                    \"maximalEinzusetzenderBetrag\": 789.4,\n                    \"kommentar\": \"Kommentar cc78d5b0-3bb8-4e00-b1a8-10fb13f57653\"\n                    }\n                },\n                \"bausparvertraege\": [\n                    {\n                    \"angesparterBetrag\": 60000.1,\n                    \"bausparkasse\": \"BADENIA\",\n                    \"vertragsnummer\": \"123123\",\n                    \"tarif\": \"BHW_TARIF_FI1N\",\n                    \"vertragsbeginn\": \"2005-04-03\",\n                    \"jahresentgelt\": 90000.4,\n                    \"details\": {\n                        \"sparbeitragMonatlich\": 55.3,\n                        \"bausparsumme\": 100000.2,\n                        \"zuteilungsdatum\": \"2023-07-22\"\n                    },\n                    \"verwendung\": {\n                        \"@type\": \"AUFLOESUNG_ALS_VERWENDUNG\",\n                        \"maximalEinzusetzenderBetrag\": 120.5,\n                        \"kommentar\": \"Kommentar b3466f46-cac6-4be6-8443-4e7c06ac8780\"\n                    }\n                    }\n                ],\n                \"lebensOderRentenversicherungen\": [\n                    {\n                    \"rueckkaufswert\": 45000.9,\n                    \"praemieMonatlich\": 234.8,\n                    \"verwendung\": {\n                        \"@type\": \"ABTRETEN_ALS_VERWENDUNG\",\n                        \"kommentar\": \"Kommentar 5b2c8b58-af1a-4fa4-a864-e15d013ddd10\"\n                    },\n                    \"detailsWennZusatzsicherheit\": {\n                        \"versicherungsgesellschaft\": \"Sicher AG\",\n                        \"vertragsnummer\": \"222333444555\",\n                        \"tarif\": \"A38\",\n                        \"vertragsdatum\": \"2010-07-17\",\n                        \"vertragsende\": \"2011-04-16\",\n                        \"versicherungsart\": \"FONDSGEBUNDENE_LEBENSVERSICHERUNG\",\n                        \"versicherungssumme\": 32000.6,\n                        \"verwaltungsgebuehrenJaehrlich\": 62.7\n                    }\n                    }\n                ],\n                \"summeSonstigesVermoegen\": {\n                    \"aktuellerWert\": 765.6,\n                    \"verwendung\": {\n                    \"@type\": \"AUFLOESUNG_ALS_VERWENDUNG\",\n                    \"maximalEinzusetzenderBetrag\": 853.7,\n                    \"kommentar\": \"Kommentar deeab355-0fb0-455c-8dd4-4ec7c9680f5d\"\n                    }\n                }\n                },\n                \"einnahmen\": {\n                \"summeEinkuenfteAusKapitalvermoegen\": 345.9,\n                \"summeVariablerEinkuenfteMonatlich\": 103.3,\n                \"einkuenfteAusNebentaetigkeit\": [\n                    {\n                    \"betragMonatlich\": 234.7,\n                    \"beginnDerTaetigkeit\": \"2012-05-14\"\n                    }\n                ],\n                \"summeEhegattenunterhalt\": 234.8,\n                \"summeUnbefristeteZusatzrentenMonatlich\": {\n                    \"betrag\": 102.2,\n                    \"kommentar\": \"Kommentar 860c1039-8d10-4ae4-8d20-f45069df5bef\"\n                },\n                \"summeSonstigeEinnahmenMonatlich\": {\n                    \"betrag\": 101.1,\n                    \"kommentar\": \"Kommentar 3a3b7ec8-6578-4e8f-84db-1eeef3a03dd2\"\n                }\n                },\n                \"ausgaben\": {\n                \"summeMietausgaben\": {\n                    \"betragMonatlich\": 800.6,\n                    \"entfaelltMitFinanzierung\": true\n                },\n                \"summePrivaterKrankenversicherungenMonatlich\": 500.7,\n                \"unterhaltsverpflichtungenMonatlich\": [\n                    250.1,\n                    300.2\n                ],\n                \"summeSonstigerVersicherungsausgabenMonatlich\": {\n                    \"betrag\": 450.9,\n                    \"kommentar\": \"Kommentar 8a7d9834-334f-4fc3-b1be-271f279a874b\"\n                },\n                \"summeSonstigerAusgabenMonatlich\": {\n                    \"betrag\": 400.8,\n                    \"kommentar\": \"Kommentar e11de502-09f6-4429-acb3-a7cb9ce5e952\"\n                }\n                },\n                \"verbindlichkeiten\": {\n                \"ratenkredite\": [\n                    {\n                    \"rateMonatlich\": 432.5,\n                    \"glaeubiger\": \"Gläubiger a18f8195-0b61-4638-a091-582c50429dfd\",\n                    \"laufzeitende\": \"2025-10-24\",\n                    \"restschuld\": 123000.4,\n                    \"wirdAbgeloest\": true,\n                    \"kommentar\": \"Kommentar b605fd84-3767-4b4b-a526-ecf850ea81aa\"\n                    }\n                ],\n                \"privatdarlehen\": [\n                    {\n                    \"rateMonatlich\": 567.7,\n                    \"glaeubiger\": \"Gläubiger d621d9e6-1c57-421b-85f4-7063e848ce6e\",\n                    \"laufzeitende\": \"2026-05-12\",\n                    \"restschuld\": 123400.6,\n                    \"wirdAbgeloest\": true,\n                    \"kommentar\": \"Kommentar e9bdbb61-2938-4e7e-b9ad-e147e6dfc130\"\n                    }\n                ],\n                \"sonstigeVerbindlichkeit\": {\n                    \"rateMonatlich\": 890.9,\n                    \"glaeubiger\": \"Gläubiger 0fc88c81-389f-4b44-b559-3e9198ab30ed\",\n                    \"laufzeitende\": \"2027-04-13\",\n                    \"restschuld\": 123450.8,\n                    \"wirdAbgeloest\": true,\n                    \"kommentar\": \"Kommentar 955bd205-6eaf-4737-9d79-f8750c925824\"\n                }\n                }\n            }\n            }\n        ],\n        \"finanzierungsobjekt\": {\n            \"immobilie\": {\n            \"adresse\": {\n                \"strasse\": \"Immobilienstraße\",\n                \"hausnummer\": \"16\",\n                \"plz\": \"82784\",\n                \"ort\": \"Spandau\"\n            },\n            \"typ\": {\n                \"@type\": \"EINFAMILIENHAUS\",\n                \"grundstuecksgroesse\": 620.4,\n                \"gebaeude\": {\n                \"baujahr\": 2018,\n                \"bauweise\": \"GLAS_STAHL\",\n                \"anzahlGeschosse\": 1,\n                \"zustand\": \"MAESSIG\",\n                \"ausstattung\": \"MITTEL\",\n                \"nutzung\": {\n                    \"wohnen\": {\n                    \"gesamtflaeche\": 121.1,\n                    \"nutzungsart\": {\n                        \"@type\": \"TEILVERMIETET\",\n                        \"mieteinnahmenNettoKaltMonatlich\": 601.3,\n                        \"vermieteteFlaeche\": 93.2\n                    }\n                    },\n                    \"gewerbe\": {\n                    \"gesamtflaeche\": 101.7,\n                    \"nutzungsart\": {\n                        \"@type\": \"VERMIETET\",\n                        \"mieteinnahmenNettoKaltMonatlich\": 701.9\n                    }\n                    }\n                },\n                \"modernisierung\": {\n                    \"jahr\": 2015,\n                    \"grad\": \"HOCH\"\n                }\n                },\n                \"einliegerwohnungVorhanden\": true,\n                \"nutzflaechen\": {\n                \"dachgeschoss\": \"FLACHDACH\",\n                \"unterkellerung\": \"TEILWEISE_UNTERKELLERT\"\n                },\n                \"fertighaus\": true\n            },\n            \"stellplaetze\": [\n                {\n                \"typ\": \"CARPORT\",\n                \"mieteMonatlich\": 81.6\n                }\n            ],\n            \"erbbaurecht\": {\n                \"erbbauzinsJaehrlich\": 3000.2,\n                \"grundstueckseigentuemer\": \"OEFFENTLICH_KIRCHLICH\",\n                \"laufzeitBis\": 2037\n            },\n            \"grundbuchangabe\": {\n                \"ort\": \"Grundbuch Ort 2\",\n                \"blatt\": \"72\",\n                \"amtsgericht\": \"Amtsgericht\",\n                \"flurstuecke\": [\n                {\n                    \"flur\": \"2. OG\",\n                    \"flurstueck\": \"71\",\n                    \"anteil\": {\n                    \"anteil\": 13.2,\n                    \"gesamt\": 14\n                    },\n                    \"groesse\": 81.3\n                }\n                ],\n                \"rechteInAbteilung2\": {\n                \"betrag\": 110000.4,\n                \"beschreibung\": \"Rechte Abteilung 2 Beschreibung 2\"\n                },\n                \"anmerkungen\": \"Anmerkung ff0a01a3-3c54-42b3-832e-9ba92f4ee844\"\n            }\n            },\n            \"darlehensliste\": [\n            {\n                \"referenzId\": \"Referenz Abakus\",\n                \"darlehen\": {\n                \"@type\": \"BESTEHENDES_BAUSPARDARLEHEN\",\n                \"grundschuldart\": \"BUCH_GRUNDSCHULD\",\n                \"darlehensgeber\": {\n                    \"@type\": \"PRODUKTANBIETER_DARLEHENSGEBER\",\n                    \"produktanbieter\": \"ABAKUS_BANK\"\n                },\n                \"grundschuld\": 501000.6,\n                \"darlehensbetrag\": 201000.5,\n                \"rateMonatlich\": 851.8,\n                \"sollzins\": 4.1,\n                \"zinsbindungBis\": \"2031-01-17\",\n                \"laufzeitende\": \"2036-02-22\",\n                \"restschuld\": {\n                    \"aktuell\": 151000.7,\n                    \"zumAbloesetermin\": 10100.9\n                },\n                \"darlehenskontonummer\": \"DE78912345678\"\n                }\n            }\n            ]\n        },\n        \"finanzierungsbedarf\": {\n            \"finanzierungszweck\": {\n            \"@type\": \"ANSCHLUSSFINANZIERUNG\",\n            \"bereitsBeglicheneKosten\": 5023.5,\n            \"modernisierung\": {\n                \"modernisierungskostenInklEigenleistungen\": 40000.0,\n                \"renovierungskosten\": 10000.0,\n                \"eigenleistung\": 3000.0\n            },\n            \"zuBeschaffendesKapital\": {\n                \"betrag\": 10345.2,\n                \"kommentar\": \"Kommentierter cf56209f-13c8-436a-84fb-33c587ce58ee\"\n            },\n            \"marktwertFinanzierungsobjekt\": 350000.0,\n            \"abloesungDarlehenDesFinanzierungsobjektes\": [\n                {\n                \"referenzIdAbzuloesendesDarlehen\": \"Referenz Abakus\",\n                \"sondertilgungZumZinsbindungsende\": 121000.4,\n                \"referenzIdFinanzierungsbaustein\": \"Referenz Annu\"\n                }\n            ]\n            },\n            \"beratungshonorar\": 1001.2,\n            \"unbesicherteExterneDarlehen\": [\n            {\n                \"typ\": \"ARBEITGEBERDARLEHEN\",\n                \"darlehensgeber\": \"Der Darlehensgeber\",\n                \"betrag\": 10300.6,\n                \"rateMonatlich\": 1234.5,\n                \"zinsbindungsende\": \"2031-06-12\",\n                \"laufzeitende\": \"2030-05-18\",\n                \"kommentar\": \"Kommentar ddc999bb-dbe2-4087-8c65-928360fa6849\"\n            }\n            ],\n            \"praeferenzen\": {\n            \"finanzierungsdetailspraeferenzen\": {\n                \"zinsbindung\": {\n                \"@type\": \"ZINSBINDUNGSSPANNE\",\n                \"vonJahre\": 10,\n                \"bisJahre\": 15,\n                \"kommentar\": \"Kommentar f4823c55-6bb8-4a4b-af91-8e3cc16172ea\"\n                },\n                \"laufzeit\": {\n                \"@type\": \"MOEGLICHST_SCHNELL\",\n                \"kommentar\": \"Kommentar 9fb18630-9ccf-4c67-91a3-17e04e8689c6\"\n                },\n                \"ratenhoehe\": {\n                \"@type\": \"WARMMIETE_VON_HEUTE\",\n                \"kommentar\": \"Kommentar 05934da4-ceca-4382-97c5-30054244b6e4\"\n                },\n                \"tilgungssatzwechsel\": {\n                \"@type\": \"NICHT_EINGEPLANT_ODER_ABSEHBAR\",\n                \"kommentar\": \"Kommentar 1872a8b7-dd36-4cb1-b8ae-7e72878b7ff3\"\n                },\n                \"sondertilgung\": {\n                \"@type\": \"EURO_JAEHRLICH\",\n                \"betrag\": 23456.8,\n                \"kommentar\": \"Kommentar 4124206c-822c-4acc-8783-a1427bab8163\"\n                },\n                \"bereitstellungszinsfreieZeit\": {\n                \"@type\": \"IN_MONATEN\",\n                \"monate\": 6,\n                \"kommentar\": \"Kommentar 310cab02-a728-4dd3-a8f4-c8eb428d7b92\"\n                }\n            },\n            \"bestandteileDerFinanzierung\": {\n                \"praeferenz\": \"KONKRETE_VORSTELLUNGEN\",\n                \"kommentar\": \"Kommentar 1a42fee5-1d60-42fc-b625-022bafed431c\"\n            },\n            \"absicherungUndVorsorge\": {\n                \"praeferenz\": \"KEINE_PRAEFERENZ\",\n                \"kommentar\": \"Kommentar abff9f91-9074-4930-9165-4567879a11a7\"\n            },\n            \"zeitlicherRahmen\": {\n                \"@type\": \"SO_SCHNELL_WIE_MOEGLICH\",\n                \"kommentar\": \"Kommentar c8f9552c-0fa0-4f14-9706-d53a7c7c06bf\"\n            },\n            \"girokonto\": {\n                \"bestehendeGirokontenBeiBanken\": [\n                \"Bank e50d6e40-82ef-4ef4-81dc-068c45bf43d8\",\n                \"Bank 093e4850-1d63-4d4a-9a8a-46181dde3679\"\n                ],\n                \"wechselbereitZumDarlehensgeber\": true\n            },\n            \"weiterePraeferenz\": \"Weitere Präferenz f32a9157-c3dc-4c09-b873-cadfd999c2f3\"\n            },\n            \"finanzierungsbausteine\": [\n            {\n                \"@type\": \"ANNUITAETENDARLEHEN\",\n                \"referenzId\": \"Referenz Annu\",\n                \"darlehensbetrag\": 234567.8,\n                \"annuitaetendetails\": {\n                \"zinsbindungInJahren\": 10,\n                \"tilgungswunsch\": {\n                    \"@type\": \"RATE\",\n                    \"rate\": 1567.9,\n                    \"tilgungsbeginn\": \"2020-09-20\"\n                },\n                \"sondertilgungJaehrlich\": 5.8,\n                \"auszahlungszeitpunkt\": \"2021-07-19\"\n                },\n                \"bereitstellungszinsfreieZeitInMonaten\": 6,\n                \"kundenreferenzIdDerRiesterGefoerdertenPerson\": \"jsonRef1\",\n                \"provision\": 4.1\n            }\n            ],\n            \"ratenschutzbausteine\": [\n            {\n                \"kundenreferenzIdDerVersichertenPerson\": \"jsonRef2\",\n                \"versicherungsbeginn\": \"2020-09-13\",\n                \"versicherungsdauerInJahren\": 7,\n                \"praemienzahlung\": {\n                \"@type\": \"EINMALIGE_PRAEMIENZAHLUNG\",\n                \"absicherungsfinanzierungsweise\": \"DURCH_HAUPTDARLEHEN\"\n                },\n                \"risikoabsicherungswuensche\": [\n                {\n                    \"abzusicherndesRisiko\": \"ARBEITSLOSIGKEIT\",\n                    \"versicherungssumme\": 34567.1,\n                    \"versicherteRate\": 50.2\n                },\n                {\n                    \"abzusicherndesRisiko\": \"ARBEITSUNFAEHIGKEIT\",\n                    \"versicherungssumme\": 45678.1,\n                    \"versicherteRate\": 60.2\n                }\n                ]\n            }\n            ]\n        },\n        \"bankverbindung\": {\n            \"iban\": \"DE1234567890\",\n            \"bic\": \"XXXYYYZZ\",\n            \"kundenreferenzIdsDerKontoinhaber\": [\n            \"jsonRef1\",\n            \"jsonRef2\"\n            ],\n            \"nameKontoinhaberKeinKunde\": \"Anna Schmidt\"\n        }\n    },\n    \"importMetadaten\": {\n        \"datenkontext\": \"TEST_MODUS\",\n        \"betreuung\": {\n            \"kundenbetreuer\": \"{{PARTNER_ID}}\",\n            \"bearbeiter\": \"{{PARTNER_ID}}\"\n        },\n        \"externeVorgangsId\": \"ExterneReferenz 7c78de13-da02-4bdd-b4b2-c37855abfccc\",\n        \"importquelle\": \"Importquelle b1d2339c-7037-4e1a-aafb-18c661c7dbf7\",\n        \"leadtracking\": {\n            \"kampagne\": \"Kampagne 67bbb18c-3d80-4357-ace4-1e41dc341930\",\n            \"keyword\": \"Keyword 7305d752-12f7-423a-933d-d1bb0fd637d8\",\n            \"trackingId\": \"TrackingId be8d40b0-25af-48ae-8c57-a1b72527f903\"\n        },\n        \"zusaetzlicherEreignistext\": \"Ereignistext 2217da2b-05ac-4928-9b34-ab87185d56c2\",\n        \"prioritaet\": \"NEUTRAL\",\n        \"tippgeber\": {\n            \"tippgeberPartnerId\": \"{{PARTNER_ID}}\",\n            \"tippgeberprovisionswunsch\": {\n            \"@type\": \"BETRAG\",\n            \"betrag\": 567.1\n            }\n        }\n    }\n}\n"
-						},
-						"url": {
-							"raw": "https://baufinanzierung.api.europace.de/kundenangaben?sendEmailNotification=false&datenkontext=TEST_MODUS",
-							"protocol": "https",
-							"host": [
-								"baufinanzierung",
-								"api",
-								"europace",
-								"de"
-							],
-							"path": [
-								"kundenangaben"
-							],
-							"query": [
-								{
-									"key": "sendEmailNotification",
-									"value": "false",
-									"description": "Sendet eine E-Mail an den angegebenen Berater, wenn true übergeben wird "
-								},
-								{
-									"key": "datenkontext",
-									"value": "TEST_MODUS"
-								}
-							]
-						},
-						"description": "Kundenangaben werden in BaufiSmart in einen neuen Vorgang importiert."
-					},
-					"response": []
-				}
-			],
-			"auth": {
-				"type": "bearer",
-				"bearer": [
-					{
-						"key": "token",
-						"value": "{{access_token}}",
-						"type": "string"
-					}
-				]
-			}
-		},
 		{
 			"name": "BaufiSmart Vorgaenge API",
 			"item": [
@@ -83,6 +26,11 @@
 							{
 								"key": "Content-Type",
 								"value": "application/json"
+							},
+							{
+								"key": "X-traceId",
+								"value": "{{traceId}}",
+								"type": "text"
 							}
 						],
 						"url": {
@@ -119,6 +67,11 @@
 							{
 								"key": "Content-Type",
 								"value": "application/json"
+							},
+							{
+								"key": "X-traceId",
+								"value": "{{traceId}}",
+								"type": "text"
 							}
 						],
 						"url": {
@@ -161,6 +114,11 @@
 							{
 								"key": "Content-Type",
 								"value": "application/json"
+							},
+							{
+								"key": "X-traceId",
+								"value": "{{traceId}}",
+								"type": "text"
 							}
 						],
 						"url": {
@@ -191,6 +149,11 @@
 									{
 										"key": "Content-Type",
 										"value": "application/json"
+									},
+									{
+										"key": "X-traceId",
+										"value": "{{traceId}}",
+										"type": "text"
 									}
 								],
 								"url": {
@@ -324,6 +287,11 @@
 							{
 								"key": "Content-Type",
 								"value": "application/json"
+							},
+							{
+								"key": "X-traceId",
+								"value": "{{traceId}}",
+								"type": "text"
 							}
 						],
 						"url": {
@@ -488,6 +456,11 @@
 							{
 								"key": "Content-Type",
 								"value": "application/json-patch+json"
+							},
+							{
+								"key": "X-traceId",
+								"value": "{{traceId}}",
+								"type": "text"
 							}
 						],
 						"body": {
@@ -510,122 +483,9 @@
 						}
 					},
 					"response": []
-				},
-				{
-					"name": "Sachbearbeiter ändern",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{access_token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "PUT",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n  \"partnerId\": \"MNC81\"\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "https://api.europace2.de/v2/vorgaenge/YM7S18/vorgangsBearbeiter",
-							"protocol": "https",
-							"host": [
-								"api",
-								"europace2",
-								"de"
-							],
-							"path": [
-								"v2",
-								"vorgaenge",
-								"YM7S18",
-								"vorgangsBearbeiter"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Kundenbetreuer ändern",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{access_token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "PUT",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n  \"partnerId\": \"AAV43\"\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "https://api.europace2.de/v2/vorgaenge/YM7S18/kundenBetreuer",
-							"protocol": "https",
-							"host": [
-								"api",
-								"europace2",
-								"de"
-							],
-							"path": [
-								"v2",
-								"vorgaenge",
-								"YM7S18",
-								"kundenBetreuer"
-							]
-						}
-					},
-					"response": []
 				}
 			],
-			"auth": {
-				"type": "bearer",
-				"bearer": [
-					{
-						"key": "token",
-						"value": "{{access_token}}",
-						"type": "string"
-					}
-				]
-			},
-			"event": [
-				{
-					"listen": "prerequest",
-					"script": {
-						"type": "text/javascript",
-						"exec": [
-							""
-						]
-					}
-				},
-				{
-					"listen": "test",
-					"script": {
-						"type": "text/javascript",
-						"exec": [
-							""
-						]
-					}
-				}
-			]
+			"protocolProfileBehavior": {}
 		},
 		{
 			"name": "BaufiSmart Antraege API",
@@ -648,6 +508,11 @@
 							{
 								"key": "Content-Type",
 								"value": "application/json"
+							},
+							{
+								"key": "X-traceId",
+								"value": "{{traceId}}",
+								"type": "text"
 							}
 						],
 						"url": {
@@ -686,6 +551,11 @@
 							{
 								"key": "Content-Type",
 								"value": "application/json"
+							},
+							{
+								"key": "X-traceId",
+								"value": "{{traceId}}",
+								"type": "text"
 							}
 						],
 						"url": {
@@ -730,6 +600,11 @@
 							{
 								"key": "Content-Type",
 								"value": "application/json"
+							},
+							{
+								"key": "X-traceId",
+								"value": "{{traceId}}",
+								"type": "text"
 							}
 						],
 						"url": {
@@ -772,6 +647,11 @@
 								"name": "Content-Type",
 								"value": "application/json",
 								"type": "text"
+							},
+							{
+								"key": "X-traceId",
+								"value": "{{traceId}}",
+								"type": "text"
 							}
 						],
 						"body": {
@@ -799,7 +679,7 @@
 					"response": []
 				},
 				{
-					"name": "Antragsstatus setzen",
+					"name": "Gegenangebot stellen",
 					"request": {
 						"auth": {
 							"type": "bearer",
@@ -814,13 +694,14 @@
 						"method": "POST",
 						"header": [
 							{
-								"key": "Content-Type",
-								"value": "application/json"
+								"key": "X-traceId",
+								"value": "{{traceId}}",
+								"type": "text"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "\t\t{\n            \"antragsteller\": \"BEANTRAGT\",\n\t\t\t\"produktAnbieter\": \"NICHT_BEARBEITET\",\n\t\t\t\"kommentar\": \"The API get the job done.\"\n\t\t}",
+							"raw": "{\n    \"kennung\": \"Kommentar in der Ergebnissliste\",\n    \"darlehen\": [\n        {\n            \"sollZins\": 0.0155,\n            \"effektivZins\": 0.0158,\n            \"rateMonatlich\": 1227.7,\n            \"darlehensBetrag\": 300000.00,\n            \"darlehensTyp\": \"ANNUITAETEN_DARLEHEN\",\n            \"vertriebsProvisionGesamtAbsolut\": 8300,\n            \"auszahlungsBetrag\": 100000.00,\n            \"zinsBindungInJahren\": 10,\n            \"sonderTilgungJaehrlich\": 0.1,\n            \"tilgungsBeginnAm\": \"2020-11-30\",\n            \"anfaenglicheTilgung\": 0.02,\n            \"bereitstellungsZinsFreieZeitInMonaten\": 3,\n            \"bereitstellungsZins\": 0.03,\n            \"laufzeitKalkulatorischInJahren\": 39,\n            \"produktDetails\": \"Details zum Finanzprodukt\"\n        }\n    ]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -828,7 +709,7 @@
 							}
 						},
 						"url": {
-							"raw": "https://baufismart.api.europace.de/v2/antraege/WD0TNA/19/1/status",
+							"raw": "https://baufismart.api.europace.de/v2/antraege/UE0MX8/1/1/gegenangebot",
 							"protocol": "https",
 							"host": [
 								"baufismart",
@@ -839,16 +720,17 @@
 							"path": [
 								"v2",
 								"antraege",
-								"WD0TNA",
-								"19",
+								"UE0MX8",
 								"1",
-								"status"
+								"1",
+								"gegenangebot"
 							]
 						}
 					},
 					"response": []
 				}
-			]
+			],
+			"protocolProfileBehavior": {}
 		},
 		{
 			"name": "BaufiSmart Angebote API",
@@ -859,6 +741,7 @@
 						{
 							"listen": "test",
 							"script": {
+								"id": "305cb451-b572-4780-86e0-1b9137efdd7a",
 								"exec": [
 									"var jsonData = JSON.parse(responseBody);",
 									"postman.setGlobalVariable(\"ermittlungsId\", jsonData.ermittlungsId);"
@@ -892,7 +775,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\n    \"haushalte\": [\n        {\n            \"id\": \"29905314406551975\",\n            \"antragsteller\": [\n                {\n                    \"id\": \"8245137591160463\",\n                    \"anrede\": \"HERR\",\n                    \"anschrift\": {\n                        \"hausnummer\": \"117\",\n                        \"ort\": \"Berlin (Mitte)\",\n                        \"postleitzahl\": \"10115\",\n                        \"strasse\": \"Invalidenstraße\"\n                    },\n                    \"beschaeftigung\": {\n                        \"art\": \"ANGESTELLTER\",\n                        \"anzahlGehaelterProJahr\": 12,\n                        \"situationNachRenteneintritt\": {}\n                    },\n                    \"email\": \"frank.pokroppa@europace.de\",\n                    \"familienstand\": \"LEDIG\",\n                    \"geburtsdatum\": \"1964-12-25\",\n                    \"nachname\": \"Pokroppa\",\n                    \"staatsangehoerigkeit\": {\n                        \"isoCountryCode\": \"DE\",\n                        \"name\": \"Deutschland\"\n                    },\n                    \"telefonnummer\": \"88766567\",\n                    \"telefonnummerVorwahl\": \"030\",\n                    \"vorname\": \"Frank\",\n                    \"wohnhaftSeit\": \"1910-10-10\"\n                }\n            ]\n        }\n    ],\n    \"finanzierungsObjekt\": {\n        \"id\": \"47296276901593204\",\n        \"adresse\": {\n            \"postleitzahl\": \"10459\"\n        },\n        \"erbbaurecht\": {\n            \"erbbaurecht\": true,\n            \"erbbauzinsJaehrlich\": 150,\n            \"grundstuecksEigentuemer\": \"OEFFENTLICH_KIRCHLICH\",\n            \"laufzeitBisJahr\": 2070\n        },\n        \"gebaeude\": {\n            \"wohnflaeche\": {\n                \"vermietungsInformationen\": {\n                    \"nutzungsArt\": \"EIGENGENUTZT\"\n                }\n            },\n            \"hausTyp\": \"EINFAMILIENHAUS\"\n        },\n        \"objektArt\": \"HAUS\",\n        \"bestehendeDarlehen\": [\n            {\n                \"id\": \"43304448928678096\",\n                \"aktuelleRestschuldWennNichtAbzuloesen\": 25555,\n                \"abzuloesendeRestschuld\": 500,\n                \"darlehensArt\": \"IMMOBILIENDARLEHEN\",\n                \"darlehensGeber\": {\n                    \"id\": \"4e6885fe84fbad4bd0c68f62\",\n                    \"partnerId\": \"WXS37\",\n                    \"firmierung\": \"ALLIANZ Lebensversicherungs-AG\",\n                    \"email\": \"baufipartner@allianz.de\",\n                    \"anschrift\": {\n                        \"hausnummer\": \"19\",\n                        \"ort\": \"Stuttgart\",\n                        \"postleitzahl\": \"70178\",\n                        \"strasse\": \"Reinsburgstraße\"\n                    },\n                    \"vertriebsOrganisation\": {\n                        \"name\": \"ALLIANZ Lebensversicherungs-AG\",\n                        \"firma\": \"ALLIANZ Lebensversicherungs-AG\",\n                        \"vertriebsOrganisationsId\": \"ALLIANZ\"\n                    },\n                    \"kreditsachbearbeiter\": false,\n                    \"produktAnbieterId\": \"ALLIANZ\"\n                },\n                \"eingetrageneGrundschuld\": 50000,\n                \"grundschuldArt\": \"BRIEF_GRUNDSCHULD\",\n                \"rateMonatlich\": 500,\n                \"zinsBindungEndetAm\": \"2021-02-02\",\n                \"laufzeitEnde\": \"2027-02-02\",\n                \"darlehensBetrag\": 75000\n            }\n        ]\n    },\n    \"vorhaben\": {\n        \"id\": \"7357540068390608\",\n        \"nachrangigeExterneDarlehen\": [\n            {\n                \"id\": \"41515491007659655\",\n                \"darlehensBetrag\": 50000,\n                \"darlehensGeber\": \"Meine Bank 4 all\",\n                \"rateMonatlich\": 200,\n                \"zinsBindung\": {\n                    \"endetAm\": \"2019-01-01\"\n                }\n            }\n        ],\n        \"verwendungszweck\": \"ANSCHLUSSFINANZIERUNG\",\n        \"finanzierungswunsch\": {\n            \"id\": \"8529623681232834\",\n            \"darlehensWuensche\": [\n                {\n                    \"id\": \"8330583833982105\",\n                    \"annuitaetenDarlehen\": {\n                        \"darlehensBetrag\": 150000,\n                        \"provision\": 1,\n                        \"tilgungsWunsch\": {\n                            \"anfaenglicheTilgung\": 2,\n                            \"volltilgerWennAnnuitaetenOderForward\": false\n                        },\n                        \"bereitstellungsZinsFreieZeitInMonaten\": 2,\n                        \"sondertilgungOptionalJaehrlich\": 100,\n                        \"zinsBindungInJahren\": 10\n                    }\n                }\n            ]\n        }\n    },\n    \"datenKontext\": \"TEST_MODUS\"\n}"
+							"raw": "{\n\n    \"haushalte\": [\n        {\n            \"id\": \"29905314406551975\",\n            \"antragsteller\": [\n                {\n                    \"id\": \"8245137591160463\",\n                    \"anrede\": \"HERR\",\n                    \"anschrift\": {\n                        \"hausnummer\": \"117\",\n                        \"ort\": \"Berlin (Mitte)\",\n                        \"postleitzahl\": \"10115\",\n                        \"strasse\": \"InvalidenstraÃe\"\n                    },\n                    \"beschaeftigung\": {\n                        \"art\": \"ANGESTELLTER\",\n                        \"anzahlGehaelterProJahr\": 12,\n                        \"situationNachRenteneintritt\": {}\n                    },\n                    \"email\": \"frank.pokroppa@europace.de\",\n                    \"familienstand\": \"LEDIG\",\n                    \"geburtsdatum\": \"1964-12-25\",\n                    \"nachname\": \"Pokroppa\",\n                    \"staatsangehoerigkeit\": {\n                        \"isoCountryCode\": \"DE\",\n                        \"name\": \"Deutschland\"\n                    },\n                    \"telefonnummer\": \"88766567\",\n                    \"telefonnummerVorwahl\": \"030\",\n                    \"vorname\": \"Frank\",\n                    \"wohnhaftSeit\": \"1910-10-10\"\n                }\n            ]\n        }\n    ],\n    \"finanzierungsObjekt\": {\n        \"id\": \"47296276901593204\",\n        \"adresse\": {\n            \"postleitzahl\": \"10459\"\n        },\n        \"erbbaurecht\": {\n            \"erbbaurecht\": true,\n            \"erbbauzinsJaehrlich\": 150,\n            \"grundstuecksEigentuemer\": \"OEFFENTLICH_KIRCHLICH\",\n            \"laufzeitBisJahr\": 2070\n        },\n        \"gebaeude\": {\n            \"wohnflaeche\": {\n                \"vermietungsInformationen\": {\n                    \"nutzungsArt\": \"EIGENGENUTZT\"\n                }\n            },\n            \"hausTyp\": \"EINFAMILIENHAUS\"\n        },\n        \"objektArt\": \"HAUS\",\n        \"bestehendeDarlehen\": [\n            {\n                \"id\": \"43304448928678096\",\n                \"aktuelleRestschuldWennNichtAbzuloesen\": 25555,\n                \"abzuloesendeRestschuld\": 500,\n                \"darlehensArt\": \"IMMOBILIENDARLEHEN\",\n                \"darlehensGeber\": {\n                    \"id\": \"4e6885fe84fbad4bd0c68f62\",\n                    \"partnerId\": \"WXS37\",\n                    \"firmierung\": \"ALLIANZ Lebensversicherungs-AG\",\n                    \"email\": \"baufipartner@allianz.de\",\n                    \"anschrift\": {\n                        \"hausnummer\": \"19\",\n                        \"ort\": \"Stuttgart\",\n                        \"postleitzahl\": \"70178\",\n                        \"strasse\": \"ReinsburgstraÃe\"\n                    },\n                    \"vertriebsOrganisation\": {\n                        \"name\": \"ALLIANZ Lebensversicherungs-AG\",\n                        \"firma\": \"ALLIANZ Lebensversicherungs-AG\",\n                        \"vertriebsOrganisationsId\": \"ALLIANZ\"\n                    },\n                    \"kreditsachbearbeiter\": false,\n                    \"produktAnbieterId\": \"ALLIANZ\"\n                },\n                \"eingetrageneGrundschuld\": 50000,\n                \"grundschuldArt\": \"BRIEF_GRUNDSCHULD\",\n                \"rateMonatlich\": 500,\n                \"zinsBindungEndetAm\": \"2021-02-02\",\n                \"laufzeitEnde\": \"2027-02-02\",\n                \"darlehensBetrag\": 75000\n            }\n        ]\n    },\n    \"vorhaben\": {\n        \"id\": \"7357540068390608\",\n        \"nachrangigeExterneDarlehen\": [\n            {\n                \"id\": \"41515491007659655\",\n                \"darlehensBetrag\": 50000,\n                \"darlehensGeber\": \"Meine Bank 4 all\",\n                \"rateMonatlich\": 200,\n                \"zinsBindung\": {\n                    \"endetAm\": \"2019-01-01\"\n                }\n            }\n        ],\n        \"verwendungszweck\": \"ANSCHLUSSFINANZIERUNG\",\n        \"finanzierungswunsch\": {\n            \"id\": \"8529623681232834\",\n            \"darlehensWuensche\": [\n                {\n                    \"id\": \"8330583833982105\",\n                    \"annuitaetenDarlehen\": {\n                        \"darlehensBetrag\": 150000,\n                        \"provision\": 1,\n                        \"tilgungsWunsch\": {\n                            \"anfaenglicheTilgung\": 2,\n                            \"volltilgerWennAnnuitaetenOderForward\": false\n                        },\n                        \"bereitstellungsZinsFreieZeitInMonaten\": 2,\n                        \"sondertilgungOptionalJaehrlich\": 100,\n                        \"zinsBindungInJahren\": 10\n                    }\n                }\n            ]\n        }\n    },\n    \"datenKontext\": \"TEST_MODUS\"\n}"
 						},
 						"url": {
 							"raw": "https://baufismart.api.europace.de/v2/ergebnisliste/ermittlung/",
@@ -919,6 +802,7 @@
 						{
 							"listen": "test",
 							"script": {
+								"id": "cdf967ec-c2a9-4daa-a9bc-0300c2b463e9",
 								"exec": [
 									"var jsonData = JSON.parse(responseBody);",
 									"postman.setGlobalVariable(\"ermittlungsId\", jsonData.ermittlungsId);"
@@ -943,6 +827,11 @@
 							{
 								"key": "Content-Type",
 								"value": "application/json"
+							},
+							{
+								"key": "X-traceId",
+								"value": "{{traceId}}",
+								"type": "text"
 							}
 						],
 						"body": {
@@ -979,6 +868,7 @@
 						{
 							"listen": "test",
 							"script": {
+								"id": "ff29a415-7427-4d8e-87c0-2d8d0de82e73",
 								"exec": [
 									""
 								],
@@ -1005,6 +895,11 @@
 							{
 								"key": "Content-Type",
 								"value": "application/json"
+							},
+							{
+								"key": "X-traceId",
+								"value": "{{traceId}}",
+								"type": "text"
 							}
 						],
 						"body": {
@@ -1037,6 +932,7 @@
 						{
 							"listen": "test",
 							"script": {
+								"id": "103930ad-5196-4bd8-b1e2-1a3d4e6fa25a",
 								"exec": [
 									""
 								],
@@ -1063,6 +959,11 @@
 							{
 								"key": "Content-Type",
 								"value": "application/json"
+							},
+							{
+								"key": "X-traceId",
+								"value": "{{traceId}}",
+								"type": "text"
 							}
 						],
 						"body": {
@@ -1097,6 +998,7 @@
 						{
 							"listen": "test",
 							"script": {
+								"id": "b6833ce6-dc95-4032-95f2-d2b550ca183f",
 								"exec": [
 									""
 								],
@@ -1123,6 +1025,11 @@
 							{
 								"key": "Content-Type",
 								"value": "application/json"
+							},
+							{
+								"key": "X-traceId",
+								"value": "{{traceId}}",
+								"type": "text"
 							}
 						],
 						"body": {
@@ -1157,6 +1064,7 @@
 						{
 							"listen": "test",
 							"script": {
+								"id": "97529b1e-f0d3-4a52-8cb7-7076a798ebae",
 								"exec": [
 									""
 								],
@@ -1183,6 +1091,11 @@
 							{
 								"key": "Content-Type",
 								"value": "application/json"
+							},
+							{
+								"key": "X-traceId",
+								"value": "{{traceId}}",
+								"type": "text"
 							}
 						],
 						"body": {
@@ -1211,7 +1124,8 @@
 					},
 					"response": []
 				}
-			]
+			],
+			"protocolProfileBehavior": {}
 		},
 		{
 			"name": "Dokumenten API",
@@ -1225,6 +1139,7 @@
 								{
 									"listen": "test",
 									"script": {
+										"id": "ea2d5fca-69c6-48a7-ac92-cd333528ed42",
 										"exec": [
 											"var body = JSON.parse(responseBody);",
 											"pm.environment.set(\"dokId\", body.id);",
@@ -1394,7 +1309,9 @@
 							},
 							"response": []
 						}
-					]
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
 				},
 				{
 					"name": "Seiten Interaktionen",
@@ -1405,6 +1322,7 @@
 								{
 									"listen": "test",
 									"script": {
+										"id": "f6f82f0d-2c01-4701-ab58-8c20b80f822c",
 										"exec": [
 											""
 										],
@@ -1553,7 +1471,9 @@
 							},
 							"response": []
 						}
-					]
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
 				},
 				{
 					"name": "Freigabe/Unterlage Interaktionen",
@@ -1564,6 +1484,7 @@
 								{
 									"listen": "test",
 									"script": {
+										"id": "053655ce-200b-4a1d-a8c6-f0222f113536",
 										"exec": [
 											"var body = JSON.parse(responseBody);",
 											"pm.environment.set(\"freigabeId\", body[0].id);"
@@ -1695,7 +1616,9 @@
 							},
 							"response": []
 						}
-					]
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
 				},
 				{
 					"name": "Weitere Interaktionen",
@@ -1748,6 +1671,7 @@
 								{
 									"listen": "test",
 									"script": {
+										"id": "1c387f95-69c7-4690-b9f0-4bb036f4a0ed",
 										"exec": [
 											""
 										],
@@ -1801,7 +1725,9 @@
 							},
 							"response": []
 						}
-					]
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
 				},
 				{
 					"name": "Upload am Antrag",
@@ -1874,6 +1800,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
+						"id": "34d4225d-35a0-44fa-9736-7eab9a507fdb",
 						"type": "text/javascript",
 						"exec": [
 							"pm.expect(pm.environment.get(\"vorgangsNummer\"),\"vorgangsNummer muss fuer das aktuelle Environment definiert sein\").to.be.a('string')",
@@ -1881,14 +1808,25 @@
 						]
 					}
 				}
-			]
+			],
+			"protocolProfileBehavior": {}
 		},
 		{
-			"name": "Partner API (PEX)",
+			"name": "Partner API",
 			"item": [
 				{
 					"name": "Kontaktdaten lesen",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [
 							{
@@ -1906,18 +1844,18 @@
 							}
 						],
 						"url": {
-							"raw": "https://www.europace2.de/partnermanagement/partner/{{PARTNER_ID}}/kontaktdaten",
+							"raw": "https://api.europace.de/v2/partner/{{PARTNER_ID}}/",
 							"protocol": "https",
 							"host": [
-								"www",
-								"europace2",
+								"api",
+								"europace",
 								"de"
 							],
 							"path": [
-								"partnermanagement",
+								"v2",
 								"partner",
 								"{{PARTNER_ID}}",
-								"kontaktdaten"
+								""
 							]
 						}
 					},
@@ -1926,6 +1864,16 @@
 				{
 					"name": "Kontaktdaten schreiben",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "PATCH",
 						"header": [
 							{
@@ -1944,149 +1892,28 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"firmenname\":\"Mustermann AG\"\n}"
+							"raw": "{\n  \"firmenname\":\"Mustermann AG2\"\n}"
 						},
 						"url": {
-							"raw": "https://www.europace2.de/partnermanagement/partner/{{PARTNER_ID}}/kontaktdaten",
+							"raw": "https://api.europace.de/v2/partner/{{PARTNER_ID}}/",
 							"protocol": "https",
 							"host": [
-								"www",
-								"europace2",
+								"api",
+								"europace",
 								"de"
 							],
 							"path": [
-								"partnermanagement",
+								"v2",
 								"partner",
 								"{{PARTNER_ID}}",
-								"kontaktdaten"
+								""
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "Partner Kennzeichnen auselesen",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "X-Authentication",
-								"value": "{{jwt}}"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							},
-							{
-								"key": "X-TraceId",
-								"value": "{{traceId}}",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "https://www.europace2.de/partnermanagement/partner/{{PARTNER_ID}}/partnerkennzeichen",
-							"protocol": "https",
-							"host": [
-								"www",
-								"europace2",
-								"de"
-							],
-							"path": [
-								"partnermanagement",
-								"partner",
-								"{{PARTNER_ID}}",
-								"partnerkennzeichen"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Übernahme Recht auslesen",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "X-Authentication",
-								"value": "{{jwt}}"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							},
-							{
-								"key": "X-TraceId",
-								"value": "{{traceId}}",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "https://www.europace2.de/partnermanagement/partner/{{PARTNER_ID}}/uebernahmeRechtFuer",
-							"protocol": "https",
-							"host": [
-								"www",
-								"europace2",
-								"de"
-							],
-							"path": [
-								"partnermanagement",
-								"partner",
-								"{{PARTNER_ID}}",
-								"uebernahmeRechtFuer"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Handelsbeziehungen auslesen",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "X-Authentication",
-								"value": "{{jwt}}"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							},
-							{
-								"key": "X-TraceId",
-								"value": "{{traceId}}"
-							}
-						],
-						"url": {
-							"raw": "https://www.europace2.de/partnermanagement/partner/{{PARTNER_ID}}/handelsbeziehungen?datenkontext=ECHT_GESCHAEFT",
-							"protocol": "https",
-							"host": [
-								"www",
-								"europace2",
-								"de"
-							],
-							"path": [
-								"partnermanagement",
-								"partner",
-								"{{PARTNER_ID}}",
-								"handelsbeziehungen"
-							],
-							"query": [
-								{
-									"key": "datenkontext",
-									"value": "ECHT_GESCHAEFT"
-								}
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "BaufiSmart Ereignisse API",
-			"item": [
-				{
-					"name": "Ereignisse Auslesen (VorgangsNr)",
+					"name": "Partnerkennzeichnen auslesen",
 					"request": {
 						"auth": {
 							"type": "bearer",
@@ -2101,8 +1928,107 @@
 						"method": "GET",
 						"header": [
 							{
+								"key": "X-Authentication",
+								"value": "{{jwt}}"
+							},
+							{
 								"key": "Content-Type",
 								"value": "application/json"
+							},
+							{
+								"key": "X-TraceId",
+								"value": "{{traceId}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://api.europace.de/v2/partner/{{PARTNER_ID}}/partnerkennzeichen",
+							"protocol": "https",
+							"host": [
+								"api",
+								"europace",
+								"de"
+							],
+							"path": [
+								"v2",
+								"partner",
+								"{{PARTNER_ID}}",
+								"partnerkennzeichen"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Übernahme Recht auslesen",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-Authentication",
+								"value": "{{jwt}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "X-TraceId",
+								"value": "{{traceId}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://api.europace.de/v2/partner/{{PARTNER_ID}}/uebernehmbare",
+							"protocol": "https",
+							"host": [
+								"api",
+								"europace",
+								"de"
+							],
+							"path": [
+								"v2",
+								"partner",
+								"{{PARTNER_ID}}",
+								"uebernehmbare"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "BaufiSmart Ereignisse API",
+			"item": [
+				{
+					"name": "Ereignisse Auslesen (VorgangsNr)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "X-traceId",
+								"value": "{{traceId}}",
+								"type": "text"
 							}
 						],
 						"url": {
@@ -2126,21 +2052,20 @@
 				{
 					"name": "Ereignisse Auslesen (AntragsNr)",
 					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{access_token}}",
-									"type": "string"
-								}
-							]
-						},
 						"method": "GET",
 						"header": [
 							{
+								"key": "Authorization",
+								"value": "Bearer {{ACCESS_TOKEN}}"
+							},
+							{
 								"key": "Content-Type",
 								"value": "application/json"
+							},
+							{
+								"key": "X-traceId",
+								"value": "{{traceId}}",
+								"type": "text"
 							}
 						],
 						"url": {
@@ -2163,7 +2088,8 @@
 					},
 					"response": []
 				}
-			]
+			],
+			"protocolProfileBehavior": {}
 		},
 		{
 			"name": "KreditSmart Vorgaenge API",
@@ -2186,6 +2112,11 @@
 							{
 								"key": "Content-Type",
 								"value": "application/json;charset=utf-8"
+							},
+							{
+								"key": "X-traceId",
+								"value": "{{traceId}}",
+								"type": "text"
 							}
 						],
 						"body": {
@@ -2212,154 +2143,8 @@
 					},
 					"response": []
 				}
-			]
-		},
-		{
-			"name": "Reporting",
-			"item": [
-				{
-					"name": "1. Rohdaten-Report erzeugen",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"exec": [
-									"postman.setGlobalVariable(\"report-processing-id\", null);"
-								],
-								"type": "text/javascript"
-							}
-						},
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test(\"Location is present in header\", function () {",
-									"    pm.response.to.have.header(\"Location\");",
-									"});",
-									"postman.setGlobalVariable(\"report-processing-id\", pm.response.headers.get(\"Location\"));",
-									""
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{access_token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"type": "text"
-							},
-							{
-								"key": "X-Trace-Id",
-								"value": "Mike",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"partnerId\": \"{{PARTNER_ID}}}}\",\n    \"fromDay\": \"2019-01-01\"\n}"
-						},
-						"url": {
-							"raw": "https://report.api.europace.de/rohdaten",
-							"protocol": "https",
-							"host": [
-								"report",
-								"api",
-								"europace",
-								"de"
-							],
-							"path": [
-								"rohdaten"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "2. Report Status abfragen",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test(\"Location is present in header\", function () {",
-									"    pm.response.to.have.header(\"Location\");",
-									"});",
-									"postman.setGlobalVariable(\"path-to-reportfile\", pm.response.headers.get(\"Location\"));",
-									"",
-									"",
-									"",
-									""
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"protocolProfileBehavior": {
-						"followRedirects": false
-					},
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "X-Trace-Id",
-								"value": "Mike",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "https://report.api.europace.de{{report-processing-id}}",
-							"protocol": "https",
-							"host": [
-								"report",
-								"api",
-								"europace",
-								"de{{report-processing-id}}"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "3. Report abholen",
-					"request": {
-						"auth": {
-							"type": "noauth"
-						},
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{path-to-reportfile}}",
-							"host": [
-								"{{path-to-reportfile}}"
-							]
-						}
-					},
-					"response": []
-				}
 			],
-			"auth": {
-				"type": "bearer",
-				"bearer": [
-					{
-						"key": "token",
-						"value": "{{access_token}}",
-						"type": "string"
-					}
-				]
-			}
+			"protocolProfileBehavior": {}
 		},
 		{
 			"name": "Get Legacy Access-Token",
@@ -2367,6 +2152,7 @@
 				{
 					"listen": "test",
 					"script": {
+						"id": "03d6376a-aaa5-4a76-b244-b26eb22bed07",
 						"exec": [
 							"var jsonData = JSON.parse(responseBody);",
 							"postman.setGlobalVariable(\"jwt\", jsonData.access_token);"
@@ -2381,6 +2167,11 @@
 					{
 						"key": "Content-Type",
 						"value": "application/x-www-form-urlencoded"
+					},
+					{
+						"key": "X-traceId",
+						"value": "{{traceId}}",
+						"type": "text"
 					}
 				],
 				"body": {
@@ -2396,7 +2187,10 @@
 							"value": "{{API_KEY}}",
 							"type": "text"
 						}
-					]
+					],
+					"options": {
+						"urlencoded": {}
+					}
 				},
 				"url": {
 					"raw": "https://api.europace.de/login",
@@ -2419,6 +2213,7 @@
 				{
 					"listen": "test",
 					"script": {
+						"id": "6b46396a-080a-4a73-9044-74316ca9c592",
 						"exec": [
 							"var jsonData = JSON.parse(responseBody);",
 							"postman.setGlobalVariable(\"access_token\", jsonData.access_token);",
@@ -2508,6 +2303,7 @@
 		{
 			"listen": "prerequest",
 			"script": {
+				"id": "a8a4fcbb-67f7-40d8-9c9a-a07b7f1db4a5",
 				"type": "text/javascript",
 				"exec": [
 					"pm.globals.set(\"traceId\", \"EP-API-POSTMAN-COLLECTION-\" + _.random(1000, 9999));"
@@ -2517,11 +2313,13 @@
 		{
 			"listen": "test",
 			"script": {
+				"id": "15d27dd8-6951-4b18-9c5c-cff069557280",
 				"type": "text/javascript",
 				"exec": [
 					"console.info(\"traceId: \" + pm.globals.get(\"traceId\"))"
 				]
 			}
 		}
-	]
+	],
+	"protocolProfileBehavior": {}
 }
