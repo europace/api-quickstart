@@ -5,7 +5,7 @@ Probeaufrufe (Calls) der APIs sind sehr hilfreich, um schnell einzusteigen. Daf�
 ## Voraussetzung um diese Calls auszuführen:
 
 1. Du benötigst eine API Zugriff. Das beinhaltet entweder:
-   * OAuth Client Credentials. Wo diese herkommen ist [hier beschrieben](https://europace2.zendesk.com/hc/de/articles/360012514780).
+   * OAuth Client Credentials. Wo diese herkommen ist [hier beschrieben](https://docs.api.europace.de/baufinanzierung/authentifizierung/#wie-bekomme-ich-einen-client-registriert).
    * eine PartnerID und einen API Key (für eine "Legacy Autorisierung").
 2. Du benötigst mindestens einen Vorgang oder einen Antrag, um die Daten auszulesen.
 
