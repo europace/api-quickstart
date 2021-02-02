@@ -1189,7 +1189,7 @@
 										"value": "application/json"
 									},
 									{
-										"key": "X-traceId",
+										"key": "X-TraceId",
 										"value": "{{traceId}}"
 									},
 									{
