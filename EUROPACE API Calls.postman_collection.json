@@ -1231,7 +1231,7 @@
 										"value": "application/json"
 									},
 									{
-										"key": "X-traceId",
+										"key": "X-TraceId",
 										"value": "{{traceId}}"
 									},
 									{
@@ -1275,7 +1275,7 @@
 										"value": "application/json"
 									},
 									{
-										"key": "X-traceId",
+										"key": "X-TraceId",
 										"value": "{{traceId}}"
 									}
 								],
@@ -1311,7 +1311,7 @@
 										"value": "*/*"
 									},
 									{
-										"key": "X-traceId",
+										"key": "X-TraceId",
 										"value": "{{traceId}}"
 									},
 									{
@@ -1367,7 +1367,7 @@
 										"value": "application/json"
 									},
 									{
-										"key": "X-traceId",
+										"key": "X-TraceId",
 										"value": "{{traceId}}"
 									},
 									{
@@ -1412,7 +1412,7 @@
 										"value": "application/json"
 									},
 									{
-										"key": "X-traceId",
+										"key": "X-TraceId",
 										"value": "{{traceId}}"
 									},
 									{
@@ -1452,7 +1452,7 @@
 										"value": "application/json"
 									},
 									{
-										"key": "X-traceId",
+										"key": "X-TraceId",
 										"value": "{{traceId}}"
 									},
 									{
@@ -1527,7 +1527,7 @@
 										"value": "application/json"
 									},
 									{
-										"key": "X-traceId",
+										"key": "X-TraceId",
 										"value": "{{traceId}}"
 									},
 									{
@@ -1566,7 +1566,7 @@
 										"value": "Bearer {{jwt}}"
 									},
 									{
-										"key": "X-traceId",
+										"key": "X-TraceId",
 										"value": "{{traceId}}"
 									},
 									{
@@ -1607,7 +1607,7 @@
 										"value": "application/json"
 									},
 									{
-										"key": "X-traceId",
+										"key": "X-TraceId",
 										"value": "{{traceId}}"
 									},
 									{
@@ -1653,7 +1653,7 @@
 										"value": "Bearer {{jwt}}"
 									},
 									{
-										"key": "X-traceId",
+										"key": "X-TraceId",
 										"value": "{{traceId}}"
 									}
 								],
@@ -1712,7 +1712,7 @@
 										"type": "text"
 									},
 									{
-										"key": "X-traceId",
+										"key": "X-TraceId",
 										"value": "{{traceId}}",
 										"type": "text"
 									}
