@@ -2212,7 +2212,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"partnerId\": \"{{PARTNER_ID}}}}\",\n    \"fromDay\": \"2019-01-01\"\n}"
+							"raw": "{\n    \"fromDay\": \"2019-01-01\"\n}"
 						},
 						"url": {
 							"raw": "https://report.api.europace.de/rohdaten",
