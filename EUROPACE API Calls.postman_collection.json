@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "e0d25fa8-01ba-44bc-b878-d56b6dbfa5fa",
+		"_postman_id": "22a6b062-f2d1-43f6-8494-9f0a6f77c555",
 		"name": "EUROPACE API Calls",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -103,11 +103,6 @@
 							{
 								"key": "Content-Type",
 								"value": "application/json"
-							},
-							{
-								"key": "X-traceId",
-								"value": "{{traceId}}",
-								"type": "text"
 							}
 						],
 						"url": {
@@ -144,11 +139,6 @@
 							{
 								"key": "Content-Type",
 								"value": "application/json"
-							},
-							{
-								"key": "X-traceId",
-								"value": "{{traceId}}",
-								"type": "text"
 							}
 						],
 						"url": {
@@ -191,11 +181,6 @@
 							{
 								"key": "Content-Type",
 								"value": "application/json"
-							},
-							{
-								"key": "X-traceId",
-								"value": "{{traceId}}",
-								"type": "text"
 							}
 						],
 						"url": {
@@ -226,11 +211,6 @@
 									{
 										"key": "Content-Type",
 										"value": "application/json"
-									},
-									{
-										"key": "X-traceId",
-										"value": "{{traceId}}",
-										"type": "text"
 									}
 								],
 								"url": {
@@ -364,11 +344,6 @@
 							{
 								"key": "Content-Type",
 								"value": "application/json"
-							},
-							{
-								"key": "X-traceId",
-								"value": "{{traceId}}",
-								"type": "text"
 							}
 						],
 						"url": {
@@ -533,11 +508,6 @@
 							{
 								"key": "Content-Type",
 								"value": "application/json-patch+json"
-							},
-							{
-								"key": "X-traceId",
-								"value": "{{traceId}}",
-								"type": "text"
 							}
 						],
 						"body": {
@@ -560,9 +530,122 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Sachbearbeiter ändern",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"partnerId\": \"MNC81\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api.europace2.de/v2/vorgaenge/YM7S18/vorgangsBearbeiter",
+							"protocol": "https",
+							"host": [
+								"api",
+								"europace2",
+								"de"
+							],
+							"path": [
+								"v2",
+								"vorgaenge",
+								"YM7S18",
+								"vorgangsBearbeiter"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Kundenbetreuer ändern",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"partnerId\": \"AAV43\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api.europace2.de/v2/vorgaenge/YM7S18/kundenBetreuer",
+							"protocol": "https",
+							"host": [
+								"api",
+								"europace2",
+								"de"
+							],
+							"path": [
+								"v2",
+								"vorgaenge",
+								"YM7S18",
+								"kundenBetreuer"
+							]
+						}
+					},
+					"response": []
 				}
 			],
-			"protocolProfileBehavior": {}
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "{{access_token}}",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
 		},
 		{
 			"name": "BaufiSmart Antraege API",
@@ -585,11 +668,6 @@
 							{
 								"key": "Content-Type",
 								"value": "application/json"
-							},
-							{
-								"key": "X-traceId",
-								"value": "{{traceId}}",
-								"type": "text"
 							}
 						],
 						"url": {
@@ -628,11 +706,6 @@
 							{
 								"key": "Content-Type",
 								"value": "application/json"
-							},
-							{
-								"key": "X-traceId",
-								"value": "{{traceId}}",
-								"type": "text"
 							}
 						],
 						"url": {
@@ -677,11 +750,6 @@
 							{
 								"key": "Content-Type",
 								"value": "application/json"
-							},
-							{
-								"key": "X-traceId",
-								"value": "{{traceId}}",
-								"type": "text"
 							}
 						],
 						"url": {
@@ -724,11 +792,6 @@
 								"name": "Content-Type",
 								"value": "application/json",
 								"type": "text"
-							},
-							{
-								"key": "X-traceId",
-								"value": "{{traceId}}",
-								"type": "text"
 							}
 						],
 						"body": {
@@ -756,7 +819,7 @@
 					"response": []
 				},
 				{
-					"name": "Gegenangebot stellen",
+					"name": "Antragsstatus setzen",
 					"request": {
 						"auth": {
 							"type": "bearer",
@@ -771,14 +834,13 @@
 						"method": "POST",
 						"header": [
 							{
-								"key": "X-traceId",
-								"value": "{{traceId}}",
-								"type": "text"
+								"key": "Content-Type",
+								"value": "application/json"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"kennung\": \"Kommentar in der Ergebnissliste\",\n    \"darlehen\": [\n        {\n            \"sollZins\": 0.0155,\n            \"effektivZins\": 0.0158,\n            \"rateMonatlich\": 1227.7,\n            \"darlehensBetrag\": 300000.00,\n            \"darlehensTyp\": \"ANNUITAETEN_DARLEHEN\",\n            \"vertriebsProvisionGesamtAbsolut\": 8300,\n            \"auszahlungsBetrag\": 100000.00,\n            \"zinsBindungInJahren\": 10,\n            \"sonderTilgungJaehrlich\": 0.1,\n            \"tilgungsBeginnAm\": \"2020-11-30\",\n            \"anfaenglicheTilgung\": 0.02,\n            \"bereitstellungsZinsFreieZeitInMonaten\": 3,\n            \"bereitstellungsZins\": 0.03,\n            \"laufzeitKalkulatorischInJahren\": 39,\n            \"produktDetails\": \"Details zum Finanzprodukt\"\n        }\n    ]\n}",
+							"raw": "\t\t{\n            \"antragsteller\": \"BEANTRAGT\",\n\t\t\t\"produktAnbieter\": \"NICHT_BEARBEITET\",\n\t\t\t\"kommentar\": \"The API got the job done.\"\n\t\t}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -786,7 +848,7 @@
 							}
 						},
 						"url": {
-							"raw": "https://baufismart.api.europace.de/v2/antraege/UE0MX8/1/1/gegenangebot",
+							"raw": "https://baufismart.api.europace.de/v2/antraege/WD0TNA/19/1/status",
 							"protocol": "https",
 							"host": [
 								"baufismart",
@@ -797,17 +859,16 @@
 							"path": [
 								"v2",
 								"antraege",
-								"UE0MX8",
+								"WD0TNA",
+								"19",
 								"1",
-								"1",
-								"gegenangebot"
+								"status"
 							]
 						}
 					},
 					"response": []
 				}
-			],
-			"protocolProfileBehavior": {}
+			]
 		},
 		{
 			"name": "BaufiSmart Angebote API",
@@ -818,7 +879,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "305cb451-b572-4780-86e0-1b9137efdd7a",
 								"exec": [
 									"var jsonData = JSON.parse(responseBody);",
 									"postman.setGlobalVariable(\"ermittlungsId\", jsonData.ermittlungsId);"
@@ -852,7 +912,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\n    \"haushalte\": [\n        {\n            \"id\": \"29905314406551975\",\n            \"antragsteller\": [\n                {\n                    \"id\": \"8245137591160463\",\n                    \"anrede\": \"HERR\",\n                    \"anschrift\": {\n                        \"hausnummer\": \"117\",\n                        \"ort\": \"Berlin (Mitte)\",\n                        \"postleitzahl\": \"10115\",\n                        \"strasse\": \"InvalidenstraÃe\"\n                    },\n                    \"beschaeftigung\": {\n                        \"art\": \"ANGESTELLTER\",\n                        \"anzahlGehaelterProJahr\": 12,\n                        \"situationNachRenteneintritt\": {}\n                    },\n                    \"email\": \"frank.pokroppa@europace.de\",\n                    \"familienstand\": \"LEDIG\",\n                    \"geburtsdatum\": \"1964-12-25\",\n                    \"nachname\": \"Pokroppa\",\n                    \"staatsangehoerigkeit\": {\n                        \"isoCountryCode\": \"DE\",\n                        \"name\": \"Deutschland\"\n                    },\n                    \"telefonnummer\": \"88766567\",\n                    \"telefonnummerVorwahl\": \"030\",\n                    \"vorname\": \"Frank\",\n                    \"wohnhaftSeit\": \"1910-10-10\"\n                }\n            ]\n        }\n    ],\n    \"finanzierungsObjekt\": {\n        \"id\": \"47296276901593204\",\n        \"adresse\": {\n            \"postleitzahl\": \"10459\"\n        },\n        \"erbbaurecht\": {\n            \"erbbaurecht\": true,\n            \"erbbauzinsJaehrlich\": 150,\n            \"grundstuecksEigentuemer\": \"OEFFENTLICH_KIRCHLICH\",\n            \"laufzeitBisJahr\": 2070\n        },\n        \"gebaeude\": {\n            \"wohnflaeche\": {\n                \"vermietungsInformationen\": {\n                    \"nutzungsArt\": \"EIGENGENUTZT\"\n                }\n            },\n            \"hausTyp\": \"EINFAMILIENHAUS\"\n        },\n        \"objektArt\": \"HAUS\",\n        \"bestehendeDarlehen\": [\n            {\n                \"id\": \"43304448928678096\",\n                \"aktuelleRestschuldWennNichtAbzuloesen\": 25555,\n                \"abzuloesendeRestschuld\": 500,\n                \"darlehensArt\": \"IMMOBILIENDARLEHEN\",\n                \"darlehensGeber\": {\n                    \"id\": \"4e6885fe84fbad4bd0c68f62\",\n                    \"partnerId\": \"WXS37\",\n                    \"firmierung\": \"ALLIANZ Lebensversicherungs-AG\",\n                    \"email\": \"baufipartner@allianz.de\",\n                    \"anschrift\": {\n                        \"hausnummer\": \"19\",\n                        \"ort\": \"Stuttgart\",\n                        \"postleitzahl\": \"70178\",\n                        \"strasse\": \"ReinsburgstraÃe\"\n                    },\n                    \"vertriebsOrganisation\": {\n                        \"name\": \"ALLIANZ Lebensversicherungs-AG\",\n                        \"firma\": \"ALLIANZ Lebensversicherungs-AG\",\n                        \"vertriebsOrganisationsId\": \"ALLIANZ\"\n                    },\n                    \"kreditsachbearbeiter\": false,\n                    \"produktAnbieterId\": \"ALLIANZ\"\n                },\n                \"eingetrageneGrundschuld\": 50000,\n                \"grundschuldArt\": \"BRIEF_GRUNDSCHULD\",\n                \"rateMonatlich\": 500,\n                \"zinsBindungEndetAm\": \"2021-02-02\",\n                \"laufzeitEnde\": \"2027-02-02\",\n                \"darlehensBetrag\": 75000\n            }\n        ]\n    },\n    \"vorhaben\": {\n        \"id\": \"7357540068390608\",\n        \"nachrangigeExterneDarlehen\": [\n            {\n                \"id\": \"41515491007659655\",\n                \"darlehensBetrag\": 50000,\n                \"darlehensGeber\": \"Meine Bank 4 all\",\n                \"rateMonatlich\": 200,\n                \"zinsBindung\": {\n                    \"endetAm\": \"2019-01-01\"\n                }\n            }\n        ],\n        \"verwendungszweck\": \"ANSCHLUSSFINANZIERUNG\",\n        \"finanzierungswunsch\": {\n            \"id\": \"8529623681232834\",\n            \"darlehensWuensche\": [\n                {\n                    \"id\": \"8330583833982105\",\n                    \"annuitaetenDarlehen\": {\n                        \"darlehensBetrag\": 150000,\n                        \"provision\": 1,\n                        \"tilgungsWunsch\": {\n                            \"anfaenglicheTilgung\": 2,\n                            \"volltilgerWennAnnuitaetenOderForward\": false\n                        },\n                        \"bereitstellungsZinsFreieZeitInMonaten\": 2,\n                        \"sondertilgungOptionalJaehrlich\": 100,\n                        \"zinsBindungInJahren\": 10\n                    }\n                }\n            ]\n        }\n    },\n    \"datenKontext\": \"TEST_MODUS\"\n}"
+							"raw": "{\n\n    \"haushalte\": [\n        {\n            \"id\": \"29905314406551975\",\n            \"antragsteller\": [\n                {\n                    \"id\": \"8245137591160463\",\n                    \"anrede\": \"HERR\",\n                    \"anschrift\": {\n                        \"hausnummer\": \"117\",\n                        \"ort\": \"Berlin (Mitte)\",\n                        \"postleitzahl\": \"10115\",\n                        \"strasse\": \"Invalidenstraße\"\n                    },\n                    \"beschaeftigung\": {\n                        \"art\": \"ANGESTELLTER\",\n                        \"anzahlGehaelterProJahr\": 12,\n                        \"situationNachRenteneintritt\": {}\n                    },\n                    \"email\": \"frank.pokroppa@europace.de\",\n                    \"familienstand\": \"LEDIG\",\n                    \"geburtsdatum\": \"1964-12-25\",\n                    \"nachname\": \"Pokroppa\",\n                    \"staatsangehoerigkeit\": {\n                        \"isoCountryCode\": \"DE\",\n                        \"name\": \"Deutschland\"\n                    },\n                    \"telefonnummer\": \"88766567\",\n                    \"telefonnummerVorwahl\": \"030\",\n                    \"vorname\": \"Frank\",\n                    \"wohnhaftSeit\": \"1910-10-10\"\n                }\n            ]\n        }\n    ],\n    \"finanzierungsObjekt\": {\n        \"id\": \"47296276901593204\",\n        \"adresse\": {\n            \"postleitzahl\": \"10459\"\n        },\n        \"erbbaurecht\": {\n            \"erbbaurecht\": true,\n            \"erbbauzinsJaehrlich\": 150,\n            \"grundstuecksEigentuemer\": \"OEFFENTLICH_KIRCHLICH\",\n            \"laufzeitBisJahr\": 2070\n        },\n        \"gebaeude\": {\n            \"wohnflaeche\": {\n                \"vermietungsInformationen\": {\n                    \"nutzungsArt\": \"EIGENGENUTZT\"\n                }\n            },\n            \"hausTyp\": \"EINFAMILIENHAUS\"\n        },\n        \"objektArt\": \"HAUS\",\n        \"bestehendeDarlehen\": [\n            {\n                \"id\": \"43304448928678096\",\n                \"aktuelleRestschuldWennNichtAbzuloesen\": 25555,\n                \"abzuloesendeRestschuld\": 500,\n                \"darlehensArt\": \"IMMOBILIENDARLEHEN\",\n                \"darlehensGeber\": {\n                    \"id\": \"4e6885fe84fbad4bd0c68f62\",\n                    \"partnerId\": \"WXS37\",\n                    \"firmierung\": \"ALLIANZ Lebensversicherungs-AG\",\n                    \"email\": \"baufipartner@allianz.de\",\n                    \"anschrift\": {\n                        \"hausnummer\": \"19\",\n                        \"ort\": \"Stuttgart\",\n                        \"postleitzahl\": \"70178\",\n                        \"strasse\": \"Reinsburgstraße\"\n                    },\n                    \"vertriebsOrganisation\": {\n                        \"name\": \"ALLIANZ Lebensversicherungs-AG\",\n                        \"firma\": \"ALLIANZ Lebensversicherungs-AG\",\n                        \"vertriebsOrganisationsId\": \"ALLIANZ\"\n                    },\n                    \"kreditsachbearbeiter\": false,\n                    \"produktAnbieterId\": \"ALLIANZ\"\n                },\n                \"eingetrageneGrundschuld\": 50000,\n                \"grundschuldArt\": \"BRIEF_GRUNDSCHULD\",\n                \"rateMonatlich\": 500,\n                \"zinsBindungEndetAm\": \"2021-02-02\",\n                \"laufzeitEnde\": \"2027-02-02\",\n                \"darlehensBetrag\": 75000\n            }\n        ]\n    },\n    \"vorhaben\": {\n        \"id\": \"7357540068390608\",\n        \"nachrangigeExterneDarlehen\": [\n            {\n                \"id\": \"41515491007659655\",\n                \"darlehensBetrag\": 50000,\n                \"darlehensGeber\": \"Meine Bank 4 all\",\n                \"rateMonatlich\": 200,\n                \"zinsBindung\": {\n                    \"endetAm\": \"2019-01-01\"\n                }\n            }\n        ],\n        \"verwendungszweck\": \"ANSCHLUSSFINANZIERUNG\",\n        \"finanzierungswunsch\": {\n            \"id\": \"8529623681232834\",\n            \"darlehensWuensche\": [\n                {\n                    \"id\": \"8330583833982105\",\n                    \"annuitaetenDarlehen\": {\n                        \"darlehensBetrag\": 150000,\n                        \"provision\": 1,\n                        \"tilgungsWunsch\": {\n                            \"anfaenglicheTilgung\": 2,\n                            \"volltilgerWennAnnuitaetenOderForward\": false\n                        },\n                        \"bereitstellungsZinsFreieZeitInMonaten\": 2,\n                        \"sondertilgungOptionalJaehrlich\": 100,\n                        \"zinsBindungInJahren\": 10\n                    }\n                }\n            ]\n        }\n    },\n    \"datenKontext\": \"TEST_MODUS\"\n}"
 						},
 						"url": {
 							"raw": "https://baufismart.api.europace.de/v2/ergebnisliste/ermittlung/",
@@ -879,7 +939,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "cdf967ec-c2a9-4daa-a9bc-0300c2b463e9",
 								"exec": [
 									"var jsonData = JSON.parse(responseBody);",
 									"postman.setGlobalVariable(\"ermittlungsId\", jsonData.ermittlungsId);"
@@ -904,11 +963,6 @@
 							{
 								"key": "Content-Type",
 								"value": "application/json"
-							},
-							{
-								"key": "X-traceId",
-								"value": "{{traceId}}",
-								"type": "text"
 							}
 						],
 						"body": {
@@ -945,7 +999,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "ff29a415-7427-4d8e-87c0-2d8d0de82e73",
 								"exec": [
 									""
 								],
@@ -972,11 +1025,6 @@
 							{
 								"key": "Content-Type",
 								"value": "application/json"
-							},
-							{
-								"key": "X-traceId",
-								"value": "{{traceId}}",
-								"type": "text"
 							}
 						],
 						"body": {
@@ -1009,7 +1057,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "103930ad-5196-4bd8-b1e2-1a3d4e6fa25a",
 								"exec": [
 									""
 								],
@@ -1036,11 +1083,6 @@
 							{
 								"key": "Content-Type",
 								"value": "application/json"
-							},
-							{
-								"key": "X-traceId",
-								"value": "{{traceId}}",
-								"type": "text"
 							}
 						],
 						"body": {
@@ -1075,7 +1117,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "b6833ce6-dc95-4032-95f2-d2b550ca183f",
 								"exec": [
 									""
 								],
@@ -1102,11 +1143,6 @@
 							{
 								"key": "Content-Type",
 								"value": "application/json"
-							},
-							{
-								"key": "X-traceId",
-								"value": "{{traceId}}",
-								"type": "text"
 							}
 						],
 						"body": {
@@ -1141,7 +1177,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "97529b1e-f0d3-4a52-8cb7-7076a798ebae",
 								"exec": [
 									""
 								],
@@ -1168,11 +1203,6 @@
 							{
 								"key": "Content-Type",
 								"value": "application/json"
-							},
-							{
-								"key": "X-traceId",
-								"value": "{{traceId}}",
-								"type": "text"
 							}
 						],
 						"body": {
@@ -1201,8 +1231,7 @@
 					},
 					"response": []
 				}
-			],
-			"protocolProfileBehavior": {}
+			]
 		},
 		{
 			"name": "Dokumenten API",
@@ -1216,7 +1245,6 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "ea2d5fca-69c6-48a7-ac92-cd333528ed42",
 										"exec": [
 											"var body = JSON.parse(responseBody);",
 											"pm.environment.set(\"dokId\", body.id);",
@@ -1238,7 +1266,7 @@
 										"value": "application/json"
 									},
 									{
-										"key": "X-traceId",
+										"key": "X-TraceId",
 										"value": "{{traceId}}"
 									},
 									{
@@ -1280,7 +1308,7 @@
 										"value": "application/json"
 									},
 									{
-										"key": "X-traceId",
+										"key": "X-TraceId",
 										"value": "{{traceId}}"
 									},
 									{
@@ -1324,7 +1352,7 @@
 										"value": "application/json"
 									},
 									{
-										"key": "X-traceId",
+										"key": "X-TraceId",
 										"value": "{{traceId}}"
 									}
 								],
@@ -1360,7 +1388,7 @@
 										"value": "*/*"
 									},
 									{
-										"key": "X-traceId",
+										"key": "X-TraceId",
 										"value": "{{traceId}}"
 									},
 									{
@@ -1386,9 +1414,7 @@
 							},
 							"response": []
 						}
-					],
-					"protocolProfileBehavior": {},
-					"_postman_isSubFolder": true
+					]
 				},
 				{
 					"name": "Seiten Interaktionen",
@@ -1399,7 +1425,6 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "f6f82f0d-2c01-4701-ab58-8c20b80f822c",
 										"exec": [
 											""
 										],
@@ -1419,7 +1444,7 @@
 										"value": "application/json"
 									},
 									{
-										"key": "X-traceId",
+										"key": "X-TraceId",
 										"value": "{{traceId}}"
 									},
 									{
@@ -1464,7 +1489,7 @@
 										"value": "application/json"
 									},
 									{
-										"key": "X-traceId",
+										"key": "X-TraceId",
 										"value": "{{traceId}}"
 									},
 									{
@@ -1504,7 +1529,7 @@
 										"value": "application/json"
 									},
 									{
-										"key": "X-traceId",
+										"key": "X-TraceId",
 										"value": "{{traceId}}"
 									},
 									{
@@ -1548,9 +1573,7 @@
 							},
 							"response": []
 						}
-					],
-					"protocolProfileBehavior": {},
-					"_postman_isSubFolder": true
+					]
 				},
 				{
 					"name": "Freigabe/Unterlage Interaktionen",
@@ -1561,7 +1584,6 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "053655ce-200b-4a1d-a8c6-f0222f113536",
 										"exec": [
 											"var body = JSON.parse(responseBody);",
 											"pm.environment.set(\"freigabeId\", body[0].id);"
@@ -1582,7 +1604,7 @@
 										"value": "application/json"
 									},
 									{
-										"key": "X-traceId",
+										"key": "X-TraceId",
 										"value": "{{traceId}}"
 									},
 									{
@@ -1621,7 +1643,7 @@
 										"value": "Bearer {{jwt}}"
 									},
 									{
-										"key": "X-traceId",
+										"key": "X-TraceId",
 										"value": "{{traceId}}"
 									},
 									{
@@ -1662,7 +1684,7 @@
 										"value": "application/json"
 									},
 									{
-										"key": "X-traceId",
+										"key": "X-TraceId",
 										"value": "{{traceId}}"
 									},
 									{
@@ -1693,9 +1715,7 @@
 							},
 							"response": []
 						}
-					],
-					"protocolProfileBehavior": {},
-					"_postman_isSubFolder": true
+					]
 				},
 				{
 					"name": "Weitere Interaktionen",
@@ -1710,7 +1730,7 @@
 										"value": "Bearer {{jwt}}"
 									},
 									{
-										"key": "X-traceId",
+										"key": "X-TraceId",
 										"value": "{{traceId}}"
 									}
 								],
@@ -1748,7 +1768,6 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "1c387f95-69c7-4690-b9f0-4bb036f4a0ed",
 										"exec": [
 											""
 										],
@@ -1770,7 +1789,7 @@
 										"type": "text"
 									},
 									{
-										"key": "X-traceId",
+										"key": "X-TraceId",
 										"value": "{{traceId}}",
 										"type": "text"
 									}
@@ -1802,9 +1821,7 @@
 							},
 							"response": []
 						}
-					],
-					"protocolProfileBehavior": {},
-					"_postman_isSubFolder": true
+					]
 				},
 				{
 					"name": "Upload am Antrag",
@@ -1877,7 +1894,6 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "34d4225d-35a0-44fa-9736-7eab9a507fdb",
 						"type": "text/javascript",
 						"exec": [
 							"pm.expect(pm.environment.get(\"vorgangsNummer\"),\"vorgangsNummer muss fuer das aktuelle Environment definiert sein\").to.be.a('string')",
@@ -1885,25 +1901,14 @@
 						]
 					}
 				}
-			],
-			"protocolProfileBehavior": {}
+			]
 		},
 		{
-			"name": "Partner API",
+			"name": "Partner API (PEX)",
 			"item": [
 				{
 					"name": "Kontaktdaten lesen",
 					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{access_token}}",
-									"type": "string"
-								}
-							]
-						},
 						"method": "GET",
 						"header": [
 							{
@@ -1921,18 +1926,18 @@
 							}
 						],
 						"url": {
-							"raw": "https://api.europace.de/v2/partner/{{PARTNER_ID}}/",
+							"raw": "https://www.europace2.de/partnermanagement/partner/{{PARTNER_ID}}/kontaktdaten",
 							"protocol": "https",
 							"host": [
-								"api",
-								"europace",
+								"www",
+								"europace2",
 								"de"
 							],
 							"path": [
-								"v2",
+								"partnermanagement",
 								"partner",
 								"{{PARTNER_ID}}",
-								""
+								"kontaktdaten"
 							]
 						}
 					},
@@ -1941,16 +1946,6 @@
 				{
 					"name": "Kontaktdaten schreiben",
 					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{access_token}}",
-									"type": "string"
-								}
-							]
-						},
 						"method": "PATCH",
 						"header": [
 							{
@@ -1969,39 +1964,29 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"firmenname\":\"Mustermann AG2\"\n}"
+							"raw": "{\n  \"firmenname\":\"Mustermann AG\"\n}"
 						},
 						"url": {
-							"raw": "https://api.europace.de/v2/partner/{{PARTNER_ID}}/",
+							"raw": "https://www.europace2.de/partnermanagement/partner/{{PARTNER_ID}}/kontaktdaten",
 							"protocol": "https",
 							"host": [
-								"api",
-								"europace",
+								"www",
+								"europace2",
 								"de"
 							],
 							"path": [
-								"v2",
+								"partnermanagement",
 								"partner",
 								"{{PARTNER_ID}}",
-								""
+								"kontaktdaten"
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "Partnerkennzeichnen auslesen",
+					"name": "Partner Kennzeichnen auselesen",
 					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{access_token}}",
-									"type": "string"
-								}
-							]
-						},
 						"method": "GET",
 						"header": [
 							{
@@ -2019,15 +2004,15 @@
 							}
 						],
 						"url": {
-							"raw": "https://api.europace.de/v2/partner/{{PARTNER_ID}}/partnerkennzeichen",
+							"raw": "https://www.europace2.de/partnermanagement/partner/{{PARTNER_ID}}/partnerkennzeichen",
 							"protocol": "https",
 							"host": [
-								"api",
-								"europace",
+								"www",
+								"europace2",
 								"de"
 							],
 							"path": [
-								"v2",
+								"partnermanagement",
 								"partner",
 								"{{PARTNER_ID}}",
 								"partnerkennzeichen"
@@ -2039,16 +2024,6 @@
 				{
 					"name": "Übernahme Recht auslesen",
 					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{access_token}}",
-									"type": "string"
-								}
-							]
-						},
 						"method": "GET",
 						"header": [
 							{
@@ -2066,25 +2041,66 @@
 							}
 						],
 						"url": {
-							"raw": "https://api.europace.de/v2/partner/{{PARTNER_ID}}/uebernehmbare",
+							"raw": "https://www.europace2.de/partnermanagement/partner/{{PARTNER_ID}}/uebernahmeRechtFuer",
 							"protocol": "https",
 							"host": [
-								"api",
-								"europace",
+								"www",
+								"europace2",
 								"de"
 							],
 							"path": [
-								"v2",
+								"partnermanagement",
 								"partner",
 								"{{PARTNER_ID}}",
-								"uebernehmbare"
+								"uebernahmeRechtFuer"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Handelsbeziehungen auslesen",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-Authentication",
+								"value": "{{jwt}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "X-TraceId",
+								"value": "{{traceId}}"
+							}
+						],
+						"url": {
+							"raw": "https://www.europace2.de/partnermanagement/partner/{{PARTNER_ID}}/handelsbeziehungen?datenkontext=ECHT_GESCHAEFT",
+							"protocol": "https",
+							"host": [
+								"www",
+								"europace2",
+								"de"
+							],
+							"path": [
+								"partnermanagement",
+								"partner",
+								"{{PARTNER_ID}}",
+								"handelsbeziehungen"
+							],
+							"query": [
+								{
+									"key": "datenkontext",
+									"value": "ECHT_GESCHAEFT"
+								}
 							]
 						}
 					},
 					"response": []
 				}
-			],
-			"protocolProfileBehavior": {}
+			]
 		},
 		{
 			"name": "BaufiSmart Ereignisse API",
@@ -2092,20 +2108,21 @@
 				{
 					"name": "Ereignisse Auslesen (VorgangsNr)",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [
 							{
-								"key": "Authorization",
-								"value": "Bearer {{ACCESS_TOKEN}}"
-							},
-							{
 								"key": "Content-Type",
 								"value": "application/json"
-							},
-							{
-								"key": "X-traceId",
-								"value": "{{traceId}}",
-								"type": "text"
 							}
 						],
 						"url": {
@@ -2129,20 +2146,21 @@
 				{
 					"name": "Ereignisse Auslesen (AntragsNr)",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [
 							{
-								"key": "Authorization",
-								"value": "Bearer {{ACCESS_TOKEN}}"
-							},
-							{
 								"key": "Content-Type",
 								"value": "application/json"
-							},
-							{
-								"key": "X-traceId",
-								"value": "{{traceId}}",
-								"type": "text"
 							}
 						],
 						"url": {
@@ -2165,8 +2183,7 @@
 					},
 					"response": []
 				}
-			],
-			"protocolProfileBehavior": {}
+			]
 		},
 		{
 			"name": "KreditSmart Vorgaenge API",
@@ -2189,11 +2206,6 @@
 							{
 								"key": "Content-Type",
 								"value": "application/json;charset=utf-8"
-							},
-							{
-								"key": "X-traceId",
-								"value": "{{traceId}}",
-								"type": "text"
 							}
 						],
 						"body": {
@@ -2220,8 +2232,154 @@
 					},
 					"response": []
 				}
+			]
+		},
+		{
+			"name": "Reporting",
+			"item": [
+				{
+					"name": "1. Rohdaten-Report erzeugen",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"postman.setGlobalVariable(\"report-processing-id\", null);"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Location is present in header\", function () {",
+									"    pm.response.to.have.header(\"Location\");",
+									"});",
+									"postman.setGlobalVariable(\"report-processing-id\", pm.response.headers.get(\"Location\"));",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "X-Trace-Id",
+								"value": "Mike",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"fromDay\": \"2019-01-01\"\n}"
+						},
+						"url": {
+							"raw": "https://report.api.europace.de/rohdaten",
+							"protocol": "https",
+							"host": [
+								"report",
+								"api",
+								"europace",
+								"de"
+							],
+							"path": [
+								"rohdaten"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "2. Report Status abfragen",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Location is present in header\", function () {",
+									"    pm.response.to.have.header(\"Location\");",
+									"});",
+									"postman.setGlobalVariable(\"path-to-reportfile\", pm.response.headers.get(\"Location\"));",
+									"",
+									"",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"followRedirects": false
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-Trace-Id",
+								"value": "Mike",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://report.api.europace.de{{report-processing-id}}",
+							"protocol": "https",
+							"host": [
+								"report",
+								"api",
+								"europace",
+								"de{{report-processing-id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "3. Report abholen",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{path-to-reportfile}}",
+							"host": [
+								"{{path-to-reportfile}}"
+							]
+						}
+					},
+					"response": []
+				}
 			],
-			"protocolProfileBehavior": {}
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "{{access_token}}",
+						"type": "string"
+					}
+				]
+			}
 		},
 		{
 			"name": "Get Legacy Access-Token",
@@ -2229,7 +2387,6 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "03d6376a-aaa5-4a76-b244-b26eb22bed07",
 						"exec": [
 							"var jsonData = JSON.parse(responseBody);",
 							"postman.setGlobalVariable(\"jwt\", jsonData.access_token);"
@@ -2244,11 +2401,6 @@
 					{
 						"key": "Content-Type",
 						"value": "application/x-www-form-urlencoded"
-					},
-					{
-						"key": "X-traceId",
-						"value": "{{traceId}}",
-						"type": "text"
 					}
 				],
 				"body": {
@@ -2264,10 +2416,7 @@
 							"value": "{{API_KEY}}",
 							"type": "text"
 						}
-					],
-					"options": {
-						"urlencoded": {}
-					}
+					]
 				},
 				"url": {
 					"raw": "https://api.europace.de/login",
@@ -2290,7 +2439,6 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "6b46396a-080a-4a73-9044-74316ca9c592",
 						"exec": [
 							"var jsonData = JSON.parse(responseBody);",
 							"postman.setGlobalVariable(\"access_token\", jsonData.access_token);",
@@ -2380,7 +2528,6 @@
 		{
 			"listen": "prerequest",
 			"script": {
-				"id": "a8a4fcbb-67f7-40d8-9c9a-a07b7f1db4a5",
 				"type": "text/javascript",
 				"exec": [
 					"pm.globals.set(\"traceId\", \"EP-API-POSTMAN-COLLECTION-\" + _.random(1000, 9999));"
@@ -2390,13 +2537,11 @@
 		{
 			"listen": "test",
 			"script": {
-				"id": "15d27dd8-6951-4b18-9c5c-cff069557280",
 				"type": "text/javascript",
 				"exec": [
 					"console.info(\"traceId: \" + pm.globals.get(\"traceId\"))"
 				]
 			}
 		}
-	],
-	"protocolProfileBehavior": {}
+	]
 }
