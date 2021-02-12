@@ -53,6 +53,18 @@
 				},
 				{
 					"name": "Kundenangaben importieren",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);",
+									"postman.setGlobalVariable(\"vorgangsNummer\", jsonData.vorgangsnummer);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "POST",
 						"header": [
@@ -188,6 +200,18 @@
 				},
 				{
 					"name": "Vorgang auslesen",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);",
+									"postman.setGlobalVariable(\"vorgangsNummer\", jsonData.vorgangsNummer);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "GET",
 						"header": [
@@ -218,12 +242,12 @@
 								"method": "GET",
 								"header": [
 									{
-										"key": "Authorization",
-										"value": "Bearer {{jwt}}"
-									},
-									{
 										"key": "Content-Type",
 										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Bearer {{jwt}}"
 									}
 								],
 								"url": {
@@ -342,16 +366,6 @@
 				{
 					"name": "List Anträge an einem Vorgang",
 					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{access_token}}",
-									"type": "string"
-								}
-							]
-						},
 						"method": "GET",
 						"header": [
 							{
@@ -501,229 +515,6 @@
 							""
 						]
 					}
-				}
-			]
-		},
-		{
-			"name": "BaufiSmart Antraege API",
-			"item": [
-				{
-					"name": "List Antraege",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{access_token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"url": {
-							"raw": "https://baufismart.api.europace.de/v2/antraege/",
-							"protocol": "https",
-							"host": [
-								"baufismart",
-								"api",
-								"europace",
-								"de"
-							],
-							"path": [
-								"v2",
-								"antraege",
-								""
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "List Testantraege",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{access_token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"url": {
-							"raw": "https://baufismart.api.europace.de/v2/antraege/?datenKontext=TEST_MODUS",
-							"protocol": "https",
-							"host": [
-								"baufismart",
-								"api",
-								"europace",
-								"de"
-							],
-							"path": [
-								"v2",
-								"antraege",
-								""
-							],
-							"query": [
-								{
-									"key": "datenKontext",
-									"value": "TEST_MODUS"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Antrag auslesen",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{access_token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"url": {
-							"raw": "https://baufismart.api.europace.de/v2/antraege/HU1242/1/1",
-							"protocol": "https",
-							"host": [
-								"baufismart",
-								"api",
-								"europace",
-								"de"
-							],
-							"path": [
-								"v2",
-								"antraege",
-								"HU1242",
-								"1",
-								"1"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Antrag Patchen (eigene Referenz)",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{access_token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "PATCH",
-						"header": [
-							{
-								"key": "Content-Type",
-								"name": "Content-Type",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "[\n\t{ \"op\": \"add\", \"path\": \"/antragsReferenz\", \"value\": \"whoop\" }\n]"
-						},
-						"url": {
-							"raw": "https://baufismart.api.europace.de/v2/antraege/Z11029/2/1",
-							"protocol": "https",
-							"host": [
-								"baufismart",
-								"api",
-								"europace",
-								"de"
-							],
-							"path": [
-								"v2",
-								"antraege",
-								"Z11029",
-								"2",
-								"1"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Antragsstatus setzen",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{access_token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "\t\t{\n            \"antragsteller\": \"BEANTRAGT\",\n\t\t\t\"produktAnbieter\": \"NICHT_BEARBEITET\",\n\t\t\t\"kommentar\": \"The API got the job done.\"\n\t\t}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "https://baufismart.api.europace.de/v2/antraege/WD0TNA/19/1/status",
-							"protocol": "https",
-							"host": [
-								"baufismart",
-								"api",
-								"europace",
-								"de"
-							],
-							"path": [
-								"v2",
-								"antraege",
-								"WD0TNA",
-								"19",
-								"1",
-								"status"
-							]
-						}
-					},
-					"response": []
 				}
 			]
 		},
@@ -1091,10 +882,355 @@
 			]
 		},
 		{
-			"name": "Dokumenten API",
+			"name": "BaufiSmart Antraege API",
 			"item": [
 				{
-					"name": "Dokument Interaktionen",
+					"name": "List Antraege",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "https://baufismart.api.europace.de/v2/antraege/",
+							"protocol": "https",
+							"host": [
+								"baufismart",
+								"api",
+								"europace",
+								"de"
+							],
+							"path": [
+								"v2",
+								"antraege",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List Testantraege",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "https://baufismart.api.europace.de/v2/antraege/?datenKontext=TEST_MODUS",
+							"protocol": "https",
+							"host": [
+								"baufismart",
+								"api",
+								"europace",
+								"de"
+							],
+							"path": [
+								"v2",
+								"antraege",
+								""
+							],
+							"query": [
+								{
+									"key": "datenKontext",
+									"value": "TEST_MODUS"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Antrag auslesen",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "https://baufismart.api.europace.de/v2/antraege/HU1242/1/1",
+							"protocol": "https",
+							"host": [
+								"baufismart",
+								"api",
+								"europace",
+								"de"
+							],
+							"path": [
+								"v2",
+								"antraege",
+								"HU1242",
+								"1",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Antrag Patchen (eigene Referenz)",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "[\n\t{ \"op\": \"add\", \"path\": \"/antragsReferenz\", \"value\": \"whoop\" }\n]"
+						},
+						"url": {
+							"raw": "https://baufismart.api.europace.de/v2/antraege/Z11029/2/1",
+							"protocol": "https",
+							"host": [
+								"baufismart",
+								"api",
+								"europace",
+								"de"
+							],
+							"path": [
+								"v2",
+								"antraege",
+								"Z11029",
+								"2",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Antragsstatus setzen",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "\t\t{\n            \"antragsteller\": \"BEANTRAGT\",\n\t\t\t\"produktAnbieter\": \"NICHT_BEARBEITET\",\n\t\t\t\"kommentar\": \"The API got the job done.\"\n\t\t}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://baufismart.api.europace.de/v2/antraege/WD0TNA/19/1/status",
+							"protocol": "https",
+							"host": [
+								"baufismart",
+								"api",
+								"europace",
+								"de"
+							],
+							"path": [
+								"v2",
+								"antraege",
+								"WD0TNA",
+								"19",
+								"1",
+								"status"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "{{access_token}}",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "BaufiSmart Ereignisse API",
+			"item": [
+				{
+					"name": "Ereignisse Auslesen (VorgangsNr)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "https://baufismart.api.europace.de/v2/ereignisse/CH6407",
+							"protocol": "https",
+							"host": [
+								"baufismart",
+								"api",
+								"europace",
+								"de"
+							],
+							"path": [
+								"v2",
+								"ereignisse",
+								"CH6407"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Ereignisse Auslesen (AntragsNr)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "https://baufismart.api.europace.de/v2/ereignisse/WB0M5Y/1/1",
+							"protocol": "https",
+							"host": [
+								"baufismart",
+								"api",
+								"europace",
+								"de"
+							],
+							"path": [
+								"v2",
+								"ereignisse",
+								"WB0M5Y",
+								"1",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "{{access_token}}",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "KreditSmart Vorgaenge API",
+			"item": [
+				{
+					"name": "Vorgang auslesen",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json;charset=utf-8"
+							}
+						],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query getVorgang($vorgangsnummer: String!) {\n    vorgang(vorgangsnummer: $vorgangsnummer) {\n        vorgangsnummer\n        kundenbetreuer {\n            partnerId\n        }\n        antragsteller1 {\n            personendaten {\n                vorname\n                nachname\n           }\n        }\n        antragsteller2 {\n            personendaten {\n                vorname\n                nachname\n            }\n        }\n        antraege {\n            produktanbieterstatus {\n                status\n            }\n        }\n    }\n}\n",
+								"variables": "{\n    \"vorgangsnummer\": \"AY0916\"\n}\n"
+							}
+						},
+						"url": {
+							"raw": "https://www.europace2.de/kreditsmart/kex/vorgaenge",
+							"protocol": "https",
+							"host": [
+								"www",
+								"europace2",
+								"de"
+							],
+							"path": [
+								"kreditsmart",
+								"kex",
+								"vorgaenge"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Unterlagen API",
+			"item": [
+				{
+					"name": "Unterlagen hinzufügen",
 					"item": [
 						{
 							"name": "Upload",
@@ -1114,10 +1250,6 @@
 							"request": {
 								"method": "POST",
 								"header": [
-									{
-										"key": "Authorization",
-										"value": "Bearer {{jwt}}"
-									},
 									{
 										"key": "Accept",
 										"value": "application/json"
@@ -1156,10 +1288,6 @@
 							"request": {
 								"method": "POST",
 								"header": [
-									{
-										"key": "Authorization",
-										"value": "Bearer {{jwt}}"
-									},
 									{
 										"key": "Accept",
 										"value": "application/json"
@@ -1200,10 +1328,6 @@
 							"request": {
 								"method": "GET",
 								"header": [
-									{
-										"key": "Authorization",
-										"value": "Bearer {{jwt}}"
-									},
 									{
 										"key": "Accept",
 										"value": "application/json"
@@ -1271,10 +1395,111 @@
 							},
 							"response": []
 						}
+					],
+					"auth": {
+						"type": "bearer",
+						"bearer": [
+							{
+								"key": "token",
+								"value": "{{access_token}}",
+								"type": "string"
+							}
+						]
+					},
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
 					]
 				},
 				{
-					"name": "Seiten Interaktionen",
+					"name": "Dokument abrufen",
+					"item": [
+						{
+							"name": "Download eines Dokuments",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "*/*"
+									},
+									{
+										"key": "X-traceId",
+										"value": "{{traceId}}"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "https://api.europace2.de/v1/dokumente/{{dokId}}/content",
+									"protocol": "https",
+									"host": [
+										"api",
+										"europace2",
+										"de"
+									],
+									"path": [
+										"v1",
+										"dokumente",
+										"{{dokId}}",
+										"content"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"auth": {
+						"type": "bearer",
+						"bearer": [
+							{
+								"key": "token",
+								"value": "{{access_token}}",
+								"type": "string"
+							}
+						]
+					},
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					]
+				},
+				{
+					"name": "Seiten verarbeiten",
 					"item": [
 						{
 							"name": "Seiten eines  Vorgangs",
@@ -1292,10 +1517,6 @@
 							"request": {
 								"method": "GET",
 								"header": [
-									{
-										"key": "Authorization",
-										"value": "Bearer {{jwt}}"
-									},
 									{
 										"key": "Accept",
 										"value": "application/json"
@@ -1338,10 +1559,6 @@
 								"method": "GET",
 								"header": [
 									{
-										"key": "Authorization",
-										"value": "Bearer {{jwt}}"
-									},
-									{
 										"key": "Accept",
 										"value": "application/json"
 									},
@@ -1377,10 +1594,6 @@
 							"request": {
 								"method": "PUT",
 								"header": [
-									{
-										"key": "Authorization",
-										"value": "Bearer {{jwt}}"
-									},
 									{
 										"key": "Accept",
 										"value": "application/json"
@@ -1430,10 +1643,40 @@
 							},
 							"response": []
 						}
+					],
+					"auth": {
+						"type": "bearer",
+						"bearer": [
+							{
+								"key": "token",
+								"value": "{{access_token}}",
+								"type": "string"
+							}
+						]
+					},
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
 					]
 				},
 				{
-					"name": "Freigabe/Unterlage Interaktionen",
+					"name": "Unterlagen freigeben",
 					"item": [
 						{
 							"name": "Freigabe erstellen",
@@ -1452,10 +1695,6 @@
 							"request": {
 								"method": "POST",
 								"header": [
-									{
-										"key": "Authorization",
-										"value": "Bearer {{jwt}}"
-									},
 									{
 										"key": "Accept",
 										"value": "application/json"
@@ -1496,10 +1735,6 @@
 								"method": "GET",
 								"header": [
 									{
-										"key": "Authorization",
-										"value": "Bearer {{jwt}}"
-									},
-									{
 										"key": "X-TraceId",
 										"value": "{{traceId}}"
 									},
@@ -1532,10 +1767,6 @@
 							"request": {
 								"method": "GET",
 								"header": [
-									{
-										"key": "Authorization",
-										"value": "Bearer {{jwt}}"
-									},
 									{
 										"key": "Accept",
 										"value": "application/json"
@@ -1572,6 +1803,36 @@
 							},
 							"response": []
 						}
+					],
+					"auth": {
+						"type": "bearer",
+						"bearer": [
+							{
+								"key": "token",
+								"value": "{{access_token}}",
+								"type": "string"
+							}
+						]
+					},
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
 					]
 				},
 				{
@@ -1582,10 +1843,6 @@
 							"request": {
 								"method": "GET",
 								"header": [
-									{
-										"key": "Authorization",
-										"value": "Bearer {{jwt}}"
-									},
 									{
 										"key": "X-TraceId",
 										"value": "{{traceId}}"
@@ -1636,11 +1893,6 @@
 								"method": "GET",
 								"header": [
 									{
-										"key": "Authorization",
-										"value": "Bearer {{jwt}}",
-										"type": "text"
-									},
-									{
 										"key": "Accept",
 										"value": "application/json",
 										"type": "text"
@@ -1677,6 +1929,36 @@
 								}
 							},
 							"response": []
+						}
+					],
+					"auth": {
+						"type": "bearer",
+						"bearer": [
+							{
+								"key": "token",
+								"value": "{{access_token}}",
+								"type": "string"
+							}
+						]
+					},
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
 						}
 					]
 				},
@@ -1952,138 +2234,6 @@
 									"key": "datenkontext",
 									"value": "ECHT_GESCHAEFT"
 								}
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "BaufiSmart Ereignisse API",
-			"item": [
-				{
-					"name": "Ereignisse Auslesen (VorgangsNr)",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{access_token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"url": {
-							"raw": "https://baufismart.api.europace.de/v2/ereignisse/CH6407",
-							"protocol": "https",
-							"host": [
-								"baufismart",
-								"api",
-								"europace",
-								"de"
-							],
-							"path": [
-								"v2",
-								"ereignisse",
-								"CH6407"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Ereignisse Auslesen (AntragsNr)",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{access_token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"url": {
-							"raw": "https://baufismart.api.europace.de/v2/ereignisse/WB0M5Y/1/1",
-							"protocol": "https",
-							"host": [
-								"baufismart",
-								"api",
-								"europace",
-								"de"
-							],
-							"path": [
-								"v2",
-								"ereignisse",
-								"WB0M5Y",
-								"1",
-								"1"
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "KreditSmart Vorgaenge API",
-			"item": [
-				{
-					"name": "Vorgang auslesen",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{access_token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json;charset=utf-8"
-							}
-						],
-						"body": {
-							"mode": "graphql",
-							"graphql": {
-								"query": "query getVorgang($vorgangsnummer: String!) {\n    vorgang(vorgangsnummer: $vorgangsnummer) {\n        vorgangsnummer\n        kundenbetreuer {\n            partnerId\n        }\n        antragsteller1 {\n            personendaten {\n                vorname\n                nachname\n           }\n        }\n        antragsteller2 {\n            personendaten {\n                vorname\n                nachname\n            }\n        }\n        antraege {\n            produktanbieterstatus {\n                status\n            }\n        }\n    }\n}\n",
-								"variables": "{\n    \"vorgangsnummer\": \"AY0916\"\n}\n"
-							}
-						},
-						"url": {
-							"raw": "https://www.europace2.de/kreditsmart/kex/vorgaenge",
-							"protocol": "https",
-							"host": [
-								"www",
-								"europace2",
-								"de"
-							],
-							"path": [
-								"kreditsmart",
-								"kex",
-								"vorgaenge"
 							]
 						}
 					},
