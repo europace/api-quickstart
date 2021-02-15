@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "160f543d-3634-4bc8-99e7-0774b8b36c5d",
+		"_postman_id": "f6ae30bc-4fb0-4c0a-b742-ab799544abb1",
 		"name": "EUROPACE API Calls",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -2048,6 +2048,16 @@
 				{
 					"name": "Kontaktdaten lesen",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [
 							{
@@ -2065,18 +2075,18 @@
 							}
 						],
 						"url": {
-							"raw": "https://www.europace2.de/partnermanagement/partner/{{PARTNER_ID}}/kontaktdaten",
+							"raw": "https://api.europace.de/v2/partner/{{PARTNER_ID}}/",
 							"protocol": "https",
 							"host": [
-								"www",
-								"europace2",
+								"api",
+								"europace",
 								"de"
 							],
 							"path": [
-								"partnermanagement",
+								"v2",
 								"partner",
 								"{{PARTNER_ID}}",
-								"kontaktdaten"
+								""
 							]
 						}
 					},
@@ -2085,6 +2095,16 @@
 				{
 					"name": "Kontaktdaten schreiben",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "PATCH",
 						"header": [
 							{
@@ -2103,29 +2123,39 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"firmenname\":\"Mustermann AG\"\n}"
+							"raw": "{\n  \"firmenname\":\"Mustermann AG2\"\n}"
 						},
 						"url": {
-							"raw": "https://www.europace2.de/partnermanagement/partner/{{PARTNER_ID}}/kontaktdaten",
+							"raw": "https://api.europace.de/v2/partner/{{PARTNER_ID}}/",
 							"protocol": "https",
 							"host": [
-								"www",
-								"europace2",
+								"api",
+								"europace",
 								"de"
 							],
 							"path": [
-								"partnermanagement",
+								"v2",
 								"partner",
 								"{{PARTNER_ID}}",
-								"kontaktdaten"
+								""
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "Partner Kennzeichnen auselesen",
+					"name": "Partnerkennzeichnen auslesen",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [
 							{
@@ -2143,15 +2173,15 @@
 							}
 						],
 						"url": {
-							"raw": "https://www.europace2.de/partnermanagement/partner/{{PARTNER_ID}}/partnerkennzeichen",
+							"raw": "https://api.europace.de/v2/partner/{{PARTNER_ID}}/partnerkennzeichen",
 							"protocol": "https",
 							"host": [
-								"www",
-								"europace2",
+								"api",
+								"europace",
 								"de"
 							],
 							"path": [
-								"partnermanagement",
+								"v2",
 								"partner",
 								"{{PARTNER_ID}}",
 								"partnerkennzeichen"
@@ -2163,6 +2193,16 @@
 				{
 					"name": "Übernahme Recht auslesen",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [
 							{
@@ -2180,60 +2220,18 @@
 							}
 						],
 						"url": {
-							"raw": "https://www.europace2.de/partnermanagement/partner/{{PARTNER_ID}}/uebernahmeRechtFuer",
+							"raw": "https://api.europace.de/v2/partner/{{PARTNER_ID}}/uebernehmbare",
 							"protocol": "https",
 							"host": [
-								"www",
-								"europace2",
+								"api",
+								"europace",
 								"de"
 							],
 							"path": [
-								"partnermanagement",
+								"v2",
 								"partner",
 								"{{PARTNER_ID}}",
-								"uebernahmeRechtFuer"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Handelsbeziehungen auslesen",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "X-Authentication",
-								"value": "{{jwt}}"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							},
-							{
-								"key": "X-TraceId",
-								"value": "{{traceId}}"
-							}
-						],
-						"url": {
-							"raw": "https://www.europace2.de/partnermanagement/partner/{{PARTNER_ID}}/handelsbeziehungen?datenkontext=ECHT_GESCHAEFT",
-							"protocol": "https",
-							"host": [
-								"www",
-								"europace2",
-								"de"
-							],
-							"path": [
-								"partnermanagement",
-								"partner",
-								"{{PARTNER_ID}}",
-								"handelsbeziehungen"
-							],
-							"query": [
-								{
-									"key": "datenkontext",
-									"value": "ECHT_GESCHAEFT"
-								}
+								"uebernehmbare"
 							]
 						}
 					},
