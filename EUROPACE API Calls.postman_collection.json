@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "f6ae30bc-4fb0-4c0a-b742-ab799544abb1",
+		"_postman_id": "5d49b095-222f-40ae-91c0-aeba735f6128",
 		"name": "EUROPACE API Calls",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -1047,6 +1047,41 @@
 								"19",
 								"1",
 								"status"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Gegenangebot erzeugen",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"kennung\": \"Kombinatorisches Gegenangebot zum existierenden Angebot\",\n  \"darlehen\": [\n    {\n      \"darlehensTyp\": \"ANNUITAETEN_DARLEHEN\",\n      \"darlehensBetrag\": 100000.00,\n      \"sollZins\": 1.17,\n      \"effektivZins\": 1.2,\n      \"rateMonatlich\": 264.17,\n      \"vertriebsProvisionGesamtAbsolut\": 1010.00,\n      \"zinsBindungInJahren\": 10,\n      \"sonderTilgungJaehrlich\": 10.0,\n      \"tilgungsBeginnAm\": \"2020-11-30\",\n      \"produktDetails\": \"Angepasstes Finanzierung (weitere Beschriebung möglich)\",\n      \"anfaenglicheTilgung\": 2.0,\n      \"bereitstellungsZinsFreieZeitInMonaten\": 3,\n      \"bereitstellungsZins\": 3.0,\n      \"laufzeitKalkulatorischInJahren\": 39\n    },\n    {\n      \"darlehensTyp\": \"KFW_DARLEHEN\",\n      \"darlehensBetrag\": 100000.00,\n      \"sollZins\": 0.84,\n      \"effektivZins\": 0.87,\n      \"rateMonatlich\": 383.52,\n      \"anfaenglicheTilgung\": 3.762,\n      \"vertriebsProvisionGesamtAbsolut\": 1072.00,\n      \"laufzeitKalkulatorischInJahren\": 25,\n      \"zinsBindungInJahren\": 10,\n      \"bereitstellungsZinsFreieZeitInMonaten\": 12,\n      \"produktDetails\": \"KfW Darlehen zusätzlich zum angepassten Finanzierung\",\n      \"kfwProgramm\": \"PROGRAMM_153\",\n      \"kfwEnergieEffizienzStandard\": \"STANDARD_40\",\n      \"tilgungsFreieAnlaufJahre\": 1,\n      \"rateMonatlichInDerTilgungsfreienAnlaufzeit\": 77.00\n    }\n  ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://baufismart.api.europace.de/v2/antraege/UA30XL/1/1/gegenangebot",
+							"protocol": "https",
+							"host": [
+								"baufismart",
+								"api",
+								"europace",
+								"de"
+							],
+							"path": [
+								"v2",
+								"antraege",
+								"UA30XL",
+								"1",
+								"1",
+								"gegenangebot"
 							]
 						}
 					},
