@@ -2048,16 +2048,6 @@
 				{
 					"name": "Kontaktdaten lesen",
 					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{access_token}}",
-									"type": "string"
-								}
-							]
-						},
 						"method": "GET",
 						"header": [
 							{
@@ -2093,18 +2083,164 @@
 					"response": []
 				},
 				{
-					"name": "Kontaktdaten schreiben",
+					"name": "List untergeordnete Partner",
 					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{access_token}}",
-									"type": "string"
-								}
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-Authentication",
+								"value": "{{jwt}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "X-TraceId",
+								"value": "{{traceId}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://api.europace.de/v2/partner/{{PARTNER_ID}}/untergeordnete",
+							"protocol": "https",
+							"host": [
+								"api",
+								"europace",
+								"de"
+							],
+							"path": [
+								"v2",
+								"partner",
+								"{{PARTNER_ID}}",
+								"untergeordnete"
 							]
 						},
+						"description": "Liefert eine Liste von untergeordneten Partnern."
+					},
+					"response": []
+				},
+				{
+					"name": "Erstelle neuen Partner",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-Authentication",
+								"value": "{{jwt}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "X-TraceId",
+								"type": "text",
+								"value": "{{traceId}}"
+							}
+						],
+						"url": {
+							"raw": "https://api.europace.de/v2/partner/{{PARTNER_ID}}/untergeordnete",
+							"protocol": "https",
+							"host": [
+								"api",
+								"europace",
+								"de"
+							],
+							"path": [
+								"v2",
+								"partner",
+								"{{PARTNER_ID}}",
+								"untergeordnete"
+							]
+						},
+						"description": "Liefert eine Liste von untergeordneten Partnern."
+					},
+					"response": []
+				},
+				{
+					"name": "Zugangsdaten Abfragen",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-Authentication",
+								"value": "{{jwt}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "X-TraceId",
+								"type": "text",
+								"value": "{{traceId}}"
+							}
+						],
+						"url": {
+							"raw": "https://api.europace.de/v2/partner/{{PARTNER_ID}}/zugang",
+							"protocol": "https",
+							"host": [
+								"api",
+								"europace",
+								"de"
+							],
+							"path": [
+								"v2",
+								"partner",
+								"{{PARTNER_ID}}",
+								"zugang"
+							]
+						},
+						"description": "Liefert die Zugangsdaten eines Partners. Bei einer Person werden die Benutzer-Zugangsdaten und bei einer Organisation die Daten des Identity Provider geliefert."
+					},
+					"response": []
+				},
+				{
+					"name": "Zugang Anlegen",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-Authentication",
+								"value": "{{jwt}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "X-TraceId",
+								"type": "text",
+								"value": "{{traceId}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"benutzername\" : \"max.musterman@exmaple.org\"\n}"
+						},
+						"url": {
+							"raw": "https://api.europace.de/v2/partner/XVT78/zugang",
+							"protocol": "https",
+							"host": [
+								"api",
+								"europace",
+								"de"
+							],
+							"path": [
+								"v2",
+								"partner",
+								"XVT78",
+								"zugang"
+							]
+						},
+						"description": "Erzeugt einen Zugang für eine Person."
+					},
+					"response": []
+				},
+				{
+					"name": "Kontaktdaten schreiben",
+					"request": {
 						"method": "PATCH",
 						"header": [
 							{
@@ -2146,16 +2282,6 @@
 				{
 					"name": "Partnerkennzeichnen auslesen",
 					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{access_token}}",
-									"type": "string"
-								}
-							]
-						},
 						"method": "GET",
 						"header": [
 							{
@@ -2193,16 +2319,6 @@
 				{
 					"name": "Übernahme Recht auslesen",
 					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{access_token}}",
-									"type": "string"
-								}
-							]
-						},
 						"method": "GET",
 						"header": [
 							{
@@ -2236,6 +2352,36 @@
 						}
 					},
 					"response": []
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "{{access_token}}",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
 				}
 			]
 		},
