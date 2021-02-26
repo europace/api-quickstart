@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "5d49b095-222f-40ae-91c0-aeba735f6128",
+		"_postman_id": "493aca5b-c77f-4bce-a47d-6e698eac52c5",
 		"name": "EUROPACE API Calls",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -2118,9 +2118,9 @@
 					"response": []
 				},
 				{
-					"name": "List untergeordnete Partner",
+					"name": "Kontaktdaten schreiben",
 					"request": {
-						"method": "GET",
+						"method": "PATCH",
 						"header": [
 							{
 								"key": "X-Authentication",
@@ -2136,8 +2136,12 @@
 								"type": "text"
 							}
 						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"firmenname\":\"Mustermann AG2\"\n}"
+						},
 						"url": {
-							"raw": "https://api.europace.de/v2/partner/{{PARTNER_ID}}/untergeordnete",
+							"raw": "https://api.europace.de/v2/partner/{{PARTNER_ID}}/",
 							"protocol": "https",
 							"host": [
 								"api",
@@ -2148,10 +2152,9 @@
 								"v2",
 								"partner",
 								"{{PARTNER_ID}}",
-								"untergeordnete"
+								""
 							]
-						},
-						"description": "Liefert eine Liste von untergeordneten Partnern."
+						}
 					},
 					"response": []
 				},
@@ -2194,7 +2197,7 @@
 					"response": []
 				},
 				{
-					"name": "Zugangsdaten Abfragen",
+					"name": "List untergeordnete Partner",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -2208,12 +2211,12 @@
 							},
 							{
 								"key": "X-TraceId",
-								"type": "text",
-								"value": "{{traceId}}"
+								"value": "{{traceId}}",
+								"type": "text"
 							}
 						],
 						"url": {
-							"raw": "https://api.europace.de/v2/partner/{{PARTNER_ID}}/zugang",
+							"raw": "https://api.europace.de/v2/partner/{{PARTNER_ID}}/untergeordnete",
 							"protocol": "https",
 							"host": [
 								"api",
@@ -2224,10 +2227,10 @@
 								"v2",
 								"partner",
 								"{{PARTNER_ID}}",
-								"zugang"
+								"untergeordnete"
 							]
 						},
-						"description": "Liefert die Zugangsdaten eines Partners. Bei einer Person werden die Benutzer-Zugangsdaten und bei einer Organisation die Daten des Identity Provider geliefert."
+						"description": "Liefert eine Liste von untergeordneten Partnern."
 					},
 					"response": []
 				},
@@ -2274,9 +2277,9 @@
 					"response": []
 				},
 				{
-					"name": "Kontaktdaten schreiben",
+					"name": "Zugangsdaten auslesen",
 					"request": {
-						"method": "PATCH",
+						"method": "GET",
 						"header": [
 							{
 								"key": "X-Authentication",
@@ -2288,16 +2291,12 @@
 							},
 							{
 								"key": "X-TraceId",
-								"value": "{{traceId}}",
-								"type": "text"
+								"type": "text",
+								"value": "{{traceId}}"
 							}
 						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n  \"firmenname\":\"Mustermann AG2\"\n}"
-						},
 						"url": {
-							"raw": "https://api.europace.de/v2/partner/{{PARTNER_ID}}/",
+							"raw": "https://api.europace.de/v2/partner/{{PARTNER_ID}}/zugang",
 							"protocol": "https",
 							"host": [
 								"api",
@@ -2308,9 +2307,10 @@
 								"v2",
 								"partner",
 								"{{PARTNER_ID}}",
-								""
+								"zugang"
 							]
-						}
+						},
+						"description": "Liefert die Zugangsdaten eines Partners. Bei einer Person werden die Benutzer-Zugangsdaten und bei einer Organisation die Daten des Identity Provider geliefert."
 					},
 					"response": []
 				},
@@ -2352,6 +2352,61 @@
 					"response": []
 				},
 				{
+					"name": "Rechte auslesen",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://api.europace.de/v2/partner/{{PARTNER_ID}}/rechte",
+							"protocol": "https",
+							"host": [
+								"api",
+								"europace",
+								"de"
+							],
+							"path": [
+								"v2",
+								"partner",
+								"{{PARTNER_ID}}",
+								"rechte"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Rechte schreiben",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"baufismart\": {\n        \"baufiSmartNutzen\": true,\n        \"echtgeschaeft\": false\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api.europace.de/v2/partner/{{PARTNER_ID}}/rechte",
+							"protocol": "https",
+							"host": [
+								"api",
+								"europace",
+								"de"
+							],
+							"path": [
+								"v2",
+								"partner",
+								"{{PARTNER_ID}}",
+								"rechte"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "Übernahme Recht auslesen",
 					"request": {
 						"method": "GET",
@@ -2383,6 +2438,43 @@
 								"partner",
 								"{{PARTNER_ID}}",
 								"uebernehmbare"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Einstellungsrecht auslesen",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-Authentication",
+								"value": "{{jwt}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "X-TraceId",
+								"value": "{{traceId}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://api.europace.de/v2/partner/{{PARTNER_ID}}/administrierbare",
+							"protocol": "https",
+							"host": [
+								"api",
+								"europace",
+								"de"
+							],
+							"path": [
+								"v2",
+								"partner",
+								"{{PARTNER_ID}}",
+								"administrierbare"
 							]
 						}
 					},
