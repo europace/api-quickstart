@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "493aca5b-c77f-4bce-a47d-6e698eac52c5",
+		"_postman_id": "284a68ea-8cee-4cb8-9781-81bd0635bb3d",
 		"name": "EUROPACE API Calls",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -2086,10 +2086,6 @@
 						"method": "GET",
 						"header": [
 							{
-								"key": "X-Authentication",
-								"value": "{{jwt}}"
-							},
-							{
 								"key": "Content-Type",
 								"value": "application/json"
 							},
@@ -2122,10 +2118,6 @@
 					"request": {
 						"method": "PATCH",
 						"header": [
-							{
-								"key": "X-Authentication",
-								"value": "{{jwt}}"
-							},
 							{
 								"key": "Content-Type",
 								"value": "application/json"
@@ -2164,10 +2156,6 @@
 						"method": "POST",
 						"header": [
 							{
-								"key": "X-Authentication",
-								"value": "{{jwt}}"
-							},
-							{
 								"key": "Content-Type",
 								"value": "application/json"
 							},
@@ -2201,10 +2189,6 @@
 					"request": {
 						"method": "GET",
 						"header": [
-							{
-								"key": "X-Authentication",
-								"value": "{{jwt}}"
-							},
 							{
 								"key": "Content-Type",
 								"value": "application/json"
@@ -2240,10 +2224,6 @@
 						"method": "POST",
 						"header": [
 							{
-								"key": "X-Authentication",
-								"value": "{{jwt}}"
-							},
-							{
 								"key": "Content-Type",
 								"value": "application/json"
 							},
@@ -2255,10 +2235,10 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"benutzername\" : \"max.musterman@exmaple.org\"\n}"
+							"raw": "{\n    \"benutzername\" : \"max.musterman@example.org\"\n}"
 						},
 						"url": {
-							"raw": "https://api.europace.de/v2/partner/XVT78/zugang",
+							"raw": "https://api.europace.de/v2/partner/{{PARTNER_ID}}/zugang?sendEmail=true",
 							"protocol": "https",
 							"host": [
 								"api",
@@ -2268,8 +2248,14 @@
 							"path": [
 								"v2",
 								"partner",
-								"XVT78",
+								"{{PARTNER_ID}}",
 								"zugang"
+							],
+							"query": [
+								{
+									"key": "sendEmail",
+									"value": "true"
+								}
 							]
 						},
 						"description": "Erzeugt einen Zugang für eine Person."
@@ -2281,10 +2267,6 @@
 					"request": {
 						"method": "GET",
 						"header": [
-							{
-								"key": "X-Authentication",
-								"value": "{{jwt}}"
-							},
 							{
 								"key": "Content-Type",
 								"value": "application/json"
@@ -2320,10 +2302,6 @@
 						"method": "GET",
 						"header": [
 							{
-								"key": "X-Authentication",
-								"value": "{{jwt}}"
-							},
-							{
 								"key": "Content-Type",
 								"value": "application/json"
 							},
@@ -2355,7 +2333,18 @@
 					"name": "Rechte auslesen",
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "X-Traceid",
+								"value": "{{traceId}}",
+								"type": "text"
+							}
+						],
 						"url": {
 							"raw": "https://api.europace.de/v2/partner/{{PARTNER_ID}}/rechte",
 							"protocol": "https",
@@ -2378,7 +2367,18 @@
 					"name": "Rechte schreiben",
 					"request": {
 						"method": "PATCH",
-						"header": [],
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "X-Traceid",
+								"value": "{{traceId}}",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\n    \"baufismart\": {\n        \"baufiSmartNutzen\": true,\n        \"echtgeschaeft\": false\n    }\n}",
@@ -2412,10 +2412,6 @@
 						"method": "GET",
 						"header": [
 							{
-								"key": "X-Authentication",
-								"value": "{{jwt}}"
-							},
-							{
 								"key": "Content-Type",
 								"value": "application/json"
 							},
@@ -2448,10 +2444,6 @@
 					"request": {
 						"method": "GET",
 						"header": [
-							{
-								"key": "X-Authentication",
-								"value": "{{jwt}}"
-							},
 							{
 								"key": "Content-Type",
 								"value": "application/json"
