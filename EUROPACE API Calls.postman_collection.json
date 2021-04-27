@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "284a68ea-8cee-4cb8-9781-81bd0635bb3d",
+		"_postman_id": "509753db-5413-44f2-8409-94c2c12ef02d",
 		"name": "EUROPACE API Calls",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -2505,122 +2505,127 @@
 			]
 		},
 		{
-			"name": "Reporting",
+			"name": "Report API",
 			"item": [
 				{
-					"name": "1. Rohdaten-Report erzeugen",
-					"event": [
+					"name": "Vertriebs-Rohdaten",
+					"item": [
 						{
-							"listen": "prerequest",
-							"script": {
-								"exec": [
-									"postman.setGlobalVariable(\"report-processing-id\", null);"
-								],
-								"type": "text/javascript"
-							}
-						},
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test(\"Location is present in header\", function () {",
-									"    pm.response.to.have.header(\"Location\");",
-									"});",
-									"postman.setGlobalVariable(\"report-processing-id\", pm.response.headers.get(\"Location\"));",
-									""
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
+							"name": "1. Rohdaten-Report erzeugen",
+							"event": [
 								{
-									"key": "token",
-									"value": "{{access_token}}",
-									"type": "string"
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"postman.setGlobalVariable(\"report-processing-id\", null);"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Location is present in header\", function () {",
+											"    pm.response.to.have.header(\"Location\");",
+											"});",
+											"postman.setGlobalVariable(\"report-processing-id\", pm.response.headers.get(\"Location\"));",
+											""
+										],
+										"type": "text/javascript"
+									}
 								}
-							]
-						},
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"type": "text"
-							},
-							{
-								"key": "X-Trace-Id",
-								"value": "Mike",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"fromDay\": \"2019-01-01\"\n}"
-						},
-						"url": {
-							"raw": "https://report.api.europace.de/rohdaten",
-							"protocol": "https",
-							"host": [
-								"report",
-								"api",
-								"europace",
-								"de"
 							],
-							"path": [
-								"rohdaten"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "2. Report Status abfragen",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test(\"Location is present in header\", function () {",
-									"    pm.response.to.have.header(\"Location\");",
-									"});",
-									"postman.setGlobalVariable(\"path-to-reportfile\", pm.response.headers.get(\"Location\"));",
-									"",
-									"",
-									"",
-									""
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{access_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "X-Trace-Id",
+										"value": "Mike",
+										"type": "text"
+									}
 								],
-								"type": "text/javascript"
-							}
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"fromDay\": \"2019-01-01\"\n}"
+								},
+								"url": {
+									"raw": "https://report.api.europace.de/rohdaten",
+									"protocol": "https",
+									"host": [
+										"report",
+										"api",
+										"europace",
+										"de"
+									],
+									"path": [
+										"rohdaten"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "2. Report Status abfragen",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Location is present in header\", function () {",
+											"    pm.response.to.have.header(\"Location\");",
+											"});",
+											"postman.setGlobalVariable(\"path-to-reportfile\", pm.response.headers.get(\"Location\"));",
+											"",
+											"",
+											"",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"followRedirects": false
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "X-Trace-Id",
+										"value": "Mike",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "https://report.api.europace.de{{report-processing-id}}",
+									"protocol": "https",
+									"host": [
+										"report",
+										"api",
+										"europace",
+										"de{{report-processing-id}}"
+									]
+								}
+							},
+							"response": []
 						}
-					],
-					"protocolProfileBehavior": {
-						"followRedirects": false
-					},
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "X-Trace-Id",
-								"value": "Mike",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "https://report.api.europace.de{{report-processing-id}}",
-							"protocol": "https",
-							"host": [
-								"report",
-								"api",
-								"europace",
-								"de{{report-processing-id}}"
-							]
-						}
-					},
-					"response": []
+					]
 				},
 				{
 					"name": "3. Report abholen",
