@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "509753db-5413-44f2-8409-94c2c12ef02d",
+		"_postman_id": "67485d0a-3e6f-4c99-a8cc-fd070a082ce6",
 		"name": "EUROPACE API Calls",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -2665,6 +2665,250 @@
 					}
 				]
 			}
+		},
+		{
+			"name": "BaufiSmart Dokumente-API",
+			"item": [
+				{
+					"name": "Dokument hinzufügen",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Location is present in header\", function () {",
+									"    pm.response.to.have.header(\"Location\");",
+									"});",
+									"postman.setGlobalVariable(\"path-to-document\", pm.response.headers.get(\"Location\"));",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "multipart/form-data",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/Users/michael.krueger/Documents/1612_DAG_16_Holacracy-Moderationskarten_18x25cm_Governance-Meeting.pdf"
+								},
+								{
+									"key": "anzeigename",
+									"value": "MeinTestUpload",
+									"type": "text"
+								},
+								{
+									"key": "vorgangsNummer",
+									"value": "YM3DVQ",
+									"type": "text"
+								},
+								{
+									"key": "teilAntragNummer",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "sichtbarFuerVertrieb",
+									"value": "true",
+									"type": "text"
+								},
+								{
+									"key": "erstellungsdatum",
+									"value": "2021-03-05T09:45:00.000-01:00",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://www.europace2.de/vorgang/dokumente",
+							"protocol": "https",
+							"host": [
+								"www",
+								"europace2",
+								"de"
+							],
+							"path": [
+								"vorgang",
+								"dokumente"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Dokument hinzufügen",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "multipart/form-data",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "file",
+											"type": "file",
+											"src": "/Users/michael.krueger/Documents/1612_DAG_16_Holacracy-Moderationskarten_18x25cm_Governance-Meeting.pdf"
+										},
+										{
+											"key": "anzeigename",
+											"value": "MeinTestUpload",
+											"type": "text"
+										},
+										{
+											"key": "vorgangsNummer",
+											"value": "S719MH",
+											"type": "text"
+										},
+										{
+											"key": "teilAntragNummer",
+											"value": "",
+											"type": "text"
+										},
+										{
+											"key": "sichtbarFuerVertrieb",
+											"value": "true",
+											"type": "text"
+										},
+										{
+											"key": "erstellungsdatum",
+											"value": "2021-03-05T09:45:00.000-01:00",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://www.europace2.de/vorgang/dokumente",
+									"protocol": "https",
+									"host": [
+										"www",
+										"europace2",
+										"de"
+									],
+									"path": [
+										"vorgang",
+										"dokumente"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "location",
+									"value": "https://www.europace2.de/dokumentenverwaltung/download/?id=21a21f2d8932f5bef262672e8437388f12b0543d8a6a5fbbb1d99999672a3a4829f24a7c2c04461f806d9ad6b05730e2271407b28d6d1740960c27d4fb7f2a05"
+								},
+								{
+									"key": "content-length",
+									"value": "0"
+								},
+								{
+									"key": "date",
+									"value": "Tue, 27 Apr 2021 15:46:15 GMT"
+								},
+								{
+									"key": "strict-transport-security",
+									"value": "max-age=31536000"
+								}
+							],
+							"cookie": [],
+							"body": null
+						}
+					]
+				},
+				{
+					"name": "Dokument herunterladen",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "*/*",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://www.europace2.de/dokumentenverwaltung/dokument/?id=85c9771d07ac5c27400abb7ece039133a1d5aebee5c1baae5b4fd7572ebbf9cabf3d1aad7ff480625e95cf828e4871f2d78db9842960ee32b762b24911dd0",
+							"protocol": "https",
+							"host": [
+								"www",
+								"europace2",
+								"de"
+							],
+							"path": [
+								"dokumentenverwaltung",
+								"dokument",
+								""
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "85c9771d07ac5c27400abb7ece039133a1d5aebee5c1baae5b4fd7572ebbf9cabf3d1aad7ff480625e95cf828e4871f2d78db9842960ee32b762b24911dd0"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "{{access_token}}",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
 		},
 		{
 			"name": "Get Legacy Access-Token",
