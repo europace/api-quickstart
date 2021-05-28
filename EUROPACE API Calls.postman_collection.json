@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "d7ff4143-17e4-44c8-b91f-d45c290c7520",
+		"_postman_id": "cba2b859-8a71-4af2-b651-0212c6efe8ce",
 		"name": "EUROPACE API Calls",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -2541,7 +2541,7 @@
 					"name": "Vertriebs-Rohdaten",
 					"item": [
 						{
-							"name": "1. Rohdaten-Report erzeugen",
+							"name": "1. Vertriebs-Rohdaten-Report erzeugen",
 							"event": [
 								{
 									"listen": "prerequest",
@@ -2592,7 +2592,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"fromDay\": \"2019-01-01\"\n}"
+									"raw": "{\n    \"fromDay\": \"2020-01-01\"\n}"
 								},
 								"url": {
 									"raw": "https://report.api.europace.de/rohdaten",
@@ -2609,10 +2609,24 @@
 								}
 							},
 							"response": []
-						},
+						}
+					]
+				},
+				{
+					"name": "Produktanbieter-Report",
+					"item": [
 						{
-							"name": "2. Report Status abfragen",
+							"name": "1. Produktanbieter-Report erzeugen",
 							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"postman.setGlobalVariable(\"report-processing-id\", null);"
+										],
+										"type": "text/javascript"
+									}
+								},
 								{
 									"listen": "test",
 									"script": {
@@ -2620,19 +2634,13 @@
 											"pm.test(\"Location is present in header\", function () {",
 											"    pm.response.to.have.header(\"Location\");",
 											"});",
-											"postman.setGlobalVariable(\"path-to-reportfile\", pm.response.headers.get(\"Location\"));",
-											"",
-											"",
-											"",
+											"postman.setGlobalVariable(\"report-processing-id\", pm.response.headers.get(\"Location\"));",
 											""
 										],
 										"type": "text/javascript"
 									}
 								}
 							],
-							"protocolProfileBehavior": {
-								"followRedirects": false
-							},
 							"request": {
 								"auth": {
 									"type": "bearer",
@@ -2644,28 +2652,95 @@
 										}
 									]
 								},
-								"method": "GET",
+								"method": "POST",
 								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
 									{
 										"key": "X-Trace-Id",
 										"value": "Mike",
 										"type": "text"
 									}
 								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"fromDay\": \"2020-01-01\"\n}"
+								},
 								"url": {
-									"raw": "https://report.api.europace.de{{report-processing-id}}",
+									"raw": "https://report.api.europace.de/produktanbieter",
 									"protocol": "https",
 									"host": [
 										"report",
 										"api",
 										"europace",
-										"de{{report-processing-id}}"
+										"de"
+									],
+									"path": [
+										"produktanbieter"
 									]
 								}
 							},
 							"response": []
 						}
 					]
+				},
+				{
+					"name": "2. Report Status abfragen",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Location is present in header\", function () {",
+									"    pm.response.to.have.header(\"Location\");",
+									"});",
+									"postman.setGlobalVariable(\"path-to-reportfile\", pm.response.headers.get(\"Location\"));",
+									"",
+									"",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"followRedirects": false
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-Trace-Id",
+								"value": "Mike",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://report.api.europace.de{{report-processing-id}}",
+							"protocol": "https",
+							"host": [
+								"report",
+								"api",
+								"europace",
+								"de{{report-processing-id}}"
+							]
+						}
+					},
+					"response": []
 				},
 				{
 					"name": "3. Report abholen",
