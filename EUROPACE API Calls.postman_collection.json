@@ -1354,7 +1354,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n\t\"vorgangsNummer\": \"{{vorgangsNummer}}\",\n\t\"url\": \"Url-zum-Dokument\",\n\t\"anzeigename\": \"PostmanUploaded\"\n}"
+									"raw": "{\n\t\"vorgangsNummer\": \"{{vorgangsNummer}}\",\n\t\"url\": \"Url-zum-Dokument\",\n\t\"anzeigename\": \"PostmanUploaded\",\n    \"mitKategorisierung\" : true\n}"
 								},
 								"url": {
 									"raw": "https://api.europace2.de/v1/dokumente",
@@ -1367,46 +1367,6 @@
 									"path": [
 										"v1",
 										"dokumente"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "starte Kategorisierung",
-							"request": {
-								"method": "POST",
-								"header": [
-									{
-										"key": "Accept",
-										"value": "application/json"
-									},
-									{
-										"key": "X-TraceId",
-										"value": "{{traceId}}"
-									},
-									{
-										"key": "Content-Type",
-										"value": "application/json"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{}"
-								},
-								"url": {
-									"raw": "https://api.europace2.de/v1/dokumente/{{dokId}}/kategorisierung",
-									"protocol": "https",
-									"host": [
-										"api",
-										"europace2",
-										"de"
-									],
-									"path": [
-										"v1",
-										"dokumente",
-										"{{dokId}}",
-										"kategorisierung"
 									]
 								}
 							},
