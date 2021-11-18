@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "7821e0a1-80e1-4dd4-acb3-77fe10e7d1a4",
+		"_postman_id": "4c937970-c313-4e1d-9b13-bb136f23c01a",
 		"name": "EUROPACE API Calls",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -2095,7 +2095,7 @@
 			"name": "Partner API (PEX)",
 			"item": [
 				{
-					"name": "Kontaktdaten lesen",
+					"name": "Partner lesen",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -2128,7 +2128,74 @@
 					"response": []
 				},
 				{
-					"name": "Kontaktdaten schreiben",
+					"name": "Kontaktdaten lesen",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "X-TraceId",
+								"value": "{{traceId}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://api.europace.de/v2/partner/{{PARTNER_ID}}/kontaktdaten",
+							"protocol": "https",
+							"host": [
+								"api",
+								"europace",
+								"de"
+							],
+							"path": [
+								"v2",
+								"partner",
+								"{{PARTNER_ID}}",
+								"kontaktdaten"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Partner erstellen",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "X-TraceId",
+								"type": "text",
+								"value": "{{traceId}}"
+							}
+						],
+						"url": {
+							"raw": "https://api.europace.de/v2/partner/{{PARTNER_ID}}/untergeordnete",
+							"protocol": "https",
+							"host": [
+								"api",
+								"europace",
+								"de"
+							],
+							"path": [
+								"v2",
+								"partner",
+								"{{PARTNER_ID}}",
+								"untergeordnete"
+							]
+						},
+						"description": "Liefert eine Liste von untergeordneten Partnern."
+					},
+					"response": []
+				},
+				{
+					"name": "Partner ändern",
 					"request": {
 						"method": "PATCH",
 						"header": [
@@ -2161,40 +2228,6 @@
 								""
 							]
 						}
-					},
-					"response": []
-				},
-				{
-					"name": "Erstelle neuen Partner",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							},
-							{
-								"key": "X-TraceId",
-								"type": "text",
-								"value": "{{traceId}}"
-							}
-						],
-						"url": {
-							"raw": "https://api.europace.de/v2/partner/{{PARTNER_ID}}/untergeordnete",
-							"protocol": "https",
-							"host": [
-								"api",
-								"europace",
-								"de"
-							],
-							"path": [
-								"v2",
-								"partner",
-								"{{PARTNER_ID}}",
-								"untergeordnete"
-							]
-						},
-						"description": "Liefert eine Liste von untergeordneten Partnern."
 					},
 					"response": []
 				},
@@ -2378,7 +2411,7 @@
 					"response": []
 				},
 				{
-					"name": "Rechte schreiben",
+					"name": "Rechte setzen",
 					"request": {
 						"method": "PATCH",
 						"header": [
