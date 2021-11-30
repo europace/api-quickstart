@@ -1,8 +1,8 @@
-# Postman Calls for the EUROPACE APIs
+# Quickstart with Postman Calls
 
 Test calls to the APIs are very helpful to get started quickly. For this we recommend [Postman](https://www.getpostman.com/), which works on Windows, Mac OS and Linux.
 
-## Requirements to call APIs:
+## Requirements
 
 1. API access with OAuth client credentials. How to get the client is [described here](https://docs.api.europace.de/baufinanzierung/authentifizierung/#wie-bekomme-ich-einen-client-registriert).
 2. at least one [Vorgang](https://docs.api.europace.de/common/glossary) or [Antrag](https://docs.api.europace.de/common/glossary) to read the data.
