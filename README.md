@@ -1,39 +1,44 @@
-# Postman Calls für die EUROPACE APIs
+# Postman Calls for the EUROPACE APIs
 
-Probeaufrufe (Calls) der APIs sind sehr hilfreich, um schnell einzusteigen. Dafür empfehlen wir [Postman](https://www.getpostman.com/), was auf Windows, Mac OS und Linux funktioniert.
+Test calls to the APIs are very helpful to get started quickly. For this we recommend [Postman](https://www.getpostman.com/), which works on Windows, Mac OS and Linux.
 
-## Voraussetzung um diese Calls auszuführen:
+## Requirements to call APIs:
 
-1. Du benötigst eine API Zugriff. Das beinhaltet entweder:
-   * OAuth Client Credentials. Wo diese herkommen ist [hier beschrieben](https://docs.api.europace.de/baufinanzierung/authentifizierung/#wie-bekomme-ich-einen-client-registriert).
-   * eine PartnerID und einen API Key (für eine "Legacy Autorisierung").
-2. Du benötigst mindestens einen Vorgang oder einen Antrag, um die Daten auszulesen.
+1. API access with OAuth client credentials. How to get the client is [described here](https://docs.api.europace.de/baufinanzierung/authentifizierung/#wie-bekomme-ich-einen-client-registriert).
+2. at least one [Vorgang](https://docs.api.europace.de/common/glossary) or [Antrag](https://docs.api.europace.de/common/glossary) to read the data.
 
-## Schritte um Postman einzurichten
+## Steps to set up Postman
+1. Postman [download](https://www.getpostman.com/) and install. There is *no* registration required.
 
-1. Postman [runterladen](https://www.getpostman.com/) und installieren. Es ist *keine* Anmeldung erforderlich.
-2. Oben links auf _Import_ Button klicken, dann auf _Import from Link_
+2. click on _Import_ button in the upper left corner, then on _Import from Link_.
+![](https://raw.githubusercontent.com/europace/api-schnellstart/master/screen01.png)
 
-3. Folgenden Link in die Textbox pasten: `https://raw.githubusercontent.com/europace/api-sandbox/master/EUROPACE%20API%20Calls.postman_collection.json`
-![](https://raw.githubusercontent.com/europace/api-schnellstart/master/screen1.png)
+3. paste the following link into the textbox: `https://raw.githubusercontent.com/europace/api-sandbox/master/EUROPACE%20API%20Calls.postman_collection.json`.
+![](https://raw.githubusercontent.com/europace/api-schnellstart/master/screen02.png)
 
-4. Ein neue Umgebung (_Environment_) anlegen in dem mehrere notwendige Variablen eingetragen werden müssen. Dafür das Icon oben rechts klicken:
-![](https://raw.githubusercontent.com/europace/api-schnellstart/master/screen3.png)
-5. Gib deiner _Environment_ einen Namen und lege darin die folgende Variablen an:
+4. create a new _Environment_ in which several necessary variables must be entered. To do this, click the icon in the upper right corner:
+![](https://raw.githubusercontent.com/europace/api-schnellstart/master/screen03.png)
 
-| Variablen Name | Woher bekomme ich das? |
+5. give your _Environment_ a name and create the following variables in it:
+
+| Variable Name | Where do I get this? |
 | -------------- | ---------------------- |
-| API_KEY        | Siehe oben unter "Voraussetzung" |
-| PARTNER_ID     | Siehe oben unter "Voraussetzung" |
-| CLIENT_ID      | Siehe oben unter "Voraussetzung" |
-| CLIENT_SECRET  | Siehe oben unter "Voraussetzung" |
-| SCOPES         | Optional. Siehe [hier](https://github.com/europace/authorization-api/blob/master/docs/scopes.md) |
+| PARTNER_ID | See above under "Requirements" |
+| CLIENT_ID | See above under "Requirements" |
+| CLIENT_SECRET | See above under "Requirements" |
 
-![](https://raw.githubusercontent.com/europace/api-schnellstart/master/screen4.png)
+![](https://raw.githubusercontent.com/europace/api-schnellstart/master/screen04.png)
 
-5. Stelle nach dem Anlegen der _Environment_ sicher, dass diese auch aktiv ist:
-![](https://raw.githubusercontent.com/europace/api-schnellstart/master/screen5.png)
+5. after creating the _Environment_, make sure that it is active:
+![](https://raw.githubusercontent.com/europace/api-schnellstart/master/screen05.png)
 
-6. Den Aufruf in der neuen Collection in der Linken spalte (`Get OAuth Access-Token`) anklicken
 
-7. Beim Klick auf _send_ müsste jetzt ein `access_token` zurück kommen.
+## Try it out
+6. click on the call in the new collection in the left column (`Get OAuth Access-Token`).
+![](https://raw.githubusercontent.com/europace/api-schnellstart/master/screen06.png)
+
+
+7. when you click on _send_ you should get an `access_token` back. The request will store the access_token into a global variable named `{{access_token}}` to use the token in further requests. You are now logged in and can use the apis.
+![](https://raw.githubusercontent.com/europace/api-schnellstart/master/screen07.png)
+
+8. try out the awsome europace apis
