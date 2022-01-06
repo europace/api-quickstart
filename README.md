@@ -32,19 +32,19 @@ Test calls to the APIs are very helpful to get started quickly. For this we reco
 | CLIENT_ID | See above under "Requirements" |
 | CLIENT_SECRET | See above under "Requirements" |
 
-5. after creating the _Environment_, make sure that it is active:
+6. after creating the _Environment_, make sure that it is active:
 
 ![](https://raw.githubusercontent.com/europace/api-schnellstart/master/screen05.png)
 
 
 ## Try it out
-6. click on the call in the new collection in the left column (`Get OAuth Access-Token`).
+7. click on the call in the new collection in the left column (`Get OAuth Access-Token`).
 
 ![](https://raw.githubusercontent.com/europace/api-schnellstart/master/screen06.png)
 
 
-7. when you click on _send_ you should get an `access_token` back. The request will store the access_token into a global variable named `{{access_token}}` to use the token in further requests. You are now logged in and can use the apis.
+8. when you click on _send_ you should get an `access_token` back. The request will store the access_token into a global variable named `{{access_token}}` to use the token in further requests. You are now logged in and can use the apis.
 
 ![](https://raw.githubusercontent.com/europace/api-schnellstart/master/screen07.png)
 
-8. try out the awsome europace apis
+9. try out the awsome europace apis
