@@ -590,16 +590,6 @@
 						}
 					],
 					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{jwt}}",
-									"type": "string"
-								}
-							]
-						},
 						"method": "POST",
 						"header": [
 							{
@@ -650,16 +640,6 @@
 						}
 					],
 					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{jwt}}",
-									"type": "string"
-								}
-							]
-						},
 						"method": "POST",
 						"header": [
 							{
@@ -712,16 +692,6 @@
 						"disableBodyPruning": true
 					},
 					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{jwt}}",
-									"type": "string"
-								}
-							]
-						},
 						"method": "GET",
 						"header": [
 							{
@@ -770,16 +740,6 @@
 						"disableBodyPruning": true
 					},
 					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{jwt}}",
-									"type": "string"
-								}
-							]
-						},
 						"method": "GET",
 						"header": [
 							{
@@ -830,16 +790,6 @@
 						"disableBodyPruning": true
 					},
 					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{jwt}}",
-									"type": "string"
-								}
-							]
-						},
 						"method": "GET",
 						"header": [
 							{
@@ -890,16 +840,6 @@
 						"disableBodyPruning": true
 					},
 					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{jwt}}",
-									"type": "string"
-								}
-							]
-						},
 						"method": "GET",
 						"header": [
 							{
@@ -932,6 +872,36 @@
 						}
 					},
 					"response": []
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "{{access_token}}",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
 				}
 			]
 		},
@@ -1320,6 +1290,17 @@
 			"item": [
 				{
 					"name": "add document to case",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.environment.set(\"ul_location\", pm.response.headers.get('Location'))"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"protocolProfileBehavior": {
 						"disabledSystemHeaders": {
 							"connection": true,
@@ -1346,7 +1327,7 @@
 								},
 								{
 									"key": "vorgangsNummer",
-									"value": "D72VUL",
+									"value": "{{vorgangsNummer}}",
 									"type": "text"
 								},
 								{
@@ -1358,7 +1339,7 @@
 								{
 									"key": "file",
 									"type": "file",
-									"src": "/Users/michael.krueger/Downloads/Master Logo kleinxltx Kopie2.pdf"
+									"src": []
 								}
 							]
 						},
@@ -1381,6 +1362,17 @@
 				},
 				{
 					"name": "add document to application Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.environment.set(\"ul_location\", pm.response.headers.get('Location'))"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"protocolProfileBehavior": {
 						"disabledSystemHeaders": {
 							"connection": true,
@@ -1442,6 +1434,20 @@
 							]
 						},
 						"description": "Upload eines Dokumentes am Antrag\n"
+					},
+					"response": []
+				},
+				{
+					"name": "get document",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{ul_location}}",
+							"host": [
+								"{{ul_location}}"
+							]
+						}
 					},
 					"response": []
 				}
