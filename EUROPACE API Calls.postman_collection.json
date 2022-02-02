@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "4c937970-c313-4e1d-9b13-bb136f23c01a",
+		"_postman_id": "5e5a9dd5-a887-4641-a896-3f5063a92d6e",
 		"name": "EUROPACE API Calls",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -1316,20 +1316,304 @@
 			]
 		},
 		{
+			"name": "Dokumente API",
+			"item": [
+				{
+					"name": "add document to case",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"connection": true,
+							"accept-encoding": true,
+							"accept": true
+						}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-Authentication",
+								"value": "{{jwt}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "anzeigename",
+									"value": "Postman Test.pdf",
+									"type": "text"
+								},
+								{
+									"key": "vorgangsNummer",
+									"value": "D72VUL",
+									"type": "text"
+								},
+								{
+									"key": "erstellungsdatum",
+									"value": "2020-05-05 09:46:55",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/Users/michael.krueger/Downloads/Master Logo kleinxltx Kopie2.pdf"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://www.europace2.de/vorgang/dokumente",
+							"protocol": "https",
+							"host": [
+								"www",
+								"europace2",
+								"de"
+							],
+							"path": [
+								"vorgang",
+								"dokumente"
+							]
+						},
+						"description": "Upload eines Dokumentes am Antrag\n"
+					},
+					"response": []
+				},
+				{
+					"name": "add document to application Copy",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"connection": true,
+							"accept-encoding": true,
+							"accept": true
+						}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-Authentication",
+								"value": "{{jwt}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "anzeigename",
+									"value": "Postman Test.pdf",
+									"type": "text"
+								},
+								{
+									"key": "teilAntragNummer",
+									"value": "{{vorgangsNummer}}/1/1",
+									"type": "text"
+								},
+								{
+									"key": "erstellungsdatum",
+									"value": "2020-05-05 09:46:55",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "sichtbarFuerVertrieb",
+									"value": "true",
+									"type": "text"
+								},
+								{
+									"key": "file",
+									"type": "file",
+									"src": []
+								}
+							]
+						},
+						"url": {
+							"raw": "https://www.europace2.de/vorgang/dokumente",
+							"protocol": "https",
+							"host": [
+								"www",
+								"europace2",
+								"de"
+							],
+							"path": [
+								"vorgang",
+								"dokumente"
+							]
+						},
+						"description": "Upload eines Dokumentes am Antrag\n"
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "{{access_token}}",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
 			"name": "Unterlagen API",
 			"item": [
 				{
-					"name": "Unterlagen hinzufügen",
+					"name": "add documents to a case",
 					"item": [
 						{
-							"name": "Upload",
+							"name": "1. store document",
+							"item": [
+								{
+									"name": "create presigned url",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"const responseJson = pm.response.json();",
+													"",
+													"pm.environment.set(\"ul_presigned_document_url\", responseJson.uploadData.url);",
+													"pm.environment.set(\"ul_downloadurl\", responseJson.downloadUrl);",
+													"",
+													"var fields = responseJson.uploadData.fields;",
+													"console.log(fields)",
+													"for (const field of Object.keys(fields)) {",
+													"    pm.environment.set(\"ul_\"+field, fields[field]);",
+													"}",
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{jwt}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "POST",
+										"header": [],
+										"url": {
+											"raw": "https://api.europace.de/v1/dokumente/transferspeicher",
+											"protocol": "https",
+											"host": [
+												"api",
+												"europace",
+												"de"
+											],
+											"path": [
+												"v1",
+												"dokumente",
+												"transferspeicher"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "upload document file",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "key",
+													"value": "{{ul_key}}",
+													"type": "text"
+												},
+												{
+													"key": "bucket",
+													"value": "{{ul_bucket}}",
+													"type": "text"
+												},
+												{
+													"key": "X-Amz-Algorithm",
+													"value": "{{ul_X-Amz-Algorithm}}",
+													"type": "text"
+												},
+												{
+													"key": "X-Amz-Credential",
+													"value": "{{ul_X-Amz-Credential}}",
+													"type": "text"
+												},
+												{
+													"key": "X-Amz-Date",
+													"value": "{{ul_X-Amz-Date}}",
+													"type": "text"
+												},
+												{
+													"key": "X-Amz-Security-Token",
+													"value": "{{ul_X-Amz-Security-Token}}",
+													"type": "text"
+												},
+												{
+													"key": "Policy",
+													"value": "{{ul_Policy}}",
+													"type": "text"
+												},
+												{
+													"key": "X-Amz-Signature",
+													"value": "{{ul_X-Amz-Signature}}",
+													"type": "text"
+												},
+												{
+													"key": "file",
+													"type": "file",
+													"src": []
+												}
+											]
+										},
+										"url": {
+											"raw": "{{ul_presigned_document_url}}",
+											"host": [
+												"{{ul_presigned_document_url}}"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "2. add uploaded document",
 							"event": [
 								{
 									"listen": "test",
 									"script": {
 										"exec": [
 											"var body = JSON.parse(responseBody);",
-											"pm.environment.set(\"dokId\", body.id);",
+											"pm.environment.set(\"ul_dokId\", body.id);",
 											""
 										],
 										"type": "text/javascript"
@@ -1354,7 +1638,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n\t\"vorgangsNummer\": \"{{vorgangsNummer}}\",\n\t\"url\": \"Url-zum-Dokument\",\n\t\"anzeigename\": \"PostmanUploaded\",\n    \"mitKategorisierung\" : true\n}"
+									"raw": "{\n\t\"vorgangsNummer\": \"{{vorgangsNummer}}\",\n\t\"url\": \"{{ul_downloadurl}}\",\n\t\"anzeigename\": \"Mikes PostmanUploaded\",\n    \"mitKategorisierung\" : true\n}"
 								},
 								"url": {
 									"raw": "https://api.europace2.de/v1/dokumente",
@@ -1373,7 +1657,7 @@
 							"response": []
 						},
 						{
-							"name": "Kategorisierungstatus abrufen",
+							"name": "3. query categorization state",
 							"request": {
 								"method": "GET",
 								"header": [
@@ -1387,7 +1671,7 @@
 									}
 								],
 								"url": {
-									"raw": "https://api.europace2.de/v1/dokumente/{{dokId}}/kategorisierung",
+									"raw": "https://api.europace2.de/v1/dokumente/{{ul_dokId}}/kategorisierung",
 									"protocol": "https",
 									"host": [
 										"api",
@@ -1397,90 +1681,20 @@
 									"path": [
 										"v1",
 										"dokumente",
-										"{{dokId}}",
+										"{{ul_dokId}}",
 										"kategorisierung"
 									]
 								}
 							},
 							"response": []
-						},
-						{
-							"name": "Download eines Dokuments",
-							"request": {
-								"method": "GET",
-								"header": [
-									{
-										"key": "Authorization",
-										"value": "Bearer {{jwt}}"
-									},
-									{
-										"key": "Accept",
-										"value": "*/*"
-									},
-									{
-										"key": "X-TraceId",
-										"value": "{{traceId}}"
-									},
-									{
-										"key": "Content-Type",
-										"value": "application/json"
-									}
-								],
-								"url": {
-									"raw": "https://api.europace2.de/v1/dokumente/{{dokId}}/content",
-									"protocol": "https",
-									"host": [
-										"api",
-										"europace2",
-										"de"
-									],
-									"path": [
-										"v1",
-										"dokumente",
-										"{{dokId}}",
-										"content"
-									]
-								}
-							},
-							"response": []
-						}
-					],
-					"auth": {
-						"type": "bearer",
-						"bearer": [
-							{
-								"key": "token",
-								"value": "{{access_token}}",
-								"type": "string"
-							}
-						]
-					},
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									""
-								]
-							}
-						},
-						{
-							"listen": "test",
-							"script": {
-								"type": "text/javascript",
-								"exec": [
-									""
-								]
-							}
 						}
 					]
 				},
 				{
-					"name": "Dokument abrufen",
+					"name": "get document",
 					"item": [
 						{
-							"name": "Download eines Dokuments",
+							"name": "get document",
 							"request": {
 								"method": "GET",
 								"header": [
@@ -1498,7 +1712,7 @@
 									}
 								],
 								"url": {
-									"raw": "https://api.europace2.de/v1/dokumente/{{dokId}}/content",
+									"raw": "https://api.europace2.de/v1/dokumente/{{ul_dokId}}/content",
 									"protocol": "https",
 									"host": [
 										"api",
@@ -1508,7 +1722,7 @@
 									"path": [
 										"v1",
 										"dokumente",
-										"{{dokId}}",
+										"{{ul_dokId}}",
 										"content"
 									]
 								}
@@ -1516,16 +1730,6 @@
 							"response": []
 						}
 					],
-					"auth": {
-						"type": "bearer",
-						"bearer": [
-							{
-								"key": "token",
-								"value": "{{access_token}}",
-								"type": "string"
-							}
-						]
-					},
 					"event": [
 						{
 							"listen": "prerequest",
@@ -1548,10 +1752,10 @@
 					]
 				},
 				{
-					"name": "Seiten verarbeiten",
+					"name": "pages",
 					"item": [
 						{
-							"name": "Seiten eines  Vorgangs",
+							"name": "get metadata of all pages of a case",
 							"event": [
 								{
 									"listen": "test",
@@ -1603,7 +1807,7 @@
 							"response": []
 						},
 						{
-							"name": "Seiten eines Dokuments",
+							"name": "get pages of a document",
 							"request": {
 								"method": "GET",
 								"header": [
@@ -1621,7 +1825,7 @@
 									}
 								],
 								"url": {
-									"raw": "https://api.europace2.de/v1/dokumente/{{dokId}}/seiten",
+									"raw": "https://api.europace2.de/v1/dokumente/{{ul_dokId}}/seiten",
 									"protocol": "https",
 									"host": [
 										"api",
@@ -1631,7 +1835,7 @@
 									"path": [
 										"v1",
 										"dokumente",
-										"{{dokId}}",
+										"{{ul_dokId}}",
 										"seiten"
 									]
 								}
@@ -1639,7 +1843,7 @@
 							"response": []
 						},
 						{
-							"name": "zuordnen Kat+Bezug",
+							"name": "assign pages (category)",
 							"request": {
 								"method": "PUT",
 								"header": [
@@ -1693,16 +1897,6 @@
 							"response": []
 						}
 					],
-					"auth": {
-						"type": "bearer",
-						"bearer": [
-							{
-								"key": "token",
-								"value": "{{access_token}}",
-								"type": "string"
-							}
-						]
-					},
 					"event": [
 						{
 							"listen": "prerequest",
@@ -1725,17 +1919,17 @@
 					]
 				},
 				{
-					"name": "Unterlagen freigeben",
+					"name": "share proofs",
 					"item": [
 						{
-							"name": "Freigabe erstellen",
+							"name": "create share",
 							"event": [
 								{
 									"listen": "test",
 									"script": {
 										"exec": [
 											"var body = JSON.parse(responseBody);",
-											"pm.environment.set(\"freigabeId\", body[0].id);"
+											"pm.environment.set(\"ul_freigabeId\", body[0].id);"
 										],
 										"type": "text/javascript"
 									}
@@ -1779,7 +1973,7 @@
 							"response": []
 						},
 						{
-							"name": "Freigabe Download",
+							"name": "download shared content",
 							"request": {
 								"method": "GET",
 								"header": [
@@ -1793,7 +1987,7 @@
 									}
 								],
 								"url": {
-									"raw": "https://api.europace2.de/v1/dokumente/freigabe/{{freigabeId}}/content",
+									"raw": "https://api.europace2.de/v1/dokumente/freigabe/{{ul_freigabeId}}/content",
 									"protocol": "https",
 									"host": [
 										"api",
@@ -1804,7 +1998,7 @@
 										"v1",
 										"dokumente",
 										"freigabe",
-										"{{freigabeId}}",
+										"{{ul_freigabeId}}",
 										"content"
 									]
 								}
@@ -1812,7 +2006,7 @@
 							"response": []
 						},
 						{
-							"name": "Antragsfreigaben",
+							"name": "get all shared documents of an application",
 							"request": {
 								"method": "GET",
 								"header": [
@@ -1853,16 +2047,6 @@
 							"response": []
 						}
 					],
-					"auth": {
-						"type": "bearer",
-						"bearer": [
-							{
-								"key": "token",
-								"value": "{{access_token}}",
-								"type": "string"
-							}
-						]
-					},
 					"event": [
 						{
 							"listen": "prerequest",
@@ -1885,10 +2069,10 @@
 					]
 				},
 				{
-					"name": "Weitere Interaktionen",
+					"name": "various actions",
 					"item": [
 						{
-							"name": "Preview",
+							"name": "get preview image",
 							"request": {
 								"method": "GET",
 								"header": [
@@ -1926,7 +2110,7 @@
 							"response": []
 						},
 						{
-							"name": "moegliche Zuordnungen",
+							"name": "list of all possible assignments",
 							"event": [
 								{
 									"listen": "test",
@@ -1980,16 +2164,6 @@
 							"response": []
 						}
 					],
-					"auth": {
-						"type": "bearer",
-						"bearer": [
-							{
-								"key": "token",
-								"value": "{{access_token}}",
-								"type": "string"
-							}
-						]
-					},
 					"event": [
 						{
 							"listen": "prerequest",
@@ -2010,74 +2184,18 @@
 							}
 						}
 					]
-				},
-				{
-					"name": "Upload am Antrag",
-					"protocolProfileBehavior": {
-						"disabledSystemHeaders": {
-							"connection": true,
-							"accept-encoding": true,
-							"accept": true
-						}
-					},
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "X-Authentication",
-								"value": "{{jwt}}",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "formdata",
-							"formdata": [
-								{
-									"key": "anzeigename",
-									"value": "Test2.pdf",
-									"type": "text"
-								},
-								{
-									"key": "teilAntragNummer",
-									"value": "EQ799Y/1/2",
-									"type": "text"
-								},
-								{
-									"key": "erstellungsdatum",
-									"value": "2020-05-05 09:46:55",
-									"type": "text",
-									"disabled": true
-								},
-								{
-									"key": "sichtbarFuerVertrieb",
-									"value": "true",
-									"type": "text"
-								},
-								{
-									"key": "file",
-									"type": "file",
-									"src": "/Users/wrede/Downloads/test.pdf"
-								}
-							]
-						},
-						"url": {
-							"raw": "https://www.europace2.de/vorgang/dokumente",
-							"protocol": "https",
-							"host": [
-								"www",
-								"europace2",
-								"de"
-							],
-							"path": [
-								"vorgang",
-								"dokumente"
-							]
-						},
-						"description": "Upload eines Dokumentes am Antrag\n"
-					},
-					"response": []
 				}
 			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "{{access_token}}",
+						"type": "string"
+					}
+				]
+			},
 			"event": [
 				{
 					"listen": "prerequest",
@@ -2088,14 +2206,23 @@
 							""
 						]
 					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
 				}
 			]
 		},
 		{
-			"name": "Partner API (PEX)",
+			"name": "Partner API",
 			"item": [
 				{
-					"name": "Partner lesen",
+					"name": "get partner data",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -2128,7 +2255,7 @@
 					"response": []
 				},
 				{
-					"name": "Kontaktdaten lesen",
+					"name": "get contact details",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -2161,7 +2288,7 @@
 					"response": []
 				},
 				{
-					"name": "Partner erstellen",
+					"name": "create partner",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -2195,7 +2322,7 @@
 					"response": []
 				},
 				{
-					"name": "Partner ändern",
+					"name": "update partner data",
 					"request": {
 						"method": "PATCH",
 						"header": [
@@ -2232,7 +2359,7 @@
 					"response": []
 				},
 				{
-					"name": "List untergeordnete Partner",
+					"name": "get subordinate partners",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -2266,7 +2393,7 @@
 					"response": []
 				},
 				{
-					"name": "Zugang Anlegen",
+					"name": "create user access",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -2310,7 +2437,7 @@
 					"response": []
 				},
 				{
-					"name": "Zugangsdaten auslesen",
+					"name": "get user access",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -2344,7 +2471,7 @@
 					"response": []
 				},
 				{
-					"name": "Partnerkennzeichnen auslesen",
+					"name": "get partner code",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -2377,7 +2504,7 @@
 					"response": []
 				},
 				{
-					"name": "Rechte auslesen",
+					"name": "get user permissions",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -2411,7 +2538,7 @@
 					"response": []
 				},
 				{
-					"name": "Rechte setzen",
+					"name": "set user permissions",
 					"request": {
 						"method": "PATCH",
 						"header": [
@@ -2454,7 +2581,7 @@
 					"response": []
 				},
 				{
-					"name": "Übernahme Recht auslesen",
+					"name": "get access rights",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -2487,7 +2614,7 @@
 					"response": []
 				},
 				{
-					"name": "Übernahme Recht setzen",
+					"name": "add access right",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -2517,7 +2644,7 @@
 					"response": []
 				},
 				{
-					"name": "Einstellungsrecht auslesen",
+					"name": "get setting right",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -2588,7 +2715,7 @@
 					"name": "Vertriebs-Rohdaten",
 					"item": [
 						{
-							"name": "1. Vertriebs-Rohdaten-Report erzeugen",
+							"name": "1. request report Vertriebs-Rohdaten",
 							"event": [
 								{
 									"listen": "prerequest",
@@ -2614,16 +2741,6 @@
 								}
 							],
 							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "{{access_token}}",
-											"type": "string"
-										}
-									]
-								},
 								"method": "POST",
 								"header": [
 									{
@@ -2663,7 +2780,7 @@
 					"name": "Produktanbieter-Report",
 					"item": [
 						{
-							"name": "1. Produktanbieter-Report erzeugen",
+							"name": "1. request report Produktanbieter-Report",
 							"event": [
 								{
 									"listen": "prerequest",
@@ -2689,16 +2806,6 @@
 								}
 							],
 							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "{{access_token}}",
-											"type": "string"
-										}
-									]
-								},
 								"method": "POST",
 								"header": [
 									{
@@ -2735,7 +2842,7 @@
 					]
 				},
 				{
-					"name": "2. Report Status abfragen",
+					"name": "2. query report status",
 					"event": [
 						{
 							"listen": "test",
@@ -2758,16 +2865,6 @@
 						"followRedirects": false
 					},
 					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{access_token}}",
-									"type": "string"
-								}
-							]
-						},
 						"method": "GET",
 						"header": [
 							{
@@ -2790,7 +2887,7 @@
 					"response": []
 				},
 				{
-					"name": "3. Report abholen",
+					"name": "3. retrieve report-data",
 					"request": {
 						"auth": {
 							"type": "noauth"
@@ -2819,67 +2916,14 @@
 			}
 		},
 		{
-			"name": "Get Legacy Access-Token",
+			"name": "login to get access-token",
 			"event": [
 				{
 					"listen": "test",
 					"script": {
 						"exec": [
 							"var jsonData = JSON.parse(responseBody);",
-							"postman.setGlobalVariable(\"jwt\", jsonData.access_token);"
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/x-www-form-urlencoded"
-					}
-				],
-				"body": {
-					"mode": "urlencoded",
-					"urlencoded": [
-						{
-							"key": "username",
-							"value": "{{PARTNER_ID}}",
-							"type": "text"
-						},
-						{
-							"key": "password",
-							"value": "{{API_KEY}}",
-							"type": "text"
-						}
-					]
-				},
-				"url": {
-					"raw": "https://api.europace.de/login",
-					"protocol": "https",
-					"host": [
-						"api",
-						"europace",
-						"de"
-					],
-					"path": [
-						"login"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Get OAuth Access-Token",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							"var jsonData = JSON.parse(responseBody);",
-							"postman.setGlobalVariable(\"access_token\", jsonData.access_token);",
-							""
+							"pm.environment.set(\"access_token\", jsonData.access_token);"
 						],
 						"type": "text/javascript"
 					}
