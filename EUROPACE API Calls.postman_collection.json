@@ -1295,7 +1295,7 @@
 							"listen": "test",
 							"script": {
 								"exec": [
-									"pm.environment.set(\"ul_location\", pm.response.headers.get('Location'))"
+									"pm.environment.set(\"doc_location\", pm.response.headers.get('Location'))"
 								],
 								"type": "text/javascript"
 							}
@@ -1367,7 +1367,7 @@
 							"listen": "test",
 							"script": {
 								"exec": [
-									"pm.environment.set(\"ul_location\", pm.response.headers.get('Location'))"
+									"pm.environment.set(\"doc_location\", pm.response.headers.get('Location'))"
 								],
 								"type": "text/javascript"
 							}
@@ -1443,9 +1443,9 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{ul_location}}",
+							"raw": "{{doc_location}}",
 							"host": [
-								"{{ul_location}}"
+								"{{doc_location}}"
 							]
 						}
 					},
@@ -1487,10 +1487,10 @@
 			"name": "Unterlagen API",
 			"item": [
 				{
-					"name": "add documents to a case",
+					"name": "add proof file to a case",
 					"item": [
 						{
-							"name": "1. store document",
+							"name": "1. store proof file",
 							"item": [
 								{
 									"name": "create presigned url",
@@ -1546,7 +1546,7 @@
 									"response": []
 								},
 								{
-									"name": "upload document file",
+									"name": "upload proof file",
 									"request": {
 										"method": "POST",
 										"header": [],
@@ -1612,7 +1612,7 @@
 							]
 						},
 						{
-							"name": "2. add uploaded document",
+							"name": "2. add uploaded proof file",
 							"event": [
 								{
 									"listen": "test",
@@ -1697,10 +1697,10 @@
 					]
 				},
 				{
-					"name": "get document",
+					"name": "get proof",
 					"item": [
 						{
-							"name": "get document",
+							"name": "get proof",
 							"request": {
 								"method": "GET",
 								"header": [
@@ -1849,7 +1849,7 @@
 							"response": []
 						},
 						{
-							"name": "assign pages (category)",
+							"name": "assign page (category)",
 							"request": {
 								"method": "PUT",
 								"header": [
@@ -1979,40 +1979,7 @@
 							"response": []
 						},
 						{
-							"name": "download shared content",
-							"request": {
-								"method": "GET",
-								"header": [
-									{
-										"key": "X-TraceId",
-										"value": "{{traceId}}"
-									},
-									{
-										"key": "Content-Type",
-										"value": "application/json"
-									}
-								],
-								"url": {
-									"raw": "https://api.europace2.de/v1/dokumente/freigabe/{{ul_freigabeId}}/content",
-									"protocol": "https",
-									"host": [
-										"api",
-										"europace2",
-										"de"
-									],
-									"path": [
-										"v1",
-										"dokumente",
-										"freigabe",
-										"{{ul_freigabeId}}",
-										"content"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "get all shared documents of an application",
+							"name": "get all shared proofs of an application",
 							"request": {
 								"method": "GET",
 								"header": [
@@ -2047,6 +2014,105 @@
 											"key": "antragsNummer",
 											"value": "{{vorgangsNummer}}/1/1"
 										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get metadata of shared proof",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "X-TraceId",
+										"value": "{{traceId}}"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "https://api.europace2.de/v1/dokumente/freigabe/{{ul_freigabeId}}/content",
+									"protocol": "https",
+									"host": [
+										"api",
+										"europace2",
+										"de"
+									],
+									"path": [
+										"v1",
+										"dokumente",
+										"freigabe",
+										"{{ul_freigabeId}}",
+										"content"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "download shared proof",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "X-TraceId",
+										"value": "{{traceId}}"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "https://api.europace2.de/v1/dokumente/freigabe/{{ul_freigabeId}}/content",
+									"protocol": "https",
+									"host": [
+										"api",
+										"europace2",
+										"de"
+									],
+									"path": [
+										"v1",
+										"dokumente",
+										"freigabe",
+										"{{ul_freigabeId}}",
+										"content"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "set receiving state",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"status\": \"DELIVERED\",\n  \"message\": \"Bank hat Unterlage erhalten.\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://api.europace2.de/v1/dokumente/freigabe/{{ul_freigabeId}}/status",
+									"protocol": "https",
+									"host": [
+										"api",
+										"europace2",
+										"de"
+									],
+									"path": [
+										"v1",
+										"dokumente",
+										"freigabe",
+										"{{ul_freigabeId}}",
+										"status"
 									]
 								}
 							},
