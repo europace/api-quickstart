@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "5e5a9dd5-a887-4641-a896-3f5063a92d6e",
+		"_postman_id": "97cf0ba6-a1b1-485d-a7ac-4b79ac0e2118",
 		"name": "EUROPACE API Calls",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -909,175 +909,327 @@
 			"name": "BaufiSmart Antraege API",
 			"item": [
 				{
-					"name": "List Antraege",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"url": {
-							"raw": "https://baufismart.api.europace.de/v2/antraege/",
-							"protocol": "https",
-							"host": [
-								"baufismart",
-								"api",
-								"europace",
-								"de"
-							],
-							"path": [
-								"v2",
-								"antraege",
-								""
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "List Testantraege",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"url": {
-							"raw": "https://baufismart.api.europace.de/v2/antraege/?datenKontext=TEST_MODUS",
-							"protocol": "https",
-							"host": [
-								"baufismart",
-								"api",
-								"europace",
-								"de"
-							],
-							"path": [
-								"v2",
-								"antraege",
-								""
-							],
-							"query": [
-								{
-									"key": "datenKontext",
-									"value": "TEST_MODUS"
+					"name": "get data",
+					"item": [
+						{
+							"name": "list Antraege",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "https://baufismart.api.europace.de/v2/antraege/",
+									"protocol": "https",
+									"host": [
+										"baufismart",
+										"api",
+										"europace",
+										"de"
+									],
+									"path": [
+										"v2",
+										"antraege",
+										""
+									]
 								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Antrag auslesen",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"url": {
-							"raw": "https://baufismart.api.europace.de/v2/antraege/HU1242/1/1",
-							"protocol": "https",
-							"host": [
-								"baufismart",
-								"api",
-								"europace",
-								"de"
-							],
-							"path": [
-								"v2",
-								"antraege",
-								"HU1242",
-								"1",
-								"1"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Antrag Patchen (eigene Referenz)",
-					"request": {
-						"method": "PATCH",
-						"header": [
-							{
-								"key": "Content-Type",
-								"name": "Content-Type",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "[\n\t{ \"op\": \"add\", \"path\": \"/antragsReferenz\", \"value\": \"whoop\" }\n]"
+							},
+							"response": []
 						},
-						"url": {
-							"raw": "https://baufismart.api.europace.de/v2/antraege/Z11029/2/1",
-							"protocol": "https",
-							"host": [
-								"baufismart",
-								"api",
-								"europace",
-								"de"
-							],
-							"path": [
-								"v2",
-								"antraege",
-								"Z11029",
-								"2",
-								"1"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Antragsstatus setzen",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "\t\t{\n            \"antragsteller\": \"BEANTRAGT\",\n\t\t\t\"produktAnbieter\": \"NICHT_BEARBEITET\",\n\t\t\t\"kommentar\": \"The API got the job done.\"\n\t\t}",
-							"options": {
-								"raw": {
-									"language": "json"
+						{
+							"name": "list Antraege since",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "https://baufismart.api.europace.de/v2/antraege/?aenderungSeit=2022-02-10",
+									"protocol": "https",
+									"host": [
+										"baufismart",
+										"api",
+										"europace",
+										"de"
+									],
+									"path": [
+										"v2",
+										"antraege",
+										""
+									],
+									"query": [
+										{
+											"key": "aenderungSeit",
+											"value": "2022-02-10"
+										}
+									]
 								}
-							}
+							},
+							"response": []
 						},
-						"url": {
-							"raw": "https://baufismart.api.europace.de/v2/antraege/WD0TNA/19/1/status",
-							"protocol": "https",
-							"host": [
-								"baufismart",
-								"api",
-								"europace",
-								"de"
-							],
-							"path": [
-								"v2",
-								"antraege",
-								"WD0TNA",
-								"19",
-								"1",
-								"status"
-							]
+						{
+							"name": "list Testantraege",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "https://baufismart.api.europace.de/v2/antraege/?datenKontext=TEST_MODUS",
+									"protocol": "https",
+									"host": [
+										"baufismart",
+										"api",
+										"europace",
+										"de"
+									],
+									"path": [
+										"v2",
+										"antraege",
+										""
+									],
+									"query": [
+										{
+											"key": "datenKontext",
+											"value": "TEST_MODUS"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get Antrag",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "https://baufismart.api.europace.de/v2/antraege/HU1242/1/1",
+									"protocol": "https",
+									"host": [
+										"baufismart",
+										"api",
+										"europace",
+										"de"
+									],
+									"path": [
+										"v2",
+										"antraege",
+										"HU1242",
+										"1",
+										"1"
+									]
+								}
+							},
+							"response": []
 						}
-					},
-					"response": []
+					]
 				},
 				{
-					"name": "Gegenangebot erzeugen",
+					"name": "drive process and inform your customer",
+					"item": [
+						{
+							"name": "set planned approving date",
+							"request": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "[\n\t{ \"op\": \"add\", \"path\": \"/voraussichtlicheBearbeitung\", \"value\": \"2022-02-10\" }\n]"
+								},
+								"url": {
+									"raw": "https://baufismart.api.europace.de/v2/antraege/Z11029/2/1",
+									"protocol": "https",
+									"host": [
+										"baufismart",
+										"api",
+										"europace",
+										"de"
+									],
+									"path": [
+										"v2",
+										"antraege",
+										"Z11029",
+										"2",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "set loan officer",
+							"request": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "[\n    {\n        \"op\": \"replace\",\n        \"path\": \"/ansprechpartner/partnerId\",\n        \"value\": \"XYZ55\"\n    }\n]"
+								},
+								"url": {
+									"raw": "https://baufismart.api.europace.de/v2/antraege/Z11029/2/1",
+									"protocol": "https",
+									"host": [
+										"baufismart",
+										"api",
+										"europace",
+										"de"
+									],
+									"path": [
+										"v2",
+										"antraege",
+										"Z11029",
+										"2",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "set loan officer contact details",
+							"request": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"op\": \"replace\",\n    \"path\": \"/ansprechpartner/externerPartner\",\n    \"value\": {\n        \"kreditBetriebPartnerId\": \"MYID03\",\n        \"name\": \"Frau Angela Anaconda\",\n        \"telefonnummer\": \"0170 7717789\"\n    }\n}"
+								},
+								"url": {
+									"raw": "https://baufismart.api.europace.de/v2/antraege/Z11029/2/1",
+									"protocol": "https",
+									"host": [
+										"baufismart",
+										"api",
+										"europace",
+										"de"
+									],
+									"path": [
+										"v2",
+										"antraege",
+										"Z11029",
+										"2",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "set reference",
+							"request": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "[\n\t{ \"op\": \"add\", \"path\": \"/antragsReferenz\", \"value\": \"whoop\" }\n]"
+								},
+								"url": {
+									"raw": "https://baufismart.api.europace.de/v2/antraege/Z11029/2/1",
+									"protocol": "https",
+									"host": [
+										"baufismart",
+										"api",
+										"europace",
+										"de"
+									],
+									"path": [
+										"v2",
+										"antraege",
+										"Z11029",
+										"2",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "set state",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"op\": \"replace\",\n    \"path\": \"/status\",\n    \"value\": {\n        \"produktAnbieter\": \"ABGELEHNT\",\n        \"ablehnungsgrund\": \"FINANZIELLE_SITUATION\",\n        \"kommentar\": \"comment to decision\"\n    }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://baufismart.api.europace.de/v2/antraege/WD0TNA/19/1/status",
+									"protocol": "https",
+									"host": [
+										"baufismart",
+										"api",
+										"europace",
+										"de"
+									],
+									"path": [
+										"v2",
+										"antraege",
+										"WD0TNA",
+										"19",
+										"1",
+										"status"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "create Gegenangebot",
 					"request": {
 						"method": "POST",
 						"header": [],
