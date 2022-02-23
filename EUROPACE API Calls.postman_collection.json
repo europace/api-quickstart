@@ -9,7 +9,7 @@
 			"name": "BaufiSmart Kundenangaben API",
 			"item": [
 				{
-					"name": "Kundenangaben validieren",
+					"name": "check request",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -52,7 +52,7 @@
 					"response": []
 				},
 				{
-					"name": "Kundenangaben importieren",
+					"name": "add case",
 					"event": [
 						{
 							"listen": "test",
@@ -106,7 +106,7 @@
 					"response": []
 				},
 				{
-					"name": "Kundenangaben aktualisieren",
+					"name": "replace case",
 					"event": [
 						{
 							"listen": "test",
@@ -195,8 +195,57 @@
 			"name": "BaufiSmart Vorgaenge API",
 			"item": [
 				{
-					"name": "List Vorgänge",
+					"name": "get Vorgang",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);",
+									"postman.setGlobalVariable(\"vorgangsNummer\", jsonData.vorgangsNummer);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "https://api.europace2.de/v2/vorgaenge/{{vorgangsNummer}}",
+							"protocol": "https",
+							"host": [
+								"api",
+								"europace2",
+								"de"
+							],
+							"path": [
+								"v2",
+								"vorgaenge",
+								"{{vorgangsNummer}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "list Vorgaenge since",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [
 							{
@@ -221,7 +270,7 @@
 					"response": []
 				},
 				{
-					"name": "List Testvorgänge",
+					"name": "list Vorgaenge (test)",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -253,19 +302,7 @@
 					"response": []
 				},
 				{
-					"name": "Vorgang auslesen",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"var jsonData = JSON.parse(responseBody);",
-									"postman.setGlobalVariable(\"vorgangsNummer\", jsonData.vorgangsNummer);"
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
+					"name": "list Antraege in Vorgang",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -275,7 +312,7 @@
 							}
 						],
 						"url": {
-							"raw": "https://api.europace2.de/v2/vorgaenge/CH6407",
+							"raw": "https://api.europace2.de/v2/vorgaenge/{{vorgangsNummer}}/antraege",
 							"protocol": "https",
 							"host": [
 								"api",
@@ -285,160 +322,7 @@
 							"path": [
 								"v2",
 								"vorgaenge",
-								"CH6407"
-							]
-						}
-					},
-					"response": [
-						{
-							"name": "Response",
-							"originalRequest": {
-								"method": "GET",
-								"header": [
-									{
-										"key": "Content-Type",
-										"value": "application/json"
-									},
-									{
-										"key": "Authorization",
-										"value": "Bearer {{jwt}}"
-									}
-								],
-								"url": {
-									"raw": "https://api.europace2.de/v2/vorgaenge/CH6407",
-									"protocol": "https",
-									"host": [
-										"api",
-										"europace2",
-										"de"
-									],
-									"path": [
-										"v2",
-										"vorgaenge",
-										"CH6407"
-									]
-								}
-							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Cache-Control",
-									"value": "no-cache, no-store, max-age=0, must-revalidate",
-									"name": "Cache-Control",
-									"description": "Tells all caching mechanisms from server to client whether they may cache this object. It is measured in seconds"
-								},
-								{
-									"key": "Content-Type",
-									"value": "application/json;charset=utf-8",
-									"name": "Content-Type",
-									"description": "The mime type of this content"
-								},
-								{
-									"key": "Date",
-									"value": "Wed, 18 Apr 2018 14:31:33 GMT",
-									"name": "Date",
-									"description": "The date and time that the message was sent"
-								},
-								{
-									"key": "Expires",
-									"value": "0",
-									"name": "Expires",
-									"description": "Gives the date/time after which the response is considered stale"
-								},
-								{
-									"key": "Pragma",
-									"value": "no-cache",
-									"name": "Pragma",
-									"description": "Implementation-specific headers that may have various effects anywhere along the request-response chain."
-								},
-								{
-									"key": "Transfer-Encoding",
-									"value": "chunked",
-									"name": "Transfer-Encoding",
-									"description": "The form of encoding used to safely transfer the entity to the user. Currently defined methods are: chunked, compress, deflate, gzip, identity."
-								},
-								{
-									"key": "X-Application-Context",
-									"value": "zuul-api-gateway:ps:8080",
-									"name": "X-Application-Context",
-									"description": "Custom header"
-								},
-								{
-									"key": "X-Content-Type-Options",
-									"value": "nosniff",
-									"name": "X-Content-Type-Options",
-									"description": "The only defined value, \"nosniff\", prevents Internet Explorer from MIME-sniffing a response away from the declared content-type"
-								},
-								{
-									"key": "X-Frame-Options",
-									"value": "DENY",
-									"name": "X-Frame-Options",
-									"description": "Clickjacking protection: \"deny\" - no rendering within a frame, \"sameorigin\" - no rendering if origin mismatch"
-								},
-								{
-									"key": "X-RateLimit-Limit",
-									"value": "1000",
-									"name": "X-RateLimit-Limit",
-									"description": "Custom header"
-								},
-								{
-									"key": "X-RateLimit-Remaining",
-									"value": "999",
-									"name": "X-RateLimit-Remaining",
-									"description": "Custom header"
-								},
-								{
-									"key": "X-RateLimit-Reset",
-									"value": "60",
-									"name": "X-RateLimit-Reset",
-									"description": "Custom header"
-								},
-								{
-									"key": "X-XSS-Protection",
-									"value": "1; mode=block",
-									"name": "X-XSS-Protection",
-									"description": "Cross-site scripting (XSS) filter"
-								}
-							],
-							"cookie": [
-								{
-									"expires": "Invalid Date",
-									"httpOnly": false,
-									"domain": "europace2.de",
-									"path": "/",
-									"secure": false,
-									"value": "1$649D71A275E951D90093F2C6B9479F6D|www.europace2.de|1",
-									"key": "dtCookie"
-								}
-							],
-							"body": "{\n    \"vorgangsNummer\": \"CH6407\",\n    \"erstelltAm\": \"2018-03-02\",\n    \"letztesEreignis\": \"2018-04-18T13:27:37.079Z\",\n    \"status\": \"AKTIV\",\n    \"bankverbindung\": {\n        \"kontoinhaberIds\": [\n            \"5145264783411154\"\n        ],\n        \"kreditinstitut\": \"Postbank Köln\",\n        \"iban\": \"DE51370100500007985502\",\n        \"bic\": \"PBNKDEFFXXX\",\n        \"id\": \"38815618154658127\"\n    },\n    \"haushalte\": [\n        {\n            \"id\": \"7330234975131269\",\n            \"antragsteller\": [\n                {\n                    \"id\": \"5145264783411154\",\n                    \"anrede\": \"FRAU\",\n                    \"anschrift\": {\n                        \"hausnummer\": \"24\",\n                        \"ort\": \"Berlin\",\n                        \"postleitzahl\": \"10179\",\n                        \"strasse\": \"Waisenstraße\"\n                    },\n                    \"beschaeftigung\": {\n                        \"art\": \"ANGESTELLTER\",\n                        \"beruf\": \"Metzger\",\n                        \"branche\": \"SONSTIGE_DIENSTLEISTUNGEN\",\n                        \"anzahlGehaelterProJahr\": 12,\n                        \"arbeitgeberInDeutschlandAnsaessig\": true,\n                        \"arbeitgeberLand\": {\n                            \"isoCountryCode\": \"DE\",\n                            \"name\": \"Deutschland\"\n                        },\n                        \"befristungsStatus\": \"UNBEFRISTET\",\n                        \"beschaeftigtSeit\": \"2000-01-01\",\n                        \"einkommenNettoMonatlich\": 5000,\n                        \"inProbezeit\": false,\n                        \"arbeitgeber\": \"Hypoport\",\n                        \"situationNachRenteneintritt\": {\n                            \"rentenBeginn\": \"2037-01-01\",\n                            \"gesetzlicheRenteMonatlich\": 3200,\n                            \"privateRenteMonatlich\": 120,\n                            \"sonstigesEinkommenMonatlich\": 120\n                        }\n                    },\n                    \"email\": \"lachs@web.de\",\n                    \"familienstand\": \"VERHEIRATET\",\n                    \"guetertrennungVereinbartWennVerheiratet\": false,\n                    \"geburtsdatum\": \"1970-01-01\",\n                    \"geburtsort\": \"Irgendwo\",\n                    \"nachname\": \"Lachs\",\n                    \"staatsangehoerigkeit\": {\n                        \"isoCountryCode\": \"DE\",\n                        \"name\": \"Deutschland\"\n                    },\n                    \"telefonnummer\": \"420860\",\n                    \"telefonnummerVorwahl\": \"030\",\n                    \"vorAnschrift\": {\n                        \"hausnummer\": \"218\",\n                        \"ort\": \"Berlin (Mitte)\",\n                        \"postleitzahl\": \"10115\",\n                        \"strasse\": \"Torstrasse\"\n                    },\n                    \"vorname\": \"Luise\",\n                    \"weitereKontaktMoeglichkeiten\": \"0163 / 5561311\",\n                    \"wohnhaftSeit\": \"2000-01-01\",\n                    \"legitimationsDaten\": {\n                        \"ausweisArt\": \"PERSONALAUSWEIS\",\n                        \"ausstellungsdatum\": \"2015-05-03\",\n                        \"ausstellendeBehoerde\": \"Bürgeramt\",\n                        \"ausweisNummer\": \"26698316015637547\"\n                    },\n                    \"steuerId\": \"01234567896\"\n                },\n                {\n                    \"id\": \"40772573991021477\",\n                    \"anrede\": \"FRAU\",\n                    \"anschrift\": {\n                        \"hausnummer\": \"24\",\n                        \"ort\": \"Berlin\",\n                        \"postleitzahl\": \"10179\",\n                        \"strasse\": \"Waisenstraße\"\n                    },\n                    \"beschaeftigung\": {\n                        \"art\": \"ANGESTELLTER\",\n                        \"beruf\": \"Fischer\",\n                        \"branche\": \"SONSTIGE_DIENSTLEISTUNGEN\",\n                        \"anzahlGehaelterProJahr\": 12,\n                        \"arbeitgeberInDeutschlandAnsaessig\": true,\n                        \"arbeitgeberLand\": {\n                            \"isoCountryCode\": \"DE\",\n                            \"name\": \"Deutschland\"\n                        },\n                        \"befristungsStatus\": \"UNBEFRISTET\",\n                        \"beschaeftigtSeit\": \"2000-01-01\",\n                        \"einkommenNettoMonatlich\": 5000,\n                        \"inProbezeit\": false,\n                        \"arbeitgeber\": \"Hypoport\",\n                        \"situationNachRenteneintritt\": {\n                            \"rentenBeginn\": \"2037-01-01\",\n                            \"gesetzlicheRenteMonatlich\": 3200,\n                            \"privateRenteMonatlich\": 120,\n                            \"sonstigesEinkommenMonatlich\": 120\n                        }\n                    },\n                    \"email\": \"backfisch@web.de\",\n                    \"familienstand\": \"VERHEIRATET\",\n                    \"guetertrennungVereinbartWennVerheiratet\": false,\n                    \"geburtsdatum\": \"1970-01-01\",\n                    \"geburtsort\": \"Irgendwo\",\n                    \"nachname\": \"Backfisch\",\n                    \"staatsangehoerigkeit\": {\n                        \"isoCountryCode\": \"DE\",\n                        \"name\": \"Deutschland\"\n                    },\n                    \"telefonnummer\": \"420860\",\n                    \"telefonnummerVorwahl\": \"030\",\n                    \"vorAnschrift\": {\n                        \"hausnummer\": \"33\",\n                        \"ort\": \"Berlin (Mitte)\",\n                        \"postleitzahl\": \"10115\",\n                        \"strasse\": \"Tiekstr\"\n                    },\n                    \"vorname\": \"Thorsten\",\n                    \"weitereKontaktMoeglichkeiten\": \"030/ 80201922\",\n                    \"wohnhaftSeit\": \"2000-01-01\",\n                    \"legitimationsDaten\": {\n                        \"ausweisArt\": \"PERSONALAUSWEIS\",\n                        \"ausstellungsdatum\": \"2015-05-03\",\n                        \"ausstellendeBehoerde\": \"Bürgeramt\",\n                        \"ausweisNummer\": \"5559670318270531\"\n                    },\n                    \"steuerId\": \"01234567896\"\n                }\n            ],\n            \"bestehendeImmobilien\": [\n                {\n                    \"id\": \"6587397095668994\",\n                    \"adresse\": {\n                        \"hausnummer\": \"212\",\n                        \"ort\": \"Berlin (Mitte)\",\n                        \"postleitzahl\": \"10115\",\n                        \"strasse\": \"Torstr\"\n                    },\n                    \"autostellplaetze\": [\n                        {\n                            \"typ\": \"GARAGE\"\n                        }\n                    ],\n                    \"erbbaurecht\": {\n                        \"erbbaurecht\": false\n                    },\n                    \"grundbuchAngabe\": {\n                        \"bandUndBlatt\": \"2\",\n                        \"ort\": \"Test Grundbuch\",\n                        \"flurstuecke\": [\n                            {\n                                \"anteil\": {\n                                    \"anteil\": 2,\n                                    \"gesamt\": 22\n                                },\n                                \"flur\": \"22\",\n                                \"flurstuecksNummer\": \"32\",\n                                \"groesse\": 222\n                            }\n                        ],\n                        \"rechteInAbteilung2\": {\n                            \"vorhanden\": true,\n                            \"beschreibung\": \"Test\",\n                            \"betrag\": 32222\n                        },\n                        \"anmerkungen\": \"Weitere Test Angaben\"\n                    },\n                    \"bewirtschaftungsKostenJaehrlich\": 322,\n                    \"vergleichsmieteFuerWohnflaecheProQm\": 23,\n                    \"vergleichsmieteFuerGewerbeflaecheProQm\": 23,\n                    \"marktueblicherKaufpreisProQm\": 5000,\n                    \"keinBaulandFlaecheInQm\": 2000,\n                    \"bodenRichtwert\": 2000,\n                    \"grundstueck\": {\n                        \"groesse\": 2000\n                    },\n                    \"gebaeude\": {\n                        \"ausstattung\": \"MITTEL\",\n                        \"zustand\": \"MITTEL\",\n                        \"gewerbeflaeche\": {\n                            \"vermietungsInformationen\": {\n                                \"nutzungsArt\": \"EIGENGENUTZT\"\n                            }\n                        },\n                        \"wohnflaeche\": {\n                            \"vermietungsInformationen\": {\n                                \"nutzungsArt\": \"EIGENGENUTZT\"\n                            },\n                            \"gesamtGroesse\": 2000\n                        }\n                    },\n                    \"verkehrswert\": 5000000\n                }\n            ],\n            \"positionen\": {\n                \"sonstigeAusgaben\": [\n                    {\n                        \"ausgabenMonatlich\": 566,\n                        \"zahlungsTyp\": \"AUSGABE\"\n                    }\n                ],\n                \"bankUndSparguthaben\": [\n                    {\n                        \"aktuellerWert\": 112000,\n                        \"maximalAufzuloesenderWert\": 0,\n                        \"vermoegensEinsatz\": \"AUFLOESEN\",\n                        \"ertrag\": 112000,\n                        \"zinsertragJaehrlich\": 2,\n                        \"zahlungsTyp\": \"EINNAHME\",\n                        \"vermoegensTyp\": \"VERMOEGEN\"\n                    }\n                ],\n                \"bausparvertraege\": [\n                    {\n                        \"tarif\": \"Test\",\n                        \"id\": \"09122696947591868\",\n                        \"produktAnbieter\": {\n                            \"id\": \"567153fce4b0787190810dfa\",\n                            \"partnerId\": \"XJF88\",\n                            \"firmierung\": \"Bausparkasse Schwäbisch Hall AG\",\n                            \"email\": \"service@schwaebisch-hall.de\",\n                            \"telefonnummer\": \"+49 791 46-4444\",\n                            \"anschrift\": {\n                                \"hausnummer\": \"52\",\n                                \"ort\": \"Schwäbisch Hall\",\n                                \"postleitzahl\": \"74523\",\n                                \"strasse\": \"Crailsheimer Str.\"\n                            },\n                            \"fax\": \"+49 791 46-2628\",\n                            \"webseite\": \"www.schwaebisch-hall.de\",\n                            \"vertriebsOrganisation\": {\n                                \"name\": \"Bausparkasse Schwäbisch Hall AG\",\n                                \"firma\": \"Bausparkasse Schwäbisch Hall AG\",\n                                \"vertriebsOrganisationsId\": \"BSK_SCHWAEBISCH_HALL\"\n                            },\n                            \"kreditsachbearbeiter\": false,\n                            \"produktAnbieterId\": \"BSK_SCHWAEBISCH_HALL\"\n                        },\n                        \"vermoegensEinsatz\": \"ABTRETEN\",\n                        \"sparBeitragMonatlich\": 33,\n                        \"aktuellerWert\": 3332,\n                        \"zahlungsTyp\": \"AUSGABE\",\n                        \"vermoegensTyp\": \"VERMOEGEN\",\n                        \"typ\": \"BAUSPARVERTRAG\"\n                    }\n                ],\n                \"ehegattenUnterhalt\": [\n                    {\n                        \"einnahmenMonatlich\": 322,\n                        \"zahlungsTyp\": \"EINNAHME\"\n                    }\n                ],\n                \"einkuenfteAusNebentaetigkeit\": [\n                    {\n                        \"einnahmenMonatlich\": 4333,\n                        \"beginnDerNebentaetigkeit\": \"2015-12-12\",\n                        \"zahlungsTyp\": \"EINNAHME\"\n                    }\n                ],\n                \"sonstigeEinnahmen\": [\n                    {\n                        \"einnahmenMonatlich\": 2344,\n                        \"zahlungsTyp\": \"EINNAHME\"\n                    }\n                ],\n                \"lebensUndRentenVersicherungen\": [\n                    {\n                        \"id\": \"7908737405521133\",\n                        \"rueckkaufsWertAktuell\": 300000,\n                        \"praemieMonatlich\": 200,\n                        \"vermoegensEinsatz\": \"AUFLOESEN\",\n                        \"maximalAufzuloesenderBetrag\": 300000,\n                        \"zahlungsTyp\": \"AUSGABE\",\n                        \"vermoegensTyp\": \"VERMOEGEN\"\n                    }\n                ],\n                \"mietAusgaben\": [\n                    {\n                        \"ausgabenMonatlich\": 544,\n                        \"zahlungsTyp\": \"AUSGABE\"\n                    }\n                ],\n                \"privateDarlehen\": [\n                    {\n                        \"glaeubiger\": \"AXA\",\n                        \"laufzeitEnde\": \"2022-12-12\",\n                        \"rateMonatlich\": 300,\n                        \"restschuld\": 2000,\n                        \"wirdAbgeloest\": true,\n                        \"zahlungsTyp\": \"AUSGABE\",\n                        \"vermoegensTyp\": \"VERBINDLICHKEIT\"\n                    }\n                ],\n                \"privateKrankenversicherung\": [\n                    {\n                        \"ausgabenMonatlich\": 6555,\n                        \"zahlungsTyp\": \"AUSGABE\"\n                    }\n                ],\n                \"ratenkredite\": [\n                    {\n                        \"glaeubiger\": \"AXA\",\n                        \"laufzeitEnde\": \"2020-12-12\",\n                        \"rateMonatlich\": 33,\n                        \"restschuld\": 4000,\n                        \"wirdAbgeloest\": true,\n                        \"zahlungsTyp\": \"AUSGABE\",\n                        \"vermoegensTyp\": \"VERBINDLICHKEIT\"\n                    }\n                ],\n                \"sparplaene\": [\n                    {\n                        \"aktuellerWert\": 3233,\n                        \"maximalAufzuloesenderWert\": 3233,\n                        \"vermoegensEinsatz\": \"AUFLOESEN\",\n                        \"ertrag\": 3233,\n                        \"zukuenftigeEinnahmen\": 0,\n                        \"zahlungsTyp\": \"AUSGABE\",\n                        \"vermoegensTyp\": \"VERMOEGEN\"\n                    }\n                ],\n                \"unterhaltsVerpflichtungen\": [\n                    {\n                        \"ausgabenMonatlich\": 655,\n                        \"zahlungsTyp\": \"AUSGABE\"\n                    }\n                ],\n                \"variableEinkuenfte\": [\n                    {\n                        \"einnahmenMonatlich\": 323,\n                        \"zahlungsTyp\": \"EINNAHME\"\n                    }\n                ],\n                \"sonstigeVerbindlichkeiten\": [\n                    {\n                        \"glaeubiger\": \"AXA\",\n                        \"laufzeitEnde\": \"2022-12-12\",\n                        \"rateMonatlich\": 33,\n                        \"restschuld\": 3222,\n                        \"wirdAbgeloest\": false,\n                        \"zahlungsTyp\": \"AUSGABE\",\n                        \"vermoegensTyp\": \"VERBINDLICHKEIT\"\n                    }\n                ],\n                \"sonstigeVermoegen\": [\n                    {\n                        \"aktuellerWert\": 3233,\n                        \"vermoegensEinsatz\": \"KEIN_EINSATZ\",\n                        \"vermoegensTyp\": \"VERMOEGEN\"\n                    }\n                ],\n                \"versicherungsAusgaben\": [\n                    {\n                        \"ausgabenMonatlich\": 564,\n                        \"zahlungsTyp\": \"AUSGABE\"\n                    }\n                ],\n                \"wertpapiere\": [\n                    {\n                        \"aktuellerWert\": 4000,\n                        \"vermoegensEinsatz\": \"KEIN_EINSATZ\",\n                        \"dividendenJaehrlich\": 222,\n                        \"zahlungsTyp\": \"EINNAHME\",\n                        \"vermoegensTyp\": \"VERMOEGEN\"\n                    }\n                ],\n                \"kindergeld\": [\n                    {\n                        \"einnahmenMonatlich\": 194,\n                        \"zahlungsTyp\": \"EINNAHME\"\n                    }\n                ]\n            },\n            \"kinder\": [\n                {\n                    \"id\": \"7377112571212456\",\n                    \"geburtsdatum\": \"2015-01-01\",\n                    \"kindergeldWirdBezogen\": true,\n                    \"name\": \"Peter\",\n                    \"unterhaltsEinnahmenBetragMonatlich\": 0\n                },\n                {\n                    \"id\": \"6287515336975855\",\n                    \"geburtsdatum\": \"1999-02-21\",\n                    \"kindergeldWirdBezogen\": false,\n                    \"name\": \"Bing Bong\"\n                }\n            ],\n            \"anzahlErwachseneImHaushalt\": 2,\n            \"lebenshaltungsKostenMonatlich\": 500,\n            \"kfzAnzahl\": 3\n        }\n    ],\n    \"finanzierungsObjekt\": {\n        \"id\": \"9049278894125974\",\n        \"adresse\": {\n            \"hausnummer\": \"71\",\n            \"ort\": \"Berlin\",\n            \"postleitzahl\": \"10179\",\n            \"strasse\": \"Klosterstraße\"\n        },\n        \"autostellplaetze\": [\n            {\n                \"mieteinnahmenMonatlich\": 3222,\n                \"typ\": \"STELLPLATZ\"\n            },\n            {\n                \"typ\": \"STELLPLATZ\"\n            },\n            {\n                \"typ\": \"CARPORT\"\n            }\n        ],\n        \"erbbaurecht\": {\n            \"erbbaurecht\": true,\n            \"erbbauzinsJaehrlich\": 43333,\n            \"grundstuecksEigentuemer\": \"ANDERE\",\n            \"laufzeitBisJahr\": 2040\n        },\n        \"grundbuchAngabe\": {\n            \"bandUndBlatt\": \"12345\",\n            \"ort\": \"Berlin\",\n            \"flurstuecke\": [\n                {\n                    \"anteil\": {\n                        \"anteil\": 100,\n                        \"gesamt\": 100\n                    },\n                    \"flur\": \"51\",\n                    \"flurstuecksNummer\": \"172b\",\n                    \"groesse\": 200\n                }\n            ]\n        },\n        \"effektivZinsErhoehendeKosten\": {\n            \"anpassen\": true,\n            \"wohnGebaeudeVersicherungsKostenJaehrlich\": 34,\n            \"grundbuchEintragungsKostenEinmalig\": 433,\n            \"sonstigeKostenBezeichnung\": \"TEst\",\n            \"sonstigeKostenEinmalig\": 5444\n        },\n        \"bewirtschaftungsKostenJaehrlich\": 400,\n        \"wohnlage\": \"GEHOBEN\",\n        \"marktueblicherKaufpreisProQm\": 2000,\n        \"bodenRichtwert\": 200,\n        \"grundstueck\": {\n            \"groesse\": 200\n        },\n        \"gebaeude\": {\n            \"kellerausbau\": \"TEILWEISE_AUSGEBAUT\",\n            \"anzahlVollgeschosse\": 2,\n            \"ausstattung\": \"GEHOBEN\",\n            \"zustand\": \"GUT\",\n            \"baujahr\": 2000,\n            \"bauweise\": \"MASSIV\",\n            \"aufzugVorhanden\": true,\n            \"kubatur\": 400,\n            \"modernisierungsAngaben\": {\n                \"wurdeModernisiert\": true,\n                \"modernisierungsGrad\": \"HOCH\",\n                \"modernisierungsJahr\": 2001,\n                \"bodenWandTreppe\": true,\n                \"heizungZentral\": true,\n                \"fenster\": true,\n                \"badWc\": true,\n                \"stromAbwasserHeizkoerper\": true,\n                \"waermedaemmung\": true,\n                \"raumaufteilung\": true\n            },\n            \"wohnflaeche\": {\n                \"vermietungsInformationen\": {\n                    \"nutzungsArt\": \"EIGENGENUTZT\"\n                },\n                \"gesamtGroesse\": 100\n            },\n            \"dachgeschossAusbau\": \"VOLL_AUSGEBAUT\",\n            \"einliegerwohnungVorhanden\": false,\n            \"istFertighaus\": false,\n            \"hausTyp\": \"EINFAMILIENHAUS\",\n            \"unterkellerung\": \"UNTERKELLERT\"\n        },\n        \"objektArt\": \"HAUS\"\n    },\n    \"vorhaben\": {\n        \"id\": \"7802725848837542\",\n        \"verwendungszweck\": \"KAUF\",\n        \"finanzbedarf\": {\n            \"bereitsBeglichen\": 32222,\n            \"grunderwerbsteuer\": 9000,\n            \"kaufpreis\": 200000,\n            \"notargebuehr\": 3000\n        },\n        \"finanzierungswunsch\": {\n            \"id\": \"13780429983297904\",\n            \"darlehensWuensche\": [\n                {\n                    \"id\": \"9365632784071471\",\n                    \"annuitaetenDarlehen\": {\n                        \"darlehensBetrag\": 100000,\n                        \"provision\": 1,\n                        \"tilgungsWunsch\": {\n                            \"anfaenglicheTilgung\": 2,\n                            \"volltilgerWennAnnuitaetenOderForward\": false\n                        },\n                        \"bereitstellungsZinsFreieZeitInMonaten\": 2,\n                        \"sondertilgungOptionalJaehrlich\": 0,\n                        \"zinsBindungInJahren\": 10\n                    }\n                }\n            ]\n        }\n    },\n    \"datenKontext\": \"ECHT_GESCHAEFT\",\n    \"_links\": {\n        \"self\": {\n            \"href\": \"https://baufismart.api.europace.de/v2/vorgaenge/CH6407\"\n        }\n    },\n    \"antraege\": [\n        {\n            \"_links\": {\n                \"self\": {\n                    \"href\": \"https://baufismart.api.europace.de/v2/vorgaenge/CH6407/antraege/1/1\"\n                }\n            }\n        }\n    ],\n    \"vorgangsBearbeiter\": {\n        \"id\": \"58e358dce4b0764b554d7b10\",\n        \"partnerId\": \"DIV95\",\n        \"anrede\": \"HERR\",\n        \"vorname\": \"Caspar\",\n        \"nachname\": \"Wrede\",\n        \"firmierung\": \"EUROPACE AG\",\n        \"email\": \"caspar.wrede@europace.de\",\n        \"telefonnummer\": \"01635561322\",\n        \"anschrift\": {\n            \"hausnummer\": \"71\",\n            \"ort\": \"Berlin\",\n            \"postleitzahl\": \"10179\",\n            \"strasse\": \"Klosterstr.\"\n        },\n        \"vertriebsOrganisation\": {\n            \"name\": \"Hypoport AG\",\n            \"firma\": \"Hypoport AG\",\n            \"vertriebsOrganisationsId\": \"HYPOPORT\"\n        },\n        \"kreditsachbearbeiter\": true,\n        \"_links\": {\n            \"self\": {\n                \"href\": \"https://www.europace2.de/partnermanagement/partner/DIV95/kontaktdaten\"\n            }\n        }\n    },\n    \"kundenBetreuer\": {\n        \"id\": \"58e358dce4b0764b554d7b10\",\n        \"partnerId\": \"DIV95\",\n        \"anrede\": \"HERR\",\n        \"vorname\": \"Caspar\",\n        \"nachname\": \"Wrede\",\n        \"firmierung\": \"EUROPACE AG\",\n        \"email\": \"caspar.wrede@europace.de\",\n        \"telefonnummer\": \"01635561322\",\n        \"anschrift\": {\n            \"hausnummer\": \"71\",\n            \"ort\": \"Berlin\",\n            \"postleitzahl\": \"10179\",\n            \"strasse\": \"Klosterstr.\"\n        },\n        \"vertriebsOrganisation\": {\n            \"name\": \"Hypoport AG\",\n            \"firma\": \"Hypoport AG\",\n            \"vertriebsOrganisationsId\": \"HYPOPORT\"\n        },\n        \"kreditsachbearbeiter\": true,\n        \"_links\": {\n            \"self\": {\n                \"href\": \"https://www.europace2.de/partnermanagement/partner/DIV95/kontaktdaten\"\n            }\n        }\n    }\n}"
-						}
-					]
-				},
-				{
-					"name": "List Anträge an einem Vorgang",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"url": {
-							"raw": "https://api.europace2.de/v2/vorgaenge/CH6407/antraege",
-							"protocol": "https",
-							"host": [
-								"api",
-								"europace2",
-								"de"
-							],
-							"path": [
-								"v2",
-								"vorgaenge",
-								"CH6407",
+								"{{vorgangsNummer}}",
 								"antraege"
 							]
 						}
@@ -446,7 +330,38 @@
 					"response": []
 				},
 				{
-					"name": "Vorgang PATCHEN",
+					"name": "set reference",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json-patch+json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "[\n\t{\"op\":\"replace\",\"path\":\"/externeVorgangsNummer\",\"value\":\"ext_VN_4711\"}\n]"
+						},
+						"url": {
+							"raw": "https://api.europace2.de/v2/vorgaenge/{{vorgangsNummer}}",
+							"protocol": "https",
+							"host": [
+								"api",
+								"europace2",
+								"de"
+							],
+							"path": [
+								"v2",
+								"vorgaenge",
+								"{{vorgangsNummer}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "set state",
 					"request": {
 						"method": "PATCH",
 						"header": [
@@ -460,7 +375,7 @@
 							"raw": "[\n\t{\"op\":\"replace\",\"path\":\"/status\",\"value\":\"ARCHIVIERT\"}\n]"
 						},
 						"url": {
-							"raw": "https://api.europace2.de/v2/vorgaenge/XW3386",
+							"raw": "https://api.europace2.de/v2/vorgaenge/{{vorgangsNummer}}",
 							"protocol": "https",
 							"host": [
 								"api",
@@ -470,14 +385,14 @@
 							"path": [
 								"v2",
 								"vorgaenge",
-								"XW3386"
+								"{{vorgangsNummer}}"
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "Sachbearbeiter ändern",
+					"name": "set editor",
 					"request": {
 						"method": "PUT",
 						"header": [],
@@ -491,7 +406,7 @@
 							}
 						},
 						"url": {
-							"raw": "https://api.europace2.de/v2/vorgaenge/YM7S18/vorgangsBearbeiter",
+							"raw": "https://api.europace2.de/v2/vorgaenge/{{vorgangsNummer}}/vorgangsBearbeiter",
 							"protocol": "https",
 							"host": [
 								"api",
@@ -501,7 +416,7 @@
 							"path": [
 								"v2",
 								"vorgaenge",
-								"YM7S18",
+								"{{vorgangsNummer}}",
 								"vorgangsBearbeiter"
 							]
 						}
@@ -509,7 +424,7 @@
 					"response": []
 				},
 				{
-					"name": "Kundenbetreuer ändern",
+					"name": "set advisor",
 					"request": {
 						"method": "PUT",
 						"header": [],
@@ -523,7 +438,7 @@
 							}
 						},
 						"url": {
-							"raw": "https://api.europace2.de/v2/vorgaenge/YM7S18/kundenBetreuer",
+							"raw": "https://api.europace2.de/v2/vorgaenge/{{vorgangsNummer}}/kundenBetreuer",
 							"protocol": "https",
 							"host": [
 								"api",
@@ -533,7 +448,7 @@
 							"path": [
 								"v2",
 								"vorgaenge",
-								"YM7S18",
+								"{{vorgangsNummer}}",
 								"kundenBetreuer"
 							]
 						}
@@ -2526,6 +2441,10 @@
 								"value": "{{traceId}}"
 							}
 						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n   \"anrede\":\"HERR\",\n   \"vorname\":\"Max\",\n   \"nachname\":\"Mustermann\",\n   \"email\":\"max.musterman@exmaple.org\",\n   \"gesperrt\":false,\n   \"kreditsachbearbeiter\":false,\n   \"externePartnerId\":\"123456\",\n   \"titelFunktion\":\"Softwareentwickler\",\n   \"geburtsdatum\":\"1970-01-01\",\n   \"telefonnummer\":\"030 123456\",\n   \"mobilnummer\":\"030 123456\",\n   \"faxnummer\":\"030 123456\",\n   \"firmenname\":\"Europace AG\",\n   \"firmennameZusatz\":\"Aktiengesellschaft\",\n   \"webseite\":\"https://github.com/europace/partner-api\",\n   \"anschrift\":{\n      \"strasse\":\"Musterstraße\",\n      \"hausnummer\":\"5\",\n      \"plz\":\"12345\",\n      \"ort\":\"Musterstadt\"\n   },\n   \"bankverbindung\":{\n      \"kontoinhaber\":\"Max Musterman\",\n      \"bic\":\"BYLADEM1001\",\n      \"iban\":\"DE02120300000000202051\",\n      \"referenzFeld\":\"Test Ref\"\n   },\n   \"aufsichtsbehoerde\":\"Musterbehoerde\",\n   \"registrierungsnummer\":\"987654\"\n}"
+						},
 						"url": {
 							"raw": "https://api.europace.de/v2/partner/{{PARTNER_ID}}/untergeordnete",
 							"protocol": "https",
