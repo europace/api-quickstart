@@ -1825,6 +1825,48 @@
 					]
 				},
 				{
+					"name": "list documents of case",
+					"item": [
+						{
+							"name": "list documents",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{access_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://api.europace.de/v1/dokumente?vorgangsNummer={{vorgangsNummer}}",
+									"protocol": "https",
+									"host": [
+										"api",
+										"europace",
+										"de"
+									],
+									"path": [
+										"v1",
+										"dokumente"
+									],
+									"query": [
+										{
+											"key": "vorgangsNummer",
+											"value": "{{vorgangsNummer}}"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
 					"name": "pages",
 					"item": [
 						{
