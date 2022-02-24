@@ -1214,7 +1214,7 @@
 			"name": "BaufiSmart Ereignisse API",
 			"item": [
 				{
-					"name": "Ereignisse Auslesen (VorgangsNr)",
+					"name": "get event of case",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -1224,7 +1224,7 @@
 							}
 						],
 						"url": {
-							"raw": "https://baufismart.api.europace.de/v2/ereignisse/CH6407",
+							"raw": "https://baufismart.api.europace.de/v2/ereignisse/{{vorgangsNummer}}",
 							"protocol": "https",
 							"host": [
 								"baufismart",
@@ -1235,14 +1235,14 @@
 							"path": [
 								"v2",
 								"ereignisse",
-								"CH6407"
+								"{{vorgangsNummer}}"
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "Ereignisse Auslesen (AntragsNr)",
+					"name": "get events of application",
 					"request": {
 						"method": "GET",
 						"header": [
@@ -1252,7 +1252,7 @@
 							}
 						],
 						"url": {
-							"raw": "https://baufismart.api.europace.de/v2/ereignisse/WB0M5Y/1/1",
+							"raw": "https://baufismart.api.europace.de/v2/ereignisse/{{vorgangsNummer}}/1/1",
 							"protocol": "https",
 							"host": [
 								"baufismart",
@@ -1263,7 +1263,7 @@
 							"path": [
 								"v2",
 								"ereignisse",
-								"WB0M5Y",
+								"{{vorgangsNummer}}",
 								"1",
 								"1"
 							]
