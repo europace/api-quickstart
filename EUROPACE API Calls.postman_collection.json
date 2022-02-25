@@ -491,57 +491,7 @@
 			"name": "BaufiSmart Angebote API",
 			"item": [
 				{
-					"name": "Finanzierungsvorschlaege (Daten im Body)",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"var jsonData = JSON.parse(responseBody);",
-									"postman.setGlobalVariable(\"ermittlungsId\", jsonData.ermittlungsId);"
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							},
-							{
-								"key": "x-TraceId",
-								"value": "{{traceId}}",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n\n    \"haushalte\": [\n        {\n            \"id\": \"29905314406551975\",\n            \"antragsteller\": [\n                {\n                    \"id\": \"8245137591160463\",\n                    \"anrede\": \"HERR\",\n                    \"anschrift\": {\n                        \"hausnummer\": \"117\",\n                        \"ort\": \"Berlin (Mitte)\",\n                        \"postleitzahl\": \"10115\",\n                        \"strasse\": \"Invalidenstraße\"\n                    },\n                    \"beschaeftigung\": {\n                        \"art\": \"ANGESTELLTER\",\n                        \"anzahlGehaelterProJahr\": 12,\n                        \"situationNachRenteneintritt\": {}\n                    },\n                    \"email\": \"frank.pokroppa@europace.de\",\n                    \"familienstand\": \"LEDIG\",\n                    \"geburtsdatum\": \"1964-12-25\",\n                    \"nachname\": \"Pokroppa\",\n                    \"staatsangehoerigkeit\": {\n                        \"isoCountryCode\": \"DE\",\n                        \"name\": \"Deutschland\"\n                    },\n                    \"telefonnummer\": \"88766567\",\n                    \"telefonnummerVorwahl\": \"030\",\n                    \"vorname\": \"Frank\",\n                    \"wohnhaftSeit\": \"1910-10-10\"\n                }\n            ]\n        }\n    ],\n    \"finanzierungsObjekt\": {\n        \"id\": \"47296276901593204\",\n        \"adresse\": {\n            \"postleitzahl\": \"10459\"\n        },\n        \"erbbaurecht\": {\n            \"erbbaurecht\": true,\n            \"erbbauzinsJaehrlich\": 150,\n            \"grundstuecksEigentuemer\": \"OEFFENTLICH_KIRCHLICH\",\n            \"laufzeitBisJahr\": 2070\n        },\n        \"gebaeude\": {\n            \"wohnflaeche\": {\n                \"vermietungsInformationen\": {\n                    \"nutzungsArt\": \"EIGENGENUTZT\"\n                }\n            },\n            \"hausTyp\": \"EINFAMILIENHAUS\"\n        },\n        \"objektArt\": \"HAUS\",\n        \"bestehendeDarlehen\": [\n            {\n                \"id\": \"43304448928678096\",\n                \"aktuelleRestschuldWennNichtAbzuloesen\": 25555,\n                \"abzuloesendeRestschuld\": 500,\n                \"darlehensArt\": \"IMMOBILIENDARLEHEN\",\n                \"darlehensGeber\": {\n                    \"id\": \"4e6885fe84fbad4bd0c68f62\",\n                    \"partnerId\": \"WXS37\",\n                    \"firmierung\": \"ALLIANZ Lebensversicherungs-AG\",\n                    \"email\": \"baufipartner@allianz.de\",\n                    \"anschrift\": {\n                        \"hausnummer\": \"19\",\n                        \"ort\": \"Stuttgart\",\n                        \"postleitzahl\": \"70178\",\n                        \"strasse\": \"Reinsburgstraße\"\n                    },\n                    \"vertriebsOrganisation\": {\n                        \"name\": \"ALLIANZ Lebensversicherungs-AG\",\n                        \"firma\": \"ALLIANZ Lebensversicherungs-AG\",\n                        \"vertriebsOrganisationsId\": \"ALLIANZ\"\n                    },\n                    \"kreditsachbearbeiter\": false,\n                    \"produktAnbieterId\": \"ALLIANZ\"\n                },\n                \"eingetrageneGrundschuld\": 50000,\n                \"grundschuldArt\": \"BRIEF_GRUNDSCHULD\",\n                \"rateMonatlich\": 500,\n                \"zinsBindungEndetAm\": \"2021-02-02\",\n                \"laufzeitEnde\": \"2027-02-02\",\n                \"darlehensBetrag\": 75000\n            }\n        ]\n    },\n    \"vorhaben\": {\n        \"id\": \"7357540068390608\",\n        \"nachrangigeExterneDarlehen\": [\n            {\n                \"id\": \"41515491007659655\",\n                \"darlehensBetrag\": 50000,\n                \"darlehensGeber\": \"Meine Bank 4 all\",\n                \"rateMonatlich\": 200,\n                \"zinsBindung\": {\n                    \"endetAm\": \"2019-01-01\"\n                }\n            }\n        ],\n        \"verwendungszweck\": \"ANSCHLUSSFINANZIERUNG\",\n        \"finanzierungswunsch\": {\n            \"id\": \"8529623681232834\",\n            \"darlehensWuensche\": [\n                {\n                    \"id\": \"8330583833982105\",\n                    \"annuitaetenDarlehen\": {\n                        \"darlehensBetrag\": 150000,\n                        \"provision\": 1,\n                        \"tilgungsWunsch\": {\n                            \"anfaenglicheTilgung\": 2,\n                            \"volltilgerWennAnnuitaetenOderForward\": false\n                        },\n                        \"bereitstellungsZinsFreieZeitInMonaten\": 2,\n                        \"sondertilgungOptionalJaehrlich\": 100,\n                        \"zinsBindungInJahren\": 10\n                    }\n                }\n            ]\n        }\n    },\n    \"datenKontext\": \"TEST_MODUS\"\n}"
-						},
-						"url": {
-							"raw": "https://baufismart.api.europace.de/v2/ergebnisliste/ermittlung/",
-							"protocol": "https",
-							"host": [
-								"baufismart",
-								"api",
-								"europace",
-								"de"
-							],
-							"path": [
-								"v2",
-								"ergebnisliste",
-								"ermittlung",
-								""
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Finanzierungsvorschlaege (mit VorgangsNr)",
+					"name": "find offers for case",
 					"event": [
 						{
 							"listen": "test",
@@ -591,35 +541,38 @@
 					"response": []
 				},
 				{
-					"name": "Ermittlungsanfrage der Ermittlung abrufen",
+					"name": "find offers without case",
 					"event": [
 						{
 							"listen": "test",
 							"script": {
 								"exec": [
-									""
+									"var jsonData = JSON.parse(responseBody);",
+									"postman.setGlobalVariable(\"ermittlungsId\", jsonData.ermittlungsId);"
 								],
 								"type": "text/javascript"
 							}
 						}
 					],
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
 					"request": {
-						"method": "GET",
+						"method": "POST",
 						"header": [
 							{
 								"key": "Content-Type",
 								"value": "application/json"
+							},
+							{
+								"key": "x-TraceId",
+								"value": "{{traceId}}",
+								"type": "text"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": ""
+							"raw": "{\n    \"vorhaben\": {\n        \"finanzbedarf\": {\n            \"kaufpreis\": 200000\n        },\n        \"finanzierungswunsch\": {\n            \"darlehensWuensche\": [\n                {\n                    \"annuitaetenDarlehen\": {\n                        \"darlehensBetrag\": 150000,\n                        \"provision\": 1,\n                        \"tilgungsWunsch\": {\n                            \"anfaenglicheTilgung\": 2,\n                            \"volltilgerWennAnnuitaetenOderForward\": false\n                        },\n                        \"bereitstellungsZinsFreieZeitInMonaten\": 2,\n                        \"sondertilgungOptionalJaehrlich\": 100,\n                        \"zinsBindungInJahren\": 10\n                    }\n                }\n            ]\n        }\n    }\n}"
 						},
 						"url": {
-							"raw": "https://baufismart.api.europace.de/v2/ergebnisliste/ermittlung/{{ermittlungsId}}/ermittlungsAnfrage",
+							"raw": "https://baufismart.api.europace.de/v2/ergebnisliste/ermittlung/",
 							"protocol": "https",
 							"host": [
 								"baufismart",
@@ -631,15 +584,14 @@
 								"v2",
 								"ergebnisliste",
 								"ermittlung",
-								"{{ermittlungsId}}",
-								"ermittlungsAnfrage"
+								""
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "Meldungen am 1. Angebot der Ermittlungsanfrage",
+					"name": "get offer notes (1.offer)",
 					"event": [
 						{
 							"listen": "test",
@@ -689,7 +641,7 @@
 					"response": []
 				},
 				{
-					"name": "Unterlagen am 1. Angebot der Ermittlungsanfrage",
+					"name": "get needed proofs (1.offer)",
 					"event": [
 						{
 							"listen": "test",
@@ -739,7 +691,7 @@
 					"response": []
 				},
 				{
-					"name": "Zahlungspläne am 1. Angebot der Ermittlungsanfrage",
+					"name": "get redemption plan (1.offer)",
 					"event": [
 						{
 							"listen": "test",
@@ -783,6 +735,54 @@
 								"ergebnisse",
 								"1",
 								"zahlungsplaene"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get inputdata of offerfinding",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://baufismart.api.europace.de/v2/ergebnisliste/ermittlung/{{ermittlungsId}}/ermittlungsAnfrage",
+							"protocol": "https",
+							"host": [
+								"baufismart",
+								"api",
+								"europace",
+								"de"
+							],
+							"path": [
+								"v2",
+								"ergebnisliste",
+								"ermittlung",
+								"{{ermittlungsId}}",
+								"ermittlungsAnfrage"
 							]
 						}
 					},
