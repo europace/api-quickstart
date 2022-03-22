@@ -59,7 +59,7 @@
 							"script": {
 								"exec": [
 									"var jsonData = JSON.parse(responseBody);",
-									"postman.setGlobalVariable(\"vorgangsNummer\", jsonData.vorgangsnummer);"
+									"pm.environment.set(\"vorgangsNummer\", jsonData.vorgangsnummer);"
 								],
 								"type": "text/javascript"
 							}
@@ -102,6 +102,49 @@
 							]
 						},
 						"description": "Kundenangaben werden in BaufiSmart in einen neuen Vorgang importiert. Der Scope 'baufinanzierung:echtgeschaeft' wird benötigt, wenn der Datenkontext 'ECHT_GESCHAEFT' gewählt wird."
+					},
+					"response": []
+				},
+				{
+					"name": "get case",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://baufinanzierung.api.europace.de/kundenangaben/{{vorgangsNummer}}",
+							"protocol": "https",
+							"host": [
+								"baufinanzierung",
+								"api",
+								"europace",
+								"de"
+							],
+							"path": [
+								"kundenangaben",
+								"{{vorgangsNummer}}"
+							]
+						}
 					},
 					"response": []
 				},
