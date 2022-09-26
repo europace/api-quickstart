@@ -3,7 +3,7 @@
 Test calls to the APIs are very helpful to get started quickly. For this we recommend [Postman](https://www.getpostman.com/), which works on Windows, Mac OS and Linux.
 
 ## Requirements
-
+<a id="requirements"></a>
 1. API access with OAuth client credentials. How to get the client is [described here](https://docs.api.europace.de/baufinanzierung/authentifizierung/#wie-bekomme-ich-einen-client-registriert).
 2. at least one [Vorgang](https://docs.api.europace.de/common/glossary) or [Antrag](https://docs.api.europace.de/common/glossary) to read the data.
 
@@ -28,9 +28,9 @@ Test calls to the APIs are very helpful to get started quickly. For this we reco
 
 | Variable Name | Where do I get this? |
 | -------------- | ---------------------- |
-| PARTNER_ID | See above under "Requirements" |
-| CLIENT_ID | See above under "Requirements" |
-| CLIENT_SECRET | See above under "Requirements" |
+| PARTNER_ID | [See above under "Requirements"](#requirements) |
+| CLIENT_ID | [See above under "Requirements"](#requirements) |
+| CLIENT_SECRET | [See above under "Requirements"](#requirements) |
 
 6. after creating the _Environment_, make sure that it is active:
 
