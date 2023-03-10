@@ -1,8 +1,9 @@
 {
 	"info": {
-		"_postman_id": "97cf0ba6-a1b1-485d-a7ac-4b79ac0e2118",
+		"_postman_id": "45dc9f51-7eaa-4b72-924a-01107f5715fb",
 		"name": "EUROPACE API Calls",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "2936342"
 	},
 	"item": [
 		{
@@ -1156,7 +1157,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"op\": \"replace\",\n    \"path\": \"/status\",\n    \"value\": {\n        \"produktAnbieter\": \"ABGELEHNT\",\n        \"ablehnungsgrund\": \"FINANZIELLE_SITUATION\",\n        \"kommentar\": \"comment to decision\"\n    }\n}",
+									"raw": "[\n    {\n        \"op\": \"replace\",\n        \"path\": \"/status\",\n        \"value\": {\n            \"produktAnbieter\": \"ABGELEHNT\",\n            \"ablehnungsgrund\": \"FINANZIELLE_SITUATION\",\n            \"kommentar\": \"comment to decision\"\n        }\n    }\n]",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -1164,7 +1165,7 @@
 									}
 								},
 								"url": {
-									"raw": "https://baufismart.api.europace.de/v2/antraege/WD0TNA/19/1/status",
+									"raw": "https://baufismart.api.europace.de/v2/antraege/WD0TNA/19/1",
 									"protocol": "https",
 									"host": [
 										"baufismart",
@@ -1177,8 +1178,7 @@
 										"antraege",
 										"WD0TNA",
 										"19",
-										"1",
-										"status"
+										"1"
 									]
 								}
 							},
