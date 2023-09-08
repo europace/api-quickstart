@@ -1,11 +1,541 @@
 {
 	"info": {
-		"_postman_id": "45dc9f51-7eaa-4b72-924a-01107f5715fb",
+		"_postman_id": "1baace12-2151-4b65-b3eb-19e1fc0264eb",
 		"name": "EUROPACE API Calls",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "2936342"
 	},
 	"item": [
+		{
+			"name": "Login",
+			"item": [
+				{
+					"name": "Silent Sign In",
+					"item": [
+						{
+							"name": "1. get OAuth Access-Token Impersioniert",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);",
+											"pm.environment.set(\"access_token\", jsonData.access_token);",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "{{CLIENT_SECRET}}",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "{{CLIENT_ID}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "X-TraceId",
+										"type": "text",
+										"value": "{{traceId}}"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "grant_type",
+											"value": "client_credentials",
+											"type": "text"
+										},
+										{
+											"key": "scope",
+											"value": "impersonieren partner:login:silent-sign-in",
+											"description": "Wenn das hier leer bleibt, dann bekommt der Client alle Scopes",
+											"type": "text"
+										},
+										{
+											"key": "audience",
+											"value": "{{AUDIENCE}}",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "subject",
+											"value": "{{PARTNER_ID}}",
+											"type": "text"
+										},
+										{
+											"key": "actor",
+											"value": "{{PARTNER_ID}}",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://api.europace.de/auth/token",
+									"protocol": "https",
+									"host": [
+										"api",
+										"europace",
+										"de"
+									],
+									"path": [
+										"auth",
+										"token"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "2. create-SSI-OTP",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);",
+											"pm.environment.set(\"otp\", jsonData.otp);",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{access_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "https://www.europace2.de/authorize/silent-sign-in?subject={{PARTNER_ID}}",
+									"protocol": "https",
+									"host": [
+										"www",
+										"europace2",
+										"de"
+									],
+									"path": [
+										"authorize",
+										"silent-sign-in"
+									],
+									"query": [
+										{
+											"key": "subject",
+											"value": "{{PARTNER_ID}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "3. open-SSI",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://www.europace2.de/authorize/silent-sign-in?subject={{PARTNER_ID}}&redirect_uri=/partnermanagement&otp={{otp}}",
+									"protocol": "https",
+									"host": [
+										"www",
+										"europace2",
+										"de"
+									],
+									"path": [
+										"authorize",
+										"silent-sign-in"
+									],
+									"query": [
+										{
+											"key": "subject",
+											"value": "{{PARTNER_ID}}"
+										},
+										{
+											"key": "redirect_uri",
+											"value": "/partnermanagement"
+										},
+										{
+											"key": "otp",
+											"value": "{{otp}}"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Auth-Code-Flow",
+					"item": [
+						{
+							"name": "1. start user interaction part",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://www.europace2.de/authorize?response_type=code&client_id={{CLIENT_ID}}&prompt=select_account&redirect_uri=https://test.local:8000/idpresponse&scope=openid profile&state=yourKeyToIdentifyReturnCommunication",
+									"protocol": "https",
+									"host": [
+										"www",
+										"europace2",
+										"de"
+									],
+									"path": [
+										"authorize"
+									],
+									"query": [
+										{
+											"key": "response_type",
+											"value": "code"
+										},
+										{
+											"key": "client_id",
+											"value": "{{CLIENT_ID}}"
+										},
+										{
+											"key": "prompt",
+											"value": "select_account"
+										},
+										{
+											"key": "redirect_uri",
+											"value": "https://test.local:8000/idpresponse"
+										},
+										{
+											"key": "scope",
+											"value": "openid profile"
+										},
+										{
+											"key": "state",
+											"value": "yourKeyToIdentifyReturnCommunication"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "2. get id-token",
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "{{CLIENT_SECRET}}",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "{{CLIENT_ID}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "https://api.europace.de/auth/token?grant_type=authorization_code&code={{AUTHZ_CODE}}&redirect_uri=https://test.local:8000/idpresponse",
+									"protocol": "https",
+									"host": [
+										"api",
+										"europace",
+										"de"
+									],
+									"path": [
+										"auth",
+										"token"
+									],
+									"query": [
+										{
+											"key": "grant_type",
+											"value": "authorization_code"
+										},
+										{
+											"key": "code",
+											"value": "{{AUTHZ_CODE}}"
+										},
+										{
+											"key": "redirect_uri",
+											"value": "https://test.local:8000/idpresponse"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "3. login for connected user",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);",
+											"pm.environment.set(\"access_token\", jsonData.access_token);",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "{{CLIENT_SECRET}}",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "{{CLIENT_ID}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "X-TraceId",
+										"type": "text",
+										"value": "{{traceId}}"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "grant_type",
+											"value": "client_credentials",
+											"type": "text"
+										},
+										{
+											"key": "subject",
+											"value": "{{PARTNER_ID}}",
+											"type": "text"
+										},
+										{
+											"key": "actor",
+											"value": "{{PARTNER_ID}}",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://api.europace.de/auth/token",
+									"protocol": "https",
+									"host": [
+										"api",
+										"europace",
+										"de"
+									],
+									"path": [
+										"auth",
+										"token"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "login impersonate to get access-token",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);",
+									"pm.environment.set(\"access_token\", jsonData.access_token);",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "{{CLIENT_SECRET}}",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "{{CLIENT_ID}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-TraceId",
+								"type": "text",
+								"value": "{{traceId}}"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "grant_type",
+									"value": "client_credentials",
+									"type": "text"
+								},
+								{
+									"key": "subject",
+									"value": "{{PARTNER_ID}}",
+									"type": "text"
+								},
+								{
+									"key": "actor",
+									"value": "{{PARTNER_ID_CLIENT}}",
+									"type": "text"
+								},
+								{
+									"key": "scope",
+									"value": "impersonieren partner:login:silent-sign-in",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://api.europace.de/auth/token",
+							"protocol": "https",
+							"host": [
+								"api",
+								"europace",
+								"de"
+							],
+							"path": [
+								"auth",
+								"token"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login to get access-token",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);",
+									"pm.environment.set(\"access_token\", jsonData.access_token);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "{{CLIENT_SECRET}}",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "{{CLIENT_ID}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-TraceId",
+								"type": "text",
+								"value": "{{traceId}}"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "grant_type",
+									"value": "client_credentials",
+									"type": "text"
+								},
+								{
+									"key": "scope",
+									"value": "{{SCOPES}}",
+									"description": "Wenn das hier leer bleibt, dann bekommt der Client alle Scopes",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "audience",
+									"value": "{{AUDIENCE}}",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "subject",
+									"value": "{{SUBJECT}}",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "actor",
+									"value": "{{ACTOR}}",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "https://api.europace.de/auth/token",
+							"protocol": "https",
+							"host": [
+								"api",
+								"europace",
+								"de"
+							],
+							"path": [
+								"auth",
+								"token"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
 		{
 			"name": "BaufiSmart Kundenangaben API",
 			"item": [
@@ -3142,95 +3672,6 @@
 					}
 				]
 			}
-		},
-		{
-			"name": "login to get access-token",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							"var jsonData = JSON.parse(responseBody);",
-							"pm.environment.set(\"access_token\", jsonData.access_token);"
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"auth": {
-					"type": "basic",
-					"basic": [
-						{
-							"key": "password",
-							"value": "{{CLIENT_SECRET}}",
-							"type": "string"
-						},
-						{
-							"key": "username",
-							"value": "{{CLIENT_ID}}",
-							"type": "string"
-						}
-					]
-				},
-				"method": "POST",
-				"header": [
-					{
-						"key": "X-TraceId",
-						"type": "text",
-						"value": "{{traceId}}"
-					}
-				],
-				"body": {
-					"mode": "urlencoded",
-					"urlencoded": [
-						{
-							"key": "grant_type",
-							"value": "client_credentials",
-							"type": "text"
-						},
-						{
-							"key": "scope",
-							"value": "{{SCOPES}}",
-							"description": "Wenn das hier leer bleibt, dann bekommt der Client alle Scopes",
-							"type": "text",
-							"disabled": true
-						},
-						{
-							"key": "audience",
-							"value": "{{AUDIENCE}}",
-							"type": "text",
-							"disabled": true
-						},
-						{
-							"key": "subject",
-							"value": "{{SUBJECT}}",
-							"type": "text",
-							"disabled": true
-						},
-						{
-							"key": "actor",
-							"value": "{{ACTOR}}",
-							"type": "text",
-							"disabled": true
-						}
-					]
-				},
-				"url": {
-					"raw": "https://api.europace.de/auth/token",
-					"protocol": "https",
-					"host": [
-						"api",
-						"europace",
-						"de"
-					],
-					"path": [
-						"auth",
-						"token"
-					]
-				}
-			},
-			"response": []
 		}
 	],
 	"event": [
