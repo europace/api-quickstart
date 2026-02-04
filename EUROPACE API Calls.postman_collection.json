@@ -1094,7 +1094,7 @@
 							"raw": "https://baufinanzierung.api.europace.de/v2/ergebnisliste/ermittlung?vorgangsNummer=L12153",
 							"protocol": "https",
 							"host": [
-								"baufismart",
+								"baufinanzierung",
 								"api",
 								"europace",
 								"de"
@@ -1146,10 +1146,10 @@
 							"raw": "{\n    \"vorhaben\": {\n        \"finanzbedarf\": {\n            \"kaufpreis\": 200000\n        },\n        \"finanzierungswunsch\": {\n            \"darlehensWuensche\": [\n                {\n                    \"annuitaetenDarlehen\": {\n                        \"darlehensBetrag\": 150000,\n                        \"provision\": 1,\n                        \"tilgungsWunsch\": {\n                            \"anfaenglicheTilgung\": 2,\n                            \"volltilgerWennAnnuitaetenOderForward\": false\n                        },\n                        \"bereitstellungsZinsFreieZeitInMonaten\": 2,\n                        \"sondertilgungOptionalJaehrlich\": 100,\n                        \"zinsBindungInJahren\": 10\n                    }\n                }\n            ]\n        }\n    }\n}"
 						},
 						"url": {
-							"raw": "https://baufinanzierung.api.europace.de/v2/ergebnisliste/ermittlung/",
+							"raw": "https://baufinanzierung.api.europace.de/v2/ergebnisliste/ermittlung",
 							"protocol": "https",
 							"host": [
-								"baufismart",
+								"baufinanzierung",
 								"api",
 								"europace",
 								"de"
@@ -1157,8 +1157,7 @@
 							"path": [
 								"v2",
 								"ergebnisliste",
-								"ermittlung",
-								""
+								"ermittlung"
 							]
 						}
 					},
@@ -1196,7 +1195,7 @@
 							"raw": "https://baufinanzierung.api.europace.de/v2/ergebnisliste/ermittlung/{{ermittlungsId}}/ergebnisse/1/meldungen",
 							"protocol": "https",
 							"host": [
-								"baufismart",
+								"baufinanzierung",
 								"api",
 								"europace",
 								"de"
@@ -1246,7 +1245,7 @@
 							"raw": "https://baufinanzierung.api.europace.de/v2/ergebnisliste/ermittlung/{{ermittlungsId}}/ergebnisse/1/unterlagen",
 							"protocol": "https",
 							"host": [
-								"baufismart",
+								"baufinanzierung",
 								"api",
 								"europace",
 								"de"
@@ -1296,7 +1295,7 @@
 							"raw": "https://baufinanzierung.api.europace.de/v2/ergebnisliste/ermittlung/{{ermittlungsId}}/ergebnisse/1/zahlungsplaene",
 							"protocol": "https",
 							"host": [
-								"baufismart",
+								"baufinanzierung",
 								"api",
 								"europace",
 								"de"
@@ -1346,7 +1345,7 @@
 							"raw": "https://baufinanzierung.api.europace.de/v2/ergebnisliste/ermittlung/{{ermittlungsId}}/ermittlungsAnfrage",
 							"protocol": "https",
 							"host": [
-								"baufismart",
+								"baufinanzierung",
 								"api",
 								"europace",
 								"de"
@@ -1411,18 +1410,17 @@
 									}
 								],
 								"url": {
-									"raw": "https://baufinanzierung.api.europace.de/v2/antraege/",
+									"raw": "https://baufinanzierung.api.europace.de/v2/antraege",
 									"protocol": "https",
 									"host": [
-										"baufismart",
+										"baufinanzierung",
 										"api",
 										"europace",
 										"de"
 									],
 									"path": [
 										"v2",
-										"antraege",
-										""
+										"antraege"
 									]
 								}
 							},
@@ -1439,18 +1437,17 @@
 									}
 								],
 								"url": {
-									"raw": "https://baufinanzierung.api.europace.de/v2/antraege/?aenderungSeit=2022-02-10",
+									"raw": "https://baufinanzierung.api.europace.de/v2/antraege?aenderungSeit=2022-02-10",
 									"protocol": "https",
 									"host": [
-										"baufismart",
+										"baufinanzierung",
 										"api",
 										"europace",
 										"de"
 									],
 									"path": [
 										"v2",
-										"antraege",
-										""
+										"antraege"
 									],
 									"query": [
 										{
@@ -1473,18 +1470,17 @@
 									}
 								],
 								"url": {
-									"raw": "https://baufinanzierung.api.europace.de/v2/antraege/?datenKontext=TEST_MODUS",
+									"raw": "https://baufinanzierung.api.europace.de/v2/antraege?datenKontext=TEST_MODUS",
 									"protocol": "https",
 									"host": [
-										"baufismart",
+										"baufinanzierung",
 										"api",
 										"europace",
 										"de"
 									],
 									"path": [
 										"v2",
-										"antraege",
-										""
+										"antraege"
 									],
 									"query": [
 										{
@@ -1510,7 +1506,7 @@
 									"raw": "https://baufinanzierung.api.europace.de/v2/antraege/HU1242/1/1",
 									"protocol": "https",
 									"host": [
-										"baufismart",
+										"baufinanzierung",
 										"api",
 										"europace",
 										"de"
@@ -1551,7 +1547,7 @@
 									"raw": "https://baufinanzierung.api.europace.de/v2/antraege/Z11029/2/1",
 									"protocol": "https",
 									"host": [
-										"baufismart",
+										"baufinanzierung",
 										"api",
 										"europace",
 										"de"
@@ -1587,7 +1583,7 @@
 									"raw": "https://baufinanzierung.api.europace.de/v2/antraege/Z11029/2/1",
 									"protocol": "https",
 									"host": [
-										"baufismart",
+										"baufinanzierung",
 										"api",
 										"europace",
 										"de"
@@ -1623,7 +1619,7 @@
 									"raw": "https://baufinanzierung.api.europace.de/v2/antraege/Z11029/2/1",
 									"protocol": "https",
 									"host": [
-										"baufismart",
+										"baufinanzierung",
 										"api",
 										"europace",
 										"de"
@@ -1659,7 +1655,7 @@
 									"raw": "https://baufinanzierung.api.europace.de/v2/antraege/Z11029/2/1",
 									"protocol": "https",
 									"host": [
-										"baufismart",
+										"baufinanzierung",
 										"api",
 										"europace",
 										"de"
@@ -1698,7 +1694,7 @@
 									"raw": "https://baufinanzierung.api.europace.de/v2/antraege/WD0TNA/19/1",
 									"protocol": "https",
 									"host": [
-										"baufismart",
+										"baufinanzierung",
 										"api",
 										"europace",
 										"de"
@@ -1734,7 +1730,7 @@
 							"raw": "https://baufinanzierung.api.europace.de/v2/antraege/UA30XL/1/1/gegenangebot",
 							"protocol": "https",
 							"host": [
-								"baufismart",
+								"baufinanzierung",
 								"api",
 								"europace",
 								"de"
@@ -1800,7 +1796,7 @@
 							"raw": "https://baufinanzierung.api.europace.de/v2/ereignisse/{{vorgangsNummer}}",
 							"protocol": "https",
 							"host": [
-								"baufismart",
+								"baufinanzierung",
 								"api",
 								"europace",
 								"de"
@@ -1828,7 +1824,7 @@
 							"raw": "https://baufinanzierung.api.europace.de/v2/ereignisse/{{vorgangsNummer}}/1/1",
 							"protocol": "https",
 							"host": [
-								"baufismart",
+								"baufinanzierung",
 								"api",
 								"europace",
 								"de"
@@ -2991,7 +2987,7 @@
 							}
 						],
 						"url": {
-							"raw": "https://api.europace.de/v2/partner/{{PARTNER_ID}}/",
+							"raw": "https://api.europace.de/v2/partner/{{PARTNER_ID}}",
 							"protocol": "https",
 							"host": [
 								"api",
@@ -3001,8 +2997,7 @@
 							"path": [
 								"v2",
 								"partner",
-								"{{PARTNER_ID}}",
-								""
+								"{{PARTNER_ID}}"
 							]
 						}
 					},
@@ -3099,7 +3094,7 @@
 							"raw": "{\n  \"firmenname\":\"Mustermann AG2\"\n}"
 						},
 						"url": {
-							"raw": "https://api.europace.de/v2/partner/{{PARTNER_ID}}/",
+							"raw": "https://api.europace.de/v2/partner/{{PARTNER_ID}}",
 							"protocol": "https",
 							"host": [
 								"api",
@@ -3109,8 +3104,7 @@
 							"path": [
 								"v2",
 								"partner",
-								"{{PARTNER_ID}}",
-								""
+								"{{PARTNER_ID}}"
 							]
 						}
 					},
