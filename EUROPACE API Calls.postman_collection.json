@@ -1,9 +1,9 @@
 {
 	"info": {
-		"_postman_id": "1baace12-2151-4b65-b3eb-19e1fc0264eb",
-		"name": "EUROPACE API Calls",
+		"_postman_id": "84e41151-6ee5-437c-8f14-41b19b5c2fbc",
+		"name": "NEW_EUROPACE API Calls",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "2936342"
+		"_exporter_id": "10000000197102"
 	},
 	"item": [
 		{
@@ -47,8 +47,8 @@
 								"header": [
 									{
 										"key": "X-TraceId",
-										"type": "text",
-										"value": "{{traceId}}"
+										"value": "{{traceId}}",
+										"type": "text"
 									}
 								],
 								"body": {
@@ -323,8 +323,8 @@
 								"header": [
 									{
 										"key": "X-TraceId",
-										"type": "text",
-										"value": "{{traceId}}"
+										"value": "{{traceId}}",
+										"type": "text"
 									}
 								],
 								"body": {
@@ -400,8 +400,8 @@
 						"header": [
 							{
 								"key": "X-TraceId",
-								"type": "text",
-								"value": "{{traceId}}"
+								"value": "{{traceId}}",
+								"type": "text"
 							}
 						],
 						"body": {
@@ -479,8 +479,8 @@
 						"header": [
 							{
 								"key": "X-TraceId",
-								"type": "text",
-								"value": "{{traceId}}"
+								"value": "{{traceId}}",
+								"type": "text"
 							}
 						],
 						"body": {
@@ -697,13 +697,13 @@
 						"header": [
 							{
 								"key": "X-TraceId",
-								"type": "text",
-								"value": "{{traceId}}"
+								"value": "{{traceId}}",
+								"type": "text"
 							},
 							{
 								"key": "Content-Type",
-								"type": "text",
-								"value": "application/json"
+								"value": "application/json",
+								"type": "text"
 							}
 						],
 						"body": {
@@ -1065,301 +1065,1192 @@
 			"name": "BaufiSmart Angebote API",
 			"item": [
 				{
-					"name": "find offers for case",
-					"event": [
+					"name": "Angebote API V3",
+					"item": [
 						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"var jsonData = JSON.parse(responseBody);",
-									"postman.setGlobalVariable(\"ermittlungsId\", jsonData.ermittlungsId);"
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "https://baufinanzierung.api.europace.de/v2/ergebnisliste/ermittlung?vorgangsNummer=L12153",
-							"protocol": "https",
-							"host": [
-								"baufinanzierung",
-								"api",
-								"europace",
-								"de"
-							],
-							"path": [
-								"v2",
-								"ergebnisliste",
-								"ermittlung"
-							],
-							"query": [
+							"name": "get details for single offer",
+							"item": [
 								{
-									"key": "vorgangsNummer",
-									"value": "L12153"
+									"name": "get amortization plan for single offer V3",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"var jsonData = JSON.parse(responseBody);",
+													"postman.setGlobalVariable(\"ermittlungsId\", jsonData.ermittlungsId);"
+												],
+												"type": "text/javascript",
+												"packages": {},
+												"requests": {}
+											}
+										}
+									],
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{ \r\n  // default parameters \r\n  \"ermitteln\": true, // calculate fresh new offers\r\n  \"aktualisieren\": true, // recalculate gemerkte (saved) offers in case\r\n  \"alternativen\": false, // no alternative offers are generated\r\n  \"produktAnbieter\": [],  // default: loan providers of calling partner are used\r\n  \"exkludierteProduktAnbieter\": [], // default: no loan provider is excluded\r\n  \"provisionsAusgabe\": false // provision is not calculated for better performance\r\n}"
+										},
+										"url": {
+											"raw": "https://api.europace2.de/v3/vorgaenge/{{vorgangsNummer}}/ergebnisliste/{{ergebnislisteId}}/{{offer-number}}/zahlungsplaene",
+											"protocol": "https",
+											"host": [
+												"api",
+												"europace2",
+												"de"
+											],
+											"path": [
+												"v3",
+												"vorgaenge",
+												"{{vorgangsNummer}}",
+												"ergebnisliste",
+												"{{ergebnislisteId}}",
+												"{{offer-number}}",
+												"zahlungsplaene"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "get Unterlagenanforderung/required documents for single offer V3",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"var jsonData = JSON.parse(responseBody);",
+													"postman.setGlobalVariable(\"ermittlungsId\", jsonData.ermittlungsId);"
+												],
+												"type": "text/javascript",
+												"packages": {},
+												"requests": {}
+											}
+										}
+									],
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{ \r\n  // default parameters \r\n  \"ermitteln\": true, // calculate fresh new offers\r\n  \"aktualisieren\": true, // recalculate gemerkte (saved) offers in case\r\n  \"alternativen\": false, // no alternative offers are generated\r\n  \"produktAnbieter\": [],  // default: loan providers of calling partner are used\r\n  \"exkludierteProduktAnbieter\": [], // default: no loan provider is excluded\r\n  \"provisionsAusgabe\": false // provision is not calculated for better performance\r\n}"
+										},
+										"url": {
+											"raw": "https://api.europace2.de/v3/vorgaenge/{{vorgangsNummer}}/ergebnisliste/{{ergebnislisteId}}/{{offer-number}}/unterlagen",
+											"protocol": "https",
+											"host": [
+												"api",
+												"europace2",
+												"de"
+											],
+											"path": [
+												"v3",
+												"vorgaenge",
+												"{{vorgangsNummer}}",
+												"ergebnisliste",
+												"{{ergebnislisteId}}",
+												"{{offer-number}}",
+												"unterlagen"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "get commission details for single offer V3",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"var jsonData = JSON.parse(responseBody);",
+													"postman.setGlobalVariable(\"ermittlungsId\", jsonData.ermittlungsId);"
+												],
+												"type": "text/javascript",
+												"packages": {},
+												"requests": {}
+											}
+										}
+									],
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{ \r\n  // default parameters \r\n  \"ermitteln\": true, // calculate fresh new offers\r\n  \"aktualisieren\": true, // recalculate gemerkte (saved) offers in case\r\n  \"alternativen\": false, // no alternative offers are generated\r\n  \"produktAnbieter\": [],  // default: loan providers of calling partner are used\r\n  \"exkludierteProduktAnbieter\": [], // default: no loan provider is excluded\r\n  \"provisionsAusgabe\": false // provision is not calculated for better performance\r\n}"
+										},
+										"url": {
+											"raw": "https://api.europace2.de/v3/vorgaenge/{{vorgangsNummer}}/ergebnisliste/{{ergebnislisteId}}/{{offer-number}}/provision",
+											"protocol": "https",
+											"host": [
+												"api",
+												"europace2",
+												"de"
+											],
+											"path": [
+												"v3",
+												"vorgaenge",
+												"{{vorgangsNummer}}",
+												"ergebnisliste",
+												"{{ergebnislisteId}}",
+												"{{offer-number}}",
+												"provision"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "get overviews for single offer V3",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"var jsonData = JSON.parse(responseBody);",
+													"postman.setGlobalVariable(\"ermittlungsId\", jsonData.ermittlungsId);"
+												],
+												"type": "text/javascript",
+												"packages": {},
+												"requests": {}
+											}
+										}
+									],
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": ""
+										},
+										"url": {
+											"raw": "https://api.europace2.de/v3/vorgaenge/{{vorgangsNummer}}/ergebnisliste/{{ergebnislisteId}}/{{offer-number}}/berechnungsuebersichten",
+											"protocol": "https",
+											"host": [
+												"api",
+												"europace2",
+												"de"
+											],
+											"path": [
+												"v3",
+												"vorgaenge",
+												"{{vorgangsNummer}}",
+												"ergebnisliste",
+												"{{ergebnislisteId}}",
+												"{{offer-number}}",
+												"berechnungsuebersichten"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "get offer details for single offer V3",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"var jsonData = JSON.parse(responseBody);",
+													"postman.setGlobalVariable(\"ermittlungsId\", jsonData.ermittlungsId);"
+												],
+												"type": "text/javascript",
+												"packages": {},
+												"requests": {}
+											}
+										}
+									],
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{ \r\n  // default parameters \r\n  \"ermitteln\": true, // calculate fresh new offers\r\n  \"aktualisieren\": true, // recalculate gemerkte (saved) offers in case\r\n  \"alternativen\": false, // no alternative offers are generated\r\n  \"produktAnbieter\": [],  // default: loan providers of calling partner are used\r\n  \"exkludierteProduktAnbieter\": [], // default: no loan provider is excluded\r\n  \"provisionsAusgabe\": false // provision is not calculated for better performance\r\n}"
+										},
+										"url": {
+											"raw": "https://api.europace2.de/v3/vorgaenge/{{vorgangsNummer}}/ergebnisliste/{{ergebnislisteId}}/{{offer-number}}",
+											"protocol": "https",
+											"host": [
+												"api",
+												"europace2",
+												"de"
+											],
+											"path": [
+												"v3",
+												"vorgaenge",
+												"{{vorgangsNummer}}",
+												"ergebnisliste",
+												"{{ergebnislisteId}}",
+												"{{offer-number}}"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "get meldungen/hints for single offer V3",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"var jsonData = JSON.parse(responseBody);",
+													"postman.setGlobalVariable(\"ermittlungsId\", jsonData.ermittlungsId);"
+												],
+												"type": "text/javascript",
+												"packages": {},
+												"requests": {}
+											}
+										}
+									],
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{ \r\n  // default parameters \r\n  \"ermitteln\": true, // calculate fresh new offers\r\n  \"aktualisieren\": true, // recalculate gemerkte (saved) offers in case\r\n  \"alternativen\": false, // no alternative offers are generated\r\n  \"produktAnbieter\": [],  // default: loan providers of calling partner are used\r\n  \"exkludierteProduktAnbieter\": [], // default: no loan provider is excluded\r\n  \"provisionsAusgabe\": false // provision is not calculated for better performance\r\n}"
+										},
+										"url": {
+											"raw": "https://api.europace2.de/v3/vorgaenge/{{vorgangsNummer}}/ergebnisliste/{{ergebnislisteId}}/{{offer-number}}/meldungen",
+											"protocol": "https",
+											"host": [
+												"api",
+												"europace2",
+												"de"
+											],
+											"path": [
+												"v3",
+												"vorgaenge",
+												"{{vorgangsNummer}}",
+												"ergebnisliste",
+												"{{ergebnislisteId}}",
+												"{{offer-number}}",
+												"meldungen"
+											]
+										}
+									},
+									"response": []
 								}
 							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "find offers without case",
-					"event": [
+						},
 						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"var jsonData = JSON.parse(responseBody);",
-									"postman.setGlobalVariable(\"ermittlungsId\", jsonData.ermittlungsId);"
+							"name": "get details for saved offers",
+							"item": [
+								{
+									"name": "get Meldungen for one specific saved offer V3",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"var jsonData = JSON.parse(responseBody);",
+													"postman.setGlobalVariable(\"ermittlungsId\", jsonData.ermittlungsId);"
+												],
+												"type": "text/javascript",
+												"packages": {},
+												"requests": {}
+											}
+										}
+									],
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": ""
+										},
+										"url": {
+											"raw": "https://api.europace2.de/v3/vorgaenge/{{vorgangsNummer}}/gemerkteangebote/{{laufendeNummerAmVorgang}}/meldungen",
+											"protocol": "https",
+											"host": [
+												"api",
+												"europace2",
+												"de"
+											],
+											"path": [
+												"v3",
+												"vorgaenge",
+												"{{vorgangsNummer}}",
+												"gemerkteangebote",
+												"{{laufendeNummerAmVorgang}}",
+												"meldungen"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "get Berechnungsübersichten for one specific saved offer V3",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"var jsonData = JSON.parse(responseBody);",
+													"postman.setGlobalVariable(\"ermittlungsId\", jsonData.ermittlungsId);"
+												],
+												"type": "text/javascript",
+												"packages": {},
+												"requests": {}
+											}
+										}
+									],
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": ""
+										},
+										"url": {
+											"raw": "https://api.europace2.de/v3/vorgaenge/{{vorgangsNummer}}/gemerkteangebote/{{laufendeNummerAmVorgang}}/berechnungsuebersichten",
+											"protocol": "https",
+											"host": [
+												"api",
+												"europace2",
+												"de"
+											],
+											"path": [
+												"v3",
+												"vorgaenge",
+												"{{vorgangsNummer}}",
+												"gemerkteangebote",
+												"{{laufendeNummerAmVorgang}}",
+												"berechnungsuebersichten"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "get Unterlagenanforderungen (required documents) for one specific saved offer V3",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"var jsonData = JSON.parse(responseBody);",
+													"postman.setGlobalVariable(\"ermittlungsId\", jsonData.ermittlungsId);"
+												],
+												"type": "text/javascript",
+												"packages": {},
+												"requests": {}
+											}
+										}
+									],
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": ""
+										},
+										"url": {
+											"raw": "https://api.europace2.de/v3/vorgaenge/{{vorgangsNummer}}/gemerkteangebote/{{laufendeNummerAmVorgang}}/unterlagen",
+											"protocol": "https",
+											"host": [
+												"api",
+												"europace2",
+												"de"
+											],
+											"path": [
+												"v3",
+												"vorgaenge",
+												"{{vorgangsNummer}}",
+												"gemerkteangebote",
+												"{{laufendeNummerAmVorgang}}",
+												"unterlagen"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "get Zahlungsplaene (amortization plans) for one specific saved offer V3",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"var jsonData = JSON.parse(responseBody);",
+													"postman.setGlobalVariable(\"ermittlungsId\", jsonData.ermittlungsId);"
+												],
+												"type": "text/javascript",
+												"packages": {},
+												"requests": {}
+											}
+										}
+									],
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": ""
+										},
+										"url": {
+											"raw": "https://api.europace2.de/v3/vorgaenge/{{vorgangsNummer}}/gemerkteangebote/{{laufendeNummerAmVorgang}}/zahlungsplaene",
+											"protocol": "https",
+											"host": [
+												"api",
+												"europace2",
+												"de"
+											],
+											"path": [
+												"v3",
+												"vorgaenge",
+												"{{vorgangsNummer}}",
+												"gemerkteangebote",
+												"{{laufendeNummerAmVorgang}}",
+												"zahlungsplaene"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "find offers for case V3",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);",
+											"postman.setGlobalVariable(\"ermittlungsId\", jsonData.ermittlungsId);"
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
 								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json"
+								"body": {
+									"mode": "raw",
+									"raw": "{ \r\n  // default parameters \r\n  \"ermitteln\": true, // calculate fresh new offers\r\n  \"aktualisieren\": true, // recalculate gemerkte (saved) offers in case\r\n  \"alternativen\": false, // no alternative offers are generated\r\n  \"produktAnbieter\": [],  // default: loan providers of calling partner are used\r\n  \"exkludierteProduktAnbieter\": [], // default: no loan provider is excluded\r\n  \"provisionsAusgabe\": false // provision is not calculated for better performance\r\n}"
+								},
+								"url": {
+									"raw": "https://api.europace2.de/v3/vorgaenge/{{vorgangsNummer}}/ergebnisliste",
+									"protocol": "https",
+									"host": [
+										"api",
+										"europace2",
+										"de"
+									],
+									"path": [
+										"v3",
+										"vorgaenge",
+										"{{vorgangsNummer}}",
+										"ergebnisliste"
+									]
+								}
 							},
-							{
-								"key": "x-TraceId",
-								"value": "{{traceId}}",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"vorhaben\": {\n        \"finanzbedarf\": {\n            \"kaufpreis\": 200000\n        },\n        \"finanzierungswunsch\": {\n            \"darlehensWuensche\": [\n                {\n                    \"annuitaetenDarlehen\": {\n                        \"darlehensBetrag\": 150000,\n                        \"provision\": 1,\n                        \"tilgungsWunsch\": {\n                            \"anfaenglicheTilgung\": 2,\n                            \"volltilgerWennAnnuitaetenOderForward\": false\n                        },\n                        \"bereitstellungsZinsFreieZeitInMonaten\": 2,\n                        \"sondertilgungOptionalJaehrlich\": 100,\n                        \"zinsBindungInJahren\": 10\n                    }\n                }\n            ]\n        }\n    }\n}"
+							"response": []
 						},
-						"url": {
-							"raw": "https://baufinanzierung.api.europace.de/v2/ergebnisliste/ermittlung",
-							"protocol": "https",
-							"host": [
-								"baufinanzierung",
-								"api",
-								"europace",
-								"de"
+						{
+							"name": "get saved offers (gemerkte Angebote) V3",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);",
+											"postman.setGlobalVariable(\"ermittlungsId\", jsonData.ermittlungsId);"
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
 							],
-							"path": [
-								"v2",
-								"ergebnisliste",
-								"ermittlung"
-							]
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "https://api.europace2.de/v3/vorgaenge/{{vorgangsNummer}}/gemerkteangebote",
+									"protocol": "https",
+									"host": [
+										"api",
+										"europace2",
+										"de"
+									],
+									"path": [
+										"v3",
+										"vorgaenge",
+										"{{vorgangsNummer}}",
+										"gemerkteangebote"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get one specific saved offer (ein gemerktes Angebote) V3",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);",
+											"postman.setGlobalVariable(\"ermittlungsId\", jsonData.ermittlungsId);"
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "https://api.europace2.de/v3/vorgaenge/{{vorgangsNummer}}/gemerkteangebote/{{laufendeNummerAmVorgang}}",
+									"protocol": "https",
+									"host": [
+										"api",
+										"europace2",
+										"de"
+									],
+									"path": [
+										"v3",
+										"vorgaenge",
+										"{{vorgangsNummer}}",
+										"gemerkteangebote",
+										"{{laufendeNummerAmVorgang}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "save one calculated offer (Angebot merken) V3",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);",
+											"postman.setGlobalVariable(\"ermittlungsId\", jsonData.ermittlungsId);"
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "https://api.europace2.de/v3/vorgaenge/{{vorgangsNummer}}/ergebnisliste/{{ergebnislisteId}}/{{offer-number}}/merken",
+									"protocol": "https",
+									"host": [
+										"api",
+										"europace2",
+										"de"
+									],
+									"path": [
+										"v3",
+										"vorgaenge",
+										"{{vorgangsNummer}}",
+										"ergebnisliste",
+										"{{ergebnislisteId}}",
+										"{{offer-number}}",
+										"merken"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "delete saved offer (gemerktes Angebot löschen) V3",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);",
+											"postman.setGlobalVariable(\"ermittlungsId\", jsonData.ermittlungsId);"
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "https://api.europace2.de/v3/vorgaenge/{{vorgangsNummer}}/gemerkteangebote/{{laufendeNummerAmVorgang}}/entmerken",
+									"protocol": "https",
+									"host": [
+										"api",
+										"europace2",
+										"de"
+									],
+									"path": [
+										"v3",
+										"vorgaenge",
+										"{{vorgangsNummer}}",
+										"gemerkteangebote",
+										"{{laufendeNummerAmVorgang}}",
+										"entmerken"
+									]
+								}
+							},
+							"response": []
 						}
-					},
-					"response": []
+					]
 				},
 				{
-					"name": "get offer notes (1.offer)",
-					"event": [
+					"name": "Angebote API V2",
+					"item": [
 						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									""
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "https://baufinanzierung.api.europace.de/v2/ergebnisliste/ermittlung/{{ermittlungsId}}/ergebnisse/1/meldungen",
-							"protocol": "https",
-							"host": [
-								"baufinanzierung",
-								"api",
-								"europace",
-								"de"
+							"name": "find offers for case",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);",
+											"postman.setGlobalVariable(\"ermittlungsId\", jsonData.ermittlungsId);"
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
 							],
-							"path": [
-								"v2",
-								"ergebnisliste",
-								"ermittlung",
-								"{{ermittlungsId}}",
-								"ergebnisse",
-								"1",
-								"meldungen"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "get needed proofs (1.offer)",
-					"event": [
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "https://baufinanzierung.api.europace.de/v2/ergebnisliste/ermittlung?vorgangsNummer=MS5TGA",
+									"protocol": "https",
+									"host": [
+										"baufinanzierung",
+										"api",
+										"europace",
+										"de"
+									],
+									"path": [
+										"v2",
+										"ergebnisliste",
+										"ermittlung"
+									],
+									"query": [
+										{
+											"key": "vorgangsNummer",
+											"value": "MS5TGA"
+										}
+									]
+								}
+							},
+							"response": []
+						},
 						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									""
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "https://baufinanzierung.api.europace.de/v2/ergebnisliste/ermittlung/{{ermittlungsId}}/ergebnisse/1/unterlagen",
-							"protocol": "https",
-							"host": [
-								"baufinanzierung",
-								"api",
-								"europace",
-								"de"
+							"name": "find offers without case (BUY)",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);",
+											"postman.setGlobalVariable(\"ermittlungsId\", jsonData.ermittlungsId);"
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
 							],
-							"path": [
-								"v2",
-								"ergebnisliste",
-								"ermittlung",
-								"{{ermittlungsId}}",
-								"ergebnisse",
-								"1",
-								"unterlagen"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "get redemption plan (1.offer)",
-					"event": [
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "x-TraceId",
+										"value": "{{traceId}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\"vorhaben\": \n\n    {\n        \"verwendungszweck\": \"KAUF\",\n        \"finanzbedarf\": {\n            \"grunderwerbsteuer\": 24000.00,\n            \"kaufpreis\": 400000.00,\n            \"notargebuehr\": 7200.00\n        },\n        \"finanzierungswunsch\": {\n            \n            \"darlehensWuensche\": [\n                {\n                    \n                    \"annuitaetenDarlehen\": {\n                        \"darlehensBetrag\": 316200.00,\n                        \"provision\": 1.00,\n                        \"tilgungsWunsch\": {\n                            \"anfaenglicheTilgung\": 2.00,\n                            \"volltilgerWennAnnuitaetenOderForward\": false\n                        },\n                        \"bereitstellungsZinsFreieZeitInMonaten\": 2,\n                        \"sondertilgungOptionalJaehrlich\": 5.00,\n                        \"zinsBindungInJahren\": 10,\n                        \"riesterFoerderung\": false\n                    }\n                }\n            ]\n        }\n    }        \n}"
+								},
+								"url": {
+									"raw": "https://baufinanzierung.api.europace.de/v2/ergebnisliste/ermittlung",
+									"protocol": "https",
+									"host": [
+										"baufinanzierung",
+										"api",
+										"europace",
+										"de"
+									],
+									"path": [
+										"v2",
+										"ergebnisliste",
+										"ermittlung"
+									]
+								}
+							},
+							"response": []
+						},
 						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									""
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "https://baufinanzierung.api.europace.de/v2/ergebnisliste/ermittlung/{{ermittlungsId}}/ergebnisse/1/zahlungsplaene",
-							"protocol": "https",
-							"host": [
-								"baufinanzierung",
-								"api",
-								"europace",
-								"de"
+							"name": "find offers without case Copy (raising of capital)",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);",
+											"postman.setGlobalVariable(\"ermittlungsId\", jsonData.ermittlungsId);"
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
 							],
-							"path": [
-								"v2",
-								"ergebnisliste",
-								"ermittlung",
-								"{{ermittlungsId}}",
-								"ergebnisse",
-								"1",
-								"zahlungsplaene"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "get inputdata of offerfinding",
-					"event": [
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "x-TraceId",
+										"value": "{{traceId}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\"vorhaben\": \n\n    {\n        \"verwendungszweck\": \"KAUF\",\n        \"finanzbedarf\": {\n            \"grunderwerbsteuer\": 24000.00,\n            \"kaufpreis\": 400000.00,\n            \"notargebuehr\": 7200.00\n        },\n        \"finanzierungswunsch\": {\n            \n            \"darlehensWuensche\": [\n                {\n                    \n                    \"annuitaetenDarlehen\": {\n                        \"darlehensBetrag\": 316200.00,\n                        \"provision\": 1.00,\n                        \"tilgungsWunsch\": {\n                            \"anfaenglicheTilgung\": 2.00,\n                            \"volltilgerWennAnnuitaetenOderForward\": false\n                        },\n                        \"bereitstellungsZinsFreieZeitInMonaten\": 2,\n                        \"sondertilgungOptionalJaehrlich\": 5.00,\n                        \"zinsBindungInJahren\": 10,\n                        \"riesterFoerderung\": false\n                    }\n                }\n            ]\n        }\n    }        \n}"
+								},
+								"url": {
+									"raw": "https://baufinanzierung.api.europace.de/v2/ergebnisliste/ermittlung",
+									"protocol": "https",
+									"host": [
+										"baufinanzierung",
+										"api",
+										"europace",
+										"de"
+									],
+									"path": [
+										"v2",
+										"ergebnisliste",
+										"ermittlung"
+									]
+								}
+							},
+							"response": []
+						},
 						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									""
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "https://baufinanzierung.api.europace.de/v2/ergebnisliste/ermittlung/{{ermittlungsId}}/ermittlungsAnfrage",
-							"protocol": "https",
-							"host": [
-								"baufinanzierung",
-								"api",
-								"europace",
-								"de"
+							"name": "find offers without case Copy (construction)",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);",
+											"postman.setGlobalVariable(\"ermittlungsId\", jsonData.ermittlungsId);"
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
 							],
-							"path": [
-								"v2",
-								"ergebnisliste",
-								"ermittlung",
-								"{{ermittlungsId}}",
-								"ermittlungsAnfrage"
-							]
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "x-TraceId",
+										"value": "{{traceId}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": " {\n \"vorhaben\": {\n        \"verwendungszweck\": \"NEUBAU\",\n        \"finanzbedarf\": {\n            \"aussenAnlagen\": 10000.00,\n            \"bauNebenkosten\": 25000.00,\n            \"bereitsBeglichen\": 207000.00,\n            \"erschliessung\": 10000.00,\n            \"herstellung\": 500000.00,\n            \"grunderwerbsteuer\": 12000.00,\n            \"grundstuecksKaufpreis\": 200000.00,\n            \"maklergebuehr\": 7000.00,\n            \"mobiliar\": 10000.00,\n            \"notargebuehr\": 4000.00,\n            \"sonstigeKosten\": 5000.00,\n            \"anzahlTeilzahlungen\": 10\n        },\n        \"finanzierungswunsch\": {\n            \"darlehensWuensche\": [\n                {\n                    \"id\": \"696f44df629b9695c60e4d85\",\n                    \"annuitaetenDarlehen\": {\n                        \"darlehensBetrag\": 376000.00,\n                        \"provision\": 1.00,\n                        \"tilgungsWunsch\": {\n                            \"anfaenglicheTilgung\": 2.00,\n                            \"volltilgerWennAnnuitaetenOderForward\": false\n                        },\n                        \"bereitstellungsZinsFreieZeitInMonaten\": 2,\n                        \"sondertilgungOptionalJaehrlich\": 5.00,\n                        \"zinsBindungInJahren\": 10,\n                        \"riesterFoerderung\": false\n                    }\n                }\n            ]\n        }\n }\n}\n"
+								},
+								"url": {
+									"raw": "https://baufinanzierung.api.europace.de/v2/ergebnisliste/ermittlung",
+									"protocol": "https",
+									"host": [
+										"baufinanzierung",
+										"api",
+										"europace",
+										"de"
+									],
+									"path": [
+										"v2",
+										"ergebnisliste",
+										"ermittlung"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get offer notes (Meldungen) (first offer)",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "https://baufinanzierung.api.europace.de/v2/ergebnisliste/ermittlung/{{ermittlungsId}}/ergebnisse/1/meldungen",
+									"protocol": "https",
+									"host": [
+										"baufinanzierung",
+										"api",
+										"europace",
+										"de"
+									],
+									"path": [
+										"v2",
+										"ergebnisliste",
+										"ermittlung",
+										"{{ermittlungsId}}",
+										"ergebnisse",
+										"1",
+										"meldungen"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get needed proofs (Unterlagenanforderungen) (first offer)",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "https://baufinanzierung.api.europace.de/v2/ergebnisliste/ermittlung/{{ermittlungsId}}/ergebnisse/1/unterlagen",
+									"protocol": "https",
+									"host": [
+										"baufinanzierung",
+										"api",
+										"europace",
+										"de"
+									],
+									"path": [
+										"v2",
+										"ergebnisliste",
+										"ermittlung",
+										"{{ermittlungsId}}",
+										"ergebnisse",
+										"1",
+										"unterlagen"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get redemption plan (Tilgungsplan) (first offer)",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "https://baufinanzierung.api.europace.de/v2/ergebnisliste/ermittlung/{{ermittlungsId}}/ergebnisse/1/zahlungsplaene",
+									"protocol": "https",
+									"host": [
+										"baufinanzierung",
+										"api",
+										"europace",
+										"de"
+									],
+									"path": [
+										"v2",
+										"ergebnisliste",
+										"ermittlung",
+										"{{ermittlungsId}}",
+										"ergebnisse",
+										"1",
+										"zahlungsplaene"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get inputdata of offerfinding",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "https://baufinanzierung.api.europace.de/v2/ergebnisliste/ermittlung/{{ermittlungsId}}/ermittlungsAnfrage",
+									"protocol": "https",
+									"host": [
+										"baufinanzierung",
+										"api",
+										"europace",
+										"de"
+									],
+									"path": [
+										"v2",
+										"ergebnisliste",
+										"ermittlung",
+										"{{ermittlungsId}}",
+										"ermittlungsAnfrage"
+									]
+								}
+							},
+							"response": []
 						}
-					},
-					"response": []
+					]
 				}
 			],
 			"auth": {
@@ -1437,7 +2328,7 @@
 									}
 								],
 								"url": {
-									"raw": "https://baufinanzierung.api.europace.de/v2/antraege?aenderungSeit=2022-02-10",
+									"raw": "https://baufinanzierung.api.europace.de/v2/antraege?aenderungSeit=2026-01-01",
 									"protocol": "https",
 									"host": [
 										"baufinanzierung",
@@ -1452,7 +2343,7 @@
 									"query": [
 										{
 											"key": "aenderungSeit",
-											"value": "2022-02-10"
+											"value": "2026-01-01"
 										}
 									]
 								}
@@ -1503,7 +2394,7 @@
 									}
 								],
 								"url": {
-									"raw": "https://baufinanzierung.api.europace.de/v2/antraege/HU1242/1/1",
+									"raw": "https://baufinanzierung.api.europace.de/v2/antraege/QF8CCC/2/1",
 									"protocol": "https",
 									"host": [
 										"baufinanzierung",
@@ -1514,8 +2405,8 @@
 									"path": [
 										"v2",
 										"antraege",
-										"HU1242",
-										"1",
+										"QF8CCC",
+										"2",
 										"1"
 									]
 								}
@@ -1534,7 +2425,6 @@
 								"header": [
 									{
 										"key": "Content-Type",
-										"name": "Content-Type",
 										"value": "application/json",
 										"type": "text"
 									}
@@ -1544,10 +2434,10 @@
 									"raw": "[\n\t{ \"op\": \"add\", \"path\": \"/voraussichtlicheBearbeitung\", \"value\": \"2022-02-10\" }\n]"
 								},
 								"url": {
-									"raw": "https://baufinanzierung.api.europace.de/v2/antraege/Z11029/2/1",
+									"raw": "https://baufismart.api.europace.de/v2/antraege/Z11029/2/1",
 									"protocol": "https",
 									"host": [
-										"baufinanzierung",
+										"baufismart",
 										"api",
 										"europace",
 										"de"
@@ -1570,20 +2460,19 @@
 								"header": [
 									{
 										"key": "Content-Type",
-										"name": "Content-Type",
 										"value": "application/json",
 										"type": "text"
 									}
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "[\n    {\n        \"op\": \"replace\",\n        \"path\": \"/ansprechpartner/partnerId\",\n        \"value\": \"XYZ55\"\n    }\n]"
+									"raw": "[\n    {\n        \"op\": \"replace\",\n        \"path\": \"/ansprechpartner/partnerId\",\n        \"value\": \"DBD85\"\n    }\n]"
 								},
 								"url": {
-									"raw": "https://baufinanzierung.api.europace.de/v2/antraege/Z11029/2/1",
+									"raw": "https://baufismart.api.europace.de/v2/antraege/ZU7614/2/1",
 									"protocol": "https",
 									"host": [
-										"baufinanzierung",
+										"baufismart",
 										"api",
 										"europace",
 										"de"
@@ -1591,7 +2480,7 @@
 									"path": [
 										"v2",
 										"antraege",
-										"Z11029",
+										"ZU7614",
 										"2",
 										"1"
 									]
@@ -1606,20 +2495,19 @@
 								"header": [
 									{
 										"key": "Content-Type",
-										"name": "Content-Type",
 										"value": "application/json",
 										"type": "text"
 									}
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"op\": \"replace\",\n    \"path\": \"/ansprechpartner/externerPartner\",\n    \"value\": {\n        \"kreditBetriebPartnerId\": \"MYID03\",\n        \"name\": \"Frau Angela Anaconda\",\n        \"telefonnummer\": \"0170 7717789\"\n    }\n}"
+									"raw": "[\n{\n    \"op\": \"replace\",\n    \"path\": \"/ansprechpartner/externerPartner\",\n    \"value\": {\n        \"kreditBetriebPartnerId\": \"HFP91\",\n        \"name\": \"Herr Christian Driesen\",\n        \"telefonnummer\": \"0171 123123123\"\n    }\n}\n]"
 								},
 								"url": {
-									"raw": "https://baufinanzierung.api.europace.de/v2/antraege/Z11029/2/1",
+									"raw": "https://baufismart.api.europace.de/v2/antraege/ZU7614/2/1",
 									"protocol": "https",
 									"host": [
-										"baufinanzierung",
+										"baufismart",
 										"api",
 										"europace",
 										"de"
@@ -1627,7 +2515,7 @@
 									"path": [
 										"v2",
 										"antraege",
-										"Z11029",
+										"ZU7614",
 										"2",
 										"1"
 									]
@@ -1642,7 +2530,6 @@
 								"header": [
 									{
 										"key": "Content-Type",
-										"name": "Content-Type",
 										"value": "application/json",
 										"type": "text"
 									}
@@ -1652,10 +2539,10 @@
 									"raw": "[\n\t{ \"op\": \"add\", \"path\": \"/antragsReferenz\", \"value\": \"whoop\" }\n]"
 								},
 								"url": {
-									"raw": "https://baufinanzierung.api.europace.de/v2/antraege/Z11029/2/1",
+									"raw": "https://baufismart.api.europace.de/v2/antraege/Z11029/2/1",
 									"protocol": "https",
 									"host": [
-										"baufinanzierung",
+										"baufismart",
 										"api",
 										"europace",
 										"de"
@@ -1691,10 +2578,10 @@
 									}
 								},
 								"url": {
-									"raw": "https://baufinanzierung.api.europace.de/v2/antraege/WD0TNA/19/1",
+									"raw": "https://baufismart.api.europace.de/v2/antraege/WD0TNA/19/1",
 									"protocol": "https",
 									"host": [
-										"baufinanzierung",
+										"baufismart",
 										"api",
 										"europace",
 										"de"
@@ -1719,7 +2606,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"kennung\": \"Kombinatorisches Gegenangebot zum existierenden Angebot\",\n  \"darlehen\": [\n    {\n      \"darlehensTyp\": \"ANNUITAETEN_DARLEHEN\",\n      \"darlehensBetrag\": 100000.00,\n      \"sollZins\": 1.17,\n      \"effektivZins\": 1.2,\n      \"rateMonatlich\": 264.17,\n      \"vertriebsProvisionGesamtAbsolut\": 1010.00,\n      \"zinsBindungInJahren\": 10,\n      \"sonderTilgungJaehrlich\": 10.0,\n      \"tilgungsBeginnAm\": \"2020-11-30\",\n      \"produktDetails\": \"Angepasstes Finanzierung (weitere Beschriebung möglich)\",\n      \"anfaenglicheTilgung\": 2.0,\n      \"bereitstellungsZinsFreieZeitInMonaten\": 3,\n      \"bereitstellungsZins\": 3.0,\n      \"laufzeitKalkulatorischInJahren\": 39\n    },\n    {\n      \"darlehensTyp\": \"KFW_DARLEHEN\",\n      \"darlehensBetrag\": 100000.00,\n      \"sollZins\": 0.84,\n      \"effektivZins\": 0.87,\n      \"rateMonatlich\": 383.52,\n      \"anfaenglicheTilgung\": 3.762,\n      \"vertriebsProvisionGesamtAbsolut\": 1072.00,\n      \"laufzeitKalkulatorischInJahren\": 25,\n      \"zinsBindungInJahren\": 10,\n      \"bereitstellungsZinsFreieZeitInMonaten\": 12,\n      \"produktDetails\": \"KfW Darlehen zusätzlich zum angepassten Finanzierung\",\n      \"kfwProgramm\": \"PROGRAMM_153\",\n      \"kfwEnergieEffizienzStandard\": \"STANDARD_40\",\n      \"tilgungsFreieAnlaufJahre\": 1,\n      \"rateMonatlichInDerTilgungsfreienAnlaufzeit\": 77.00\n    }\n  ]\n}",
+							"raw": "{\n  \"kennung\": \"Kombinatorisches Gegenangebot zum existierenden Angebot\",\n  \"darlehen\": [\n    {\n      \"darlehensTyp\": \"ANNUITAETEN_DARLEHEN\",\n      \"darlehensBetrag\": 50000.00,\n      \"sollZins\": 1.17,\n      \"effektivZins\": 1.2,\n      \"rateMonatlich\": 264.17,\n      \"vertriebsProvisionGesamtAbsolut\": 1010.00,\n      \"zinsBindungInJahren\": 10,\n      \"sonderTilgungJaehrlich\": 10.0,\n      \"tilgungsBeginnAm\": \"2020-11-30\",\n      \"produktDetails\": \"Angepasstes Finanzierung (weitere Beschriebung möglich)\",\n      \"anfaenglicheTilgung\": 2.0,\n      \"bereitstellungsZinsFreieZeitInMonaten\": 3,\n      \"bereitstellungsZins\": 3.0,\n      \"laufzeitKalkulatorischInJahren\": 39\n    },\n    {\n      \"darlehensTyp\": \"KFW_DARLEHEN\",\n      \"darlehensBetrag\": 50000.00,\n      \"sollZins\": 0.84,\n      \"effektivZins\": 0.87,\n      \"rateMonatlich\": 383.52,\n      \"anfaenglicheTilgung\": 3.762,\n      \"vertriebsProvisionGesamtAbsolut\": 1072.00,\n      \"laufzeitKalkulatorischInJahren\": 25,\n      \"zinsBindungInJahren\": 10,\n      \"bereitstellungsZinsFreieZeitInMonaten\": 12,\n      \"produktDetails\": \"KfW Darlehen zusätzlich zum angepassten Finanzierung\",\n      \"kfwProgramm\": \"PROGRAMM_153\",\n      \"kfwEnergieEffizienzStandard\": \"STANDARD_40\",\n      \"tilgungsFreieAnlaufJahre\": 1,\n      \"rateMonatlichInDerTilgungsfreienAnlaufzeit\": 77.00\n    }\n  ]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1727,10 +2614,10 @@
 							}
 						},
 						"url": {
-							"raw": "https://baufinanzierung.api.europace.de/v2/antraege/UA30XL/1/1/gegenangebot",
+							"raw": "https://baufismart.api.europace.de/v2/antraege/ZU7614/2/1/gegenangebot",
 							"protocol": "https",
 							"host": [
-								"baufinanzierung",
+								"baufismart",
 								"api",
 								"europace",
 								"de"
@@ -1738,8 +2625,8 @@
 							"path": [
 								"v2",
 								"antraege",
-								"UA30XL",
-								"1",
+								"ZU7614",
+								"2",
 								"1",
 								"gegenangebot"
 							]
@@ -1793,10 +2680,10 @@
 							}
 						],
 						"url": {
-							"raw": "https://baufinanzierung.api.europace.de/v2/ereignisse/{{vorgangsNummer}}",
+							"raw": "https://baufismart.api.europace.de/v2/ereignisse/{{vorgangsNummer}}",
 							"protocol": "https",
 							"host": [
-								"baufinanzierung",
+								"baufismart",
 								"api",
 								"europace",
 								"de"
@@ -1821,10 +2708,10 @@
 							}
 						],
 						"url": {
-							"raw": "https://baufinanzierung.api.europace.de/v2/ereignisse/{{vorgangsNummer}}/1/1",
+							"raw": "https://baufismart.api.europace.de/v2/ereignisse/{{vorgangsNummer}}/1/1",
 							"protocol": "https",
 							"host": [
-								"baufinanzierung",
+								"baufismart",
 								"api",
 								"europace",
 								"de"
@@ -1873,55 +2760,6 @@
 			]
 		},
 		{
-			"name": "KreditSmart Vorgaenge API",
-			"item": [
-				{
-					"name": "Vorgang auslesen",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{access_token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json;charset=utf-8"
-							}
-						],
-						"body": {
-							"mode": "graphql",
-							"graphql": {
-								"query": "query getVorgang($vorgangsnummer: String!) {\n    vorgang(vorgangsnummer: $vorgangsnummer) {\n        vorgangsnummer\n        kundenbetreuer {\n            partnerId\n        }\n        antragsteller1 {\n            personendaten {\n                vorname\n                nachname\n           }\n        }\n        antragsteller2 {\n            personendaten {\n                vorname\n                nachname\n            }\n        }\n        antraege {\n            produktanbieterstatus {\n                status\n            }\n        }\n    }\n}\n",
-								"variables": "{\n    \"vorgangsnummer\": \"AY0916\"\n}\n"
-							}
-						},
-						"url": {
-							"raw": "https://www.europace2.de/kreditsmart/kex/vorgaenge",
-							"protocol": "https",
-							"host": [
-								"www",
-								"europace2",
-								"de"
-							],
-							"path": [
-								"kreditsmart",
-								"kex",
-								"vorgaenge"
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
 			"name": "Dokumente API",
 			"item": [
 				{
@@ -1933,7 +2771,9 @@
 								"exec": [
 									"pm.environment.set(\"doc_location\", pm.response.headers.get('Location'))"
 								],
-								"type": "text/javascript"
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
 							}
 						}
 					],
@@ -1958,7 +2798,7 @@
 							"formdata": [
 								{
 									"key": "anzeigename",
-									"value": "Postman Test.pdf",
+									"value": "Test.pdf",
 									"type": "text"
 								},
 								{
@@ -1975,7 +2815,7 @@
 								{
 									"key": "file",
 									"type": "file",
-									"src": []
+									"src": "/C:/Users/christian.driesen/Downloads/Speiseplan_KW_50.pdf"
 								}
 							]
 						},
@@ -2052,7 +2892,7 @@
 								{
 									"key": "file",
 									"type": "file",
-									"src": []
+									"value": null
 								}
 							]
 						},
@@ -2079,9 +2919,22 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{doc_location}}",
+							"raw": "https://www.europace2.de/dokumentenverwaltung/download?id={{dokumente_id}}",
+							"protocol": "https",
 							"host": [
-								"{{doc_location}}"
+								"www",
+								"europace2",
+								"de"
+							],
+							"path": [
+								"dokumentenverwaltung",
+								"download"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "{{dokumente_id}}"
+								}
 							]
 						}
 					},
@@ -2120,135 +2973,689 @@
 			]
 		},
 		{
+			"name": "Partner API",
+			"item": [
+				{
+					"name": "get partner data",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "X-TraceId",
+								"value": "{{traceId}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://api.europace.de/v2/partner/{{PARTNER_ID}}/",
+							"protocol": "https",
+							"host": [
+								"api",
+								"europace",
+								"de"
+							],
+							"path": [
+								"v2",
+								"partner",
+								"{{PARTNER_ID}}",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get contact details",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "X-TraceId",
+								"value": "{{traceId}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://api.europace.de/v2/partner/{{PARTNER_ID}}/kontaktdaten",
+							"protocol": "https",
+							"host": [
+								"api",
+								"europace",
+								"de"
+							],
+							"path": [
+								"v2",
+								"partner",
+								"{{PARTNER_ID}}",
+								"kontaktdaten"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create partner",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "X-TraceId",
+								"value": "{{traceId}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n   \"anrede\":\"HERR\",\n   \"vorname\":\"Max\",\n   \"nachname\":\"Mustermann\",\n   \"email\":\"max.musterman@exmaple.org\",\n   \"gesperrt\":false,\n   \"kreditsachbearbeiter\":false,\n   \"externePartnerId\":\"123456\",\n   \"titelFunktion\":\"Softwareentwickler\",\n   \"geburtsdatum\":\"1970-01-01\",\n   \"telefonnummer\":\"030 123456\",\n   \"mobilnummer\":\"030 123456\",\n   \"faxnummer\":\"030 123456\",\n   \"firmenname\":\"Europace AG\",\n   \"firmennameZusatz\":\"Aktiengesellschaft\",\n   \"webseite\":\"https://github.com/europace/partner-api\",\n   \"anschrift\":{\n      \"strasse\":\"Musterstraße\",\n      \"hausnummer\":\"5\",\n      \"plz\":\"12345\",\n      \"ort\":\"Musterstadt\"\n   },\n   \"bankverbindung\":{\n      \"kontoinhaber\":\"Max Musterman\",\n      \"bic\":\"BYLADEM1001\",\n      \"iban\":\"DE02120300000000202051\",\n      \"referenzFeld\":\"Test Ref\"\n   },\n   \"aufsichtsbehoerde\":\"Musterbehoerde\",\n   \"registrierungsnummer\":\"987654\"\n}"
+						},
+						"url": {
+							"raw": "https://api.europace.de/v2/partner/{{PARTNER_ID}}/untergeordnete",
+							"protocol": "https",
+							"host": [
+								"api",
+								"europace",
+								"de"
+							],
+							"path": [
+								"v2",
+								"partner",
+								"{{PARTNER_ID}}",
+								"untergeordnete"
+							]
+						},
+						"description": "Liefert eine Liste von untergeordneten Partnern."
+					},
+					"response": []
+				},
+				{
+					"name": "update partner data",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "X-TraceId",
+								"value": "{{traceId}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"firmenname\":\"Mustermann AG2\"\n}"
+						},
+						"url": {
+							"raw": "https://api.europace.de/v2/partner/{{PARTNER_ID}}/",
+							"protocol": "https",
+							"host": [
+								"api",
+								"europace",
+								"de"
+							],
+							"path": [
+								"v2",
+								"partner",
+								"{{PARTNER_ID}}",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get subordinate partners",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "X-TraceId",
+								"value": "{{traceId}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://api.europace.de/v2/partner/{{PARTNER_ID}}/untergeordnete",
+							"protocol": "https",
+							"host": [
+								"api",
+								"europace",
+								"de"
+							],
+							"path": [
+								"v2",
+								"partner",
+								"{{PARTNER_ID}}",
+								"untergeordnete"
+							]
+						},
+						"description": "Liefert eine Liste von untergeordneten Partnern."
+					},
+					"response": []
+				},
+				{
+					"name": "create user access",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "X-TraceId",
+								"value": "{{traceId}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"benutzername\" : \"gemede3336@muhaos.com\"\n}"
+						},
+						"url": {
+							"raw": "https://api.europace.de/v2/partner/{{PARTNER_ID}}/zugang?sendEmail=true",
+							"protocol": "https",
+							"host": [
+								"api",
+								"europace",
+								"de"
+							],
+							"path": [
+								"v2",
+								"partner",
+								"{{PARTNER_ID}}",
+								"zugang"
+							],
+							"query": [
+								{
+									"key": "sendEmail",
+									"value": "true"
+								}
+							]
+						},
+						"description": "Erzeugt einen Zugang für eine Person."
+					},
+					"response": []
+				},
+				{
+					"name": "get user access",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "X-TraceId",
+								"value": "{{traceId}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://api.europace.de/v2/partner/{{PARTNER_ID}}/zugang",
+							"protocol": "https",
+							"host": [
+								"api",
+								"europace",
+								"de"
+							],
+							"path": [
+								"v2",
+								"partner",
+								"{{PARTNER_ID}}",
+								"zugang"
+							]
+						},
+						"description": "Liefert die Zugangsdaten eines Partners. Bei einer Person werden die Benutzer-Zugangsdaten und bei einer Organisation die Daten des Identity Provider geliefert."
+					},
+					"response": []
+				},
+				{
+					"name": "get partner code",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "X-TraceId",
+								"value": "{{traceId}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://api.europace.de/v2/partner/{{PARTNER_ID}}/partnerkennzeichen",
+							"protocol": "https",
+							"host": [
+								"api",
+								"europace",
+								"de"
+							],
+							"path": [
+								"v2",
+								"partner",
+								"{{PARTNER_ID}}",
+								"partnerkennzeichen"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get user permissions",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "X-Traceid",
+								"value": "{{traceId}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://api.europace.de/v2/partner/{{PARTNER_ID}}/rechte",
+							"protocol": "https",
+							"host": [
+								"api",
+								"europace",
+								"de"
+							],
+							"path": [
+								"v2",
+								"partner",
+								"{{PARTNER_ID}}",
+								"rechte"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "set user permissions",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "X-Traceid",
+								"value": "{{traceId}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"baufismart\": {\n        \"baufiSmartNutzen\": true,\n        \"echtgeschaeft\": false\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api.europace.de/v2/partner/{{PARTNER_ID}}/rechte",
+							"protocol": "https",
+							"host": [
+								"api",
+								"europace",
+								"de"
+							],
+							"path": [
+								"v2",
+								"partner",
+								"{{PARTNER_ID}}",
+								"rechte"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get access rights",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "X-TraceId",
+								"value": "{{traceId}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://api.europace.de/v2/partner/{{PARTNER_ID}}/uebernehmbare",
+							"protocol": "https",
+							"host": [
+								"api",
+								"europace",
+								"de"
+							],
+							"path": [
+								"v2",
+								"partner",
+								"{{PARTNER_ID}}",
+								"uebernehmbare"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "add access right",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-Trace-Id",
+								"value": "{{traceId}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://api.europace.de/v2/partner/{{PARTNER_ID}}/uebernahmeRechtFuer/{{ZIEL_PARTNER_ID}}",
+							"protocol": "https",
+							"host": [
+								"api",
+								"europace",
+								"de"
+							],
+							"path": [
+								"v2",
+								"partner",
+								"{{PARTNER_ID}}",
+								"uebernahmeRechtFuer",
+								"{{ZIEL_PARTNER_ID}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get setting right",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "X-TraceId",
+								"value": "{{traceId}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://api.europace.de/v2/partner/{{PARTNER_ID}}/administrierbare",
+							"protocol": "https",
+							"host": [
+								"api",
+								"europace",
+								"de"
+							],
+							"path": [
+								"v2",
+								"partner",
+								"{{PARTNER_ID}}",
+								"administrierbare"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "{{access_token}}",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Report API",
+			"item": [
+				{
+					"name": "Consultants or Lender data (according to client)",
+					"item": [
+						{
+							"name": "1. request report",
+							"event": [
+								{
+									"listen": "prerequest",
+									"script": {
+										"exec": [
+											"postman.setGlobalVariable(\"report-processing-id\", null);"
+										],
+										"type": "text/javascript"
+									}
+								},
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Location is present in header\", function () {",
+											"    pm.response.to.have.header(\"Location\");",
+											"});",
+											"postman.setGlobalVariable(\"report-processing-id\", pm.response.headers.get(\"Location\"));",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "X-Trace-Id",
+										"value": "Mike",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"fromDay\": \"2020-01-01\"\n}"
+								},
+								"url": {
+									"raw": "https://report.api.europace.de/rohdaten",
+									"protocol": "https",
+									"host": [
+										"report",
+										"api",
+										"europace",
+										"de"
+									],
+									"path": [
+										"rohdaten"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "2. query report status",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Location is present in header\", function () {",
+											"    pm.response.to.have.header(\"Location\");",
+											"});",
+											"postman.setGlobalVariable(\"path-to-reportfile\", pm.response.headers.get(\"Location\"));",
+											"",
+											"",
+											"",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"followRedirects": false
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "X-Trace-Id",
+										"value": "Mike",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "https://report.api.europace.de{{report-processing-id}}",
+									"protocol": "https",
+									"host": [
+										"report",
+										"api",
+										"europace",
+										"de{{report-processing-id}}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "3. retrieve report-data",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://greta-462912489437-eu-central-1.s3.amazonaws.com/prod/rohdaten/83682a87-33f9-42ad-ac1c-4ae87b2cf65d/Ep2_Reports_HFP91_20260209154030.zip?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=ASIAWXR54A7O4T6RGECB%2F20260209%2Feu-central-1%2Fs3%2Faws4_request&X-Amz-Date=20260209T144030Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEMb%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaDGV1LWNlbnRyYWwtMSJGMEQCIDEABt19Xwbx5NApeAnBWoSUcRDCzJ8oggFr6ztgZ2pAAiBbsJDkbp3QV9hV%2BqnM76VSrAWvsf2WrilaWwiZMpLH7CqjAwiP%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F8BEAIaDDQ2MjkxMjQ4OTQzNyIMgk2v3yz3Pw2xgAj1KvcCmq61lnPF7Zn0rEVLaFjb3ElFYWTkPkT9pI1AvpGPWbioA%2B7tXa%2BB3FKeQIRvD0uYqdEdwYpX%2FsfHwSIkIfbRoqNhJO9xmwhMnRtOOyWYZwRRQ6o8UfJmaIrmb7rxe2rU7JKygC%2Bea9H1ghmBtHp61eQMIyVEw0HCe%2FrKxKmEUx5S9WFBfLlxaYrO8068AzTpV6twZ8JvPgNEvzEmW8MGQc5fuvi7iB6p2FrZCSh05pM1xInXQSiN02eYXlLYX7yxfGHj1RXPer%2FEVlBjBfmu6cU0MQfrkVeWVTLtzaLOzscHMlkhhLqZhdIUx1btd2JrKXAasan7Te9hR28fWKZZh0hFnx8%2F5UTAcAbrmtq3ejPgvKzRbJIz7wlxdsYRY2dqb51XL2fESn%2BchZoW4nY1JEbJntHrRsES%2BLp8k6FDQQseMZ97vS3icLVPBqPwiQxreXKZNRHbU7mnpMNBgaJ1NORqEH2zL3AeRpZg6QlBKed7ghUPeZsvMPzVp8wGOp4BEwCObiT0G4dRYrg5MrQqqveQghMoPvVZV8XVgf%2BtHUQ8j0d8%2F%2BaJ%2FhLb1SpXsJYbr23Pdjn1igQu7rDj7COyy9uQUe20ABVYezcparOY0p3STuUhF6mkGybQb%2FE5to3O1l8%2Fb6bZ4wVhDws6JfcuY74jNlkvLGweQP6jvKBoBLrbshDOnY9tFzFDJEsGCOopHtD8b%2FBKdNzfu7hqPyU%3D&X-Amz-Signature=d1c371f8f7c593096783015fe50926772815033cd4b0553f72d94f357f6ae131",
+									"protocol": "https",
+									"host": [
+										"greta-462912489437-eu-central-1",
+										"s3",
+										"amazonaws",
+										"com"
+									],
+									"path": [
+										"prod",
+										"rohdaten",
+										"83682a87-33f9-42ad-ac1c-4ae87b2cf65d",
+										"Ep2_Reports_HFP91_20260209154030.zip"
+									],
+									"query": [
+										{
+											"key": "X-Amz-Algorithm",
+											"value": "AWS4-HMAC-SHA256"
+										},
+										{
+											"key": "X-Amz-Credential",
+											"value": "ASIAWXR54A7O4T6RGECB%2F20260209%2Feu-central-1%2Fs3%2Faws4_request"
+										},
+										{
+											"key": "X-Amz-Date",
+											"value": "20260209T144030Z"
+										},
+										{
+											"key": "X-Amz-Expires",
+											"value": "3600"
+										},
+										{
+											"key": "X-Amz-SignedHeaders",
+											"value": "host"
+										},
+										{
+											"key": "X-Amz-Security-Token",
+											"value": "IQoJb3JpZ2luX2VjEMb%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaDGV1LWNlbnRyYWwtMSJGMEQCIDEABt19Xwbx5NApeAnBWoSUcRDCzJ8oggFr6ztgZ2pAAiBbsJDkbp3QV9hV%2BqnM76VSrAWvsf2WrilaWwiZMpLH7CqjAwiP%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F8BEAIaDDQ2MjkxMjQ4OTQzNyIMgk2v3yz3Pw2xgAj1KvcCmq61lnPF7Zn0rEVLaFjb3ElFYWTkPkT9pI1AvpGPWbioA%2B7tXa%2BB3FKeQIRvD0uYqdEdwYpX%2FsfHwSIkIfbRoqNhJO9xmwhMnRtOOyWYZwRRQ6o8UfJmaIrmb7rxe2rU7JKygC%2Bea9H1ghmBtHp61eQMIyVEw0HCe%2FrKxKmEUx5S9WFBfLlxaYrO8068AzTpV6twZ8JvPgNEvzEmW8MGQc5fuvi7iB6p2FrZCSh05pM1xInXQSiN02eYXlLYX7yxfGHj1RXPer%2FEVlBjBfmu6cU0MQfrkVeWVTLtzaLOzscHMlkhhLqZhdIUx1btd2JrKXAasan7Te9hR28fWKZZh0hFnx8%2F5UTAcAbrmtq3ejPgvKzRbJIz7wlxdsYRY2dqb51XL2fESn%2BchZoW4nY1JEbJntHrRsES%2BLp8k6FDQQseMZ97vS3icLVPBqPwiQxreXKZNRHbU7mnpMNBgaJ1NORqEH2zL3AeRpZg6QlBKed7ghUPeZsvMPzVp8wGOp4BEwCObiT0G4dRYrg5MrQqqveQghMoPvVZV8XVgf%2BtHUQ8j0d8%2F%2BaJ%2FhLb1SpXsJYbr23Pdjn1igQu7rDj7COyy9uQUe20ABVYezcparOY0p3STuUhF6mkGybQb%2FE5to3O1l8%2Fb6bZ4wVhDws6JfcuY74jNlkvLGweQP6jvKBoBLrbshDOnY9tFzFDJEsGCOopHtD8b%2FBKdNzfu7hqPyU%3D"
+										},
+										{
+											"key": "X-Amz-Signature",
+											"value": "d1c371f8f7c593096783015fe50926772815033cd4b0553f72d94f357f6ae131"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "{{access_token}}",
+						"type": "string"
+					}
+				]
+			}
+		},
+		{
 			"name": "Unterlagen API",
 			"item": [
 				{
 					"name": "add proof file to a case",
 					"item": [
 						{
-							"name": "1. store proof file",
-							"item": [
-								{
-									"name": "create presigned url",
-									"event": [
-										{
-											"listen": "test",
-											"script": {
-												"exec": [
-													"const responseJson = pm.response.json();",
-													"",
-													"pm.environment.set(\"ul_presigned_document_url\", responseJson.uploadData.url);",
-													"pm.environment.set(\"ul_downloadurl\", responseJson.downloadUrl);",
-													"",
-													"var fields = responseJson.uploadData.fields;",
-													"console.log(fields)",
-													"for (const field of Object.keys(fields)) {",
-													"    pm.environment.set(\"ul_\"+field, fields[field]);",
-													"}",
-													""
-												],
-												"type": "text/javascript"
-											}
-										}
-									],
-									"request": {
-										"auth": {
-											"type": "bearer",
-											"bearer": [
-												{
-													"key": "token",
-													"value": "{{jwt}}",
-													"type": "string"
-												}
-											]
-										},
-										"method": "POST",
-										"header": [],
-										"url": {
-											"raw": "https://api.europace.de/v1/dokumente/transferspeicher",
-											"protocol": "https",
-											"host": [
-												"api",
-												"europace",
-												"de"
-											],
-											"path": [
-												"v1",
-												"dokumente",
-												"transferspeicher"
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "upload proof file",
-									"request": {
-										"method": "POST",
-										"header": [],
-										"body": {
-											"mode": "formdata",
-											"formdata": [
-												{
-													"key": "key",
-													"value": "{{ul_key}}",
-													"type": "text"
-												},
-												{
-													"key": "bucket",
-													"value": "{{ul_bucket}}",
-													"type": "text"
-												},
-												{
-													"key": "X-Amz-Algorithm",
-													"value": "{{ul_X-Amz-Algorithm}}",
-													"type": "text"
-												},
-												{
-													"key": "X-Amz-Credential",
-													"value": "{{ul_X-Amz-Credential}}",
-													"type": "text"
-												},
-												{
-													"key": "X-Amz-Date",
-													"value": "{{ul_X-Amz-Date}}",
-													"type": "text"
-												},
-												{
-													"key": "X-Amz-Security-Token",
-													"value": "{{ul_X-Amz-Security-Token}}",
-													"type": "text"
-												},
-												{
-													"key": "Policy",
-													"value": "{{ul_Policy}}",
-													"type": "text"
-												},
-												{
-													"key": "X-Amz-Signature",
-													"value": "{{ul_X-Amz-Signature}}",
-													"type": "text"
-												},
-												{
-													"key": "file",
-													"type": "file",
-													"src": []
-												}
-											]
-										},
-										"url": {
-											"raw": "{{ul_presigned_document_url}}",
-											"host": [
-												"{{ul_presigned_document_url}}"
-											]
-										}
-									},
-									"response": []
-								}
-							]
-						},
-						{
-							"name": "2. add uploaded proof file",
+							"name": "1. upload file via URL to case",
 							"event": [
 								{
 									"listen": "test",
@@ -2258,7 +3665,9 @@
 											"pm.environment.set(\"ul_dokId\", body.id);",
 											""
 										],
-										"type": "text/javascript"
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
 									}
 								}
 							],
@@ -2280,7 +3689,73 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n\t\"vorgangsNummer\": \"{{vorgangsNummer}}\",\n\t\"url\": \"{{ul_downloadurl}}\",\n\t\"anzeigename\": \"Mikes PostmanUploaded\",\n    \"mitKategorisierung\" : true\n}"
+									"raw": "{\r\n  \"caseId\": \"123ABC\",\r\n  \"displayName\": \"my file\",\r\n  \"filename\": \"my_file.pdf\",\r\n  \"url\": \"https://picsum.photos/595/842\"\r\n}"
+								},
+								"url": {
+									"raw": "https://api.europace2.de/v1/dokumente",
+									"protocol": "https",
+									"host": [
+										"api",
+										"europace2",
+										"de"
+									],
+									"path": [
+										"v1",
+										"dokumente"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "2. upload file via multipart to case",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var body = JSON.parse(responseBody);",
+											"pm.environment.set(\"ul_dokId\", body.id);",
+											""
+										],
+										"type": "text/javascript",
+										"packages": {},
+										"requests": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									},
+									{
+										"key": "X-TraceId",
+										"value": "{{traceId}}"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "caseid",
+											"value": "",
+											"type": "text",
+											"uuid": "0c3acd76-f0aa-4e4a-9608-f03a9b773ed2"
+										},
+										{
+											"key": "file",
+											"type": "file",
+											"uuid": "73cacde8-3490-442d-aa26-9f83f42b14e3",
+											"value": null
+										}
+									]
 								},
 								"url": {
 									"raw": "https://api.europace2.de/v1/dokumente",
@@ -2546,7 +4021,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "[\n\t{\n\t\t\"dokumentId\": \t\"{{dokId}}\",\n\t\t\"seite\": 5\n\t}\n]"
+									"raw": ""
 								},
 								"url": {
 									"raw": "https://api.europace2.de/v1/dokumente/zuordnung/Privatkreditvertrag?bezug=verbindlichkeit:bestehend&vorgangsNummer={{vorgangsNummer}}&antragsNummer={{vorgangsNummer}}/1/1",
@@ -2637,7 +4112,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n\t\"antragsNummer\": \"{{vorgangsNummer}}/1/1\",\n\t\"seiten\": [\n\t\t{\n\t\t\t\"dokumentId\": \"{{dokId}}\",\n\t\t\t\"seite\": 1\n\t\t}\n\t]\n}"
+									"raw": ""
 								},
 								"url": {
 									"raw": "https://api.europace2.de/v1/dokumente/freigabe",
@@ -2770,12 +4245,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n  \"status\": \"DELIVERED\",\n  \"message\": \"Bank hat Unterlage erhalten.\"\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
+									"raw": ""
 								},
 								"url": {
 									"raw": "https://api.europace2.de/v1/dokumente/freigabe/{{ul_freigabeId}}/status",
@@ -2969,703 +4439,53 @@
 			]
 		},
 		{
-			"name": "Partner API",
+			"name": "KreditSmart Vorgaenge API",
 			"item": [
 				{
-					"name": "get partner data",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							},
-							{
-								"key": "X-TraceId",
-								"value": "{{traceId}}",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "https://api.europace.de/v2/partner/{{PARTNER_ID}}",
-							"protocol": "https",
-							"host": [
-								"api",
-								"europace",
-								"de"
-							],
-							"path": [
-								"v2",
-								"partner",
-								"{{PARTNER_ID}}"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "get contact details",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							},
-							{
-								"key": "X-TraceId",
-								"value": "{{traceId}}",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "https://api.europace.de/v2/partner/{{PARTNER_ID}}/kontaktdaten",
-							"protocol": "https",
-							"host": [
-								"api",
-								"europace",
-								"de"
-							],
-							"path": [
-								"v2",
-								"partner",
-								"{{PARTNER_ID}}",
-								"kontaktdaten"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "create partner",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							},
-							{
-								"key": "X-TraceId",
-								"type": "text",
-								"value": "{{traceId}}"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n   \"anrede\":\"HERR\",\n   \"vorname\":\"Max\",\n   \"nachname\":\"Mustermann\",\n   \"email\":\"max.musterman@exmaple.org\",\n   \"gesperrt\":false,\n   \"kreditsachbearbeiter\":false,\n   \"externePartnerId\":\"123456\",\n   \"titelFunktion\":\"Softwareentwickler\",\n   \"geburtsdatum\":\"1970-01-01\",\n   \"telefonnummer\":\"030 123456\",\n   \"mobilnummer\":\"030 123456\",\n   \"faxnummer\":\"030 123456\",\n   \"firmenname\":\"Europace AG\",\n   \"firmennameZusatz\":\"Aktiengesellschaft\",\n   \"webseite\":\"https://github.com/europace/partner-api\",\n   \"anschrift\":{\n      \"strasse\":\"Musterstraße\",\n      \"hausnummer\":\"5\",\n      \"plz\":\"12345\",\n      \"ort\":\"Musterstadt\"\n   },\n   \"bankverbindung\":{\n      \"kontoinhaber\":\"Max Musterman\",\n      \"bic\":\"BYLADEM1001\",\n      \"iban\":\"DE02120300000000202051\",\n      \"referenzFeld\":\"Test Ref\"\n   },\n   \"aufsichtsbehoerde\":\"Musterbehoerde\",\n   \"registrierungsnummer\":\"987654\"\n}"
-						},
-						"url": {
-							"raw": "https://api.europace.de/v2/partner/{{PARTNER_ID}}/untergeordnete",
-							"protocol": "https",
-							"host": [
-								"api",
-								"europace",
-								"de"
-							],
-							"path": [
-								"v2",
-								"partner",
-								"{{PARTNER_ID}}",
-								"untergeordnete"
-							]
-						},
-						"description": "Liefert eine Liste von untergeordneten Partnern."
-					},
-					"response": []
-				},
-				{
-					"name": "update partner data",
-					"request": {
-						"method": "PATCH",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							},
-							{
-								"key": "X-TraceId",
-								"value": "{{traceId}}",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n  \"firmenname\":\"Mustermann AG2\"\n}"
-						},
-						"url": {
-							"raw": "https://api.europace.de/v2/partner/{{PARTNER_ID}}",
-							"protocol": "https",
-							"host": [
-								"api",
-								"europace",
-								"de"
-							],
-							"path": [
-								"v2",
-								"partner",
-								"{{PARTNER_ID}}"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "get subordinate partners",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							},
-							{
-								"key": "X-TraceId",
-								"value": "{{traceId}}",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "https://api.europace.de/v2/partner/{{PARTNER_ID}}/untergeordnete",
-							"protocol": "https",
-							"host": [
-								"api",
-								"europace",
-								"de"
-							],
-							"path": [
-								"v2",
-								"partner",
-								"{{PARTNER_ID}}",
-								"untergeordnete"
-							]
-						},
-						"description": "Liefert eine Liste von untergeordneten Partnern."
-					},
-					"response": []
-				},
-				{
-					"name": "create user access",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							},
-							{
-								"key": "X-TraceId",
-								"type": "text",
-								"value": "{{traceId}}"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"benutzername\" : \"max.musterman@example.org\"\n}"
-						},
-						"url": {
-							"raw": "https://api.europace.de/v2/partner/{{PARTNER_ID}}/zugang?sendEmail=true",
-							"protocol": "https",
-							"host": [
-								"api",
-								"europace",
-								"de"
-							],
-							"path": [
-								"v2",
-								"partner",
-								"{{PARTNER_ID}}",
-								"zugang"
-							],
-							"query": [
-								{
-									"key": "sendEmail",
-									"value": "true"
-								}
-							]
-						},
-						"description": "Erzeugt einen Zugang für eine Person."
-					},
-					"response": []
-				},
-				{
-					"name": "get user access",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							},
-							{
-								"key": "X-TraceId",
-								"type": "text",
-								"value": "{{traceId}}"
-							}
-						],
-						"url": {
-							"raw": "https://api.europace.de/v2/partner/{{PARTNER_ID}}/zugang",
-							"protocol": "https",
-							"host": [
-								"api",
-								"europace",
-								"de"
-							],
-							"path": [
-								"v2",
-								"partner",
-								"{{PARTNER_ID}}",
-								"zugang"
-							]
-						},
-						"description": "Liefert die Zugangsdaten eines Partners. Bei einer Person werden die Benutzer-Zugangsdaten und bei einer Organisation die Daten des Identity Provider geliefert."
-					},
-					"response": []
-				},
-				{
-					"name": "get partner code",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							},
-							{
-								"key": "X-TraceId",
-								"value": "{{traceId}}",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "https://api.europace.de/v2/partner/{{PARTNER_ID}}/partnerkennzeichen",
-							"protocol": "https",
-							"host": [
-								"api",
-								"europace",
-								"de"
-							],
-							"path": [
-								"v2",
-								"partner",
-								"{{PARTNER_ID}}",
-								"partnerkennzeichen"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "get user permissions",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"type": "text"
-							},
-							{
-								"key": "X-Traceid",
-								"value": "{{traceId}}",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "https://api.europace.de/v2/partner/{{PARTNER_ID}}/rechte",
-							"protocol": "https",
-							"host": [
-								"api",
-								"europace",
-								"de"
-							],
-							"path": [
-								"v2",
-								"partner",
-								"{{PARTNER_ID}}",
-								"rechte"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "set user permissions",
-					"request": {
-						"method": "PATCH",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"type": "text"
-							},
-							{
-								"key": "X-Traceid",
-								"value": "{{traceId}}",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"baufismart\": {\n        \"baufiSmartNutzen\": true,\n        \"echtgeschaeft\": false\n    }\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "https://api.europace.de/v2/partner/{{PARTNER_ID}}/rechte",
-							"protocol": "https",
-							"host": [
-								"api",
-								"europace",
-								"de"
-							],
-							"path": [
-								"v2",
-								"partner",
-								"{{PARTNER_ID}}",
-								"rechte"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "get access rights",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							},
-							{
-								"key": "X-TraceId",
-								"value": "{{traceId}}",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "https://api.europace.de/v2/partner/{{PARTNER_ID}}/uebernehmbare",
-							"protocol": "https",
-							"host": [
-								"api",
-								"europace",
-								"de"
-							],
-							"path": [
-								"v2",
-								"partner",
-								"{{PARTNER_ID}}",
-								"uebernehmbare"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "add access right",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "X-Trace-Id",
-								"value": "{{traceId}}",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "https://api.europace.de/v2/partner/{{PARTNER_ID}}/uebernahmeRechtFuer/{{ZIEL_PARTNER_ID}}",
-							"protocol": "https",
-							"host": [
-								"api",
-								"europace",
-								"de"
-							],
-							"path": [
-								"v2",
-								"partner",
-								"{{PARTNER_ID}}",
-								"uebernahmeRechtFuer",
-								"{{ZIEL_PARTNER_ID}}"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "get setting right",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							},
-							{
-								"key": "X-TraceId",
-								"value": "{{traceId}}",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "https://api.europace.de/v2/partner/{{PARTNER_ID}}/administrierbare",
-							"protocol": "https",
-							"host": [
-								"api",
-								"europace",
-								"de"
-							],
-							"path": [
-								"v2",
-								"partner",
-								"{{PARTNER_ID}}",
-								"administrierbare"
-							]
-						}
-					},
-					"response": []
-				}
-			],
-			"auth": {
-				"type": "bearer",
-				"bearer": [
-					{
-						"key": "token",
-						"value": "{{access_token}}",
-						"type": "string"
-					}
-				]
-			},
-			"event": [
-				{
-					"listen": "prerequest",
-					"script": {
-						"type": "text/javascript",
-						"exec": [
-							""
-						]
-					}
-				},
-				{
-					"listen": "test",
-					"script": {
-						"type": "text/javascript",
-						"exec": [
-							""
-						]
-					}
-				}
-			]
-		},
-		{
-			"name": "Report API",
-			"item": [
-				{
-					"name": "Vertriebs-Rohdaten",
-					"item": [
-						{
-							"name": "1. request report Vertriebs-Rohdaten",
-							"event": [
-								{
-									"listen": "prerequest",
-									"script": {
-										"exec": [
-											"postman.setGlobalVariable(\"report-processing-id\", null);"
-										],
-										"type": "text/javascript"
-									}
-								},
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											"pm.test(\"Location is present in header\", function () {",
-											"    pm.response.to.have.header(\"Location\");",
-											"});",
-											"postman.setGlobalVariable(\"report-processing-id\", pm.response.headers.get(\"Location\"));",
-											""
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"method": "POST",
-								"header": [
-									{
-										"key": "Content-Type",
-										"value": "application/json",
-										"type": "text"
-									},
-									{
-										"key": "X-Trace-Id",
-										"value": "Mike",
-										"type": "text"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n    \"fromDay\": \"2020-01-01\"\n}"
-								},
-								"url": {
-									"raw": "https://report.api.europace.de/rohdaten",
-									"protocol": "https",
-									"host": [
-										"report",
-										"api",
-										"europace",
-										"de"
-									],
-									"path": [
-										"rohdaten"
-									]
-								}
-							},
-							"response": []
-						}
-					]
-				},
-				{
-					"name": "Produktanbieter-Report",
-					"item": [
-						{
-							"name": "1. request report Produktanbieter-Report",
-							"event": [
-								{
-									"listen": "prerequest",
-									"script": {
-										"exec": [
-											"postman.setGlobalVariable(\"report-processing-id\", null);"
-										],
-										"type": "text/javascript"
-									}
-								},
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											"pm.test(\"Location is present in header\", function () {",
-											"    pm.response.to.have.header(\"Location\");",
-											"});",
-											"postman.setGlobalVariable(\"report-processing-id\", pm.response.headers.get(\"Location\"));",
-											""
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"method": "POST",
-								"header": [
-									{
-										"key": "Content-Type",
-										"value": "application/json",
-										"type": "text"
-									},
-									{
-										"key": "X-Trace-Id",
-										"value": "Mike",
-										"type": "text"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n    \"fromDay\": \"2020-01-01\"\n}"
-								},
-								"url": {
-									"raw": "https://report.api.europace.de/produktanbieter",
-									"protocol": "https",
-									"host": [
-										"report",
-										"api",
-										"europace",
-										"de"
-									],
-									"path": [
-										"produktanbieter"
-									]
-								}
-							},
-							"response": []
-						}
-					]
-				},
-				{
-					"name": "2. query report status",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test(\"Location is present in header\", function () {",
-									"    pm.response.to.have.header(\"Location\");",
-									"});",
-									"postman.setGlobalVariable(\"path-to-reportfile\", pm.response.headers.get(\"Location\"));",
-									"",
-									"",
-									"",
-									""
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"protocolProfileBehavior": {
-						"followRedirects": false
-					},
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "X-Trace-Id",
-								"value": "Mike",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "https://report.api.europace.de{{report-processing-id}}",
-							"protocol": "https",
-							"host": [
-								"report",
-								"api",
-								"europace",
-								"de{{report-processing-id}}"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "3. retrieve report-data",
+					"name": "Vorgang auslesen",
 					"request": {
 						"auth": {
-							"type": "noauth"
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
 						},
-						"method": "GET",
-						"header": [],
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json;charset=utf-8"
+							}
+						],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query getVorgang($vorgangsnummer: String!) {\n    vorgang(vorgangsnummer: $vorgangsnummer) {\n        vorgangsnummer\n        kundenbetreuer {\n            partnerId\n        }\n        antragsteller1 {\n            personendaten {\n                vorname\n                nachname\n           }\n        }\n        antragsteller2 {\n            personendaten {\n                vorname\n                nachname\n            }\n        }\n        antraege {\n            produktanbieterstatus {\n                status\n            }\n        }\n    }\n}\n",
+								"variables": "{\n    \"vorgangsnummer\": \"AY0916\"\n}\n"
+							}
+						},
 						"url": {
-							"raw": "{{path-to-reportfile}}",
+							"raw": "https://www.europace2.de/kreditsmart/kex/vorgaenge",
+							"protocol": "https",
 							"host": [
-								"{{path-to-reportfile}}"
+								"www",
+								"europace2",
+								"de"
+							],
+							"path": [
+								"kreditsmart",
+								"kex",
+								"vorgaenge"
 							]
 						}
 					},
 					"response": []
 				}
-			],
-			"auth": {
-				"type": "bearer",
-				"bearer": [
-					{
-						"key": "token",
-						"value": "{{access_token}}",
-						"type": "string"
-					}
-				]
-			}
+			]
 		}
 	],
 	"event": [
