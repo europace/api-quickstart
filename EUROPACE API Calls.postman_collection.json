@@ -778,7 +778,9 @@
                   "var jsonData = JSON.parse(responseBody);",
                   "postman.setGlobalVariable(\"vorgangsNummer\", jsonData.vorgangsNummer);"
                 ],
-                "type": "text/javascript"
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
               }
             }
           ],
@@ -791,7 +793,7 @@
               }
             ],
             "url": {
-              "raw": "https://api.europace2.de/v2/vorgaenge/{{vorgangsNummer}}",
+              "raw": "https://api.europace2.de/v3/vorgaenge/{{vorgangsNummer}}",
               "protocol": "https",
               "host": [
                 "api",
@@ -799,7 +801,7 @@
                 "de"
               ],
               "path": [
-                "v2",
+                "v3",
                 "vorgaenge",
                 "{{vorgangsNummer}}"
               ]
@@ -828,7 +830,7 @@
               }
             ],
             "url": {
-              "raw": "https://api.europace2.de/v2/vorgaenge",
+              "raw": "https://api.europace2.de/v3/vorgaenge",
               "protocol": "https",
               "host": [
                 "api",
@@ -836,7 +838,7 @@
                 "de"
               ],
               "path": [
-                "v2",
+                "v3",
                 "vorgaenge"
               ]
             }
@@ -854,7 +856,7 @@
               }
             ],
             "url": {
-              "raw": "https://api.europace2.de/v2/vorgaenge?datenKontext=TEST_MODUS",
+              "raw": "https://api.europace2.de/v3/vorgaenge?datenKontext=TEST_MODUS",
               "protocol": "https",
               "host": [
                 "api",
@@ -862,7 +864,7 @@
                 "de"
               ],
               "path": [
-                "v2",
+                "v3",
                 "vorgaenge"
               ],
               "query": [
@@ -886,7 +888,7 @@
               }
             ],
             "url": {
-              "raw": "https://api.europace2.de/v2/vorgaenge/{{vorgangsNummer}}/antraege",
+              "raw": "https://api.europace2.de/v3/vorgaenge/{{vorgangsNummer}}/antraege",
               "protocol": "https",
               "host": [
                 "api",
@@ -918,7 +920,7 @@
               "raw": "[\n\t{\"op\":\"replace\",\"path\":\"/externeVorgangsNummer\",\"value\":\"ext_VN_4711\"}\n]"
             },
             "url": {
-              "raw": "https://api.europace2.de/v2/vorgaenge/{{vorgangsNummer}}",
+              "raw": "https://api.europace2.de/v3/vorgaenge/{{vorgangsNummer}}",
               "protocol": "https",
               "host": [
                 "api",
@@ -926,7 +928,7 @@
                 "de"
               ],
               "path": [
-                "v2",
+                "v3",
                 "vorgaenge",
                 "{{vorgangsNummer}}"
               ]
@@ -949,7 +951,7 @@
               "raw": "[\n\t{\"op\":\"replace\",\"path\":\"/status\",\"value\":\"ARCHIVIERT\"}\n]"
             },
             "url": {
-              "raw": "https://api.europace2.de/v2/vorgaenge/{{vorgangsNummer}}",
+              "raw": "https://api.europace2.de/v3/vorgaenge/{{vorgangsNummer}}",
               "protocol": "https",
               "host": [
                 "api",
@@ -957,7 +959,7 @@
                 "de"
               ],
               "path": [
-                "v2",
+                "v3",
                 "vorgaenge",
                 "{{vorgangsNummer}}"
               ]
@@ -980,7 +982,7 @@
               }
             },
             "url": {
-              "raw": "https://api.europace2.de/v2/vorgaenge/{{vorgangsNummer}}/vorgangsBearbeiter",
+              "raw": "https://api.europace2.de/v3/vorgaenge/{{vorgangsNummer}}/vorgangsBearbeiter",
               "protocol": "https",
               "host": [
                 "api",
@@ -988,7 +990,7 @@
                 "de"
               ],
               "path": [
-                "v2",
+                "v3",
                 "vorgaenge",
                 "{{vorgangsNummer}}",
                 "vorgangsBearbeiter"
@@ -1012,7 +1014,7 @@
               }
             },
             "url": {
-              "raw": "https://api.europace2.de/v2/vorgaenge/{{vorgangsNummer}}/kundenBetreuer",
+              "raw": "https://api.europace2.de/v3/vorgaenge/{{vorgangsNummer}}/kundenBetreuer",
               "protocol": "https",
               "host": [
                 "api",
@@ -1020,7 +1022,7 @@
                 "de"
               ],
               "path": [
-                "v2",
+                "v3",
                 "vorgaenge",
                 "{{vorgangsNummer}}",
                 "kundenBetreuer"
